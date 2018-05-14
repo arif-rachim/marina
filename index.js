@@ -32,6 +32,9 @@ app.get('/v1/:resource', (req,res) => {
             case 'design':
                 api.getDesign(req,res);
                 break;
+            case 'form':
+                api.getForm(req,res);
+                break;
             default :
                 console.error(`Warning no implementation for GET method with mode ${mode}`);
                 break;
