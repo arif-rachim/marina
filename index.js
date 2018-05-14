@@ -14,7 +14,7 @@ app.post('/v1/:resource', (req,res) => {
         let mode = req.query._mode;
         switch (mode){
             case 'design':
-                api.saveDesign(req,res);
+                api.postDesign(req,res);
                 break;
             default :
                 console.error(`Warning no implementation for POST method with mode ${mode}`);
@@ -30,7 +30,7 @@ app.get('/v1/:resource', (req,res) => {
         let mode = req.query._mode;
         switch (mode){
             case 'design':
-                api.design(req,res);
+                api.getDesign(req,res);
                 break;
             default :
                 console.error(`Warning no implementation for GET method with mode ${mode}`);
