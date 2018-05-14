@@ -1,0 +1,153 @@
+@CHARSET "UTF-8";
+
+body {
+    font-family: 'PT Sans';
+    font-weight: 400;
+    padding-left: 1em;
+    padding-right: 1em;
+    line-height: 1.4em;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.debug {
+    background-color: blue;
+}
+
+.banner{
+    display: flex;
+    justify-content: center;
+}
+
+.banner-title{
+    padding-top:1em;
+    padding-bottom:1em;
+}
+
+.banner-title--heading{
+    font-family: "Abril Fatface", "Arial Black", cursive;
+    font-size: 2.3em;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.banner-title--heading-subtitle{
+    font-family: "PT Serif", serif;
+    line-height: 1.5;
+    font-style: italic;
+    text-align: center;
+}
+
+.banner-footer--heading{
+    font-family: "Abril Fatface", "Arial Black", cursive;
+    font-size: 1.5em;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.banner-footer--heading-subtitle{
+    font-family: "PT Serif", serif;
+    line-height: 1.5;
+    font-style: italic;
+    text-align: center;
+}
+
+.footer{
+    margin-bottom: 1em;
+}
+
+.menu-main {
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #CCC;
+}
+
+.menu-main-component{
+    display: flex;
+    justify-content: center;
+}
+
+.menu-main-component li{
+    padding: 0.8em;
+}
+
+.content {
+    padding-top: 1em;
+    display: flex;
+}
+
+.content--side-left{
+    width: 20rem;
+}
+
+.content--side-right{
+    width: 20rem;
+}
+
+.content--main{
+    flex: 1 1 auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.content--side-left-title{
+    font-weight: 700;
+    color: #666666;
+    line-height: 1.3;
+    font-size: 1em;
+}
+
+.article-component-medium h1 {
+    font-weight: 700;
+    font-style: italic;
+    margin: 6px 0;
+    font-size: 1.3125em;
+    line-height: 1.143;
+}
+
+.article-component-medium h3 {
+    font-size: 0.8em;
+    color: #888;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
+
+.article-component-medium{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.article-component-story {
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 1.5em;
+    padding-bottom: 0.5em;
+}
+
+.article-component-story h1{
+    font-weight: 400;
+    font-size: 1.8em;
+    line-height: 1.4;
+}
+
+.article-component-story h3{
+    font-size: 0.8em;
+    color: #888;
+    padding-top: 0em;
+    padding-bottom: 0.8em;
+}
+
+.article-component-small{
+    margin-bottom: 1em;
+}
+
+.article-component-small h1{
+    font-size: 0.9em;
+    line-height: 1.8em;
+    text-transform: uppercase;
+}
+.article-component-small h3{
+    font-size: 0.7em;
+    text-transform: uppercase;
+}
+.article-component-small p{
+    font-size: 0.9em;   
+}
