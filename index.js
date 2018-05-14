@@ -10,7 +10,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/v1/:resource', (req,res) => {
-    api.post(req,res);
+    if('_mode' in req.query){
+        let mode = req.query._mode;
+        switch (mode){
+            case 'design':
+                api.saveDesign(req,res);
+                break;
+            default :
+                console.error(`Warning no implementation for POST method with mode ${mode}`);
+                break;
+        }
+    } else{
+        api.post(req,res);
+    }
 });
 
 app.get('/v1/:resource', (req,res) => {
@@ -20,8 +32,8 @@ app.get('/v1/:resource', (req,res) => {
             case 'design':
                 api.design(req,res);
                 break;
-            case 'create' :
-                api.create(req,res);
+            default :
+                console.error(`Warning no implementation for GET method with mode ${mode}`);
                 break;
         }
     } else{
