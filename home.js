@@ -9,7 +9,6 @@ const getArticles = () => {
 }
 
 const renderArticles = (articles) => {
-
     let renderArticle = (article) => {
         let content = article.content.replace(/<[^>]*>/g, "");
         if(content.length > CONTENT_MAX_CHARACTERS){
@@ -17,8 +16,10 @@ const renderArticles = (articles) => {
         }
         return `
     <article class="article-component-story">
-        <img src="${article.image_url}" style="width: 100%;border-radius: 20px;background-color: #ddd">
-        <h1>${article.title}</h1>
+        <a href="${article.external_url}" target="_blank">
+            <img src="${article.image_url}" style="width: 100%;border-radius: 20px;background-color: #ddd">
+        </a>
+        <h1><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
         <h3>By ${article.autor} on ${article.published_date}</h3>
         <div style="width: 100%">
             ${content}
@@ -27,6 +28,45 @@ const renderArticles = (articles) => {
     `};
     return articles.map(renderArticle).join('');
 }
+
+
+const renderLatestPost = (articles) => {
+    let maxChars = 250;
+    let renderArticle = (article) => {
+        let content = article.content.replace(/<[^>]*>/g, "");
+        if(content.length > maxChars){
+            content = `${content.substring(0,maxChars) }...`
+        }
+        return `
+        <article class="article-component-medium">
+            <h1><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+            <h3>BY ${article.autor} on ${article.published_date}</h3>
+            <p>
+                ${content}
+            </p>
+        </article>
+    `};
+    return articles.map(renderArticle).join('');
+}
+
+const renderHighlightStories = (articles) => {
+    let maxChars = 150;
+    let renderArticle = (article) => {
+        let content = article.content.replace(/<[^>]*>/g, "");
+        if(content.length > maxChars){
+            content = `${content.substring(0,maxChars) }...`
+        }
+        return `
+        <article class="article-component-small">
+            <h1><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+            <h3>BY ${article.autor} on ${article.published_date}</h3>
+            <p>${content}</p>
+        </article>
+    `};
+    return articles.map(renderArticle).join('');
+}
+
+
 
 const render = ({articles}) => `
 <!DOCTYPE html>
@@ -60,27 +100,7 @@ const render = ({articles}) => `
     <aside style="width: 20%">
         <section class="content--side-left-title">Latest Posts</section>
         <section>
-            <article class="article-component-medium">
-                <h1>RZNAF Replaces B200 With KA350</h1>
-                <h3>BY ALERT5</h3>
-                <p>
-                    New Zealand’s Minister of Defence Ron Mark has announced the first of four leased KingAir KA350 aircraft has been certified for use by the Royal…
-                </p>
-            </article>
-            <article class="article-component-medium">
-                <h1>RZNAF Replaces B200 With KA350</h1>
-                <h3>BY ALERT5</h3>
-                <p>
-                    New Zealand’s Minister of Defence Ron Mark has announced the first of four leased KingAir KA350 aircraft has been certified for use by the Royal…
-                </p>
-            </article>
-            <article class="article-component-medium">
-                <h1>RZNAF Replaces B200 With KA350</h1>
-                <h3>BY ALERT5</h3>
-                <p>
-                    New Zealand’s Minister of Defence Ron Mark has announced the first of four leased KingAir KA350 aircraft has been certified for use by the Royal…
-                </p>
-            </article>
+            ${renderLatestPost(articles)}
         </section>
     </aside>
     <!-- This is main content to display main stories -->
@@ -92,27 +112,7 @@ const render = ({articles}) => `
     <!-- This is right side content for displaying highlight stories -->
     <aside style="width:20%">
         <section>
-            <article class="article-component-small">
-                <h1>RZNAF Replaces B200 With KA350</h1>
-                <h3>By Alert5</h3>
-                <p>
-                    New Zealand’s Minister of Defence Ron Mark has announced the first of four leased KingAir KA350 aircraft has been certified for use by the Royal…
-                </p>
-            </article>
-            <article class="article-component-small">
-                <h1>RZNAF Replaces B200 With KA350</h1>
-                <h3>By Alert5</h3>
-                <p>
-                    New Zealand’s Minister of Defence Ron Mark has announced the first of four leased KingAir KA350 aircraft has been certified for use by the Royal…
-                </p>
-            </article>
-            <article class="article-component-small">
-                <h1>RZNAF Replaces B200 With KA350</h1>
-                <h3>By Alert5</h3>
-                <p>
-                    New Zealand’s Minister of Defence Ron Mark has announced the first of four leased KingAir KA350 aircraft has been certified for use by the Royal…
-                </p>
-            </article>
+            ${renderHighlightStories(articles)}
         </section>
     </aside>
 </section>
