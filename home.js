@@ -15,12 +15,12 @@ const renderArticles = (articles) => {
             content = `${content.substring(0,CONTENT_MAX_CHARACTERS) }...`
         }
         return `
-    <article class="article-component-story">
+    <article style="border-bottom: 1px solid #DDD; margin-bottom: 1.5em; padding-bottom: 0.5em;">
         <a href="${article.external_url}" target="_blank">
             <img src="${article.image_url}" style="width: 100%;border-radius: 20px;background-color: #ddd">
         </a>
-        <h1><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-        <h3>By ${article.autor} on ${article.published_date}</h3>
+        <h1 style="font-weight: 400; font-size: 1.8em; line-height: 1.4;"><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+        <h3 style="font-size: 0.8em; color: #888; padding-top: 0em; padding-bottom: 0.8em;">By ${article.autor} on ${article.published_date}</h3>
         <div style="width: 100%">
             ${content}
         </div>
@@ -57,10 +57,10 @@ const renderHighlightStories = (articles) => {
             content = `${content.substring(0,maxChars) }...`
         }
         return `
-        <article class="article-component-small">
-            <h1><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-            <h3>BY ${article.autor} on ${article.published_date}</h3>
-            <p>${content}</p>
+        <article style="margin-bottom: 1em;">
+            <h1 style="font-size: 0.9em; line-height: 1.8em; text-transform: uppercase;"><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+            <h3 style="font-size: 0.7em; text-transform: uppercase;">BY ${article.autor} on ${article.published_date}</h3>
+            <p style="font-size: 0.9em;">${content}</p>
         </article>
     `};
     return articles.map(renderArticle).join('');
@@ -73,32 +73,32 @@ const render = ({articles}) => `
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Skeleton</title>
+    <title>Commander's Emerging Technology</title>
     <link href="styles/reset.css" rel="stylesheet">
     <link href="styles/font-family.css" rel="stylesheet">
     <link href="styles/app.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-<section class="banner">
-    <span class="banner-title">
-        <div class="banner-title--heading">CETC</div>
-        <p class="banner-title--heading-subtitle">Commander's Emerging Technology Center</p>
+<body style="font-family: 'PT Sans'; font-weight: 400; padding-left: 1em; padding-right: 1em; line-height: 1.4em; max-width: 1200px; margin: auto;">
+<section style="display: flex; justify-content: center;">
+    <span style="padding-top:1em;padding-bottom:1em;">
+        <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 2.3em; line-height: 1.4; text-align: center;">CETC</div>
+        <p style="font-family: 'PT Serif', serif; line-height: 1.5; font-style: italic; text-align: center;">Commander's Emerging Technology Center</p>
     </span>
 </section>
 
-<menu class="menu-main">
-    <ul class="menu-main-component">
-        <li>Events</li>
-        <li>Contacts</li>
-        <li>Home</li>
+<menu style="border-top: 2px solid #333; border-bottom: 1px solid #CCC;">
+    <ul style=" display: flex; justify-content: center;">
+        <li style="padding: 0.8em;">Events</li>
+        <li style="padding: 0.8em;">Contacts</li>
+        <li style="padding: 0.8em;">Home</li>
     </ul>
 </menu>
 
-<section class="content">
+<section style="padding-top: 1em; display: flex;">
     <!-- This is the left side content for displaying latest post -->
     <aside style="width: 20%">
-        <section class="content--side-left-title">Latest Posts</section>
+        <section style="font-weight: 700;color: #666666;line-height: 1.3;font-size: 1em;">Latest Posts</section>
         <section>
             ${renderLatestPost(articles)}
         </section>
@@ -116,10 +116,10 @@ const render = ({articles}) => `
         </section>
     </aside>
 </section>
-<section class="footer">
+<section style="margin-bottom: 1em;">
     <span>
-        <div class="banner-footer--heading">CETC</div>
-        <p class="banner-footer--heading-subtitle">Commander's Emerging Technology Center</p>
+        <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 1.5em; line-height: 1.4; text-align: center;">CETC</div>
+        <p style="font-family: 'PT Serif', serif; line-height: 1.5; font-style: italic; text-align: center;">Commander's Emerging Technology Center</p>
     </span>
 </section>
 </body>
