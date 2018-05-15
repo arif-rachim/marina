@@ -3,7 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const api = require("./lib/api.js");
 const app = express();
-const PORT = 9000;
+const home = require("./home.js");
+const PORT = 8000;
 
 app.use('/', express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +44,8 @@ app.get('/v1/:resource', (req,res) => {
         api.get(req,res);
     }
 });
+
+app.get('/home',home);
 
 app.listen(PORT);
 console.log(`Server run at ${PORT}`);
