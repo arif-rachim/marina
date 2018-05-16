@@ -2,16 +2,16 @@
   "name": "marina",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "start.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yallajs/marina.git"
   },
-  "author": "",
+  "author": "a.arif.r@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yallajs/marina/issues"
