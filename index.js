@@ -45,7 +45,7 @@ app.get('/v1/:resource', (req,res) => {
     }
 });
 
-app.get('/home',home);
+app.get('/',home);
 
 app.listen(PORT);
 console.log(`Server run at ${PORT}`);

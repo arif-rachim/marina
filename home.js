@@ -38,9 +38,9 @@ const renderLatestPost = (articles) => {
             content = `${content.substring(0,maxChars) }...`
         }
         return `
-        <article class="article-component-medium">
-            <h1><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-            <h3>BY ${article.autor} on ${article.published_date}</h3>
+        <article style="padding-top: 0.5em; padding-bottom: 0.5em;">
+            <h1 style="font-weight: 700; font-style: italic; margin: 6px 0; font-size: 1.3125em; line-height: 1.143;"><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+            <h3 style="font-size: 0.8em; color: #888; padding-top: 0.1em; padding-bottom: 0.1em;">BY ${article.autor} on ${article.published_date}</h3>
             <p>
                 ${content}
             </p>
