@@ -1,4 +1,4 @@
-const database = require("./lib/database.js");
+const database = require("./lib/json/database.js");
 const CONTENT_MAX_CHARACTERS = 500;
 const getArticles = () => {
     return new Promise(resolve => {
