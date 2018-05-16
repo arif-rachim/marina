@@ -91,7 +91,7 @@ const renderHighlightStories = (articles) => {
     return articles.map(renderArticle).join('');
 }
 
-const renderTag = (tag) => `<li style="padding: 0.8em;">${tag}</li>`
+const renderTag = (tag) => `<li style="padding: 0.8em;border-left: 1px solid #F0F0F0;border-right: 1px solid #F0F0F0;border-bottom: 1px solid #EEE"><a href="#" style="text-decoration:none; color: black">${tag}</a></li>`
 
 const render = ({articles,latestArticles,highlightArticles,tags}) => `
 <!DOCTYPE html>
@@ -102,6 +102,7 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
     <link href="styles/reset.css" rel="stylesheet">
     <link href="styles/font-family.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body style="font-family: 'PT Sans'; font-weight: 400; padding-left: 1em; padding-right: 1em; line-height: 1.4em; max-width: 1200px; margin: auto;">
 <section style="display: flex; justify-content: center;">
@@ -113,8 +114,17 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
 
 <menu style="border-top: 2px solid #333; border-bottom: 1px solid #CCC;">
     <ul style=" display: flex; justify-content: center;flex-wrap: wrap;">
-        ${tags.map(renderTag).join('')}
         <li style="padding: 0.8em;">Home</li>
+        <li style="padding: 0.8em;position:relative;" 
+            onmouseover="document.getElementById('menuNews').style.display = 'block'"
+            onmouseleave="document.getElementById('menuNews').style.display = 'none'"
+            >News Source <i class="fas fa-chevron-down" style="font-size: 0.7em;padding-left:0.8em"></i>
+            <span id="menuNews" style="position:absolute; background: #FFF;left:0px; top: 100%;box-sizing: border-box;display:none;border-top:1px solid #CCC;width:200px">
+                <ul>
+                    ${tags.map(renderTag).join('')}
+                </ul>
+            </span>
+        </li>
     </ul>
 </menu>
 
