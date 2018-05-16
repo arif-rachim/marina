@@ -2,9 +2,25 @@ const database = require("./lib/database.js");
 const CONTENT_MAX_CHARACTERS = 500;
 const getArticles = () => {
     return new Promise(resolve => {
-        database.articles.find({},(err,articles) => {
+        database.articles.find({}).limit(20).exec((err,articles) => {
             resolve(articles);
-        })    
+        });
+    });
+}
+
+const getLatestArticles = () => {
+    return new Promise(resolve => {
+        database.articles.find({}).limit(20).exec((err,articles) => {
+            resolve(articles);
+        });
+    });
+}
+
+const getHightlightArticles  = () => {
+    return new Promise(resolve => {
+        database.articles.find({}).limit(20).exec((err,articles) => {
+            resolve(articles);
+        });
     });
 }
 
@@ -58,7 +74,7 @@ const renderHighlightStories = (articles) => {
         }
         return `
         <article style="margin-bottom: 1em;">
-            <h1 style="font-size: 0.9em; line-height: 1.8em; text-transform: uppercase;"><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+            <h1 style="font-weight: 700; font-size: 0.9em; line-height: 1.8em; text-transform: uppercase;"><a href="${article.external_url}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
             <h3 style="font-size: 0.7em; text-transform: uppercase;">BY ${article.autor} on ${article.published_date}</h3>
             <p style="font-size: 0.9em;">${content}</p>
         </article>
@@ -76,7 +92,6 @@ const render = ({articles}) => `
     <title>Commander's Emerging Technology</title>
     <link href="styles/reset.css" rel="stylesheet">
     <link href="styles/font-family.css" rel="stylesheet">
-    <link href="styles/app.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body style="font-family: 'PT Sans'; font-weight: 400; padding-left: 1em; padding-right: 1em; line-height: 1.4em; max-width: 1200px; margin: auto;">
@@ -128,5 +143,7 @@ const render = ({articles}) => `
 
 module.exports = async function(req,res) {
     let articles = await getArticles();
+    let latestArticles = await getLatestArticles();
+    let highlightArticles = await getHightlightArticles();
     res.end(render({articles}))
 }
