@@ -2,7 +2,7 @@ const database = require("./lib/json/database.js");
 const CONTENT_MAX_CHARACTERS = 500;
 const getArticles = () => {
     return new Promise(resolve => {
-        database.articles.find({}).limit(20).exec((err,articles) => {
+        database.articles.find({}).sort({_createdOn: -1}).skip(5).limit(20).exec((err,articles) => {
             resolve(articles);
         });
     });
@@ -10,7 +10,7 @@ const getArticles = () => {
 
 const getLatestArticles = () => {
     return new Promise(resolve => {
-        database.articles.find({}).limit(20).exec((err,articles) => {
+        database.articles.find({}).sort({ _createdOn: -1}).limit(5).exec((err,articles) => {
             resolve(articles);
         });
     });
@@ -27,7 +27,7 @@ const getArticleTags = () => {
 
 const getHightlightArticles  = () => {
     return new Promise(resolve => {
-        database.articles.find({}).limit(20).exec((err,articles) => {
+        database.articles.find({}).sort({_createdOn: -1}).skip(25).limit(5).exec((err,articles) => {
             resolve(articles);
         });
     });
