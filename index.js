@@ -127,23 +127,104 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
         </li>
     </ul>
 </menu>
+<style>
 
-<section style="padding-top: 1em; display: flex;">
+    .side-panel {
+        width: 20%;box-sizing: border-box;
+        order: 1;
+    }
+    
+    .side-right-panel {
+        width: 20%;box-sizing: border-box;
+        order: 3;
+    }
+    
+    .center-panel{
+        width: 60%;
+        box-sizing: border-box; 
+        padding-right: 1em; 
+        padding-left: 1em; 
+        border-right:1px solid #F0F0F0; 
+        border-left:1px solid #F0F0F0; 
+        margin-right : 1em;
+        margin-left: 1em;
+        order: 2;
+    }
+    
+    .panel-container {
+        padding-top: 1em; 
+        display: flex;
+    }
+    
+    
+    
+    @media screen and (max-width: 900px){
+        .side-panel{
+            width: 30%;
+            order: 1;
+        }
+        
+        .center-panel{
+            width: 70%;
+            margin: 0;
+            border: none;
+            padding: none;
+            order: 2;
+        }
+        
+        .side-right-panel {
+            width : 100%;
+            order: 3;
+        }
+        .panel-container {
+            flex-wrap : wrap;
+        }
+    }
+    
+    @media screen and (max-width: 600px){
+        .side-panel{
+            width: 100%;
+            order: 2;
+        }
+        
+        .side-right-panel {
+            width : 100%;
+            order: 3;
+        }
+        
+        .center-panel{
+            width: 100%;
+            margin: 0;
+            border: none;
+            padding: none;
+            order: 1;
+        }
+        
+        .panel-container {
+            flex-wrap : wrap;
+        }
+        
+    }
+    
+    
+
+</style>
+<section class="panel-container">
     <!-- This is the left side content for displaying latest post -->
-    <aside style="width: 20%;box-sizing: border-box;">
+    <aside class="side-panel">
         <section style="font-weight: 700;color: #666666;line-height: 1.3;font-size: 1em;">Latest Posts</section>
         <section>
             ${renderLatestPost(latestArticles)}
         </section>
     </aside>
     <!-- This is main content to display main stories -->
-    <main style="width: 60%;box-sizing: border-box; padding-right: 1em; padding-left: 1em; border-right:1px solid #F0F0F0; border-left:1px solid #F0F0F0; margin-right : 1em;margin-left: 1em">
+    <main class="center-panel">
         <section>
             ${renderArticles(articles)}
         </section>
     </main>
     <!-- This is right side content for displaying highlight stories -->
-    <aside style="width:20%;box-sizing: border-box;">
+    <aside class="side-right-panel">
         <section>
             ${renderHighlightStories(highlightArticles)}
         </section>
