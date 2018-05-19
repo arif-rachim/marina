@@ -133,7 +133,7 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
     <aside style="width: 20%;box-sizing: border-box;">
         <section style="font-weight: 700;color: #666666;line-height: 1.3;font-size: 1em;">Latest Posts</section>
         <section>
-            ${renderLatestPost(articles)}
+            ${renderLatestPost(latestArticles)}
         </section>
     </aside>
     <!-- This is main content to display main stories -->
@@ -145,7 +145,7 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
     <!-- This is right side content for displaying highlight stories -->
     <aside style="width:20%;box-sizing: border-box;">
         <section>
-            ${renderHighlightStories(articles)}
+            ${renderHighlightStories(highlightArticles)}
         </section>
     </aside>
 </section>

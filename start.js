@@ -1,9 +1,10 @@
+#!/usr/bin/env nodejs
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const index = require("./index.js");
-const PORT = 8000;
+const PORT = 80;
 
 app.use('/', express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: false }));
