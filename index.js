@@ -1,5 +1,9 @@
 const database = require("./lib/json/database.js");
+const synopsis = require("./panels/synopsis.js");
+const commandersMessage = require("./panels/commanders-message.js");
+
 const CONTENT_MAX_CHARACTERS = 500;
+
 const getArticles = () => {
     return new Promise(resolve => {
         database.articles.find({}).sort({_createdOn: -1}).skip(5).limit(20).exec((err,articles) => {
@@ -101,6 +105,7 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
     <title>Commander's Emerging Technology</title>
     <link href="styles/reset.css" rel="stylesheet">
     <link href="styles/font-family.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
@@ -156,6 +161,19 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
         display: flex;
     }
     
+    .two-col-container {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #F0F0F0;
+    }
+    
+    .two-col-container--child-one {
+        width : 40%;
+    }
+    
+    .two-col-container--child-two {
+        width : 60%;
+    }
     
     
     @media screen and (max-width: 900px){
@@ -204,11 +222,42 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
             flex-wrap : wrap;
         }
         
+        .two-col-container--child-one {
+            width : 100%;
+        }
+        
+        .two-col-container--child-two {
+            width : 100%;
+        }
     }
     
     
 
 </style>
+<div class="two-col-container">
+    <section class="two-col-container--child-one">
+        ${synopsis()}
+    </section>
+    <section class="two-col-container--child-two">
+        ${commandersMessage()}
+    </section>
+</div>
+<div>
+<div style="display:flex;justify-content:center;">
+    <div style="display:flex;flex-direction:column;padding:1em;border:1px solid #F0F0F0;background:#FCFCFC;margin:1em">
+        <i class="material-icons" style="font-size: 8em">
+            contact_support
+        </i>
+        <p style="text-align:center">Contact Me</p>
+    </div>
+    <div style="display:flex;flex-direction:column;padding:1em;border:1px solid #F0F0F0;background:#FCFCFC;margin:1em">
+        <i class="material-icons" style="font-size: 8em">
+            business
+        </i>
+        <p style="text-align:center">Industry</p>
+    </div>
+</div>
+</div>
 <section class="panel-container">
     <!-- This is the left side content for displaying latest post -->
     <aside class="side-panel">
