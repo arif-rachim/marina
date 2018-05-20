@@ -1,0 +1,26 @@
+{
+  "name": "marina",
+  "description": "",
+  "main": "start.js",
+  "authors": [
+    "a.arif.r@gmail.com"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/yallajs/marina",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vaadin-date-picker": "vaadin/vaadin-date-picker#^3.0.1",
+    "vaadin-text-field": "vaadin/vaadin-text-field#^2.0.1",
+    "vaadin-form-layout": "vaadin/vaadin-form-layout#^2.0.0",
+    "vaadin-checkbox": "vaadin/vaadin-checkbox#^2.1.0",
+    "vaadin-button": "vaadin/vaadin-button#^2.0.0",
+    "vaadin-notification": "vaadin/vaadin-notification#^1.0.0"
+  }
+}
