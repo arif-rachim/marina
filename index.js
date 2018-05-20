@@ -247,9 +247,11 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
 <section class="panel-container">
     <!-- This is the left side content for displaying latest post -->
     <aside class="side-panel">
+        <!--
         <section>
             ${contactsLinks()}
         </section>
+        -->
         <section style="font-weight: 700;color: #666666;line-height: 1.3;font-size: 1em;">Latest Posts</section>
         <section>
             ${renderLatestPost(latestArticles)}
