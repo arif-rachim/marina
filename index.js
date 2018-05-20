@@ -1,6 +1,7 @@
 const database = require("./lib/json/database.js");
 const synopsis = require("./panels/synopsis.js");
 const commandersMessage = require("./panels/commanders-message.js");
+const contactsLinks = require("./panels/contacts-link.js");
 
 const CONTENT_MAX_CHARACTERS = 500;
 
@@ -243,24 +244,12 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
     </section>
 </div>
 
-<div style="display:flex;justify-content:center; border-bottom: 1px solid #F0F0F0;">
-    <div style="display:flex;flex-direction:column;padding:1em;border:1px solid #F0F0F0;background:#FCFCFC;margin:1em">
-        <i class="material-icons" style="font-size: 8em">
-            contact_support
-        </i>
-        <p style="text-align:center">Contact Me</p>
-    </div>
-    <div style="display:flex;flex-direction:column;padding:1em;border:1px solid #F0F0F0;background:#FCFCFC;margin:1em">
-        <i class="material-icons" style="font-size: 8em">
-            business
-        </i>
-        <p style="text-align:center">Industry</p>
-    </div>
-</div>
-
 <section class="panel-container">
     <!-- This is the left side content for displaying latest post -->
     <aside class="side-panel">
+        <section>
+            ${contactsLinks()}
+        </section>
         <section style="font-weight: 700;color: #666666;line-height: 1.3;font-size: 1em;">Latest Posts</section>
         <section>
             ${renderLatestPost(latestArticles)}
