@@ -1,6 +1,6 @@
 module.exports = (data) => {
     return `
-    <section style="padding:1em;box-sizing: border-box">
+    <section style="padding:0.5em;box-sizing: border-box">
         <h1 style="
         font-family: 'Abril Fatface', 'Arial Black', cursive; 
         font-size: 1.5em; 

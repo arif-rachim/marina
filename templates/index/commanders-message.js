@@ -24,7 +24,7 @@ module.exports = () => {
         }
     </style>
     <div style="display:flex">
-    <section style="width : 100%;padding:1em;box-sizing: border-box">
+    <section style="width : 100%;padding:0.5em;box-sizing: border-box">
         <section class="commanders-photo" >
             <i class="material-icons" style="font-size: 15em">
                 account_circle
