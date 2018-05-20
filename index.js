@@ -242,8 +242,8 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
         ${commandersMessage()}
     </section>
 </div>
-<div>
-<div style="display:flex;justify-content:center;">
+
+<div style="display:flex;justify-content:center; border-bottom: 1px solid #F0F0F0;">
     <div style="display:flex;flex-direction:column;padding:1em;border:1px solid #F0F0F0;background:#FCFCFC;margin:1em">
         <i class="material-icons" style="font-size: 8em">
             contact_support
@@ -257,7 +257,7 @@ const render = ({articles,latestArticles,highlightArticles,tags}) => `
         <p style="text-align:center">Industry</p>
     </div>
 </div>
-</div>
+
 <section class="panel-container">
     <!-- This is the left side content for displaying latest post -->
     <aside class="side-panel">
