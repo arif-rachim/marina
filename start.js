@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/v1/:resource', (req,res) => {
-    let mode = req.query._mode || 'json';
+    let mode = req.query.intent || 'json';
     try{
         require(`./lib/${mode}/post.js`).call(null,req,res);
     }catch(err){
@@ -20,9 +20,18 @@ app.post('/v1/:resource', (req,res) => {
 });
 
 app.get('/v1/:resource', (req,res) => {
-    let mode = req.query._mode || 'json';
+    let mode = req.query.intent || 'json';
     try{
         require(`./lib/${mode}/get.js`).call(null,req,res);
+    }catch(err){
+        res.end(JSON.stringify(err));
+    }
+});
+
+app.delete('/v1/:resource/:id', (req,res) => {
+    let mode = req.query.intent || 'json';
+    try{
+        require(`./lib/${mode}/delete.js`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
     }
