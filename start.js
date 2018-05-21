@@ -31,6 +31,7 @@ app.get('/v1/:resource', (req,res) => {
 app.get('/v1/:resource/:id', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
+        console.log("GET get called");
         require(`./lib/${mode}/get.js`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
@@ -47,7 +48,18 @@ app.delete('/v1/:resource/:id', (req,res) => {
     }
 });
 
-app.get('/',index);
+app.put('/v1/:resource/:id', (req,res) => {
+    let mode = req.query.intent || 'json';
+    try{
+        console.log("PUT get called "+mode);
+        require(`./lib/${mode}/put.js`).call(null,req,res);
+    }catch(err){
+        res.end(JSON.stringify(err));
+    }
+});
+
+
+app.get('/index.html',index);
 
 app.listen(PORT);
 console.log(`Server run at ${PORT}`);

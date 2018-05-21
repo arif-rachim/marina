@@ -64,7 +64,7 @@ const renderArticles = (articles) => {
 const renderLatestPost = (articles) => {
     let maxChars = 250;
     let renderArticle = (article) => {
-        let content = article.content.replace(/<[^>]*>/g, "");
+        let content = article.content ? article.content.replace(/<[^>]*>/g, "") : '';
         if(content.length > maxChars){
             content = `${content.substring(0,maxChars) }...`
         }
@@ -83,7 +83,7 @@ const renderLatestPost = (articles) => {
 const renderHighlightStories = (articles) => {
     let maxChars = 150;
     let renderArticle = (article) => {
-        let content = article.content.replace(/<[^>]*>/g, "");
+        let content = article.content ? article.content.replace(/<[^>]*>/g, "") : '';
         if(content.length > maxChars){
             content = `${content.substring(0,maxChars) }...`
         }
