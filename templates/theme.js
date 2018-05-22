@@ -15,7 +15,7 @@ module.exports = (content) => `
     .heading-top {
         display: flex; 
         justify-content: center;
-        background-image: url('styles/spirit-of-union.jpg');
+        background-image: url('styles/spirit-of-union.png');
         background-repeat: no-repeat;
         background-position: right; 
 
