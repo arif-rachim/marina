@@ -11,14 +11,29 @@ module.exports = (content) => `
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body style="font-family: 'PT Sans'; font-weight: 400; padding-left: 1em; padding-right: 1em; line-height: 1.4em; max-width: 1200px; margin: auto;">
-<section style="
-    display: flex; 
-    justify-content: center;
-    background-image: url('styles/spirit-of-union.jpg');
-    background-repeat: no-repeat;
-    background-position: right; 
-    background-opacity: 0.5;
-    ">
+<style>
+    .heading-top {
+        display: flex; 
+        justify-content: center;
+        background-image: url('styles/spirit-of-union.jpg');
+        background-repeat: no-repeat;
+        background-position: right; 
+
+        background-opacity: 0.5;
+    }
+    @media screen and (max-width:720px){
+        .heading-top{
+            background-image: url('styles/spirit-of-union-small.png');
+        }
+    }
+    @media screen and (max-width:450px){
+        .heading-top{
+            background-image: url('styles/spirit-of-union-xsmall.png');
+            background-position-y: 15px;
+        }
+    }
+</style>
+<section class="heading-top">
     <span style="padding-top:1em;padding-bottom:1em;">
         <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 2.3em; line-height: 1.4; text-align: center;">CETC</div>
         <p style="font-family: 'PT Serif', serif; line-height: 1.5; font-style: italic; text-align: center;">Commander's Emerging Technology Center</p>
