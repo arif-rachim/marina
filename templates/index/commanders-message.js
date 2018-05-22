@@ -25,11 +25,6 @@ module.exports = () => {
     </style>
     <div style="display:flex">
     <section style="width : 100%;padding:0.5em;box-sizing: border-box">
-        <section class="commanders-photo" >
-            <i class="material-icons" style="font-size: 15em">
-                account_circle
-            </i>
-        </section> 
         <h1 style="
         font-family: 'Abril Fatface', 'Arial Black', cursive; 
         font-size: 1.5em; 

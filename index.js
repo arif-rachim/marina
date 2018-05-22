@@ -138,13 +138,12 @@ ${menuTop(articles)}
     }
     
     .heading-synopsis {
-        width : 40%;
+        width : 50%;
     }
     
     .heading-commanders-message {
-        width : 60%;
+        width : 50%;
     }
-    
     
     @media screen and (max-width: 900px){
         .stories-left-panel{
