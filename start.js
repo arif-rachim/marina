@@ -2,17 +2,18 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const app = express();
 const index = require("./index");
 const PORT = process.env.SERVER_PORT || 8000;
 
-app.use(express.cookieParser());
+app.use(cookieParser());
 app.use(function (req, res, next) {
   let cookie = req.cookies.sessionId;
   if (cookie === undefined)
   {
     let cookie= guid();
-    res.cookie('sessionId',randomNumber, { maxAge: 900000, httpOnly: true });
+    res.cookie('sessionId',cookie, { maxAge: 900000, httpOnly: true });
     console.log('cookie created successfully');
   }else{
     console.log('cookie exists', cookie);
