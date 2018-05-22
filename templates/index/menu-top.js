@@ -38,6 +38,7 @@ module.exports = (tags) => {
                 padding:0.6em;
                 opacity : 0;
                 transition: opacity 300ms;
+                border-left : 1px solid #CCCCCC;
             }
             
             .login-suggest form {
@@ -53,7 +54,7 @@ module.exports = (tags) => {
                 }
             }
         </style>
-        <!--
+        
         <span style="
         padding: 0.8em;
         position:relative;
@@ -89,7 +90,6 @@ module.exports = (tags) => {
                 </form>
             </div>
         </span>
-        -->
     </menu>
     <script>
         document.getElementById("loginButton").addEventListener("click",function(){
