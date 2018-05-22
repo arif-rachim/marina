@@ -61,7 +61,7 @@ module.exports = (tags) => {
         ">
             <a href="#" style="text-decoration:none;color:black;" id="loginButton">Login</a>
             <div id="loginSuggest" class="login-suggest hide">
-                <form>
+                <form onsubmit="return false;">
                     <input type="text" id="userName" style="margin-right:0.5em;padding:0.3em;" placeholder="User Name">
                     <input id="password" type="password" style="margin-right:0.5em;padding:0.3em;" placeholder="Password">
 
@@ -75,7 +75,9 @@ module.exports = (tags) => {
                         text-decoration: none;
                         display: inline-block;                  
                         margin-right:0.5em;
-                        ">Login</button>
+                        "
+                        onclick="loginAction()"
+                        >Login</button>
                         
                         <button id="cancelButton" style="
                         background-color: #BA3E3E;
@@ -106,6 +108,20 @@ module.exports = (tags) => {
                 document.getElementById("loginSuggest").classList.add("hide");
             },300);
         });
+        
+        function loginAction(){
+            fetch('/svc/security.login', {
+            	method: 'post',
+            	body: JSON.stringify({
+            		userName: document.getElementById('userName').value,
+            		password: document.getElementById('password').value
+            	})})
+            	.then(function(res) { 
+                    return res.json();
+                }).then(function(res ){
+                    console.log(JSON.stringify(res));
+                });
+        }
 
     </script>
     
