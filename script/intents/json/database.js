@@ -1,5 +1,5 @@
 const Datastore = require('nedb');
-const RESOURCE_DIR = `${__dirname}/../../.resources/`;
+const RESOURCE_DIR = `${__dirname}/../../../.resources/`;
 
 class Database {
 

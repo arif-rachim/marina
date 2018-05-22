@@ -4,8 +4,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
-const index = require("./index");
+const index = require("./script/templates/index");
 const PORT = process.env.SERVER_PORT || 8000;
+const intentsPath = './script/intents';
+const svcPath = './script/svc';
 
 app.use(cookieParser());
 app.use(function (req, res, next) {
@@ -30,7 +32,7 @@ app.use(bodyParser.json());
 app.post('/v1/:resource', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
-        require(`./lib/${mode}/post`).call(null,req,res);
+        require(`${intentsPath}/${mode}/post`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
     }
@@ -39,7 +41,7 @@ app.post('/v1/:resource', (req,res) => {
 app.get('/v1/:resource', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
-        require(`./lib/${mode}/get`).call(null,req,res);
+        require(`${intentsPath}/${mode}/get`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
     }
@@ -49,7 +51,7 @@ app.get('/v1/:resource/:id', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
         console.log("GET get called");
-        require(`./lib/${mode}/get`).call(null,req,res);
+        require(`${intentsPath}/${mode}/get`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
     }
@@ -59,7 +61,7 @@ app.get('/v1/:resource/:id', (req,res) => {
 app.delete('/v1/:resource/:id', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
-        require(`./lib/${mode}/delete`).call(null,req,res);
+        require(`${intentsPath}/${mode}/delete`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
     }
@@ -69,7 +71,7 @@ app.put('/v1/:resource/:id', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
         console.log("PUT get called "+mode);
-        require(`./lib/${mode}/put`).call(null,req,res);
+        require(`${intentsPath}/${mode}/put`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
     }
@@ -79,7 +81,17 @@ app.post('/svc/:service', (req,res) => {
     try{
         const svc = req.params.service.split(".").join("/");
         console.log("Post get called "+svc);
-        require(`./svc/${svc}`).call(null,req,res);
+        require(`${svcPath}/${svc}`).call(null,req,res);
+    }catch(err){
+        res.end(JSON.stringify(err));
+    }
+});
+
+app.get('/svc/:service', (req,res) => {
+    try{
+        const svc = req.params.service.split(".").join("/");
+        console.log("Post get called "+svc);
+        require(`${svcPath}/${svc}`).call(null,req,res);
     }catch(err){
         res.end(JSON.stringify(err));
     }
