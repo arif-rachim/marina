@@ -2,65 +2,66 @@ const renderTag = (tag) => `<li style="padding: 0.8em;border-left: 1px solid #F0
 const fetch = require('node-fetch');
 const panelLogin = () => {
     return `
-    <div id="loginSuggest" class="login-suggest hide">
-        <form onsubmit="return false;">
-            <input type="text" id="userName" style="margin-right:0.5em;padding:0.3em;" placeholder="User Name">
-            <input id="password" type="password" style="margin-right:0.5em;padding:0.3em;" placeholder="Password">
-
-            <div style="display:flex;justify-content:flex-end;">
-                <button style="
-                background-color: #1979CA;
-                border: none;
-                color: white;
-                padding: 0.5em;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;                  
-                margin-right:0.5em;
-                "
-                onclick="loginAction()"
-                >Login</button>
-                
-                <button id="cancelButton" style="
-                background-color: #BA3E3E;
-                border: none;
-                color: white;
-                padding: 0.5em;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;                  
-                ">Cancel</button>
-            </div>
-        </form>
-        
-        <script>
-        
-        
-        document.getElementById("cancelButton").addEventListener("click",function(){
-            document.getElementById("loginSuggest").classList.remove("show");
-            setTimeout(function(){
-                document.getElementById("loginSuggest").classList.add("hide");
-            },300);
-        });
-        
-        function loginAction(){
-            fetch('/svc/security.login', {
-                headers: {
-                    "Content-Type" : "application/json"
-                },
-                credentials: 'same-origin',
-            	method: 'post',
-            	body: JSON.stringify({
-            		userName: document.getElementById('userName').value,
-            		password: document.getElementById('password').value
-            	})})
-            	.then(function(res) { 
-                    return res.json();
-                }).then(function(res ){
-                    location.reload();
-                });
-        }
-    </script>
+    <div style="position:absolute;top:100%;height:100px;right:0px;overflow:hidden;">
+        <div id="loginSuggest" class="login-suggest hide">
+            <form onsubmit="return false;">
+                <input type="text" id="userName" style="margin-right:0.5em;padding:0.3em;" placeholder="User Name">
+                <input id="password" type="password" style="margin-right:0.5em;padding:0.3em;" placeholder="Password">
+                <div style="display:flex;justify-content:flex-end;">
+                    <button style="
+                    background-color: #1979CA;
+                    border: none;
+                    color: white;
+                    padding: 0.5em;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;                  
+                    margin-right:0.5em;
+                    "
+                    onclick="loginAction()"
+                    >Login</button>
+                    
+                    <button id="cancelButton" style="
+                    background-color: #BA3E3E;
+                    border: none;
+                    color: white;
+                    padding: 0.5em;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;                  
+                    ">Cancel</button>
+                </div>
+            </form>
+            
+            <script>
+            
+            
+            document.getElementById("cancelButton").addEventListener("click",function(){
+                document.getElementById("loginSuggest").classList.remove("show");
+                setTimeout(function(){
+                    document.getElementById("loginSuggest").classList.add("hide");
+                },300);
+            });
+            
+            function loginAction(){
+                fetch('/svc/security.login', {
+                    headers: {
+                        "Content-Type" : "application/json"
+                    },
+                    credentials: 'same-origin',
+                	method: 'post',
+                	body: JSON.stringify({
+                		userName: document.getElementById('userName').value,
+                		password: document.getElementById('password').value
+                	})})
+                	.then(function(res) { 
+                        return res.json();
+                    }).then(function(res ){
+                        location.reload();
+                    });
+            }
+        </script>
+        </div>
     </div>
     `
 }
@@ -78,7 +79,7 @@ const panelLogout = () => {
     </style>
     <div style="position:absolute;top:100%;right:0px;margin:1px solid #CCC;width:100%">
         <div style="position:relative;overflow:hidden">
-            <div style="transition: all 1s;position:relative;width:100%" class="logout-button--hidePanel" id="logoutSuggestButton">        
+            <div style="transition: all 300ms;position:relative;width:100%" class="logout-button--hidePanel" id="logoutSuggestButton">        
                 <div style="padding:0.5em;background: #FFF;color: #FFF;text-align:center;border:1px solid #CCC">
                     <a href="#" style="text-decoration:none;color:black" onclick="logoutUser()">
                     Logout
@@ -118,23 +119,21 @@ module.exports = (tags,currentUser) => {
         </ul>
         
         <style>
-            .hide{
-                display:none;
-            }
             
-            .login-suggest.show{
-                opacity: 1;
-            }
-            
+                        
             .login-suggest {
                 background:#FFF;
-                position:absolute;
+                position:relative;
                 top:0px;
                 right:0px;
                 padding:0.6em;
-                opacity : 0;
                 transition: opacity 300ms;
-                border-left : 1px solid #CCCCCC;
+                border : 1px solid #CCCCCC;
+                transition: top 300ms;
+            }
+            
+            .login-suggest.hide {
+                top : -100px;
             }
             
             .login-suggest form {
@@ -173,11 +172,14 @@ module.exports = (tags,currentUser) => {
                 }
                 
             }else{
-                document.getElementById("loginSuggest").classList.remove("hide");
-                setTimeout(function(){
-                    document.getElementById("loginSuggest").classList.add("show");    
+                var loginSuggest = document.getElementById("loginSuggest");
+                if(loginSuggest.classList.contains("hide")){
+                    loginSuggest.classList.remove("hide");
                     document.getElementById("userName").focus();
-                });    
+                }else{
+                    loginSuggest.classList.add("hide");
+                }
+                
             }
         });
     </script>
