@@ -13,7 +13,6 @@ app.use((req, res, next) => {
   let cookie = req.cookies.sessionId;
   if (cookie === undefined){
     let cookie= guid();
-    console.log("register cookie "+cookie);
     res.cookie('sessionId',cookie, { maxAge: 900000, httpOnly: true });
   } 
   next();
@@ -24,9 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/v1/:resource', (req,res) => {
+    console.log("We have post request ",req.cookies);
     let mode = req.query.intent || 'json';
-
-    console.log('Cookies ',req.cookies);
     try{
         require(`${intentsPath}/${mode}/post`).call(null,req,res);
     }catch(err){
@@ -36,7 +34,7 @@ app.post('/v1/:resource', (req,res) => {
 });
 
 app.get('/v1/:resource', (req,res) => {
-    console.log('Cookies ',req.cookies);
+    console.log('We have get request ',req.cookies);
     let mode = req.query.intent || 'json';
     try{
         require(`${intentsPath}/${mode}/get`).call(null,req,res);
@@ -77,6 +75,7 @@ app.put('/v1/:resource/:id', (req,res) => {
 
 app.post('/svc/:service', (req,res) => {
     try{
+        console.log('We have svc post request ',req.cookies);
         const svc = req.params.service.split(".").join("/");
         require(`${svcPath}/${svc}`).call(null,req,res);
     }catch(err){
@@ -87,6 +86,7 @@ app.post('/svc/:service', (req,res) => {
 
 app.get('/svc/:service', (req,res) => {
     try{
+        console.log('We have svc get request ',req.cookies);        
         const svc = req.params.service.split(".").join("/");
         require(`${svcPath}/${svc}`).call(null,req,res);
     }catch(err){

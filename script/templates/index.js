@@ -233,9 +233,8 @@ module.exports = async function(req,res) {
     let tags = await getArticleTags();
     let currentUser = false;
     if(req.cookies.sessionId){
-        let result = await fetch(`v1/active-sessions?sessionId=${req.cookies.sessionId}`);        
-        console.log(`we have current user`,result);
-        currentUser = result.docs[0];
+        let result = await fetch(`v1/active-sessions?sessionId=${req.cookies.sessionId}`);
+        currentUser = result.docs && result.docs.length > 0 ? result.docs[0].account : false;
     }
-    res.end(render({articles,latestArticles,highlightArticles,tags}))
+    res.end(render({articles,latestArticles,highlightArticles,tags,currentUser}))
 };

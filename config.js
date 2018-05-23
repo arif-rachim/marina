@@ -7,6 +7,7 @@ const apiFetch = async (api,json,method) => {
     let result = false;
     try{
         if(json){
+            console.log(`${method} : ${apiServer}/${api}`,json);
             if(method == null){
                 console.error("Method is required when JSON param is defined");
                 throw new Error("Method is required when JSON param is defined");
@@ -18,6 +19,7 @@ const apiFetch = async (api,json,method) => {
                 },
                 body : JSON.stringify(json)
             });    
+
         }else{
             result = await fetch(`${apiServer}/${api}`);
         }
