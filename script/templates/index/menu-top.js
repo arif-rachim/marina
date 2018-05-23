@@ -1,6 +1,7 @@
 const renderTag = (tag) => `<li style="padding: 0.8em;border-left: 1px solid #F0F0F0;border-right: 1px solid #F0F0F0;border-bottom: 1px solid #EEE"><a href="#" style="text-decoration:none; color: black">${tag}</a></li>`
+const fetch = require('node-fetch');
 
-module.exports = (tags) => {
+module.exports = (tags,currentUser) => {
     return `
     <menu style="border-top: 2px solid #333; border-bottom: 1px solid #CCC;display:flex">
         <ul style="width: 100%; display: flex; justify-content: center;flex-wrap: wrap;">
@@ -10,11 +11,7 @@ module.exports = (tags) => {
                 onmouseleave="document.getElementById('menuNews').style.display = 'none'"
                 >News Source<i class="fas fa-chevron-down" style="font-size: 0.7em;padding-left:0.8em"></i>
                 <span id="menuNews" style="position:absolute; background: #FFF;left:0px; top: 100%;box-sizing: border-box;display:none;border-top:1px solid #CCC;width:200px">
-                    <!--
-                    <ul>
-                        ${tags.map(renderTag).join('')}
-                    </ul>
-                    -->
+                    
                 </span>
             </li>
             <li style="padding: 0.8em;">Contact</li>
@@ -59,7 +56,7 @@ module.exports = (tags) => {
         padding: 0.8em;
         position:relative;
         ">
-            <a href="#" style="text-decoration:none;color:black;" id="loginButton">Login</a>
+            <a href="#" style="text-decoration:none;color:black;" id="loginButton">${currentUser ? currentUser.name : 'Login'}</a>
             <div id="loginSuggest" class="login-suggest hide">
                 <form onsubmit="return false;">
                     <input type="text" id="userName" style="margin-right:0.5em;padding:0.3em;" placeholder="User Name">
@@ -111,6 +108,10 @@ module.exports = (tags) => {
         
         function loginAction(){
             fetch('/svc/security.login', {
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                credentials: 'same-origin',
             	method: 'post',
             	body: JSON.stringify({
             		userName: document.getElementById('userName').value,

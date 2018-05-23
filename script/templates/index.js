@@ -1,42 +1,34 @@
-const database = require("./../intents/json/database.js");
 const synopsis = require("./index/synopsis.js");
 const commandersMessage = require("./index/commanders-message.js");
 const menuTop = require("./index/menu-top.js");
 const theme = require("./theme.js");
+const {fetch} = require("../../config");
 
 const CONTENT_MAX_CHARACTERS = 500;
 
-const getArticles = () => {
-    return new Promise(resolve => {
-        database.articles.find({}).sort({_createdOn: -1}).skip(5).limit(20).exec((err,articles) => {
-            resolve(articles);
-        });
-    });
+const getArticles = async () => {
+    let articles = await fetch(`v1/articles?$i=5&$l=20&$s._createdOn=-1`);
+    return articles.docs;
 }
 
-const getLatestArticles = () => {
-    return new Promise(resolve => {
-        database.articles.find({}).sort({ _createdOn: -1}).limit(5).exec((err,articles) => {
-            resolve(articles);
-        });
-    });
+const getLatestArticles = async () => {
+    let articles = await fetch(`v1/articles?$i=0&$l=5&$s._createdOn=-1`);
+    return articles.docs;
+    
 }
 
-const getArticleTags = () => {
-    return new Promise(resolve => {
-        database.articles.find({}).projection({ tags: 1}).exec((err,tags) => {
-            tags = tags.map(tag => tag.tags).filter((value,index,self) => self.indexOf(value) == index);
-            resolve(tags);
-        });
-    });
+const getArticleTags = async () => {
+    let articles = await fetch(`v1/articles?$p.tags=1`);
+    if(articles.docs){
+        let tags = articles.docs.map(tag => tag.tags).filter((value,index,self) => self.indexOf(value) == index);
+        return tags;    
+    }
+    return [];
 }
 
-const getHightlightArticles  = () => {
-    return new Promise(resolve => {
-        database.articles.find({}).sort({_createdOn: -1}).skip(25).limit(5).exec((err,articles) => {
-            resolve(articles);
-        });
-    });
+const getHightlightArticles  = async () => {
+    let articles = await fetch(`v1/articles?$i=25&$l=5&$s._createdOn=-1`);
+    return articles.docs;
 }
 
 const renderArticles = (articles) => {
@@ -99,9 +91,9 @@ const renderHighlightStories = (articles) => {
 
 
 
-const render = ({articles,latestArticles,highlightArticles,tags}) => theme(
+const render = ({articles,latestArticles,highlightArticles,tags,currentUser}) => theme(
     `
-${menuTop(articles)}
+${menuTop(articles,currentUser)}
 <style>
 
     .stories-left-panel {
@@ -239,5 +231,11 @@ module.exports = async function(req,res) {
     let latestArticles = await getLatestArticles();
     let highlightArticles = await getHightlightArticles();
     let tags = await getArticleTags();
+    let currentUser = false;
+    if(req.cookies.sessionId){
+        let result = await fetch(`v1/active-sessions?sessionId=${req.cookies.sessionId}`);        
+        console.log(`we have current user`,result);
+        currentUser = result.docs[0];
+    }
     res.end(render({articles,latestArticles,highlightArticles,tags}))
 };

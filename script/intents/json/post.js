@@ -5,7 +5,7 @@ module.exports = (req,res) => {
     doc._createdOn = new Date().getTime();
     const resource = req.params.resource;
     // first we need to get the yaml file and check if theres any validation here
-    
+    console.log("Storing document ",doc);
     
     database[resource].insert(doc,(err,newDoc) => {
         if(err){

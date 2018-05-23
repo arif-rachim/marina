@@ -1,5 +1,6 @@
 const yaml = require('js-yaml');
-const yamlDirectory = `.resources/design`;
+
+const yamlDirectory = `${__dirname}/../../../.resources/design`;
 const fs = require('fs');
 const mkdir = require('./../mkdir');
 
@@ -9,6 +10,7 @@ const load = (resource) => {
         const data = yaml.safeLoad(fs.readFileSync(`${yamlDirectory}/${resource}.yaml`,'utf-8'));
         return {data,err:false};
     }catch (err) {
+        console.error(err);
         return {data:false,err};
     }
 };

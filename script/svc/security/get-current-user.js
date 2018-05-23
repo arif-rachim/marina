@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const apiServer = process.env.API_SERVER || 'http://localhost:8000';
+const {apiServer} = require("../../../config");
 module.exports = async (req,res) => {
     try {
         const sessionId = req.cookies.sessionId;
