@@ -5,9 +5,7 @@ module.exports = async (req,res) => {
     try{
         const userName = req.body.userName;
         const password = textToBase64(req.body.password);
-        const sessionId = req.cookies.sessionId;
-        console.log("We have cookies sessionId "+req.cookies.sessionId);
-        
+
         if(administrator.userName === userName && administrator.password === password){
             try {
                 const sessionId = req.cookies.sessionId;
