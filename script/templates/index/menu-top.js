@@ -80,7 +80,7 @@ const panelLogout = () => {
     <div style="position:absolute;top:100%;right:0px;margin:1px solid #CCC;width:100%">
         <div style="position:relative;overflow:hidden">
             <div style="transition: all 300ms;position:relative;width:100%" class="logout-button--hidePanel" id="logoutSuggestButton">        
-                <div style="padding:0.5em;background: #FFF;color: #FFF;text-align:center;border:1px solid #CCC">
+                <div style="padding:0.3em;background: #FFF;color: #FFF;text-align:center;border:1px solid #CCC">
                     <a href="#" style="text-decoration:none;color:black" onclick="logoutUser()">
                     Logout
                     </a>
@@ -105,8 +105,8 @@ const craeteMenuItems = () => {
     
     return `
     <ul style="width: 100%; display: flex; justify-content: center;flex-wrap: wrap;">
-        <li style="padding: 0.8em;">Home</li>
-        <li style="padding: 0.8em;position:relative;" 
+        <li style="padding: 0.3em 0.5em;">Home</li>
+        <li style="padding: 0.3em 0.5em;position:relative;" 
             onmouseover="document.getElementById('menuNews').style.display = 'block'"
             onmouseleave="document.getElementById('menuNews').style.display = 'none'"
             >News Source<i class="fas fa-chevron-down" style="font-size: 0.7em;padding-left:0.8em"></i>
@@ -114,8 +114,8 @@ const craeteMenuItems = () => {
                 
             </span>
         </li>
-        <li style="padding: 0.8em;">Contact</li>
-        <li style="padding: 0.8em;">Industry</li>
+        <li style="padding: 0.3em 0.5em;">Contact</li>
+        <li style="padding: 0.3em 0.5em;">Industry</li>
     </ul>
     `;
     
@@ -156,7 +156,7 @@ module.exports = (tags,currentUser) => {
         </style>
         
         <span style="
-        padding: 0.8em;
+        padding: 0.3em;
         position:relative;
         ">
             <a href="#" style="text-decoration:none;color:black;" id="loginButton">${currentUser ? currentUser.name : 'Login'}</a>
