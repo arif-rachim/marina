@@ -13,6 +13,12 @@
                     background-color: white;
                     color: #333;
                     padding: 0.5em;
+                    transition: all 300s;
+                }
+                
+                #${this.loginButton}:hover {
+                    background-color: #2879FF;
+                    color: white;
                 }
                 
             </style>
@@ -25,6 +31,8 @@
         connectedCallback(){
             let loginButton = this.shadowRoot.querySelector(`#${this.loginButton}`);
             loginButton.addEventListener('click',() => alert("Okay"));
+                        
+
         }
     }
     
