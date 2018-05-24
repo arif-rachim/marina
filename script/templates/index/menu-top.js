@@ -101,26 +101,31 @@ const panelLogout = () => {
     `;
 }
 
+const craeteMenuItems = () => {
+    
+    return `
+    <ul style="width: 100%; display: flex; justify-content: center;flex-wrap: wrap;">
+        <li style="padding: 0.8em;">Home</li>
+        <li style="padding: 0.8em;position:relative;" 
+            onmouseover="document.getElementById('menuNews').style.display = 'block'"
+            onmouseleave="document.getElementById('menuNews').style.display = 'none'"
+            >News Source<i class="fas fa-chevron-down" style="font-size: 0.7em;padding-left:0.8em"></i>
+            <span id="menuNews" style="position:absolute; background: #FFF;left:0px; top: 100%;box-sizing: border-box;display:none;border-top:1px solid #CCC;width:200px">
+                
+            </span>
+        </li>
+        <li style="padding: 0.8em;">Contact</li>
+        <li style="padding: 0.8em;">Industry</li>
+    </ul>
+    `;
+    
+};
+
 module.exports = (tags,currentUser) => {
     return `
-    <menu style="border-top: 2px solid #333; border-bottom: 1px solid #CCC;display:flex">
-        <ul style="width: 100%; display: flex; justify-content: center;flex-wrap: wrap;">
-            <li style="padding: 0.8em;">Home</li>
-            <li style="padding: 0.8em;position:relative;" 
-                onmouseover="document.getElementById('menuNews').style.display = 'block'"
-                onmouseleave="document.getElementById('menuNews').style.display = 'none'"
-                >News Source<i class="fas fa-chevron-down" style="font-size: 0.7em;padding-left:0.8em"></i>
-                <span id="menuNews" style="position:absolute; background: #FFF;left:0px; top: 100%;box-sizing: border-box;display:none;border-top:1px solid #CCC;width:200px">
-                    
-                </span>
-            </li>
-            <li style="padding: 0.8em;">Contact</li>
-            <li style="padding: 0.8em;">Industry</li>
-        </ul>
-        
-        <style>
-            
-                        
+    <menu style="border-top: 2px solid #333; border-bottom: 1px solid #CCC;display:flex;justify-content:flex-end">
+        ${currentUser ? craeteMenuItems() : ''}
+        <style>            
             .login-suggest {
                 background:#FFF;
                 position:relative;
@@ -155,7 +160,6 @@ module.exports = (tags,currentUser) => {
         position:relative;
         ">
             <a href="#" style="text-decoration:none;color:black;" id="loginButton">${currentUser ? currentUser.name : 'Login'}</a>
-            
             ${currentUser ? panelLogout() : panelLogin()}
         </span>
     </menu>
@@ -170,7 +174,6 @@ module.exports = (tags,currentUser) => {
                     logoutSuggestButton.classList.remove("logout-button--showPanel");
                     logoutSuggestButton.classList.add("logout-button--hidePanel");                    
                 }
-                
             }else{
                 var loginSuggest = document.getElementById("loginSuggest");
                 if(loginSuggest.classList.contains("hide")){
