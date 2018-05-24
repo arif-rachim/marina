@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
 const index = require("./script/templates/index");
+const components = require("./script/webcomponents/index");
 const {intentsPath,svcPath,applicationPort} = require("./config");
 const PORT = applicationPort;
 
@@ -100,7 +101,9 @@ function guid() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
+app.get('/comps/:component',components);
 app.get('/index.html',index);
+
 
 app.listen(PORT);
 console.log(`Server run at ${PORT}`);
