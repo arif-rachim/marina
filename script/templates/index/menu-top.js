@@ -16,9 +16,10 @@ const panelLogin = () => {
                     text-align: center;
                     text-decoration: none;
                     display: inline-block;                  
-                    margin-right:0.5em;
-                    "
+                    margin-right:0.5em;"
+
                     onclick="loginAction()"
+
                     >Login</button>
                     
                     <button id="cancelButton" style="
@@ -77,7 +78,7 @@ const panelLogout = () => {
         }
         
     </style>
-    <div style="position:absolute;top:100%;right:0px;margin:1px solid #CCC;width:100%">
+    <div style="position:absolute;top:100%;right:0px;margin:1px solid #CCC;width:100%" >
         <div style="position:relative;overflow:hidden">
             <div style="transition: all 300ms;position:relative;width:100%" class="logout-button--hidePanel" id="logoutSuggestButton">        
                 <div style="padding:0.3em;background: #FFF;color: #FFF;text-align:center;border:1px solid #CCC">
@@ -97,6 +98,18 @@ const panelLogout = () => {
                 location.reload();
             });
         }
+        // lets register if the user is click outside container
+        const logoutSuggestButton = document.getElementById('logoutSuggestButton');
+        window.addEventListener('click', function(e){   
+            if (!logoutSuggestButton.contains(e.target) && enableMenuClickOutside){
+                if(logoutSuggestButton.classList.contains("logout-button--showPanel")){
+                    logoutSuggestButton.classList.remove("logout-button--showPanel");
+                    logoutSuggestButton.classList.add("logout-button--hidePanel");
+                }
+                
+            } 
+        });
+
     </script>
     `;
 }
@@ -164,15 +177,20 @@ module.exports = (tags,currentUser) => {
         </span>
     </menu>
     <script>
+        let enableMenuClickOutside = false;
         document.getElementById("loginButton").addEventListener("click",function(){
+            enableMenuClickOutside = false;
+            setTimeout(function(){ enableMenuClickOutside = true },500)
             if(${currentUser ? 'true' : 'false'}){
                 var logoutSuggestButton = document.getElementById("logoutSuggestButton");
                 if(logoutSuggestButton.classList.contains("logout-button--hidePanel")){
                     logoutSuggestButton.classList.remove("logout-button--hidePanel");
-                    logoutSuggestButton.classList.add("logout-button--showPanel");    
+                    logoutSuggestButton.classList.add("logout-button--showPanel");
+                    
                 }else{
                     logoutSuggestButton.classList.remove("logout-button--showPanel");
                     logoutSuggestButton.classList.add("logout-button--hidePanel");                    
+                    
                 }
             }else{
                 var loginSuggest = document.getElementById("loginSuggest");

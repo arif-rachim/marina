@@ -80,10 +80,6 @@
             
             const loginButtonPosition = loginButton.getBoundingClientRect();
             const hostPosition = host.getBoundingClientRect();
-            
-//            formPanel.style.top = `${(hostPosition.y - loginButtonPosition.y)}px`;
-//            formPanel.style.left = `${(hostPosition.x - loginButtonPosition.x)}px`;
-            
             console.log(loginButtonPosition);
             console.log(hostPosition);
         }

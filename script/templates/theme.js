@@ -32,6 +32,7 @@ module.exports = (content) => `
             background-position-y: 15px;
         }
     }
+    
 </style>
 <section class="heading-top">
     <span style="padding-top:1em;padding-bottom:1em;">
