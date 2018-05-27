@@ -1,5 +1,7 @@
 module.exports = (req,res) => {
-    const chrome = req.query.chrome;
+    console.log(req.headers);
+    
+    const chrome = req.headers["user-agent"].toUpperCase().indexOf("CHROME") > 0;
     const component = req.params.component;
     const componentsArray = component.split(".");
     const componentName = componentsArray[(componentsArray.length - 1)];
