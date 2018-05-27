@@ -1,6 +1,6 @@
 const synopsis = require("./index/synopsis.js");
 const commandersMessage = require("./index/commanders-message.js");
-const menuTop = require("./index/menu-top.js");
+const menuTop = require("./index/menu-top.bak.js");
 const theme = require("./theme.js");
 const {fetch} = require("../../config");
 

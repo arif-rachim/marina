@@ -1,11 +1,11 @@
-import a from '../comp/a.js';
-import fetchApi from '../comp/fetchApi.js';
+import A from '../comp/a.js';
 import Button from '../comp/button.js';
 import Input from '../comp/input.js';
 
-customElements.define('c-a',a);
+customElements.define('c-a',A);
 customElements.define('c-button',Button);
 customElements.define('c-input',Input);
+
 
 class Login extends HTMLElement{
     
@@ -17,11 +17,6 @@ class Login extends HTMLElement{
         this.idButtonSubmit = 'submit';
         this.model = {};
         shadowRoot.innerHTML = `
-            <style>
-                input {
-                    padding : 0.3em;
-                }
-            </style>
             <span>
                 <c-a href="#" >Login</c-a>
                 <div style="border:1px solid #666;padding:1em;max-width:300px;">
@@ -52,11 +47,6 @@ class Login extends HTMLElement{
         });
     }
 
-    clickMe(event){
-        debugger;
-        alert('Hello World');
-    }
-    
     attributeChangedCallback(){
 
     }
