@@ -35,6 +35,7 @@ const apiFetch = async (api,json,method) => {
 module.exports = {
     intentsPath : "./script/intents",
     svcPath : "./script/svc",
+    pagePath : "./script/templates",
     applicationPort,
     apiServer,
     administrator : {

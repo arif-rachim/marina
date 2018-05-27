@@ -25,8 +25,11 @@ module.exports = (req,res) => {
             
         </head>
         <body style="padding:1em">
-            <script src="/${chrome ? 'script' : 'build'}/webcomponents/${componentPath}.js" component-name="${componentName}"></script>
-            <${componentName}></${componentName}>
+            <script type="module">
+                import Component from '/${chrome ? 'script' : 'build'}/webcomponents/${componentPath}.js';
+                customElements.define('custom-component', Component);
+            </script>
+            <custom-component></custom-component>
         </body>
     </html>
     `);

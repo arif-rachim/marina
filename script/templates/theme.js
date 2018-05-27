@@ -4,8 +4,8 @@ module.exports = (content) => `
 <head>
     <meta charset="UTF-8">
     <title>Commander's Emerging Technology</title>
-    <link href="styles/reset.css" rel="stylesheet">
-    <link href="styles/font-family.css" rel="stylesheet">
+    <link href="/styles/reset.css" rel="stylesheet">
+    <link href="/styles/font-family.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -15,7 +15,7 @@ module.exports = (content) => `
     .heading-top {
         display: flex; 
         justify-content: center;
-        background-image: url('styles/spirit-of-union.png');
+        background-image: url('/styles/spirit-of-union.png');
         background-repeat: no-repeat;
         background-position: right; 
 
@@ -23,12 +23,12 @@ module.exports = (content) => `
     }
     @media screen and (max-width:720px){
         .heading-top{
-            background-image: url('styles/spirit-of-union-small.png');
+            background-image: url('/styles/spirit-of-union-small.png');
         }
     }
     @media screen and (max-width:450px){
         .heading-top{
-            background-image: url('styles/spirit-of-union-xsmall.png');
+            background-image: url('/styles/spirit-of-union-xsmall.png');
             background-position-y: 15px;
         }
     }
