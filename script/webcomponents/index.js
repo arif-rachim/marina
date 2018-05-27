@@ -28,8 +28,22 @@ module.exports = (req,res) => {
             <script type="module">
                 import Component from '/${chrome ? 'script' : 'build'}/webcomponents/${componentPath}.js';
                 customElements.define('custom-component', Component);
+                let queryString = window.location.search;
+                queryString = queryString.substring(1,queryString.length);
+                queryString = queryString.split("&").map(function(qs){
+                    qs = qs.split("=");
+                    return {name:qs[0],value:qs[1]}
+                });
+                setTimeout(function(){
+                    let element = document.getElementById('customElement');
+                    queryString.forEach(function(qs){
+                        if(qs.name){
+                            element.setAttribute(qs.name,qs.value);
+                        }
+                    })
+                },100);
             </script>
-            <custom-component></custom-component>
+            <custom-component id="customElement"></custom-component>
         </body>
     </html>
     `);
