@@ -108,11 +108,6 @@ app.get('/page/:page',async (req,res) => {
         req.context = {currentUser:result.docs[0].account};
         const pp = req.params.page.split(".").join("/");
         const template = require(`${pagePath}/${pp}`);
-        // processRequest(req,res,(req)=>{
-        //     return (resolve) => {
-        //         resolve(`<div>${req.print(template(req))}</div>`)
-        //     }
-        // });
         processRequest(req,res,(req) => `<div>${req.print(template(req))}</div>`);
     }catch(err){
         res.end(JSON.stringify(err));

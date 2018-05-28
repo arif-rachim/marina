@@ -6,7 +6,7 @@ module.exports = async (req,res) => {
         const userName = req.body.userName;
         const password = textToBase64(req.body.password);
 
-        if(administrator.userName === userName && administrator.password === password){
+        if(administrator.userName.toUpperCase() === userName.toUpperCase() && administrator.password === password){
             try {
                 const sessionId = req.cookies.sessionId;
                 let result = await fetch(`${apiServer}/v1/active-sessions`,{

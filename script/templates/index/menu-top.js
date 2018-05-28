@@ -58,7 +58,7 @@ const panelLogin = () => {
                 	.then(function(res) { 
                         return res.json();
                     }).then(function(res ){
-                        location.reload();
+                        location.href = '/page/user.dashboard';
                     });
             }
         </script>
@@ -95,7 +95,7 @@ const panelLogout = () => {
                 method: 'get',
                 credentials: 'same-origin'
             }).then(function(err,res){
-                location.reload();
+                location.href = '/index.html';
             });
         }
         const logoutSuggestButton = document.getElementById('logoutSuggestButton');
