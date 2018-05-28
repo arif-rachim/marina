@@ -108,11 +108,12 @@ app.get('/page/:page',async (req,res) => {
         req.context = {currentUser:result.docs[0].account};
         const pp = req.params.page.split(".").join("/");
         const template = require(`${pagePath}/${pp}`);
-        processRequest(req,res,(req)=>{
-            return (resolve) => {
-                resolve(`<div>${req.print(template(req))}</div>`)
-            }
-        });
+        // processRequest(req,res,(req)=>{
+        //     return (resolve) => {
+        //         resolve(`<div>${req.print(template(req))}</div>`)
+        //     }
+        // });
+        processRequest(req,res,(req) => `<div>${req.print(template(req))}</div>`);
     }catch(err){
         res.end(JSON.stringify(err));
         console.error(err);
@@ -132,7 +133,12 @@ app.get('/comps/:component',components);
 
 function processRequest(req, res,template) {
     req.updateTemplate = (id, template) => {
-        req.template = req.template.replace(id, template);
+        if(req.template.indexOf(id)>=0){
+            req.template = req.template.replace(id, template);
+        }else{
+            setTimeout(req.updateTemplate,100,id,template);
+            return;
+        }
         if (req.template.indexOf('<!-- ASYNCID:') < 0) {
             res.end(req.template);
         }
@@ -149,7 +155,6 @@ function processRequest(req, res,template) {
                 req.updateTemplate(uuid, template);
             });
         } else if (typeof callback === 'string') {
-
             new Promise((resolve) => {
                 setTimeout(() => resolve(callback), 100);
             }).then(template => {
