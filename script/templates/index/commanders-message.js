@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = (req) => {
     return `
     <style>
         .commanders-photo{

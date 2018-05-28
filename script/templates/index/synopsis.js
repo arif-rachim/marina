@@ -1,4 +1,4 @@
-module.exports = (data) => {
+module.exports = (req) => {
     return `
     <section style="padding:0.5em;box-sizing: border-box">
         <h1 style="

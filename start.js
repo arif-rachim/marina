@@ -93,17 +93,26 @@ app.get('/svc/:service', (req,res) => {
     }
 });
 
+const isFunction = (functionToCheck) => {
+    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+};
+
 app.get('/page/:page',async (req,res) => {
     try{
         const sessionId = req.cookies.sessionId || req.query.sessionId;
-        const result = await fetch(`v1/users?sessionId=${sessionId}`);
+        const result = await fetch(`v1/active-sessions?sessionId=${sessionId}`);
         if(result.docs && result.docs.length == 0){
-            accessDenied(req,res);
+            processRequest(req,res,accessDenied);
             return;
-        }        
-        req.context = {currentUser:result[0]};
+        }
+        req.context = {currentUser:result.docs[0].account};
         const pp = req.params.page.split(".").join("/");
-        require(`${pagePath}/${pp}`).call(null,req,res);
+        const template = require(`${pagePath}/${pp}`);
+        processRequest(req,res,(req)=>{
+            return (resolve) => {
+                resolve(`<div>${req.print(template(req))}</div>`)
+            }
+        });
     }catch(err){
         res.end(JSON.stringify(err));
         console.error(err);
@@ -120,7 +129,46 @@ function guid() {
 }
 
 app.get('/comps/:component',components);
-app.get('/index.html',index);
+
+function processRequest(req, res,template) {
+    req.updateTemplate = (id, template) => {
+        req.template = req.template.replace(id, template);
+        if (req.template.indexOf('<!-- ASYNCID:') < 0) {
+            res.end(req.template);
+        }
+    };
+
+    req.print = (callback) => {
+        const uuid = `<!-- ASYNCID:${guid()} -->`;
+        if (callback instanceof Promise) {
+            callback.then(template => {
+                req.updateTemplate(uuid, template);
+            });
+        } else if (isFunction(callback)) {
+            new Promise(callback).then(template => {
+                req.updateTemplate(uuid, template);
+            });
+        } else if (typeof callback === 'string') {
+
+            new Promise((resolve) => {
+                setTimeout(() => resolve(callback), 100);
+            }).then(template => {
+                req.updateTemplate(uuid, template);
+            });
+        }
+        return uuid;
+    };
+    req.template = req.print(template(req));
+}
+
+app.get('/index.html',async (req,res) => {
+    try{
+        processRequest(req, res, index);
+    }catch(err){
+        res.end(JSON.stringify(err));
+        console.error(err);
+    }
+});
 
 
 app.listen(PORT);

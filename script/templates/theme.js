@@ -18,7 +18,6 @@ module.exports = (content) => `
         background-image: url('/styles/spirit-of-union.png');
         background-repeat: no-repeat;
         background-position: right; 
-
         background-opacity: 0.5;
     }
     @media screen and (max-width:720px){
@@ -46,7 +45,6 @@ ${content}
         <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 1.5em; line-height: 1.4; text-align: center;">CETC</div>
         <p style="font-family: 'PT Serif', serif; line-height: 1.5; font-style: italic; text-align: center;">Commander's Emerging Technology Center</p>
     </span>
-    
 </section>
 </body>
 </html>

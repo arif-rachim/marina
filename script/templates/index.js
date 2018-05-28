@@ -1,37 +1,23 @@
 const synopsis = require("./index/synopsis.js");
 const commandersMessage = require("./index/commanders-message.js");
-const menuTop = require("./index/menu-top.bak.js");
+const menuTop = require("./index/menu-top.js");
 const theme = require("./theme.js");
 const {fetch} = require("../../config");
 
 const CONTENT_MAX_CHARACTERS = 500;
 
-const getArticles = async () => {
-    let articles = await fetch(`v1/articles?$i=5&$l=20&$s._createdOn=-1`);
-    return articles.docs;
-}
-
-const getLatestArticles = async () => {
-    let articles = await fetch(`v1/articles?$i=0&$l=5&$s._createdOn=-1`);
-    return articles.docs;
-    
-}
-
 const getArticleTags = async () => {
     let articles = await fetch(`v1/articles?$p.tags=1`);
     if(articles.docs){
         let tags = articles.docs.map(tag => tag.tags).filter((value,index,self) => self.indexOf(value) == index);
-        return tags;    
+        return tags;
     }
     return [];
 }
 
-const getHightlightArticles  = async () => {
-    let articles = await fetch(`v1/articles?$i=25&$l=5&$s._createdOn=-1`);
-    return articles.docs;
-}
-
-const renderArticles = (articles) => {
+const renderArticles = async (req) => {
+    let articles = await fetch(`v1/articles?$i=5&$l=20&$s._createdOn=-1`);
+    articles = articles.docs;
     let renderArticle = (article) => {
         let content = article.content.replace(/<[^>]*>/g, "");
         if(content.length > CONTENT_MAX_CHARACTERS){
@@ -50,10 +36,12 @@ const renderArticles = (articles) => {
     </article>
     `};
     return articles.map(renderArticle).join('');
-}
+};
 
 
-const renderLatestPost = (articles) => {
+const renderLatestPost = async (req) => {
+    let articles = await fetch(`v1/articles?$i=0&$l=5&$s._createdOn=-1`);
+    articles = articles.docs;
     let maxChars = 250;
     let renderArticle = (article) => {
         let content = article.content ? article.content.replace(/<[^>]*>/g, "") : '';
@@ -72,7 +60,9 @@ const renderLatestPost = (articles) => {
     return articles.map(renderArticle).join('');
 }
 
-const renderHighlightStories = (articles) => {
+const renderHighlightStories = async (req) => {
+    let articles = await fetch(`v1/articles?$i=25&$l=5&$s._createdOn=-1`);
+    articles = articles.docs;
     let maxChars = 150;
     let renderArticle = (article) => {
         let content = article.content ? article.content.replace(/<[^>]*>/g, "") : '';
@@ -87,13 +77,13 @@ const renderHighlightStories = (articles) => {
         </article>
     `};
     return articles.map(renderArticle).join('');
-}
+};
 
 
 
-const render = ({articles,latestArticles,highlightArticles,tags,currentUser}) => theme(
+const render = (req) => theme(
     `
-${menuTop(articles,currentUser)}
+${req.print(menuTop(req))}
 <style>
 
     .stories-left-panel {
@@ -195,10 +185,10 @@ ${menuTop(articles,currentUser)}
 </style>
 <div class="heading-container">
     <section class="heading-synopsis">
-        ${synopsis()}
+        ${req.print(synopsis(req))}
     </section>
     <section class="heading-commanders-message">
-        ${commandersMessage()}
+        ${req.print(commandersMessage(req))}
     </section>
 </div>
 
@@ -207,34 +197,26 @@ ${menuTop(articles,currentUser)}
     <aside class="stories-left-panel">
         <section style="font-weight: 700;color: #666666;line-height: 1.3;font-size: 1em;">Latest Posts</section>
         <section>
-            ${renderLatestPost(latestArticles)}
+            ${req.print(renderLatestPost(req))}
         </section>
     </aside>
     <!-- This is main content to display main stories -->
     <main class="stories-center-panel">
         <section>
-            ${renderArticles(articles)}
+            ${req.print(renderArticles(req))}
         </section>
     </main>
     <!-- This is right side content for displaying highlight stories -->
     <aside class="stories-right-panel">
         <section>
-            ${renderHighlightStories(highlightArticles)}
+            ${req.print(renderHighlightStories(req))}
         </section>
     </aside>
 </section>
     `
 );
 
-module.exports = async function(req,res) {
-    let articles = await getArticles();
-    let latestArticles = await getLatestArticles();
-    let highlightArticles = await getHightlightArticles();
+module.exports = async function(req) {
     let tags = await getArticleTags();
-    let currentUser = false;
-    if(req.cookies.sessionId){
-        let result = await fetch(`v1/active-sessions?sessionId=${req.cookies.sessionId}`);
-        currentUser = result.docs && result.docs.length > 0 ? result.docs[0].account : false;
-    }
-    res.end(render({articles,latestArticles,highlightArticles,tags,currentUser}))
+    return render(req);
 };
