@@ -80,8 +80,8 @@ module.exports = (req) => {
             }
             
             function submitForm() {
-              try{
-                  var app = exports.app;
+                try{
+                    var app = exports.app;
                   
                    app.showConfirmation('Are you sure you want to Save ?',['Yes','No'],function(button){
                        if(button.innerText === 'Yes'){
@@ -104,7 +104,7 @@ module.exports = (req) => {
                               return result.json();
                           }).then(function(data){
                               if(app.showNotification){
-                                app.showNotification('Data Succesfully Saved');    
+                                app.showNotification('Data saved successfully');    
                               }
                               if(app.refreshUserListTable){
                                   app.refreshUserListTable();

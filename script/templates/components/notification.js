@@ -6,6 +6,7 @@ module.exports = (req) => {
             display: block;
             position: fixed;
             bottom: -100px;
+            left:0px;
             padding: 0em;
             margin:0em;
             transition: bottom 300ms;

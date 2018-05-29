@@ -1,60 +1,58 @@
 const {fetch} = require('../../../config');
 
-function printUserTable(users) {
-    return users.map(user => `
-        <tr data-id="${user._id}">
-            <td>${user.name || ''}</td>
-            <td>${user.email || ''}</td>
-            <td>${user.phone || ''}</td>
+function printRoleTable(roles) {
+    return roles.map(role => `
+        <tr data-id="${role._id}">
+            <td>${role.name || ''}</td>
+            <td>${role.accessibility.map(role => role.name).join(', ') || ''}</td>
             <td>
-                <i class="far fa-trash-alt" data-id="${user._id}" onclick="event.stopPropagation();app.deleteUser(event);"></i>
+                <i class="far fa-trash-alt" data-id="${role._id}" onclick="event.stopPropagation();app.deleteRole(event);"></i>
             </td>
         </tr>
     `).join('');
 }
 
 module.exports = async (req) => {
-    let users = await fetch('v1/users');
-    users = users.docs;
+    let roles = await fetch('v1/roles');
+    roles = roles.docs;
     return `
         <style>
-            .user-list-table th , td {
+            .role-list-table th , td {
                 padding: 0.3em;
                 
             }
-            .user-list-table th  {
+            .role-list-table th  {
                 text-align: left;
                 font-size: 1.1em;
             }
             
-            .user-list-table thead {
+            .role-list-table thead {
                 border-bottom: 1px solid #000000;
             }
             
-            .user-list-table tr {
+            .role-list-table tr {
                 border-bottom: 1px solid #cccccc;
             }
             
-            .user-list-table {
+            .role-list-table {
                 width: 100%;
                 font-size: 12px;
                 
             }
-            .user-list-table tr.selected{
+            .role-list-table tr.selected{
                 background: #eeeeee;
             }
         </style>
-        <table class="user-list-table" cellspacing="0">
+        <table class="role-list-table" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
+                    <th>Role Name</th>
+                    <th>Accessibility</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                ${printUserTable(users)}
+                ${printRoleTable(roles)}
             </tbody>
         </table>
         <script>
@@ -63,24 +61,24 @@ module.exports = async (req) => {
                 var app = exports.app;
                 
                 function onTrClicked(event) {
-                    document.querySelectorAll('.user-list-table tr').forEach(function(tr){
+                    document.querySelectorAll('.role-list-table tr').forEach(function(tr){
                         tr.classList.remove('selected');
                     }); 
                     event.currentTarget.classList.add('selected');
-                    app.loadUserForm(event.currentTarget.getAttribute('data-id'));
+                    app.loadRoleForm(event.currentTarget.getAttribute('data-id'));
                 }
                 
                 function populateListeners(){
-                    document.querySelectorAll('.user-list-table tr').forEach(function(tr){
+                    document.querySelectorAll('.role-list-table tr').forEach(function(tr){
                         tr.addEventListener('click',onTrClicked);
                     });    
                 }
                 
-                function deleteUser(event){
+                function deleteRole(event){
                     var id = event.target.getAttribute('data-id');
                     app.showConfirmation('Are you sure you want to delete ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes' ){
-                            fetch('/v1/users/'+id,{
+                            fetch('/v1/roles/'+id,{
                                 method : 'DELETE',
                                 credentials : 'same-origin',
                                 header : {
@@ -89,9 +87,9 @@ module.exports = async (req) => {
                             }).then(function(result){
                                 return result.json();
                             }).then(function(){
-                                app.showNotification('User deleted.');
-                                refreshUserListTable();
-                                app.clearUserForm();
+                                app.showNotification('Role deleted.');
+                                refreshRoleListTable();
+                                app.clearRoleForm();
                             });        
                         }    
                     });
@@ -99,25 +97,24 @@ module.exports = async (req) => {
                     
                 }
                 
-                function refreshUserListTable(){
-                    fetch('/v1/users').then(function(results){
+                function refreshRoleListTable(){
+                    fetch('/v1/roles').then(function(results){
                         return results.json();
                     }).then(function(result){
-                        var users = result.docs;
-                        document.querySelector('.user-list-table tbody').innerHTML = users.map(function(user){
-                            return '<tr data-id="'+user._id+'">' +
-                             '<td>'+user.name+'</td>' +
-                             '<td>'+user.email+'</td>' +
-                             '<td>'+user.phone+'</td>' +
-                             '<td><i class="far fa-trash-alt" data-id="'+user._id+'" onclick="event.stopPropagation();app.deleteUser(event);"></i></td>' +
+                        var roles = result.docs;
+                        document.querySelector('.role-list-table tbody').innerHTML = roles.map(function(role){
+                            return '<tr data-id="'+role._id+'">' +
+                             '<td>'+role.name+'</td>' +
+                             '<td>'+role.accessibility.map(function(role){ return role.name }).join(', ')+'</td>' +
+                             '<td><i class="far fa-trash-alt" data-id="'+role._id+'" onclick="event.stopPropagation();app.deleteRole(event);"></i></td>' +
                               '</tr>';
                         }).join('');
                         populateListeners();
                     });
                 }
                 populateListeners();
-                exports.app.refreshUserListTable = refreshUserListTable;
-                exports.app.deleteUser = deleteUser;
+                exports.app.refreshRoleListTable = refreshRoleListTable;
+                exports.app.deleteRole = deleteRole;
             })(window)
             
         </script>
