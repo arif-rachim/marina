@@ -1,6 +1,5 @@
 const synopsis = require("./index/synopsis.js");
 const commandersMessage = require("./index/commanders-message.js");
-const menuTop = require("./index/menu-top.js");
 const theme = require("./theme.js");
 const {fetch} = require("../../config");
 
@@ -81,9 +80,8 @@ const renderHighlightStories = async (req) => {
 
 
 
-const render = (req) => theme(
+const render = (req) => theme(req,
     `
-${req.print(menuTop(req))}
 <style>
 
     .stories-left-panel {

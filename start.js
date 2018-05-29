@@ -6,8 +6,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const index = require("./script/templates/index");
 const accessDenied = require("./script/templates/access-denied");
-const components = require("./script/webcomponents/index");
-const {intentsPath,svcPath,pagePath,applicationPort,fetch} = require("./config");
+const {intentsPath,svcPath,pagePath,applicationPort,fetch,securePageAccess} = require("./config");
 const PORT = applicationPort;
 
 app.use(cookieParser());
@@ -101,11 +100,10 @@ app.get('/page/:page',async (req,res) => {
     try{
         const sessionId = req.cookies.sessionId || req.query.sessionId;
         const result = await fetch(`v1/active-sessions?sessionId=${sessionId}`);
-        if(result.docs && result.docs.length == 0){
+        if(result.docs && result.docs.length == 0 && securePageAccess){
             processRequest(req,res,accessDenied);
             return;
         }
-        req.context = {currentUser:result.docs[0].account};
         const pp = req.params.page.split(".").join("/");
         const template = require(`${pagePath}/${pp}`);
         processRequest(req,res,(req) => `<div>${req.print(template(req))}</div>`);
@@ -124,7 +122,6 @@ function guid() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
-app.get('/comps/:component',components);
 
 function processRequest(req, res,template) {
     req.updateTemplate = (id, template) => {

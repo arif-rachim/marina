@@ -5,14 +5,17 @@ const textToBase64 = (text) => Buffer.from(text).toString('base64');
 const base64ToText = (base64) => Buffer.from(base64, 'base64').toString('utf-8');
 const apiFetch = async (api,json,method) => {
     let result = false;
+    if(api.indexOf('/') !== 0){
+        api = `/${api}`;
+    }
     try{
         if(json){
-            console.log(`${method} : ${apiServer}/${api}`,json);
+            console.log(`${method} : ${apiServer}${api}`,json);
             if(method == null){
                 console.error("Method is required when JSON param is defined");
                 throw new Error("Method is required when JSON param is defined");
             }
-            result = await fetch(`${apiServer}/${api}`,{
+            result = await fetch(`${apiServer}${api}`,{
                 method : method,
                 headers : {
                     "Content-Type" : "application/json"
@@ -21,7 +24,7 @@ const apiFetch = async (api,json,method) => {
             });    
 
         }else{
-            result = await fetch(`${apiServer}/${api}`);
+            result = await fetch(`${apiServer}${api}`);
         }
         result = await result.json();
     }catch(err){
@@ -42,6 +45,7 @@ module.exports = {
         userName : "admin",
         password : "YWRtaW4="
     },
+    securePageAccess:true,
     textToBase64,
     base64ToText,
     fetch : apiFetch

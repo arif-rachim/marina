@@ -8,7 +8,7 @@ module.exports = (req,res) => {
         const resource = req.params.resource;
         // first we need to get the yaml file and check if theres any validation here
         const db = database[resource];
-        const id = doc._id;
+        const id = req.params.id;
         delete doc._id;
         delete doc._createdOn;
         console.log('updating '+JSON.stringify(doc));
