@@ -166,8 +166,8 @@ module.exports = async(req) => {
                     var accessibilities = role.accessibility;
                     for(var i = 0;i<accessibilities.length;i++){
                         var access = accessibilities[i];
-                        if(token.key.indexOf(access.code)<0){
-                            token.key.push(access.code);
+                        if(token.key.indexOf(access._id)<0){
+                            token.key.push(access._id);
                             token.items.push(access);
                         }
                     }

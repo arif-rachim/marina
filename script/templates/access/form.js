@@ -38,8 +38,12 @@ module.exports = (req) => {
             <input type="text" name="Name" id="name">
         </div>
         <div >
-            <label for="code"> Code :</label>
-            <input type="text" name="Code" id="code">
+            <label for="shortName"> Short Name :</label>
+            <input type="text" name="ShortName" id="shortName">
+        </div>
+        <div >
+            <label for="description"> Description :</label>
+            <input type="text" name="Description" id="description">
         </div>
         <div >
             <label for="path"> Path :</label>
@@ -75,7 +79,8 @@ module.exports = (req) => {
             
             function clearForm() {
                 setValue('name','');
-                setValue('code','');
+                setValue('shortName','');
+                setValue('description','');
                 setValue('path','');
                 setValue('_id','');
             }
@@ -89,7 +94,8 @@ module.exports = (req) => {
                             
                             var data = {
                                 name: getValue('name'),
-                                code: getValue('code'),
+                                shortName: getValue('shortName'),
+                                description: getValue('description'),
                                 path: getValue('path')
                             };
                             
@@ -128,7 +134,8 @@ module.exports = (req) => {
                     clearForm();
                     if(access){
                         setValue('name',access.name);
-                        setValue('code',access.code);
+                        setValue('shortName',access.shortName);
+                        setValue('description',access.description);
                         setValue('path',access.path);
                         setValue('_id',access._id);    
                     }

@@ -5,7 +5,7 @@ const printRolesSelection = async (req) => {
     const roles = response.docs;
     return roles.map(role => `
         <label style="display:flex;align-items:center">
-            <input type="checkbox" name="${role.code}" id="${role.code}" data-role-id="${role._id}" data-type="role"> : ${role.name}
+            <input type="checkbox" name="${role.code}" id="${role._id}" data-role-id="${role._id}" data-type="role"> : ${role.name}
         </label>
     `).join('');
 }
@@ -82,6 +82,16 @@ module.exports = (req) => {
             document.querySelector('.user-form input[type="submit"]').addEventListener('click',submitForm);
             document.querySelector('.user-form input[type="reset"]').addEventListener('click',clearForm);
             
+            var catalog = {};
+
+            function loadAllRoles(){
+                fetch('/v1/system_roles').then(function(response) {
+                    return response.json();
+                }).then(function(data){
+                    catalog.roles = data.docs;
+                });
+            }
+            loadAllRoles();
             
             function stringToBase64(str) {
                 try{
@@ -164,9 +174,7 @@ module.exports = (req) => {
                                 email: getValue('email'),
                                 phone: getValue('phone'),
                                 password: stringToBase64(getValue('userPassword')),
-                                roles : catalog.roles.filter(function(role){
-                                    return selectedRoles.indexOf(role.code) >= 0;
-                                })
+                                roles : selectedRoles
                             };
                             debugger;
                           var id = getValue('_id'); 
@@ -211,7 +219,7 @@ module.exports = (req) => {
                         setValue('_id',user._id);    
                         if(user.roles){
                             user.roles.forEach(function(role){
-                                setSelected(role.code,true);
+                                setSelected(role,true);
                             });
                         }
                     }

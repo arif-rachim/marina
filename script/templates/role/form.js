@@ -5,7 +5,7 @@ const printAccessibilitySelection = async (req) => {
     const accessibilities = response.docs;
     return accessibilities.map(access => `
         <label style="display:flex;align-items:center">
-            <input type="checkbox" name="${access.code}" id="${access._id}" data-access-id="${access._id}" data-type="access"> : ${access.name}
+            <input type="checkbox" id="${access._id}" data-access-id="${access._id}" data-type="access"> : ${access.name}
         </label>
     `).join('');
 };
@@ -48,8 +48,8 @@ module.exports = (req) => {
             <input type="text" name="Name" id="name">
         </div>
         <div >
-            <label for="code"> Code :</label>
-            <input type="text" name="Code" id="code">
+            <label for="description"> Description :</label>
+            <input type="text" name="Description" id="description">
         </div>
         
         <fieldset style="font-size: 13px">
@@ -96,7 +96,7 @@ module.exports = (req) => {
             
             function clearForm() {
                 setValue('name','');
-                setValue('code','');
+                setValue('description','');
                 document.querySelectorAll('[data-type="access"]').forEach(function(node){
                     setSelected(node.id,false);
                 });
@@ -118,7 +118,7 @@ module.exports = (req) => {
 
                             var data = {
                                 name: getValue('name'),
-                                code: getValue('code'),
+                                description: getValue('description'),
                                 accessibility: selectedAccess
                             };
                             
@@ -150,9 +150,6 @@ module.exports = (req) => {
               return false;
             }
             
-            function hasRole(accessibility, code) {
-                return accessibility.map(accessibility => accessibility.code).indexOf(code) >= 0;
-            }
             function loadForm(id){
                 fetch('/v1/system_roles/'+id).then(function(result){
                     return result.json();
@@ -160,13 +157,14 @@ module.exports = (req) => {
                     clearForm();
                     if(role){
                         setValue('name',role.name);
-                        setValue('code',role.code);
+                        setValue('description',role.description);
+                        setValue('_id',role._id);
                         if(role.accessibility){
                             role.accessibility.forEach(function(access){
                                 setSelected(access,true);
                             });
                         }
-                        setValue('_id',role._id);    
+                            
                     }
                 });
             }
