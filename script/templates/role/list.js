@@ -1,10 +1,12 @@
 const {fetch} = require('../../../config');
 
-function printRoleTable(roles) {
+function printRoleTable(roles,accessibilities) {
     return roles.map(role => `
         <tr data-id="${role._id}">
             <td>${role.name || ''}</td>
-            <td>${role.accessibility.map(role => role.name).join(', ') || ''}</td>
+            <td>${role.accessibility.map(accessId => {
+                    return accessibilities.filter(access => access._id === accessId)[0]
+                }).map(access => access.name).join(', ') || ''}</td>
             <td>
                 <i class="far fa-trash-alt" data-id="${role._id}" onclick="event.stopPropagation();app.deleteRole(event);"></i>
             </td>
@@ -12,9 +14,21 @@ function printRoleTable(roles) {
     `).join('');
 }
 
+const getAccessibilities = async (roles) => {
+    const uniqueKeys = roles.reduce((token,role) =>{
+        return token.concat(role.accessibility);
+    },[]).filter((access,index,accessibility) => {
+        return accessibility.indexOf(access) === index;
+    }).join(',');
+    const results = await fetch(`/v1/system_accessibility?$ids=${uniqueKeys}`)
+    return results;
+};
+
 module.exports = async (req) => {
     let roles = await fetch('v1/system_roles');
     roles = roles.docs;
+    const accessibilities = await getAccessibilities(roles);
+
     return `
         <style>
             .role-list-table th , td {
@@ -52,13 +66,24 @@ module.exports = async (req) => {
                 </tr>
             </thead>
             <tbody>
-                ${printRoleTable(roles)}
+                ${printRoleTable(roles,accessibilities)}
             </tbody>
         </table>
         <script>
             (function(exports){
                 exports.app = exports.app || {};
                 var app = exports.app;
+                var catalog = {};
+                function loadAccessibilitiesCatalog(){
+                    fetch('/v1/system_accessibility')
+                    .then(function(response){
+                        return response.json();
+                    })
+                    .then(function(data){
+                        catalog.accessibility = data.docs;
+                    });
+                }
+                loadAccessibilitiesCatalog();
                 
                 function onTrClicked(event) {
                     document.querySelectorAll('.role-list-table tr').forEach(function(tr){
@@ -105,7 +130,11 @@ module.exports = async (req) => {
                         document.querySelector('.role-list-table tbody').innerHTML = roles.map(function(role){
                             return '<tr data-id="'+role._id+'">' +
                              '<td>'+role.name+'</td>' +
-                             '<td>'+role.accessibility.map(function(role){ return role.name }).join(', ')+'</td>' +
+                             '<td>'+role.accessibility.map(function(accessId){
+                                 return catalog.accessibility.filter(function(access){
+                                     return access._id == accessId;
+                                 })[0].name;
+                             }).join(', ')+'</td>' +
                              '<td><i class="far fa-trash-alt" data-id="'+role._id+'" onclick="event.stopPropagation();app.deleteRole(event);"></i></td>' +
                               '</tr>';
                         }).join('');

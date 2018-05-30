@@ -60,7 +60,7 @@ const ensureRolesExist = async (role) => {
     const accessibilityEntitiesForRole = [];
     for (let index = 0; index < accessibilitiesForRole.length; index++) {
         let entity = await ensureAccessExist({code:accessibilitiesForRole[index]});    
-        accessibilityEntitiesForRole.push(entity);
+        accessibilityEntitiesForRole.push(entity._id);
     }
     role.accessibility = accessibilityEntitiesForRole;
     const persistentData = await fetch('/v1/system_roles',role,'post');
@@ -79,7 +79,7 @@ const ensureUsersExist = async (user) => {
     const rolesEntitiesForUser = [];
     for (let index = 0; index < rolesForUser.length; index++) {
         let entity = await ensureRolesExist({code:rolesForUser[index]});    
-        rolesEntitiesForUser.push(entity);
+        rolesEntitiesForUser.push(entity._id);
     }
     user.roles = rolesEntitiesForUser;
     const persistentData = await fetch('/v1/system_users',user,'post');

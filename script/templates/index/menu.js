@@ -106,6 +106,38 @@ module.exports = async(req) => {
         var loginButton = document.querySelector('.login-panel .login-button');
         var cancelButton = document.querySelector('.login-panel .cancel-button');
         var menuHolder = document.querySelector('.menu .menu-holder');
+        
+        function populateRolesOnUser(user){
+            fetch('/v1/system_roles?$ids='+user.account.roles)
+            .then(function(result){
+                return result.json();
+            })
+            .then(function(roles){
+                if(roles.errorMessage){
+                    app.showNotification(roles.errorMessage);
+                    return;
+                }
+                user.account.roles = roles;
+                return Promise.all(roles.map(function(role){
+                    return fetch('/v1/system_accessibility?$ids='+role.accessibility);
+                }));
+            })
+            .then(function(results){
+                return Promise.all(results.map(function(result){
+                    return result.json();
+                }));
+            })
+            .then(function(accessibilities){
+                accessibilities.forEach(function(accessibility,index){
+                    user.account.roles[index].accessibility = accessibility;
+                });
+                return user;
+            })
+            .then(function(user){
+                updateMenus();
+            });
+        };
+        
         function loadCurrentUser(){
             fetch('/svc/security.get-current-user',{
                 method : 'POST',
@@ -119,7 +151,7 @@ module.exports = async(req) => {
             }).then(function(data){
                 if(data && data.account){
                     app.user = data;
-                    updateMenus();
+                    populateRolesOnUser(app.user);
                 }
             });
         }
@@ -196,17 +228,20 @@ module.exports = async(req) => {
                 },
                 credentials : 'same-origin',
                 body : JSON.stringify(data)
-            }).then(function(result){
+            })
+            .then(function(result){
                 return result.json();
-            }).then(function(user){
+            })
+            .then(function(user){
                 if(user.errorMessage){
                     app.showNotification(user.errorMessage);
                     return;
                 }
-                app.showNotification('Successfully logged in as '+user.account.name);
                 app.user = user;
-                updateMenus();
+                populateRolesOnUser(app.user);
+                app.showNotification('Successfully logged in as '+user.account.name);
             });
+            
         }
         
         loginButton.addEventListener('click',function(event){

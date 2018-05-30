@@ -5,7 +5,7 @@ const printAccessibilitySelection = async (req) => {
     const accessibilities = response.docs;
     return accessibilities.map(access => `
         <label style="display:flex;align-items:center">
-            <input type="checkbox" name="${access.code}" id="${access.code}" data-access-id="${access._id}" data-type="access"> : ${access.name}
+            <input type="checkbox" name="${access.code}" id="${access._id}" data-access-id="${access._id}" data-type="access"> : ${access.name}
         </label>
     `).join('');
 };
@@ -119,9 +119,7 @@ module.exports = (req) => {
                             var data = {
                                 name: getValue('name'),
                                 code: getValue('code'),
-                                accessibility: catalog.accessibility.filter(function(access){
-                                    return selectedAccess.indexOf(access.code) >= 0;
-                                })
+                                accessibility: selectedAccess
                             };
                             
                             var id = getValue('_id'); 
@@ -165,7 +163,7 @@ module.exports = (req) => {
                         setValue('code',role.code);
                         if(role.accessibility){
                             role.accessibility.forEach(function(access){
-                                setSelected(access.code,true);
+                                setSelected(access,true);
                             });
                         }
                         setValue('_id',role._id);    

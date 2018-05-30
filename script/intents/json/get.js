@@ -1,14 +1,27 @@
 const database = require('./database');
 
+const findById = (id,db) => {
+    return new Promise(resolve => {
+        db.findOne({_id:id.trim()},(err,doc) => {
+            resolve(doc);
+        });
+    });
+};
+
 module.exports = (req,res) => {
     try{
         const resource = req.params.resource;
         const id = req.params.id;
+        const ids = req.query.$ids;
         let db = database[resource];
         
         if(id){
-            db.findOne({_id:id},(err,doc) => {
-                res.end(JSON.stringify(doc));
+            findById(id,db).then(data => {
+                res.end(JSON.stringify(data));
+            });
+        } else if(ids) {
+            Promise.all(ids.split(',').map(id => findById(id,db))).then(results => {
+                res.end(JSON.stringify(results));
             });
         }else{
             // we need to introduce pagination here
