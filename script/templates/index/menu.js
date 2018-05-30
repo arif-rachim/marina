@@ -1,10 +1,33 @@
 let {fetch} = require('../../../config');
+
+const printMenu = (roles) => {
+    return roles.reduce((token,role) => {
+        role.accessibility.forEach(accessibility => {
+            if(token.key.indexOf(accessibility._id)<0){
+                token.items.push(accessibility);
+            }
+        });
+        return token;
+    },{key:[],items:[]}).items.map(access => {
+        return `<a class="menu-item" href="${access.path}">${access.shortName}</a>`;
+    }).join('');
+};
+
 module.exports = async(req) => {
     let user = false;
     if(req.cookies.sessionId){
         try{
             user = await fetch(`v1/system_active_sessions?sessionId=${req.cookies.sessionId}`);
             user = user.docs[0];
+            if(user){
+                let roles = await fetch(`v1/system_roles?$ids=${user.account.roles}`);
+                user.account.roles = roles;
+                for(let i = 0;i<roles.length;i++){
+                    let role = roles[i];
+                    let accessibility = await fetch(`v1/system_accessibility?$ids=${role.accessibility}`);
+                    role.accessibility = accessibility;
+                }
+            }
         }catch(err){
             console.error(err);
         }
@@ -64,6 +87,7 @@ module.exports = async(req) => {
 </style>
 <div class="menu">
     <div style="width: 100%" class="menu-holder">
+        ${user ? printMenu(user.account.roles) : ''}
     </div>
     <div>
         <a href="#" class="menu-item login-logout">
@@ -181,7 +205,7 @@ module.exports = async(req) => {
         function updateMenus(){
             var menus = getUserMenus();
             menuHolder.innerHTML = menus.map(function(menuItem){
-                return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.name+'</a>';
+                return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';
             }).join('');
             menuLoginLogout.innerHTML = app.user ? app.user.account.name : 'Login';
         }

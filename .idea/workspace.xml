@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/script/svc/system/initialize.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/system/initialize.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/access/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/access/form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/templates/index/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/role/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/role/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/user/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/user/form.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -24,29 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="start.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="97" column="41" lean-forward="true" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/role/form.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="2" selection-start-column="2" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="110" column="55" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -96,8 +74,25 @@
       <file leaf-file-name="menu.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="169" column="53" selection-start-line="169" selection-start-column="53" selection-end-line="169" selection-end-column="53" />
+            <state relative-caret-position="164">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="system_active_sessions.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.resources/db/system_active_sessions.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="synopsis.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -114,9 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>-2px</find>
-      <find>AAA</find>
-      <find>User</find>
       <find>location.reload</find>
       <find>User List</find>
       <find>reload</find>
@@ -138,12 +130,15 @@
       <find>app.user.account.roles.reduce</find>
       <find>getMenus</find>
       <find>getUserMenus</find>
-      <find>updateMenus</find>
       <find>loadCurrentUser</find>
       <find>svc/system</find>
       <find>populateRolesOnUser</find>
       <find>name</find>
       <find>code</find>
+      <find>menu-holder</find>
+      <find>menuHolder</find>
+      <find>updateMenus</find>
+      <find>printMenu</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -407,7 +402,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119884000" />
+    <option name="totallyTimeSpent" value="122760000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -428,12 +423,12 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23638344" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23638344" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.50499284" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.34313726" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.40958604" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.40958604" />
       <window_info anchor="bottom" id="Thumbnails" order="9" weight="0.32897604" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -502,13 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -652,9 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/system_active_sessions.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -713,10 +698,23 @@
     <entry file="file://$PROJECT_DIR$/.resources/db/system_accessibility.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/.resources/db/system_active_sessions.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="169" column="53" selection-start-line="169" selection-start-column="53" selection-end-line="169" selection-end-column="53" />
+        <state relative-caret-position="164">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
