@@ -24,6 +24,7 @@ module.exports = (req) => {
                 padding: 0.3em;
                 width: 100%;
             }
+            
             .role-form label{
                 display: block;
             }

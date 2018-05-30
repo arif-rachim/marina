@@ -19,7 +19,7 @@ module.exports = (req) => {
                 align-items: flex-end;
                 font-size:11px;
             }
-            .user-form input[type="text"]{
+            .user-form input[type="text"], .user-form input[type="email"], .user-form input[type="tel"]{
                 padding: 0.3em;
                 width: 100%;
             }
