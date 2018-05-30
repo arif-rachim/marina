@@ -19,7 +19,10 @@ module.exports = (req) => {
                 align-items: flex-end;
                 font-size:11px;
             }
-            .user-form input[type="text"], .user-form input[type="email"], .user-form input[type="tel"]{
+            .user-form input[type="text"], 
+            .user-form input[type="email"], 
+            .user-form input[type="tel"], 
+            .user-form input[type="password"]{
                 padding: 0.3em;
                 width: 100%;
             }
@@ -46,6 +49,10 @@ module.exports = (req) => {
         <div>
             <label for="userId">User ID :</label>
             <input type="text" name="User ID" id="userId">
+        </div>
+        <div>
+            <label for="password">Password :</label>
+            <input type="password" name="Password" id="userPassword">
         </div>
         <div class="name">
             <label for="name"> Name :</label>
@@ -74,6 +81,30 @@ module.exports = (req) => {
             
             document.querySelector('.user-form input[type="submit"]').addEventListener('click',submitForm);
             document.querySelector('.user-form input[type="reset"]').addEventListener('click',clearForm);
+            
+            
+            function stringToBase64(str) {
+                try{
+                    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+                        function toSolidBytes(match, p1) {
+                            return String.fromCharCode('0x' + p1);
+                    }));
+                }catch(err){
+                    console.error(err);
+                }
+                return '';
+            };
+            
+            function base64ToString(str) {
+                try{
+                    return decodeURIComponent(atob(str).split('').map(function(c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                }catch(err){
+                    console.error(err);
+                }
+                return '';
+            }
             
             var catalog = {};
 
@@ -106,6 +137,7 @@ module.exports = (req) => {
                 setValue('userId','');
                 setValue('email','');
                 setValue('phone','');
+                setValue('userPassword','');
                 document.querySelectorAll('[data-type="role"]').forEach(function(node){
                     setSelected(node.id,false);
                 });
@@ -124,13 +156,14 @@ module.exports = (req) => {
                                 if(node.checked){
                                     selectedRoles.push(node.id);
                                 }
-                            })
+                            });
 
                             var data = {
                                 name: getValue('name'),
                                 userId: getValue('userId'),
                                 email: getValue('email'),
                                 phone: getValue('phone'),
+                                password: stringToBase64(getValue('userPassword')),
                                 roles : catalog.roles.filter(function(role){
                                     return selectedRoles.indexOf(role.code) >= 0;
                                 })
@@ -174,6 +207,7 @@ module.exports = (req) => {
                         setValue('userId',user.userId);
                         setValue('email',user.email);
                         setValue('phone',user.phone);
+                        setValue('userPassword',base64ToString(user.password));
                         setValue('_id',user._id);    
                         if(user.roles){
                             user.roles.forEach(function(role){

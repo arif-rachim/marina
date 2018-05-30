@@ -8,7 +8,7 @@ const printAccessibilitySelection = async (req) => {
             <input type="checkbox" name="${access.code}" id="${access.code}" data-access-id="${access._id}" data-type="access"> : ${access.name}
         </label>
     `).join('');
-}
+};
 
 module.exports = (req) => {
     return `
@@ -46,6 +46,10 @@ module.exports = (req) => {
         <div >
             <label for="name"> Name :</label>
             <input type="text" name="Name" id="name">
+        </div>
+        <div >
+            <label for="code"> Code :</label>
+            <input type="text" name="Code" id="code">
         </div>
         
         <fieldset style="font-size: 13px">
@@ -92,6 +96,7 @@ module.exports = (req) => {
             
             function clearForm() {
                 setValue('name','');
+                setValue('code','');
                 document.querySelectorAll('[data-type="access"]').forEach(function(node){
                     setSelected(node.id,false);
                 });
@@ -109,15 +114,16 @@ module.exports = (req) => {
                                 if(node.checked){
                                     selectedAccess.push(node.id);
                                 }
-                            })
+                            });
 
                             var data = {
                                 name: getValue('name'),
+                                code: getValue('code'),
                                 accessibility: catalog.accessibility.filter(function(access){
                                     return selectedAccess.indexOf(access.code) >= 0;
                                 })
                             };
-                            debugger;
+                            
                             var id = getValue('_id'); 
                             fetch('/v1/system_roles'+(id?'/'+id:''),{
                               method : id ? 'PUT':'POST',
@@ -156,6 +162,7 @@ module.exports = (req) => {
                     clearForm();
                     if(role){
                         setValue('name',role.name);
+                        setValue('code',role.code);
                         if(role.accessibility){
                             role.accessibility.forEach(function(access){
                                 setSelected(access.code,true);
