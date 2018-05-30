@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const index = require("./script/templates/index");
 const accessDenied = require("./script/templates/access-denied");
+const underConstruction = require("./script/templates/under-construction");
 const {intentsPath,svcPath,pagePath,applicationPort,fetch,securePageAccess} = require("./config");
 const PORT = applicationPort;
 
@@ -110,7 +111,7 @@ app.get('/page/:page',async (req,res) => {
         const template = require(`${pagePath}/${pp}`);
         processRequest(req,res,(req) => `<div>${req.print(template(req))}</div>`);
     }catch(err){
-        res.end(JSON.stringify({errorMessage:err.message}));
+        processRequest(req,res,underConstruction);
         console.error(err);
     }
 });
