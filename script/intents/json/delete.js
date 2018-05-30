@@ -9,7 +9,7 @@ module.exports = (req,res) => {
     db.remove({ _id: id }, {}, (err, numRemoved) => {
         if(err){
             console.error(err);
-            res.end(JSON.stringify(err,null,2));
+            res.end(JSON.stringify({errorMessage:err.message}));
         }else{
             console.log('Record deleted');
             res.end(JSON.stringify({success:true,message:'Record deleted'},null,2));

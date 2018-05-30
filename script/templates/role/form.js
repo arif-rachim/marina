@@ -1,3 +1,15 @@
+const { fetch } = require('../../../config');
+
+const printAccessibilitySelection = async (req) => {
+    const response = await fetch('/v1/system_accessibility');
+    const accessibilities = response.docs;
+    return accessibilities.map(access => `
+        <label style="display:flex;align-items:center">
+            <input type="checkbox" name="${access.code}" id="${access.code}" data-access-id="${access._id}" data-type="access"> : ${access.name}
+        </label>
+    `).join('');
+}
+
 module.exports = (req) => {
     return `
         <style>
@@ -37,15 +49,7 @@ module.exports = (req) => {
         
         <fieldset style="font-size: 13px">
             <legend>Accessibility</legend>
-            <label style="display: flex;align-items: center">
-                <input type="checkbox" id="usersManagement">: Users Management 
-            </label>
-            <label style="display: flex;align-items: center">
-                <input type="checkbox" id="rolesManagement">: Roles Management 
-            </label>
-            <label style="display: flex;align-items: center">
-                <input type="checkbox" id="articlesManagement">: Articles Management 
-            </label>
+            ${req.print(printAccessibilitySelection(req))}
         </fieldset>
         
         <div style="width: 100%">
@@ -58,7 +62,18 @@ module.exports = (req) => {
             exports.app = exports.app || {};
             
             document.querySelector('.role-form input[type="submit"]').addEventListener('click',submitForm);
-            
+            document.querySelector('.role-form input[type="reset"]').addEventListener('click',clearForm);
+            var catalog = {};
+
+            function loadAllAccessibility(){
+                fetch('/v1/system_accessibility').then(function(response) {
+                    return response.json();
+                }).then(function(data){
+                    catalog.accessibility = data.docs;
+                });
+            }
+            loadAllAccessibility();
+
             function getValue(id){
                 return document.getElementById(id).value;
             }
@@ -76,35 +91,34 @@ module.exports = (req) => {
             
             function clearForm() {
                 setValue('name','');
-                setSelected('usersManagement',false);
-                setSelected('rolesManagement',false);
-                setSelected('articlesManagement',false);
+                document.querySelectorAll('[data-type="access"]').forEach(function(node){
+                    setSelected(node.id,false);
+                });
                 setValue('_id','');
             }
             
             function submitForm() {
                 try{
                     var app = exports.app;
-                    
                     app.showConfirmation('Are you sure you want to Save ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes'){
-                            var accessibilities = [];
-                            if(getSelected('usersManagement')){
-                                accessibilities.push({name:'Users Management',code:'USERS_MANAGEMENT',path:'/page/user.page'});   
-                            }
-                            if(getSelected('rolesManagement')){
-                                accessibilities.push({name:'Roles Management',code:'ROLES_MANAGEMENT',path:'/page/role.page'});    
-                            }
-                            if(getSelected('articlesManagement')){
-                                accessibilities.push({name:'Articles Management',code:'ARTICLES_MANAGEMENT',path:'/page/article.page'});    
-                            }
-                            
+
+                            var selectedAccess = [];
+                            document.querySelectorAll('[data-type="access"]').forEach(function(node){
+                                if(node.checked){
+                                    selectedAccess.push(node.id);
+                                }
+                            })
+
                             var data = {
                                 name: getValue('name'),
-                                accessibility: accessibilities
+                                accessibility: catalog.accessibility.filter(function(access){
+                                    return selectedAccess.indexOf(access.code) >= 0;
+                                })
                             };
+                            debugger;
                             var id = getValue('_id'); 
-                            fetch('/v1/roles'+(id?'/'+id:''),{
+                            fetch('/v1/system_roles'+(id?'/'+id:''),{
                               method : id ? 'PUT':'POST',
                               credentials:'same-origin',
                               headers:{
@@ -135,15 +149,17 @@ module.exports = (req) => {
                 return accessibility.map(accessibility => accessibility.code).indexOf(code) >= 0;
             }
             function loadForm(id){
-                fetch('/v1/roles/'+id).then(function(result){
+                fetch('/v1/system_roles/'+id).then(function(result){
                     return result.json();
                 }).then(function(role){
+                    clearForm();
                     if(role){
                         setValue('name',role.name);
-                        setSelected('usersManagement',hasRole(role.accessibility,'USERS_MANAGEMENT'));
-                        setSelected('rolesManagement',hasRole(role.accessibility,'ROLES_MANAGEMENT'));
-                        setSelected('articlesManagement',hasRole(role.accessibility,'ARTICLES_MANAGEMENT'));
-                        //setValue('accessibility',role.accessibility);
+                        if(role.accessibility){
+                            role.accessibility.forEach(function(access){
+                                setSelected(access.code,true);
+                            });
+                        }
                         setValue('_id',role._id);    
                     }
                 });

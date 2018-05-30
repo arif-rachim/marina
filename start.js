@@ -28,7 +28,7 @@ app.post('/v1/:resource', (req,res) => {
     try{
         require(`${intentsPath}/${mode}/post`).call(null,req,res);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);
     }
 });
@@ -38,7 +38,8 @@ app.get('/v1/:resource', (req,res) => {
     try{
         require(`${intentsPath}/${mode}/get`).call(null,req,res);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
+        console.error(err);
     }
 });
 
@@ -47,7 +48,7 @@ app.get('/v1/:resource/:id', (req,res) => {
     try{
         require(`${intentsPath}/${mode}/get`).call(null,req,res);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);
     }
 });
@@ -58,7 +59,7 @@ app.delete('/v1/:resource/:id', (req,res) => {
     try{
         require(`${intentsPath}/${mode}/delete`).call(null,req,res);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);
     }
 });
@@ -68,7 +69,8 @@ app.put('/v1/:resource/:id', (req,res) => {
     try{
         require(`${intentsPath}/${mode}/put`).call(null,req,res);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
+        console.error(err);
     }
 });
 
@@ -77,7 +79,7 @@ app.post('/svc/:service', (req,res) => {
         const svc = req.params.service.split(".").join("/");
         require(`${svcPath}/${svc}`).call(null,req,res);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);
     }
 });
@@ -87,7 +89,7 @@ app.get('/svc/:service', (req,res) => {
         const svc = req.params.service.split(".").join("/");
         require(`${svcPath}/${svc}`).call(null,req,res);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);
     }
 });
@@ -99,7 +101,7 @@ const isFunction = (functionToCheck) => {
 app.get('/page/:page',async (req,res) => {
     try{
         const sessionId = req.cookies.sessionId || req.query.sessionId;
-        const result = await fetch(`v1/active-sessions?sessionId=${sessionId}`);
+        const result = await fetch(`v1/system_active_sessions?sessionId=${sessionId}`);
         if(result.docs && result.docs.length == 0 && securePageAccess){
             processRequest(req,res,accessDenied);
             return;
@@ -108,7 +110,7 @@ app.get('/page/:page',async (req,res) => {
         const template = require(`${pagePath}/${pp}`);
         processRequest(req,res,(req) => `<div>${req.print(template(req))}</div>`);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);
     }
 });
@@ -162,7 +164,7 @@ app.get('/index.html',async (req,res) => {
     try{
         processRequest(req, res, index);
     }catch(err){
-        res.end(JSON.stringify(err));
+        res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);
     }
 });

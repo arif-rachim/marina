@@ -14,7 +14,7 @@ module.exports = (req,res) => {
         console.log('updating '+JSON.stringify(doc));
         db.update({_id:id},{$set : doc},{},(err,numReplaced) => {
             if(err){
-                res.end(JSON.stringify(err,null,2));
+                res.end(JSON.stringify({errorMessage:err.message}));
             }else{
                 res.end(JSON.stringify({success:true},null,2));
             }

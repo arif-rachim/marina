@@ -10,7 +10,6 @@ const apiFetch = async (api,json,method) => {
     }
     try{
         if(json){
-            console.log(`${method} : ${apiServer}${api}`,json);
             if(method == null){
                 console.error("Method is required when JSON param is defined");
                 throw new Error("Method is required when JSON param is defined");
@@ -30,8 +29,6 @@ const apiFetch = async (api,json,method) => {
     }catch(err){
         console.error(err);
     }
-
-
     return result;
 }
 

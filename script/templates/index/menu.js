@@ -3,7 +3,7 @@ module.exports = async(req) => {
     let user = false;
     if(req.cookies.sessionId){
         try{
-            user = await fetch(`v1/active-sessions?sessionId=${req.cookies.sessionId}`);
+            user = await fetch(`v1/system_active_sessions?sessionId=${req.cookies.sessionId}`);
             user = user.docs[0];
         }catch(err){
             console.error(err);
@@ -129,26 +129,29 @@ module.exports = async(req) => {
         * We should call server in next release 
         */
         function getUserMenus() {
-            var menus = []; 
             if(app.user){
-                menus = [
-                    {name:'Users',url:"/page/user.page"},
-                    {name:'Roles',url:"/page/role.page"},
-                    {name:'Articles',url:"/page/article.page"},
-                ]; 
+                return app.user.account.roles.reduce(function(token,role){
+                    var accessibilities = role.accessibility;
+                    for(var i = 0;i<accessibilities.length;i++){
+                        var access = accessibilities[i];
+                        if(token.key.indexOf(access.code)<0){
+                            token.key.push(access.code);
+                            token.items.push(access);
+                        }
+                    }
+                    return token;
+                },{key:[],items:[]}).items;
             }
-            return Promise.resolve(menus);
+            return [];
         }
         
         
         function updateMenus(){
-            getUserMenus().then(function(menus){
-                menuHolder.innerHTML = menus.map(function(menuItem){
-                    return '<a class="menu-item" href="'+menuItem.url+'">'+menuItem.name+'</a>';
-                }).join('');
-            });
+            var menus = getUserMenus();
+            menuHolder.innerHTML = menus.map(function(menuItem){
+                return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.name+'</a>';
+            }).join('');
             menuLoginLogout.innerHTML = app.user ? app.user.account.name : 'Login';
-            
         }
         
         
@@ -196,7 +199,10 @@ module.exports = async(req) => {
             }).then(function(result){
                 return result.json();
             }).then(function(user){
-                // ok we have user value here
+                if(user.errorMessage){
+                    app.showNotification(user.errorMessage);
+                    return;
+                }
                 app.showNotification('Successfully logged in as '+user.account.name);
                 app.user = user;
                 updateMenus();

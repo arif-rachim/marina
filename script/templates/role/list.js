@@ -13,7 +13,7 @@ function printRoleTable(roles) {
 }
 
 module.exports = async (req) => {
-    let roles = await fetch('v1/roles');
+    let roles = await fetch('v1/system_roles');
     roles = roles.docs;
     return `
         <style>
@@ -78,7 +78,7 @@ module.exports = async (req) => {
                     var id = event.target.getAttribute('data-id');
                     app.showConfirmation('Are you sure you want to delete ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes' ){
-                            fetch('/v1/roles/'+id,{
+                            fetch('/v1/system_roles/'+id,{
                                 method : 'DELETE',
                                 credentials : 'same-origin',
                                 header : {
@@ -98,7 +98,7 @@ module.exports = async (req) => {
                 }
                 
                 function refreshRoleListTable(){
-                    fetch('/v1/roles').then(function(results){
+                    fetch('/v1/system_roles').then(function(results){
                         return results.json();
                     }).then(function(result){
                         var roles = result.docs;

@@ -1,3 +1,14 @@
+const { fetch } = require('../../../config');
+
+const printRolesSelection = async (req) => {
+    const response = await fetch('/v1/system_roles');
+    const roles = response.docs;
+    return roles.map(role => `
+        <label style="display:flex;align-items:center">
+            <input type="checkbox" name="${role.code}" id="${role.code}" data-role-id="${role._id}" data-type="role"> : ${role.name}
+        </label>
+    `).join('');
+}
 module.exports = (req) => {
     return `
         <style>
@@ -8,7 +19,7 @@ module.exports = (req) => {
                 align-items: flex-end;
                 font-size:11px;
             }
-            .user-form input{
+            .user-form input[type="text"]{
                 padding: 0.3em;
                 width: 100%;
             }
@@ -48,13 +59,13 @@ module.exports = (req) => {
             <label for="phone">Phone :</label>
             <input type="tel" name="Phone" id="phone">
         </div>
-        <div>
-            <label for="roles">Roles :</label>
-            <input type="text" name="Roles" id="roles">
-        </div>
+        <fieldset style="font-size: 13px">
+            <legends>Roles :</legends>
+            ${req.print(printRolesSelection(req))}
+            </fieldset>
         <div style="width: 100%">
             <input type="submit" style="width: auto;" value="Save">
-            <input type="reset" style="width: auto;" >
+            <input type="reset" style="width: auto;">
         </div>
     </form>
     <script>
@@ -62,12 +73,32 @@ module.exports = (req) => {
             exports.app = exports.app || {};
             
             document.querySelector('.user-form input[type="submit"]').addEventListener('click',submitForm);
+            document.querySelector('.user-form input[type="reset"]').addEventListener('click',clearForm);
             
+            var catalog = {};
+
+            function loadAllRoles(){
+                fetch('/v1/system_roles').then(function(response) {
+                    return response.json();
+                }).then(function(data){
+                    catalog.roles = data.docs;
+                });
+            }
+            loadAllRoles();
+
             function getValue(id){
                 return document.getElementById(id).value;
             }
             function setValue(id,value){
                 document.getElementById(id).value = value;
+            }
+
+            function getSelected(id){
+                return document.getElementById(id).checked;
+            }
+            
+            function setSelected(id,value){
+                document.getElementById(id).checked = value;
             }
             
             function clearForm() {
@@ -75,25 +106,38 @@ module.exports = (req) => {
                 setValue('userId','');
                 setValue('email','');
                 setValue('phone','');
-                setValue('roles','');
+                document.querySelectorAll('[data-type="role"]').forEach(function(node){
+                    setSelected(node.id,false);
+                });
                 setValue('_id','');
             }
+
             
             function submitForm() {
                 try{
                     var app = exports.app;
                   
                    app.showConfirmation('Are you sure you want to Save ?',['Yes','No'],function(button){
-                       if(button.innerText === 'Yes'){
-                          var data = {
-                              name: getValue('name'),
-                              userId: getValue('userId'),
-                              email: getValue('email'),
-                              phone: getValue('phone'),
-                              roles: getValue('roles'),
-                          };
+                        if(button.innerText === 'Yes'){
+                            var selectedRoles = [];
+                            document.querySelectorAll('[data-type="role"]').forEach(function(node){
+                                if(node.checked){
+                                    selectedRoles.push(node.id);
+                                }
+                            })
+
+                            var data = {
+                                name: getValue('name'),
+                                userId: getValue('userId'),
+                                email: getValue('email'),
+                                phone: getValue('phone'),
+                                roles : catalog.roles.filter(function(role){
+                                    return selectedRoles.indexOf(role.code) >= 0;
+                                })
+                            };
+                            debugger;
                           var id = getValue('_id'); 
-                          fetch('/v1/users'+(id?'/'+id:''),{
+                          fetch('/v1/system_users'+(id?'/'+id:''),{
                               method : id ? 'PUT':'POST',
                               credentials:'same-origin',
                               headers:{
@@ -121,16 +165,21 @@ module.exports = (req) => {
             }
             
             function loadForm(id){
-                fetch('/v1/users/'+id).then(function(result){
+                fetch('/v1/system_users/'+id).then(function(result){
                     return result.json();
                 }).then(function(user){
+                    clearForm();
                     if(user){
                         setValue('name',user.name);
                         setValue('userId',user.userId);
                         setValue('email',user.email);
                         setValue('phone',user.phone);
-                        setValue('roles',user.roles);
                         setValue('_id',user._id);    
+                        if(user.roles){
+                            user.roles.forEach(function(role){
+                                setSelected(role.code,true);
+                            });
+                        }
                     }
                 });
             }

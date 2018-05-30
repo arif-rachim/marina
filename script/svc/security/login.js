@@ -1,33 +1,28 @@
-const {textToBase64,administrator,apiServer} = require("../../../config");
-const fetch = require("node-fetch");
+const {textToBase64,administrator,apiServer,fetch} = require("../../../config");
 module.exports = async (req,res) => {
     // first we check if the login is 
     try{
-        const userName = req.body.userName;
+        const userId = req.body.userName;
         const password = textToBase64(req.body.password);
-
-        if(administrator.userName.toUpperCase() === userName.toUpperCase() && administrator.password === password){
+        let user = await fetch(`/v1/system_users?userId=${userId}`);
+        user = user && user.docs && user.docs.length ? user.docs[0] : false;
+        if(user && user.password == password){
             try {
                 const sessionId = req.cookies.sessionId;
-                let result = await fetch(`${apiServer}/v1/active-sessions`,{
-                    headers: {
-                        'Content-Type' : 'application/json'
-                    },
-                    method : 'post',
-                    body: JSON.stringify({"sessionId": sessionId, account : {
-                        "name" : "Administrator",
-                        "group" : "Administrator"
-                    }})
-                });
-                let data = await result.json();
-                res.end(JSON.stringify(data));
+                const session = await fetch(`/v1/system_active_sessions`,{
+                    sessionId : sessionId,
+                    account : user
+                },'POST');
+                res.end(JSON.stringify(session));
             }catch(err){
                 console.error(err);
+                res.end({errorMessage:err.message});
             }
         }else{
-            // we need to check the user database to get his data !!
+            res.end(JSON.stringify({errorMessage:'Unable to find user or wrong password'}));
         }
     }catch(err){
         console.error(err);
+        res.end(JSON.stringify({errorMessage:err.message}));
     }
 };

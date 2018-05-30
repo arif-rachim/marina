@@ -14,7 +14,7 @@ function printUserTable(users) {
 }
 
 module.exports = async (req) => {
-    let users = await fetch('v1/users');
+    let users = await fetch('v1/system_users');
     users = users.docs;
     return `
         <style>
@@ -80,7 +80,7 @@ module.exports = async (req) => {
                     var id = event.target.getAttribute('data-id');
                     app.showConfirmation('Are you sure you want to delete ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes' ){
-                            fetch('/v1/users/'+id,{
+                            fetch('/v1/system_users/'+id,{
                                 method : 'DELETE',
                                 credentials : 'same-origin',
                                 header : {
@@ -100,7 +100,7 @@ module.exports = async (req) => {
                 }
                 
                 function refreshUserListTable(){
-                    fetch('/v1/users').then(function(results){
+                    fetch('/v1/system_users').then(function(results){
                         return results.json();
                     }).then(function(result){
                         var users = result.docs;
