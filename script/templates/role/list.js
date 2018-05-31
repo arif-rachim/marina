@@ -5,8 +5,8 @@ function printRoleTable(roles,accessibilities) {
         <tr data-id="${role._id}">
             <td>${role.name || ''}</td>
             <td>${role.accessibility.map(accessId => {
-                    return accessibilities.filter(access => access._id === accessId)[0]
-                }).map(access => access.name).join(', ') || ''}</td>
+                    return accessibilities.filter(access => access && access._id === accessId)[0]
+                }).map(access => access ? access.name : '').join(', ') || ''}</td>
             <td>
                 <i class="far fa-trash-alt" data-id="${role._id}" onclick="event.stopPropagation();app.deleteRole(event);"></i>
             </td>

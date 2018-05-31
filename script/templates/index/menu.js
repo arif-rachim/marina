@@ -3,7 +3,7 @@ let {fetch} = require('../../../config');
 const printMenu = (roles) => {
     return roles.reduce((token,role) => {
         role.accessibility.forEach(accessibility => {
-            if(token.key.indexOf(accessibility._id)<0){
+            if(accessibility && accessibility._id && (token.key.indexOf(accessibility._id)<0)){
                 token.items.push(accessibility);
             }
         });
@@ -190,7 +190,7 @@ module.exports = async(req) => {
                     var accessibilities = role.accessibility;
                     for(var i = 0;i<accessibilities.length;i++){
                         var access = accessibilities[i];
-                        if(token.key.indexOf(access._id)<0){
+                        if(access && access._id && token.key.indexOf(access._id)<0){
                             token.key.push(access._id);
                             token.items.push(access);
                         }
