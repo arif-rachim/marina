@@ -2,11 +2,13 @@ let {fetch} = require('../../../config');
 
 const printMenu = (roles) => {
     return roles.reduce((token,role) => {
-        role.accessibility.forEach(accessibility => {
-            if(accessibility && accessibility._id && (token.key.indexOf(accessibility._id)<0)){
-                token.items.push(accessibility);
-            }
-        });
+        if(role) {
+            role.accessibility.forEach(accessibility => {
+                if (accessibility && accessibility._id && (token.key.indexOf(accessibility._id) < 0)) {
+                    token.items.push(accessibility);
+                }
+            });
+        }
         return token;
     },{key:[],items:[]}).items.map(access => {
         return `<a class="menu-item" href="${access.path}">${access.shortName}</a>`;
@@ -24,8 +26,10 @@ module.exports = async(req) => {
                 user.account.roles = roles;
                 for(let i = 0;i<roles.length;i++){
                     let role = roles[i];
-                    let accessibility = await fetch(`v1/system_accessibility?$ids=${role.accessibility}`);
-                    role.accessibility = accessibility;
+                    if(role){
+                        let accessibility = await fetch(`v1/system_accessibility?$ids=${role.accessibility}`);
+                        role.accessibility = accessibility;
+                    }
                 }
             }
         }catch(err){
