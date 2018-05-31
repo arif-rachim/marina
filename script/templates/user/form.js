@@ -48,23 +48,23 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div>
             <label for="userId">User ID :</label>
-            <input type="text" name="User ID" id="userId">
+            <input type="text" name="User ID" id="userId" required>
         </div>
         <div>
             <label for="password">Password :</label>
-            <input type="password" name="Password" id="userPassword">
+            <input type="password" name="Password" id="userPassword" required>
         </div>
         <div class="name">
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name">
+            <input type="text" name="Name" id="name" required>
         </div>
         <div>
             <label for="email">Email :</label>
-            <input type="email" name="Email" id="email">
+            <input type="email" name="Email" id="email" required>
         </div>
         <div>
             <label for="phone">Phone :</label>
-            <input type="tel" name="Phone" id="phone">
+            <input type="tel" name="Phone" id="phone" required>
         </div>
         <fieldset style="font-size: 13px">
             <legends>Roles :</legends>
@@ -79,9 +79,9 @@ module.exports = (req) => {
         (function(exports){
             exports.app = exports.app || {};
             
-            document.querySelector('.user-form input[type="submit"]').addEventListener('click',submitForm);
+            //document.querySelector('.user-form input[type="submit"]').addEventListener('click',submitForm);
             document.querySelector('.user-form input[type="reset"]').addEventListener('click',clearForm);
-            
+            document.querySelector('.user-form').addEventListener('submit',submitForm);
             var catalog = {};
 
             function loadAllRoles(){
@@ -154,11 +154,19 @@ module.exports = (req) => {
                 setValue('_id','');
             }
 
+            function formIsValid() {
+                var nodeList = document.querySelectorAll('input[type="text"] , input[type="password"] , input[type="email"] , input[type="tel"]');
+                return [].slice.call(nodeList).reduce(function(allValid,node){
+                    return allValid && node.checkValidity();
+                },true);   
+            }
             
             function submitForm() {
                 try{
                     var app = exports.app;
-                  
+                    if(!formIsValid()){
+                        return false;
+                    }
                    app.showConfirmation('Are you sure you want to Save ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes'){
                             var selectedRoles = [];
@@ -167,7 +175,6 @@ module.exports = (req) => {
                                     selectedRoles.push(node.id);
                                 }
                             });
-
                             var data = {
                                 name: getValue('name'),
                                 userId: getValue('userId'),
@@ -176,7 +183,6 @@ module.exports = (req) => {
                                 password: stringToBase64(getValue('userPassword')),
                                 roles : selectedRoles
                             };
-                            debugger;
                           var id = getValue('_id'); 
                           fetch('/v1/system_users'+(id?'/'+id:''),{
                               method : id ? 'PUT':'POST',
@@ -202,7 +208,6 @@ module.exports = (req) => {
               }catch(err){
                   console.error(err);
               }
-              return false;
             }
             
             function loadForm(id){

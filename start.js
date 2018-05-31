@@ -15,7 +15,7 @@ app.use((req, res, next) => {
   let cookie = req.cookies.sessionId;
   if (cookie === undefined){
     let cookie= guid();
-    res.cookie('sessionId',cookie, { maxAge: 900000, httpOnly: true });
+    res.cookie('sessionId',cookie, { maxAge: 604800000, httpOnly: true });
   } 
   next();
 });

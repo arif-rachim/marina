@@ -45,11 +45,11 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div >
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name">
+            <input type="text" name="Name" id="name" required>
         </div>
         <div >
             <label for="description"> Description :</label>
-            <input type="text" name="Description" id="description">
+            <input type="text" name="Description" id="description" required>
         </div>
         
         <fieldset style="font-size: 13px">
@@ -66,7 +66,7 @@ module.exports = (req) => {
         (function(exports){
             exports.app = exports.app || {};
             
-            document.querySelector('.role-form input[type="submit"]').addEventListener('click',submitForm);
+            document.querySelector('.role-form').addEventListener('submit',submitForm);
             document.querySelector('.role-form input[type="reset"]').addEventListener('click',clearForm);
             var catalog = {};
 
@@ -147,7 +147,6 @@ module.exports = (req) => {
                 }catch(err){
                   console.error(err);
                 }
-              return false;
             }
             
             function loadForm(id){

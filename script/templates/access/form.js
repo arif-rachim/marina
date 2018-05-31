@@ -35,19 +35,19 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div >
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name">
+            <input type="text" name="Name" id="name" required>
         </div>
         <div >
             <label for="shortName"> Short Name :</label>
-            <input type="text" name="ShortName" id="shortName">
+            <input type="text" name="ShortName" id="shortName" required>
         </div>
         <div >
             <label for="description"> Description :</label>
-            <input type="text" name="Description" id="description">
+            <input type="text" name="Description" id="description" required>
         </div>
         <div >
             <label for="path"> Path :</label>
-            <input type="text" name="Path" id="path">
+            <input type="text" name="Path" id="path" required>
         </div>
         <div style="width: 100%">
             <input type="submit" style="width: auto;" value="Save">
@@ -58,9 +58,9 @@ module.exports = (req) => {
         (function(exports){
             exports.app = exports.app || {};
             
-            document.querySelector('.access-form input[type="submit"]').addEventListener('click',submitForm);
+            document.querySelector('.access-form').addEventListener('submit',submitForm);
             document.querySelector('.access-form input[type="reset"]').addEventListener('click',clearForm);
-
+            document.querySelector('input[name="Path"]').addEventListener('change',validatePath);
 
             function getValue(id){
                 return document.getElementById(id).value;
@@ -85,7 +85,17 @@ module.exports = (req) => {
                 setValue('_id','');
             }
             
+            function validatePath(event) {
+                var inputPath = event.target;
+                if(inputPath.value.indexOf('/') !== 0){
+                    inputPath.setCustomValidity('Path must start with "/" ')
+                }else{
+                    inputPath.setCustomValidity('');
+                }
+                
+            }
             function submitForm() {
+                
                 try{
                     var app = exports.app;
                     app.showConfirmation('Are you sure you want to Save ?',['Yes','No'],function(button){
@@ -124,7 +134,6 @@ module.exports = (req) => {
                 }catch(err){
                   console.error(err);
                 }
-              return false;
             }
             
             function loadForm(id){

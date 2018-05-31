@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/access/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/access/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/role/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/role/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/user/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/user/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/start.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,79 +25,90 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="theme.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
+      <file leaf-file-name="list.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/user/list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="42" column="6" lean-forward="true" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+            <state relative-caret-position="1309">
+              <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fetch.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/whatwg-fetch/fetch.js">
+      <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7469" />
+            <state relative-caret-position="243">
+              <caret line="168" column="21" lean-forward="true" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="start.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/role/form.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="51" column="75" selection-start-line="51" selection-start-column="75" selection-end-line="51" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/access/form.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="986">
+              <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/start.js">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theme.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="97" column="41" lean-forward="true" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
+              <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="initialize.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/svc/system/initialize.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="76" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="system_users.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.resources/db/system_users.json">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="system_roles.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.resources/db/system_roles.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="system_accessibility.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.resources/db/system_accessibility.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="system_active_sessions.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.resources/db/system_active_sessions.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="synopsis.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -110,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>location.reload</find>
       <find>User List</find>
       <find>reload</find>
       <find>logout</find>
@@ -140,6 +152,7 @@
       <find>menuHolder</find>
       <find>updateMenus</find>
       <find>printMenu</find>
+      <find>debugger</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -192,16 +205,16 @@
         <option value="$PROJECT_DIR$/script/templates/user/list.js" />
         <option value="$PROJECT_DIR$/script/templates/access/list.js" />
         <option value="$PROJECT_DIR$/script/templates/access/page.js" />
-        <option value="$PROJECT_DIR$/start.js" />
         <option value="$PROJECT_DIR$/script/templates/under-construction.js" />
         <option value="$PROJECT_DIR$/script/intents/json/get.js" />
         <option value="$PROJECT_DIR$/script/templates/role/list.js" />
-        <option value="$PROJECT_DIR$/script/templates/user/form.js" />
-        <option value="$PROJECT_DIR$/script/templates/role/form.js" />
-        <option value="$PROJECT_DIR$/script/templates/access/form.js" />
         <option value="$PROJECT_DIR$/script/svc/system/initialize.js" />
         <option value="$PROJECT_DIR$/script/templates/index/menu.js" />
         <option value="$PROJECT_DIR$/script/templates/theme.js" />
+        <option value="$PROJECT_DIR$/script/templates/user/form.js" />
+        <option value="$PROJECT_DIR$/script/templates/role/form.js" />
+        <option value="$PROJECT_DIR$/script/templates/access/form.js" />
+        <option value="$PROJECT_DIR$/start.js" />
       </list>
     </option>
   </component>
@@ -250,6 +263,9 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="22" />
     <option name="y" value="136" />
@@ -266,30 +282,45 @@
         <subPane>
           <expand>
             <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cetc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cetc" type="462c0819:PsiDirectoryNode" />
               <item name=".resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name=".resources" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cetc" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cetc" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cetc" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="access" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cetc" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="role" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cetc" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -362,7 +393,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124468000" />
+    <option name="totallyTimeSpent" value="127347000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -377,16 +408,15 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25553215" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5021075" side_tool="true" visible="true" weight="0.23503809" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23638344" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.23503809" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.50499284" side_tool="true" weight="0.25553215" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.34313726" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49841937" weight="0.34276387" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40958604" />
       <window_info anchor="bottom" id="Thumbnails" order="9" weight="0.32897604" />
@@ -401,12 +431,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947917" visible="true" weight="0.2356688" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.34288746" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40958604" />
+      <window_info anchor="bottom" id="Messages" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005208" side_tool="true" visible="true" weight="0.2356688" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="8" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.34288746" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
     </layout>
   </component>
@@ -432,13 +463,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/script/webcomponents/application.js" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/intents/create/get.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -496,12 +520,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/user/page.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="476">
           <caret line="28" column="116" selection-start-line="28" selection-start-column="116" selection-end-line="28" selection-end-column="116" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -520,9 +540,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/articles.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.resources/db/articles.json" />
     <entry file="file://$PROJECT_DIR$/script/templates/access/page.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -558,12 +576,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/users.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/active-sessions.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.resources/db/users.json" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/active-sessions.json" />
     <entry file="file://$PROJECT_DIR$/script/templates/components/confirmation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -580,7 +594,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/user/list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="1309">
           <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
         </state>
       </provider>
@@ -592,20 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="110" column="55" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/role/list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -613,39 +613,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/role/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/access/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/svc/system/initialize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="76" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/system_users.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/system_roles.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/system_accessibility.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/system_active_sessions.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.resources/db/system_users.json" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/system_roles.json" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/system_accessibility.json" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/system_active_sessions.json" />
     <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -655,30 +629,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/whatwg-fetch/fetch.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/whatwg-fetch/fetch.js" />
+    <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7469" />
+        <state relative-caret-position="255">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="168" column="21" lean-forward="true" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/role/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="51" column="75" selection-start-line="51" selection-start-column="75" selection-end-line="51" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/access/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/start.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="97" column="41" lean-forward="true" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="42" column="6" lean-forward="true" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        <state relative-caret-position="221">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
         </state>
       </provider>
     </entry>
