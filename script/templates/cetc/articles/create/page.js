@@ -57,43 +57,67 @@ module.exports = async (req) => {
             var saveButton = document.querySelector('.save-button');
             var articleForm = document.querySelector('.article-form');
             
+            
+            
+            ClassicEditor.create( document.querySelector( '#content-editor' ) ).then(function(inputContent){
+                
+                
+            loadButton.addEventListener('click',function(){
+                var textUrl = inputArticle.value;
+                fetch('/svc/crawler.crawl',{
+                    method : 'POST',
+                    headers : {
+                        'content-type' : 'application/json'
+                    },
+                    credentials : 'same-origin',
+                    body : JSON.stringify({
+                        url : textUrl
+                    })
+                }).then(function(response){
+                    return response.json();
+                }).then(function(article){
+                    inputTitle.value = article.title;
+                    inputDescription.innerText = article.description;
+                    inputContent.setData(article.content);
+                    inputImagePath.value = article.images[0].url;
+                    imageContainer.src = article.images[0].url;
+                });
+            });
+        
             articleForm.addEventListener('submit',onPostArticle);
             
             function onPostArticle(event) {
                 window.scrollTo(0,0);
                 app.showConfirmation('Are you sure you want to Post the Article ?',['Yes','No'],function(btn){
+                    
+                    var data = {
+                        "date": moment().format('MMMM Do YYYY, h:mm:ss a'),
+                        "title": inputTitle.value,
+                        "content": inputContent.getData(),
+                        "source": inputArticle.value,
+                        "category": "Headline",
+                        "tags": app.user.account.name,
+                        "origin": "https://www.cetc.ae",
+                        "featureImage": inputImagePath.value,
+                    };
+                    
                     if(btn.innerText === 'Yes'){
-                        
+                        fetch('/v1/stories',{
+                            method : 'POST',
+                            headers : {
+                                'content-type' : 'application/json'
+                            },
+                            credentials : 'same-origin',
+                            body : JSON.stringify(data)
+                        }).then(function(response){
+                            return response.json();
+                        }).then(function(){
+                            app.showNotification('Article Posted');
+                        });
                     }
                 });
             }
             
-            ClassicEditor.create( document.querySelector( '#content-editor' ) ).then(function(inputContent){
-                
-                
-                loadButton.addEventListener('click',function(){
-                    var textUrl = inputArticle.value;
-                    fetch('/svc/crawler.crawl',{
-                        method : 'POST',
-                        headers : {
-                            'content-type' : 'application/json'
-                        },
-                        credentials : 'same-origin',
-                        body : JSON.stringify({
-                            url : textUrl
-                        })
-                    }).then(function(response){
-                        return response.json();
-                    }).then(function(article){
-                        inputTitle.value = article.title;
-                        inputDescription.innerText = article.description;
-                        inputContent.setData(article.content);
-                        inputImagePath.value = article.images[0].url;
-                        imageContainer.src = article.images[0].url;
-                    });
-                });
-            
-                
             }).catch(function(error) {
                 console.error( error );
             });    

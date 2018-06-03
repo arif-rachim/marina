@@ -2,27 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/script/svc/crawler/crawl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/templates/cetc/articles/create/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/security/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/security/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/access/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/access/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/access/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/access/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/access/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/access/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/components/confirmation.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/components/confirmation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index/commanders-message.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index/commanders-message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index/synopsis.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index/synopsis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/role/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/role/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/role/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/role/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/role/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/role/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/create/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/create/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/templates/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/user/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/user/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/user/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/user/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/user/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/user/page.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -44,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="269">
-              <caret line="142" column="17" lean-forward="true" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
+              <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#label#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#label#0;n#!!top" expanded="true" />
@@ -74,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/script/templates/access/form.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="236">
-              <caret line="52" column="51" lean-forward="true" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="69" />
+              <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="69" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#4;n#form#0;n#!!top" expanded="true" />
               </folding>
@@ -91,26 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/index.js">
+      <file leaf-file-name="theme.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="n#style#0;n#h3#0;n#article#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="synopsis.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="100" selection-start-line="7" selection-start-column="100" selection-end-line="7" selection-end-column="100" />
-              <folding>
-                <element signature="n#style#0;n#h3#0;n#section#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -118,8 +87,8 @@
       <file leaf-file-name="page.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/create/page.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+            <state relative-caret-position="417">
+              <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
@@ -142,11 +111,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="page.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/role/page.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
-              <caret line="29" column="81" lean-forward="true" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
+              <caret line="29" column="81" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -184,8 +162,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>printMenu</find>
-      <find>debugger</find>
       <find>accessibility.forEach</find>
       <find>_id</find>
       <find>fetch('/v1/system_accessibility?$ids='+role.accessibility);</find>
@@ -214,6 +190,8 @@
       <find>setSelected</find>
       <find>Craet</find>
       <find>showCon</find>
+      <find>showNoti</find>
+      <find>app.user</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -258,7 +236,6 @@
         <option value="$PROJECT_DIR$/script/svc/crawler/crawl-url.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/stories/page.js" />
         <option value="$PROJECT_DIR$/styles/reset.css" />
-        <option value="$PROJECT_DIR$/script/templates/theme.js" />
         <option value="$PROJECT_DIR$/script/templates/index/commanders-message.js" />
         <option value="$PROJECT_DIR$/script/templates/role/list.js" />
         <option value="$PROJECT_DIR$/script/templates/user/list.js" />
@@ -275,6 +252,7 @@
         <option value="$PROJECT_DIR$/script/templates/access/page.js" />
         <option value="$PROJECT_DIR$/script/templates/user/form.js" />
         <option value="$PROJECT_DIR$/script/templates/components/confirmation.js" />
+        <option value="$PROJECT_DIR$/script/templates/theme.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/create/page.js" />
       </list>
     </option>
@@ -526,12 +504,12 @@
       <workItem from="1527519642753" duration="13935000" />
       <workItem from="1527558454454" duration="44555000" />
       <workItem from="1527660102761" duration="4454000" />
-      <workItem from="1527992812388" duration="19258000" />
+      <workItem from="1527992812388" duration="21787000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149369000" />
+    <option name="totallyTimeSpent" value="151898000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,11 +526,11 @@
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5021075" side_tool="true" visible="true" weight="0.23503809" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50263435" side_tool="true" visible="true" weight="0.23503809" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.23503809" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49736565" visible="true" weight="0.23503809" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49841937" weight="0.34276387" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49789253" weight="0.34276387" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
@@ -675,13 +653,6 @@
         <state relative-caret-position="-1215" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/start.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -763,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1144">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-238">
@@ -796,7 +760,7 @@
     <entry file="file://$PROJECT_DIR$/script/templates/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="n#style#0;n#h3#0;n#article#0;n#!!top" expanded="true" />
           </folding>
@@ -806,7 +770,7 @@
     <entry file="file://$PROJECT_DIR$/script/templates/access/form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
-          <caret line="52" column="51" lean-forward="true" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="69" />
+          <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="69" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#4;n#form#0;n#!!top" expanded="true" />
           </folding>
@@ -836,7 +800,7 @@
     <entry file="file://$PROJECT_DIR$/script/templates/role/page.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="29" column="81" lean-forward="true" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
+          <caret line="29" column="81" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -853,7 +817,7 @@
     <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
-          <caret line="142" column="17" lean-forward="true" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
+          <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
           <folding>
             <element signature="n#style#0;n#label#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#label#0;n#!!top" expanded="true" />
@@ -870,10 +834,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/create/page.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+        <state relative-caret-position="417">
+          <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
