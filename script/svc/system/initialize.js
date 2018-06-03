@@ -19,13 +19,20 @@ const basicAccessibility = [
         description : 'Access for Managing Access',
         path : '/page/access.page'
     }
+    ,
+    {
+        name : 'Articles Management',
+        shortName : 'Articles',
+        description : 'Access for Managing Articles',
+        path : '/page/cetc.articles.page'
+    }
 ];
 
 const basicRoles = [
     {
         name : 'Administrator',
         description : 'Administrator Role',
-        accessibility : 'Users Management,Roles Management,Access Management'
+        accessibility : 'Users Management,Roles Management,Access Management,Articles Management'
     }
 ]
 

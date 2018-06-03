@@ -7,9 +7,6 @@ module.exports = (req,content) => `
 <head>
     <meta charset="UTF-8">
     <title>Commander's Emerging Technology</title>
-    <!--
-    <link href="/styles/reset.css" rel="stylesheet">
-    -->
     <link href="/styles/font-family.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -18,6 +15,7 @@ module.exports = (req,content) => `
     <script src="/node_modules/whatwg-fetch/fetch.js"></script>
     <script src="/node_modules/moment/moment.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/loader.css">
 </head>
 <style>
     body{
@@ -108,6 +106,53 @@ ${req.print(menu(req))}
 <div style="flex: 1 1 auto;">
 ${content}
 </div>
+<div class="app-loader hide">
+    <div class="loader-container">
+        <div class="block block-1"></div>
+        <div class="block block-2"></div>
+        <div class="block block-3"></div>
+    </div>
+</div>
+<script>
+    (function(exports){
+        exports.app = exports.app || {};
+        var app = exports.app;
+        var loaderPanel = document.querySelector('.app-loader');
+        app.fetch = function(url,json,showLoader){
+            if(showLoader){
+                app.loader(true);    
+            }
+            return fetch(url,{
+                method : 'POST',
+                headers : {
+                    'content-type' : 'application/json'
+                },
+                credentials : 'same-origin',
+                body : JSON.stringify(json)
+            }).then(function(response){
+                return response.json();
+            }).then(function(data){
+                app.loader(false);
+                return data;
+            }).catch(function(error){
+                console.log(error);
+                app.loader(false);
+            });
+        };
+        app.loader = function(loader){
+            if(loader){
+                loaderPanel.style.display = 'flex';
+                loaderPanel.classList.remove('hide');
+            }else{
+                loaderPanel.classList.add('hide');
+                setTimeout(function(){
+                loaderPanel.style.display = 'none';    
+                },300);
+            }
+        };
+    })(window);
+
+</script>
 <section style="margin-bottom: 1em;border-top:1px solid #ddd">
     <span>
         <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 1.5em; line-height: 1.4; text-align: center;">CETC</div>

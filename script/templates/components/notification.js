@@ -9,7 +9,7 @@ module.exports = (req) => {
             left:0px;
             padding: 0em;
             margin:0em;
-            transition: bottom 300ms;
+            transition: bottom 300ms ease-out;
             width: 100%;
             text-align: center;
         }

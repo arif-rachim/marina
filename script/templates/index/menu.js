@@ -72,7 +72,7 @@ module.exports = async(req) => {
         padding:0.5em;
         
         top:0px;
-        transition: top 300ms;
+        transition: top 300ms ease-out;
         background-color: #FAFAFA;
         border: 1px solid #CCC;
         border-top : none;
@@ -169,16 +169,7 @@ module.exports = async(req) => {
         };
         
         function loadCurrentUser(){
-            fetch('/svc/security.get-current-user',{
-                method : 'POST',
-                credentials : 'same-origin',
-                headers : {
-                    'content-type' : 'application/json'
-                },
-                body : ''
-            }).then(function(response){
-                return response.json();
-            }).then(function(data){
+            app.fetch('/svc/security.get-current-user',{}).then(function(data){
                 if(data && data.account){
                     app.user = data;
                     populateRolesOnUser(app.user);
@@ -210,6 +201,9 @@ module.exports = async(req) => {
         
         function updateMenus(){
             var menus = getUserMenus();
+            if(menuLoginLogout.innerText == 'Login' && app.user){
+                app.showNotification('Successfully logged in as '+app.user.account.name);    
+            }
             menuHolder.innerHTML = menus.map(function(menuItem){
                 return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';
             }).join('');
@@ -221,15 +215,7 @@ module.exports = async(req) => {
             if(app.user){
                 app.showConfirmation('Are you sure you wish to logout ? ',['Yes','No'],function(button){
                     if(button.innerText === 'Yes'){
-                        fetch('/svc/security.logout',{
-                            method:'POST',
-                            headers: {
-                                'content-type' : 'application/json'
-                            },
-                            credentials : 'same-origin'
-                        }).then(function(result){
-                            return result.json();
-                        }).then(function(user){
+                        app.fetch('/svc/security.logout',{},true).then(function(user){
                             app.showNotification('Successfully logged out');
                             delete app.user;
                             updateMenus();
@@ -251,25 +237,14 @@ module.exports = async(req) => {
                 userName: getValue('userName'),
                 password: getValue('password')
             };
-            fetch('/svc/security.login',{
-                method:'POST',
-                headers: {
-                    'content-type' : 'application/json'
-                },
-                credentials : 'same-origin',
-                body : JSON.stringify(data)
-            })
-            .then(function(result){
-                return result.json();
-            })
-            .then(function(user){
+            app.fetch('/svc/security.login',data,false).then(function(user){
                 if(user.errorMessage){
                     app.showNotification(user.errorMessage);
                     return;
                 }
                 app.user = user;
                 populateRolesOnUser(app.user);
-                app.showNotification('Successfully logged in as '+user.account.name);
+                
             });
             
         }
