@@ -37,7 +37,6 @@ module.exports = async (req) => {
             }
             .role-list-table th  {
                 text-align: left;
-                font-size: 1.1em;
             }
             
             .role-list-table thead {
@@ -50,7 +49,6 @@ module.exports = async (req) => {
             
             .role-list-table {
                 width: 100%;
-                font-size: 12px;
                 
             }
             .role-list-table tr.selected{
@@ -59,7 +57,7 @@ module.exports = async (req) => {
         </style>
         <table class="role-list-table" cellspacing="0">
             <thead>
-                <tr>
+                <tr style="height: 2.2em;">
                     <th>Role Name</th>
                     <th>Accessibility</th>
                     <th></th>

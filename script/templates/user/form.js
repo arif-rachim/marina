@@ -5,7 +5,7 @@ const printRolesSelection = async (req) => {
     const roles = response.docs;
     return roles.map(role => `
         <label style="display:flex;align-items:center">
-            <input type="checkbox" name="${role.code}" id="${role._id}" data-role-id="${role._id}" data-type="role"> : ${role.name}
+            <input type="checkbox" name="${role.code}" id="${role._id}" data-role-id="${role._id}" data-type="role" style="margin-top: 0.2em"> : ${role.name}
         </label>
     `).join('');
 }
@@ -17,7 +17,6 @@ module.exports = (req) => {
                 flex-wrap: wrap;
                 margin: auto;
                 align-items: flex-end;
-                font-size:11px;
             }
             .user-form input[type="text"], 
             .user-form input[type="email"], 
@@ -48,31 +47,31 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div>
             <label for="userId">User ID :</label>
-            <input type="text" name="User ID" id="userId" required>
+            <input type="text" name="User ID" id="userId" required class="form-control">
         </div>
         <div>
             <label for="password">Password :</label>
-            <input type="password" name="Password" id="userPassword" required>
+            <input type="password" name="Password" id="userPassword" required class="form-control">
         </div>
         <div class="name">
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name" required>
+            <input type="text" name="Name" id="name" required class="form-control">
         </div>
         <div>
             <label for="email">Email :</label>
-            <input type="email" name="Email" id="email" required>
+            <input type="email" name="Email" id="email" required class="form-control">
         </div>
         <div>
             <label for="phone">Phone :</label>
-            <input type="tel" name="Phone" id="phone" required>
+            <input type="tel" name="Phone" id="phone" required class="form-control">
         </div>
-        <fieldset style="font-size: 13px">
-            <legends>Roles :</legends>
+        <fieldset style="padding-left: 0.3em;">
+            <legend style="font-size:1.2em">Roles :</legend>
             ${req.print(printRolesSelection(req))}
             </fieldset>
         <div style="width: 100%">
-            <input type="submit" style="width: auto;" value="Save">
-            <input type="reset" style="width: auto;">
+            <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">
+            <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
         </div>
     </form>
     <script>
@@ -139,7 +138,9 @@ module.exports = (req) => {
             }
             
             function setSelected(id,value){
-                document.getElementById(id).checked = value;
+                if(document.getElementById(id)){
+                    document.getElementById(id).checked = value;
+                }
             }
             
             function clearForm() {

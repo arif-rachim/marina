@@ -23,7 +23,6 @@ module.exports = async (req) => {
             }
             .access-list-table th  {
                 text-align: left;
-                font-size: 1.1em;
             }
             
             .access-list-table thead {
@@ -36,7 +35,6 @@ module.exports = async (req) => {
             
             .access-list-table {
                 width: 100%;
-                font-size: 12px;
                 
             }
             .access-list-table tr.selected{
@@ -45,7 +43,7 @@ module.exports = async (req) => {
         </style>
         <table class="access-list-table" cellspacing="0">
             <thead>
-                <tr>
+                <tr style="height: 2.2em;">
                     <th>Access Name</th>
                     <th>Access Path</th>
                     <th></th>

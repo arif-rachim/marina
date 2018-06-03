@@ -1,6 +1,6 @@
 const {textToBase64,administrator,apiServer,fetch} = require("../../../config");
 module.exports = async (req,res) => {
-    // first we check if the login is 
+    // first we check if the  is
     try{
         const userId = req.body.userName;
         const password = textToBase64(req.body.password);

@@ -56,7 +56,7 @@ module.exports = async(req) => {
         padding:0px;
     }
     .login-form input{
-        padding:0.3em;
+        padding:0.5em;
     }
     
     .login-form .form-item{
@@ -69,16 +69,17 @@ module.exports = async(req) => {
     }
     .login-slider{
         position: relative;
-        padding:0.3em;
-        border-top : none;
-        background-color: #eee;
+        padding:0.5em;
+        
         top:0px;
         transition: top 300ms;
+        background-color: #FAFAFA;
         border: 1px solid #CCC;
         border-top : none;
+        
     }
     .login-slider.hide {
-        top : -200px;
+        top : -300px;
     }
     .login-panel{
         position: relative;
@@ -103,19 +104,19 @@ module.exports = async(req) => {
 <div style="position: absolute;width: 100%">
 <div class="login-panel">
     <div class="login-slider hide">
-        <form class="login-form" onsubmit="return false;git ">
+        <form class="login-form" onsubmit="return false;" style="width: 300px">
             <div class="form-item">
-                <label for="userName">User Id:</label>
-                <input id="userName" placeholder="Email or User ID">
+                <label for="userName" >User Id:</label>
+                <input id="userName" placeholder="Email or User ID" class="form-control">
             </div>
             <div class="form-item">
                 <label for="password" >Password:</label>
-                <input id="password" type="password" placeholder="Password">
+                <input id="password" type="password" placeholder="Password" class="form-control">
             </div>
             <div class="form-item" style="display: flex;justify-content: flex-end;padding:0.5em 0.3em">
                 <div style="display: flex;justify-content: flex-end">
-                    <button style="margin-right: 0.5em;" class="login-button">Login</button>
-                    <button class="cancel-button">Cancel</button>
+                    <button style="margin-right: 0.5em;" class="btn btn-primary login-button">Login</button>
+                    <button class="btn cancel-button">Cancel</button>
                 </div>
             </div>
         </form>

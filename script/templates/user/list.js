@@ -24,7 +24,6 @@ module.exports = async (req) => {
             }
             .user-list-table th  {
                 text-align: left;
-                font-size: 1.1em;
             }
             
             .user-list-table thead {
@@ -37,7 +36,6 @@ module.exports = async (req) => {
             
             .user-list-table {
                 width: 100%;
-                font-size: 12px;
                 
             }
             .user-list-table tr.selected{
@@ -46,7 +44,7 @@ module.exports = async (req) => {
         </style>
         <table class="user-list-table" cellspacing="0">
             <thead>
-                <tr>
+                <tr style="height: 2.2em;">
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Phone</th>

@@ -14,6 +14,7 @@ module.exports = async (req) => {
             box-sizing: border-box;
             width: 70%;
             padding-right:0.5em;
+            margin-bottom: 1.5em;
          }
          @media screen and (max-width:900px){
             .user-list-right {
@@ -26,7 +27,7 @@ module.exports = async (req) => {
             }
          }
     </style>
-    <h1 style="font-size: 1.2em;font-style: italic;padding-left: 0.1em;padding-bottom: 1em;padding-top:1.5em;">Users Management</h1>
+    <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;">Users Management</h1>
     <div style="display: flex;flex-wrap:wrap">
         <div class="user-list-left">
         ${req.print(list(req))}

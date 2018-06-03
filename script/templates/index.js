@@ -28,7 +28,7 @@ const renderArticles = async (req) => {
             <img src="${article.featureImage}" style="width: 100%;border-radius: 20px;background-color: #ddd">
         </a>
         <h1 style="font-weight: 400; font-size: 1.8em; line-height: 1.4;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-        <h3 style="font-size: 0.8em; color: #888; padding-top: 0em; padding-bottom: 0.8em;">By ${article.tags} on ${article.date}</h3>
+        <h3 style="font-size: 1em; color: #888; padding-top: 0em; padding-bottom: 1em;">By ${article.tags} on ${article.date}</h3>
         <div style="width: 100%">
             ${content}
         </div>
@@ -50,7 +50,7 @@ const renderLatestPost = async (req) => {
         return `
         <article style="padding-top: 0.5em; padding-bottom: 0.5em;">
             <h1 style="font-weight: 700; font-style: italic; margin: 6px 0; font-size: 1.3125em; line-height: 1.143;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-            <h3 style="font-size: 0.8em; color: #888; padding-top: 0.1em; padding-bottom: 0.1em;">BY ${article.tags} on ${article.date}</h3>
+            <h3 style="font-size: 1em; color: #888; padding-top: 0.1em; padding-bottom: 0.1em;;">BY ${article.tags} on ${article.date}</h3>
             <p>
                 ${content}
             </p>

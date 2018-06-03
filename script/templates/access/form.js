@@ -8,7 +8,6 @@ module.exports = (req) => {
                 flex-wrap: wrap;
                 margin: auto;
                 align-items: flex-end;
-                font-size:11px;
             }
             .access-form input[type="text"]{
                 padding: 0.3em;
@@ -35,23 +34,23 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div >
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name" required>
+            <input type="text" name="Name" id="name" required class="form-control">
         </div>
         <div >
             <label for="shortName"> Short Name :</label>
-            <input type="text" name="ShortName" id="shortName" required>
+            <input type="text" name="ShortName" id="shortName" required class="form-control">
         </div>
         <div >
             <label for="description"> Description :</label>
-            <input type="text" name="Description" id="description" required>
+            <input type="text" name="Description" id="description" required class="form-control">
         </div>
         <div >
             <label for="path"> Path :</label>
-            <input type="text" name="Path" id="path" required>
+            <input type="text" name="Path" id="path" required class="form-control">
         </div>
         <div style="width: 100%">
-            <input type="submit" style="width: auto;" value="Save">
-            <input type="reset" style="width: auto;" >
+            <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">
+            <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
         </div>
     </form>
     <script>
@@ -74,7 +73,9 @@ module.exports = (req) => {
             }
             
             function setSelected(id,value){
-                document.getElementById(id).checked = value;
+                if(document.getElementById(id)){
+                    document.getElementById(id).checked = value;
+                }
             }
             
             function clearForm() {

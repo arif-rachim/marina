@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/yallajs/marina#readme",
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^10.0.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",

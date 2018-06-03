@@ -11,13 +11,13 @@ module.exports = (req) => {
             .confirmation-panel .slider{
                 position: absolute;
                 display: inline-block;
-                background: #F0F0F0;
                 padding:1em;
-                border-bottom: 1px solid #cccccc;
-                border-left: 1px solid #cccccc;
-                border-right: 1px solid #cccccc;
                 top : 0px;
                 transition: top 300ms;
+                
+                background-color: #FAFAFA;
+                border: 1px solid #CCC;
+                border-top: none;
             }
             .confirmation-panel .slider.hide{
                 top: -200px;
@@ -27,22 +27,20 @@ module.exports = (req) => {
             }
         </style>
         
-        <div class="confirmation-panel">
+        <div class="confirmation-panel" style="z-index:1">
             <div class="slider hide" >
                 <div style="display: flex;align-items: center;">
                     <div><i class="far fa-question-circle" style="font-size: 2em;color: #333"></i></div>
                     <div class="text-message" style="margin-left: 1em ">Are you sure you want to ?</div>
                 </div>
                 <div class="button-holders" style="display: flex;justify-content: flex-end">
-                    <button>Yes</button>
-                    <button>No</button>
+                    <button class="btn">Yes</button>
+                    <button class="btn">No</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!--
-        <button id="displayButton">Display Panel</button>
-        -->
+        
         <script>
             (function(exports){
                 exports.app = exports.app || {};
@@ -62,8 +60,11 @@ module.exports = (req) => {
                     }
                     buttonHolders.addEventListener('click',onButtonHoldersClick,{once:true});
                     
-                    buttonHolders.innerHTML = buttonsConfiguration.map(function(btn){
-                        return '<button data-name="'+btn+'">'+btn+'</button>'
+                    buttonHolders.innerHTML = buttonsConfiguration.map(function(btn,index){
+                        if(index === 0){
+                            return '<button data-name="'+btn+'" class="btn btn-primary" >'+btn+'</button>'    
+                        }
+                        return '<button data-name="'+btn+'" class="btn " >'+btn+'</button>'
                     }).join('');
                     
                     if(slider.classList.contains('hide')){
@@ -71,12 +72,6 @@ module.exports = (req) => {
                     }
                 } 
                 
-                // function onClick(event) {
-                //     showSlider('are you sure you want to do that ?',['Yes','No'], function(button){
-                //     });
-                //    
-                // }
-                // document.querySelector('#displayButton').addEventListener('click',onClick);
                 exports.app.showConfirmation = showSlider;
             })(window);
         </script>

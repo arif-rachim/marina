@@ -5,7 +5,7 @@ const printAccessibilitySelection = async (req) => {
     const accessibilities = response.docs;
     return accessibilities.map(access => `
         <label style="display:flex;align-items:center">
-            <input type="checkbox" id="${access._id}" data-access-id="${access._id}" data-type="access"> : ${access.name}
+            <input type="checkbox" id="${access._id}" data-access-id="${access._id}" data-type="access" style="margin-top: 0.2em"> : ${access.name}
         </label>
     `).join('');
 };
@@ -18,7 +18,6 @@ module.exports = (req) => {
                 flex-wrap: wrap;
                 margin: auto;
                 align-items: flex-end;
-                font-size:11px;
             }
             .role-form input[type="text"]{
                 padding: 0.3em;
@@ -45,21 +44,21 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div >
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name" required>
+            <input type="text" name="Name" id="name" required class="form-control">
         </div>
         <div >
             <label for="description"> Description :</label>
-            <input type="text" name="Description" id="description" required>
+            <input type="text" name="Description" id="description" required class="form-control">
         </div>
         
-        <fieldset style="font-size: 13px">
-            <legend>Accessibility</legend>
+        <fieldset style="padding-left: 0.3em;">
+            <legend style="font-size:1.2em">Accessibility</legend>
             ${req.print(printAccessibilitySelection(req))}
         </fieldset>
         
         <div style="width: 100%">
-            <input type="submit" style="width: auto;" value="Save">
-            <input type="reset" style="width: auto;" >
+            <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">
+            <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
         </div>
     </form>
     <script>
@@ -91,7 +90,9 @@ module.exports = (req) => {
             }
             
             function setSelected(id,value){
-                document.getElementById(id).checked = value;
+                if(document.getElementById(id)){
+                    document.getElementById(id).checked = value;
+                }
             }
             
             function clearForm() {
