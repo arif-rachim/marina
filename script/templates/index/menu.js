@@ -101,7 +101,7 @@ module.exports = async(req) => {
     </div>
 </div>
 <div style="position: relative;width: 100%">
-<div style="position: absolute;width: 100%">
+<div style="position: absolute;width: 100%;z-index:1">
 <div class="login-panel">
     <div class="login-slider hide">
         <form class="login-form" onsubmit="return false;" style="width: 300px">
