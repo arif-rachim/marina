@@ -26,13 +26,25 @@ const basicAccessibility = [
         description : 'Access for Managing Articles',
         path : '/page/cetc.articles.page'
     }
+    ,
+    {
+        name : 'Events Management',
+        shortName : 'Events',
+        description : 'Access for Managing Events',
+        path : '/page/cetc.events.page'
+    }
 ];
 
 const basicRoles = [
     {
         name : 'Administrator',
         description : 'Administrator Role',
-        accessibility : 'Users Management,Roles Management,Access Management,Articles Management'
+        accessibility : 'Users Management,Roles Management,Access Management'
+    },
+    {
+        name : 'Member',
+        description : 'CETC Member',
+        accessibility : 'Articles Management,Events Management'
     }
 ]
 
@@ -44,6 +56,14 @@ const basicUsers = [
         phone : '0501234567',
         roles : 'Administrator',
         password : textToBase64('admin')
+    },
+    {
+        name : 'Demo',
+        userId : 'Demo',
+        email : 'demo@demo.admin',
+        phone : '0501234567',
+        roles : 'Member',
+        password : textToBase64('demo')
     }
 ]
 

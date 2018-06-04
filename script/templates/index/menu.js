@@ -107,7 +107,7 @@ module.exports = async(req) => {
         <form class="login-form" onsubmit="return false;" style="width: 300px">
             <div class="form-item">
                 <label for="userName" >User Id:</label>
-                <input id="userName" placeholder="Email or User ID" class="form-control">
+                <input id="userName" placeholder="User ID" class="form-control">
             </div>
             <div class="form-item">
                 <label for="password" >Password:</label>
@@ -169,7 +169,7 @@ module.exports = async(req) => {
         };
         
         function loadCurrentUser(){
-            app.fetch('/svc/security.get-current-user',{}).then(function(data){
+            app.fetch('/svc/security.get-current-user',{},'post',false).then(function(data){
                 if(data && data.account){
                     app.user = data;
                     populateRolesOnUser(app.user);
@@ -216,7 +216,7 @@ module.exports = async(req) => {
             if(app.user){
                 app.showConfirmation('Are you sure you wish to logout ? ',['Yes','No'],function(button){
                     if(button.innerText === 'Yes'){
-                        app.fetch('/svc/security.logout',{},true).then(function(user){
+                        app.fetch('/svc/security.logout',{}).then(function(user){
                             app.showNotification('Successfully logged out');
                             delete app.user;
                             updateMenus();
@@ -238,7 +238,7 @@ module.exports = async(req) => {
                 userName: getValue('userName'),
                 password: getValue('password')
             };
-            app.fetch('/svc/security.login',data,false).then(function(user){
+            app.fetch('/svc/security.login',data,'post',false).then(function(user){
                 if(user.errorMessage){
                     app.showNotification(user.errorMessage);
                     return;

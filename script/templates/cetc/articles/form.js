@@ -22,6 +22,7 @@ module.exports = (req) => {
                 width: 100%;
                 box-sizing: border-box;
             }
+            
             .ck.ck-content.ck-editor__editable {
                 min-height: 600px;
             }
@@ -78,7 +79,7 @@ module.exports = (req) => {
                 var textUrl = getValue('url');
                 app.fetch('/svc/crawler.crawl',{
                         url : textUrl
-                    },true).then(function(article){
+                    }).then(function(article){
                     setValue('title',article.title);
                     setValue('description',article.description);
                     setContentValue(article.content);
@@ -133,6 +134,7 @@ module.exports = (req) => {
             function submitForm() {
                 
                 try{
+                    window.scrollTo(0,0);
                     var app = exports.app;
                     app.showConfirmation('Are you sure you want to Save ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes'){                            

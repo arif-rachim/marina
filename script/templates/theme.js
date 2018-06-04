@@ -70,12 +70,16 @@ module.exports = (req,content) => `
         exports.app = exports.app || {};
         var app = exports.app;
         
-        app.fetch = function(url,json,showLoader){
+        app.fetch = function(url,json,method,showLoader){
+            if(showLoader !== false){
+                showLoader = true;
+            }
             if(showLoader){
                 app.loader(true);    
             }
+            method = (undefined === method || null === method) ? ( json ? 'POST' : 'GET' ) : method;
             return fetch(url,{
-                method : 'POST',
+                method : method,
                 headers : {
                     'content-type' : 'application/json'
                 },
