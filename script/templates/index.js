@@ -5,6 +5,24 @@ const {fetch} = require("../../config");
 
 const CONTENT_MAX_CHARACTERS = 500;
 
+
+const missionStatement = async () => {
+    return `
+        <style>
+            .statement {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+            }
+        </style>
+        <div>
+            <blockquote class="blockquote statement" style="padding: 1.5em;">
+              <p class="mb-0">The Joint Aviation Command ETO mission is to stay aware of and direct future technologies 
+              by leveraging the capabilities and knowledge of commercial industry, academia, and other goverment agencies.</p>
+              <footer class="blockquote-footer" style="margin-top: 1em">The Emerging Technologies Office Mission Statement</footer>
+            </blockquote>
+        </div>
+    `
+}
+
 const getArticleTags = async () => {
     let articles = await fetch(`v1/articles?$p.tags=1`);
     if(articles.docs){
@@ -12,7 +30,7 @@ const getArticleTags = async () => {
         return tags;
     }
     return [];
-}
+};
 
 const renderArticles = async (req) => {
     let articles = await fetch(`v1/articles?$i=5&$l=20&$s._createdOn=-1`);
@@ -57,7 +75,7 @@ const renderLatestPost = async (req) => {
         </article>
     `};
     return articles.map(renderArticle).join('');
-}
+};
 
 const renderHighlightStories = async (req) => {
     let articles = await fetch(`v1/articles?$i=25&$l=5&$s._createdOn=-1`);
@@ -181,6 +199,10 @@ const render = (req) => theme(req,
     }
     
 </style>
+<div style="border-bottom: 1px solid #F0F0F0;">
+    ${req.print(missionStatement(req))}
+</div>
+<!--
 <div class="heading-container">
     <section class="heading-synopsis">
         ${req.print(synopsis(req))}
@@ -189,7 +211,7 @@ const render = (req) => theme(req,
         ${req.print(commandersMessage(req))}
     </section>
 </div>
-
+-->
 <section class="stories-panel-container">
     <!-- This is the left side content for displaying latest post -->
     <aside class="stories-left-panel">

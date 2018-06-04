@@ -175,9 +175,7 @@ module.exports = (req) => {
             }
             
             function loadForm(id){
-                fetch('/v1/cetc_articles/'+id).then(function(result){
-                    return result.json();
-                }).then(function(article){
+                app.fetch('/v1/cetc_articles/'+id).then(function(article){
                     clearForm();
                     if(article){
                         setValue('url',article.url);

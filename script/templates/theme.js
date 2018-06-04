@@ -19,7 +19,8 @@ module.exports = (req,content) => `
 </head>
 <style>
     body{
-        font-family: "PT Sans","SF Pro Text","SF Pro Icons",Roboto,"Helvetica Neue","Helvetica",Arial,sans-serif; 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        //font-family: "PT Sans","SF Pro Text","SF Pro Icons",Roboto,"Helvetica Neue","Helvetica",Arial,sans-serif; 
         padding-left: 1em; 
         padding-right: 1em; 
         line-height: 1.4em; 
