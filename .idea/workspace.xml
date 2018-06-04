@@ -52,8 +52,8 @@
       <file leaf-file-name="theme.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="456">
+              <caret line="94" column="68" selection-start-line="94" selection-start-column="68" selection-end-line="94" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -70,8 +70,8 @@
       <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+            <state relative-caret-position="187">
+              <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -127,11 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fetch('/v1/system_accessibility?$ids='+role.accessibility);</find>
-      <find>commanders</find>
-      <find>font-family: 'Abril Fatface', 'Arial Black', cursive;</find>
-      <find>commandersM</find>
-      <find>12px</find>
       <find>11px</find>
       <find>13px</find>
       <find>font-size</find>
@@ -157,6 +152,11 @@
       <find>app.user</find>
       <find>position: absolute;width: 100%</find>
       <find>app.fetch</find>
+      <find>app.showConfirmation =</find>
+      <find>showConfirmation =</find>
+      <find>loadCurrent</find>
+      <find>exports.app =</find>
+      <find>loaderPanel</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -395,7 +395,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152113000" />
+    <option name="totallyTimeSpent" value="152784000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -410,16 +410,16 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50316125" side_tool="true" visible="true" weight="0.34276387" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50316125" side_tool="true" visible="true" weight="0.23503809" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49736565" weight="0.23503809" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49683878" visible="true" weight="0.23503809" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.50499284" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683878" visible="true" weight="0.34276387" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683878" weight="0.34276387" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.40914038" />
       <window_info anchor="bottom" id="Thumbnails" order="9" weight="0.32897604" />
@@ -707,8 +707,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
@@ -717,8 +717,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/theme.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="456">
+          <caret line="94" column="68" selection-start-line="94" selection-start-column="68" selection-end-line="94" selection-end-column="68" />
         </state>
       </provider>
     </entry>

@@ -126,7 +126,7 @@ module.exports = async(req) => {
 </div>
 <script>
     (function(exports){
-        exports.app = exports.app = {};
+        exports.app = exports.app || {};
         
         var app = exports.app;
         var menuLoginLogout = document.querySelector('.menu-item.login-logout');
@@ -176,7 +176,8 @@ module.exports = async(req) => {
                 }
             });
         }
-        setTimeout(loadCurrentUser,100);
+        
+        setTimeout(loadCurrentUser,1000);
         
         /**
         * We should call server in next release 

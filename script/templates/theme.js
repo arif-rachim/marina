@@ -29,7 +29,7 @@ module.exports = (req,content) => `
         flex-direction: column;
     }
 </style>
-<body >
+<body>
 <script>
     if (!('forEach' in Array.prototype)) {
         Array.prototype.forEach= function(action, that /*opt*/) {
@@ -69,7 +69,7 @@ module.exports = (req,content) => `
     (function(exports){
         exports.app = exports.app || {};
         var app = exports.app;
-        var loaderPanel = document.querySelector('.app-loader');
+        
         app.fetch = function(url,json,showLoader){
             if(showLoader){
                 app.loader(true);    
@@ -92,6 +92,7 @@ module.exports = (req,content) => `
             });
         };
         app.loader = function(loader){
+            var loaderPanel = document.querySelector('.app-loader');
             if(loader){
                 loaderPanel.style.display = 'flex';
                 loaderPanel.classList.remove('hide');
