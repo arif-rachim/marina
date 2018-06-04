@@ -33,6 +33,13 @@ const basicAccessibility = [
         description : 'Access for Managing Events',
         path : '/page/cetc.events.page'
     }
+    ,
+    {
+        name : 'Contacts Management',
+        shortName : 'Contacts',
+        description : 'Access for Managing Contacts',
+        path : '/page/cetc.contacts.page'
+    }
 ];
 
 const basicRoles = [
@@ -44,7 +51,7 @@ const basicRoles = [
     {
         name : 'Member',
         description : 'CETC Member',
-        accessibility : 'Articles Management,Events Management'
+        accessibility : 'Articles Management,Events Management,Contacts Management'
     }
 ]
 
