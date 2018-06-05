@@ -69,7 +69,7 @@ const renderLatestPost = async (req) => {
         <article style="padding-top: 0.5em; padding-bottom: 0.5em;">
             <h1 style="font-weight: 500; font-style: italic; margin: 6px 0; font-size: 1.3125em; line-height: 1.143;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
             <h3 style="font-size: 0.9em; font-weight: 300; color: #888; padding-top: 0.1em; padding-bottom: 0.1em;;">BY ${article.tags} on ${article.date}</h3>
-            <p>
+            <p style="margin-bottom: 0px">
                 ${content}
             </p>
         </article>
