@@ -185,7 +185,7 @@ module.exports = (req) => {
                                 roles : selectedRoles
                             };
                           var id = getValue('_id');
-                          var isNewRegisteredUser = id ? true : false;
+                          var isNewRegisteredUser = id ? false : true;
                           app.fetch('/v1/system_users'+(id?'/'+id:''),data,id ? 'PUT':'POST').then(function(data){
                               if(app.showNotification){
                                 app.showNotification('Data saved successfully');    
