@@ -44,11 +44,11 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div >
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name" required class="form-control">
+            <input type="text" name="Name" id="name" required class="form-control" placeholder="Enter role name">
         </div>
         <div >
             <label for="description"> Description :</label>
-            <input type="text" name="Description" id="description" required class="form-control">
+            <input type="text" name="Description" id="description" required class="form-control" placeholder="Enter role description">
         </div>
         
         <fieldset style="padding-left: 0.3em;">

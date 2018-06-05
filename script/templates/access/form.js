@@ -34,19 +34,19 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div >
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name" required class="form-control">
+            <input type="text" name="Name" id="name" required class="form-control" placeholder="Enter name">
         </div>
         <div >
             <label for="shortName"> Short Name :</label>
-            <input type="text" name="ShortName" id="shortName" required class="form-control">
+            <input type="text" name="ShortName" id="shortName" required class="form-control" placeholder="Enter shortname">
         </div>
         <div >
             <label for="description"> Description :</label>
-            <input type="text" name="Description" id="description" required class="form-control">
+            <input type="text" name="Description" id="description" required class="form-control" placeholder="Enter description">
         </div>
         <div >
             <label for="path"> Path :</label>
-            <input type="text" name="Path" id="path" required class="form-control">
+            <input type="text" name="Path" id="path" required class="form-control" placeholder="Enter path">
         </div>
         <div style="width: 100%">
             <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">

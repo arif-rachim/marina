@@ -6,13 +6,13 @@ module.exports = async (req) => {
     return theme(req,`
     <style>
         .user-list-right{
-            width: 30%;
+            width: 35%;
             padding-left:0.5em;
             box-sizing: border-box;
         }
         .user-list-left {
             box-sizing: border-box;
-            width: 70%;
+            width: 65%;
             padding-right:0.5em;
             margin-bottom: 1.5em;
          }

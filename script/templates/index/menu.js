@@ -89,13 +89,49 @@ module.exports = async(req) => {
         overflow: hidden;
     }
     
+    .greeting-label{
+        position: absolute;
+        left:-7.5em;
+        top:0.3em;
+        background: #FFFFFF;
+        display: none;
+        opacity: 1;
+        padding-left : 1em;
+        transition: opacity 1s;
+    }
+    
+    .greeting-label-exclamation{
+        position: absolute;
+        right:0em;
+        top:0.3em;
+        background: #FFFFFF;
+        display: none;
+        opacity: 1;
+        transition : opacity 1s;
+    }
+    
+    .greeting-label.hide{
+        opacity: 0;
+    }
+    .greeting-label-exclamation.hide{
+        opacity: 0;
+    }
+    
 </style>
 <div class="menu">
+    <div style="display: flex;align-items: center;margin-left:0.5em">
+        <a href="/index.html" style="color: #333;">
+            <i class="fas fa-home" style="font-size: 1.1em;" ></i>
+        </a>
+    </div>
     <div style="width: 100%" class="menu-holder">
         ${user ? printMenu(user.account.roles) : ''}
     </div>
-    <div>
-        <a href="#" class="menu-item login-logout">
+    
+    <div style="white-space: nowrap;position: relative">
+        <span class="greeting-label hide" ></span>
+        <span class="greeting-label-exclamation hide" >!</span>
+        <a href="#" class="menu-item login-logout" >
             ${user ? user.account.name : 'Login'}
         </a>
     </div>
@@ -135,6 +171,36 @@ module.exports = async(req) => {
         var loginButton = document.querySelector('.login-panel .login-button');
         var cancelButton = document.querySelector('.login-panel .cancel-button');
         var menuHolder = document.querySelector('.menu .menu-holder');
+        var greetingLabel = document.querySelector('.greeting-label');
+        var greetingLabelExclamation = document.querySelector('.greeting-label-exclamation');
+        
+        function showGreetings() {
+            var curHr = new Date().getHours();
+            
+            if (curHr < 12) {
+                greetingLabel.innerText = 'Good morning,';
+            } else if (curHr < 18) {
+                greetingLabel.innerText = 'Good afternoon,';
+            } else {
+                greetingLabel.innerText = 'Good evening,';
+            }
+            greetingLabel.style.display = 'block';
+            greetingLabelExclamation.style.display = 'block';
+            setTimeout(function(){
+                greetingLabel.classList.remove('hide');
+                greetingLabelExclamation.classList.remove('hide');    
+            },300);
+            
+            setTimeout(function(){
+                greetingLabel.classList.add('hide');
+                greetingLabelExclamation.classList.add('hide');
+                setTimeout(function(){
+                    greetingLabel.style.display = 'none';
+                    greetingLabelExclamation.style.display = 'none';
+                },500);
+            },3000);
+            
+        }
         
         function populateRolesOnUser(user){
             fetch('/v1/system_roles?$ids='+user.account.roles)
@@ -203,7 +269,9 @@ module.exports = async(req) => {
         function updateMenus(){
             var menus = getUserMenus();
             if(menuLoginLogout.innerText == 'Login' && app.user){
-                app.showNotification('Successfully logged in as '+app.user.account.name);    
+                window.scrollTo(0,0);
+                app.showNotification('Successfully logged in as '+app.user.account.name);
+                showGreetings();
             }
             menuHolder.innerHTML = menus.map(function(menuItem){
                 return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';

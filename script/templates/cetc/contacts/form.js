@@ -34,26 +34,26 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div class="form-item">
             <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name" required class="form-control">
+            <input type="text" name="Name" id="name" required class="form-control" placeholder="Enter name">
         </div>
         <div class="form-item" style="display: flex; box-sizing: border-box">
             <div style="margin-right: 0.5em;width: 100%">
                 <label for="company"> Company :</label>
-                <input type="text" name="Company" id="company" required class="form-control">
+                <input type="text" name="Company" id="company" required class="form-control" placeholder="Enter company">
             </div>
             <div style="margin-left: 0.5em;width: 100%">
                 <label for="jobTitle"> Job Title :</label>
-                <input type="text" name="JobTitle" id="jobTitle" required class="form-control">
+                <input type="text" name="JobTitle" id="jobTitle" required class="form-control" placeholder="Enter job title">
             </div>
         </div>
         <div class="form-item" style="display: flex; box-sizing: border-box">
             <div style="margin-right: 0.5em;width: 100%">
                 <label for="email"> Email :</label>
-                <input type="email" name="Email" id="email" required class="form-control">
+                <input type="email" name="Email" id="email" required class="form-control" placeholder="Enter email (eg: john.doe@gmail.com)">
             </div>
             <div style="margin-left: 0.5em;width: 100%">
                 <label for="phone"> Phone :</label>
-                <input type="tel" name="Phone" id="phone" required class="form-control">
+                <input type="tel" name="Phone" id="phone" required class="form-control" placeholder="050.123.4567">
             </div>
         </div>
         

@@ -53,15 +53,15 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div class="form-item">
             <label for="name"> Event Name :</label>
-            <input type="text" name="Name" id="name" required class="form-control">
+            <input type="text" name="Name" id="name" required class="form-control" placeholder="Enter name">
         </div>
         <div class="form-item">
             <label for="address"> Address </label>
-            <textarea name="address" id="address" rows="3" class="form-control"></textarea>
+            <textarea name="address" id="address" rows="3" class="form-control" placeholder="Enter address"></textarea>
         </div>
         <div class="form-item">
             <label for="city"> City </label>
-            <input type="text" name="City" id="city" required class="form-control">
+            <input type="text" name="City" id="city" required class="form-control" placeholder="Enter city">
         </div>
         <div class="form-item" style="display: flex;flex-wrap: wrap;margin : -0.5em">
             <div style="width: 320px;margin: 0.5em">

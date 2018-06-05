@@ -6,7 +6,7 @@ module.exports = (req,res) => {
     const userId = req.body.userId;
     const password = req.body.password;
 
-    const subject = 'Welcome to CETC (Commanders Emerging Technology Center)';
+    const subject = 'Welcome to Commanders Emerging Technology Center (CETC)';
     const messageText = `You have been added to CETC Membership access and now will be among the first to hear about 
     future technologies in Commercial Industry, Academia and Other Goverment Agencies.`;
     const messageHtml = message({name,userId,password});

@@ -47,23 +47,23 @@ module.exports = (req) => {
         <input type="hidden" name="_id" id="_id">
         <div>
             <label for="userId">User ID :</label>
-            <input type="text" name="User ID" id="userId" required class="form-control">
+            <input type="text" name="UserID" id="userId" required class="form-control" placeholder="Enter userid">
         </div>
         <div>
             <label for="password">Password :</label>
-            <input type="password" name="Password" id="userPassword" required class="form-control">
+            <input type="password" name="Password" id="userPassword" required class="form-control" placeholder="Enter password">
         </div>
         <div class="name">
-            <label for="name"> Name :</label>
-            <input type="text" name="Name" id="name" required class="form-control">
+            <label for="name"> Full Name :</label>
+            <input type="text" name="Name" id="name" required class="form-control" placeholder="John Q. Public">
         </div>
         <div>
             <label for="email">Email :</label>
-            <input type="email" name="Email" id="email" required class="form-control">
+            <input type="email" name="Email" id="email" required class="form-control" placeholder="john.public@gmail.com">
         </div>
         <div>
             <label for="phone">Phone :</label>
-            <input type="tel" name="Phone" id="phone" required class="form-control">
+            <input type="tel" name="Phone" id="phone" required class="form-control" placeholder="050.123.4567">
         </div>
         <fieldset style="padding-left: 0.3em;">
             <legend style="font-size:1.2em">Roles :</legend>
@@ -74,13 +74,16 @@ module.exports = (req) => {
             <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
         </div>
     </form>
+    
     <script>
         (function(exports){
             exports.app = exports.app || {};
             
-            //document.querySelector('.user-form input[type="submit"]').addEventListener('click',submitForm);
             document.querySelector('.user-form input[type="reset"]').addEventListener('click',clearForm);
             document.querySelector('.user-form').addEventListener('submit',submitForm);
+            document.querySelector('[name="Phone"]').addEventListener('keyup',maskPhone);
+            document.querySelector('[name="UserID"]').addEventListener('keyup',maskUserId);
+            document.querySelector('[name="Name"]').addEventListener('keyup',maskName);
             var catalog = {};
 
             function loadAllRoles(){
@@ -91,6 +94,44 @@ module.exports = (req) => {
                 });
             }
             loadAllRoles();
+            
+            function maskPhone(event) {
+                var phone = event.target.value;
+                event.target.value = phone.split('.').join('').split('').reduce(function(result,number,index){
+                    if(parseInt(number) >= 0){
+                        if(index === 3 || index == 6){
+                            return result +'.'+number; 
+                        }
+                        return result+number;
+                        }
+                    return result;
+                },'');                
+            }
+            
+            var allowedCharacterForUserId = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+            allowedCharacterForUserId = allowedCharacterForUserId.concat(['1','2','3','4','5','6','7','8','9','0','.','_','-']);
+            
+            function maskUserId(event) {
+                var userId = event.target.value;
+                event.target.value = userId.toLowerCase().split('').reduce(function(result,character){
+                    if(allowedCharacterForUserId.indexOf(character) >=0){
+                        return result+character;    
+                    }
+                    return result;
+                },'');        
+            }
+            
+            function maskName(event){
+                var name = event.target.value;
+                event.target.value = name.split('').reduce(function(result,character,index){
+                    result.name = (result.name+ (result.nextLeterCapital ? character.toUpperCase() : character));
+                    result.nextLeterCapital = character === ' ';
+                    return result;
+                },{
+                    name : '',
+                    nextLeterCapital:true
+                }).name;
+            }
             
             function stringToBase64(str) {
                 try{

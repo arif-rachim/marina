@@ -41,21 +41,21 @@ module.exports = (req) => {
         <div class="form-item" >
             <label for="url"> URL :</label>
             <div style="position: relative">
-                <input type="text" name="URL" id="url" required class="form-control">
+                <input type="text" name="URL" id="url" required class="form-control" placeholder="Enter news address (eg : https://gulfnews.com/news/uae-space-industry-will-spark-scientific-development)">
                 <button class="btn load-button" style="position: absolute;right: 1px;top: 1px;padding: 0.25em;height: 33px;border-bottom-left-radius: 0px;border-top-left-radius: 0px">Load</button>
             </div>
         </div>
         <div class="form-item">
             <label for="title"> Title :</label>
-            <input type="text" name="Title" id="title" required class="form-control">
+            <input type="text" name="Title" id="title" required class="form-control" placeholder="Enter title">
         </div>
         <div class="form-item">
             <label for="description"> Description :</label>
-            <input type="text" name="Description" id="description" required class="form-control">
+            <input type="text" name="Description" id="description" required class="form-control" placeholder="Enter description">
         </div>
         <div class="form-item">
             <label for="image"> Image :</label>
-            <input type="text" name="Image" id="image" required class="form-control">
+            <input type="text" name="Image" id="image" required class="form-control" placeholder="Enter image address (eg : http://gulfnews.com/static/image/uae-flag.png)">
         </div>
         <div class="form-item">
             <label for="content"> Content :</label>
