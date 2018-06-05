@@ -17,7 +17,7 @@ module.exports = (req,res) => {
         text : messageText,
         html : messageHtml
     },'POST').then(function(result){
-        req.end(JSON.stringify(result));
+        res.end(JSON.stringify(result));
     });
 };
 
@@ -48,7 +48,7 @@ const message = ({name,userId,password}) => {
             Please follow this <a href="https://www.cetc.ae"> link to access CETC </a>, and your login access is :
         </p>
         <div>
-            <label>User ID</label>
+            <label>User ID: </label>
             <span>${userId}</span>
         </div>
         <div>

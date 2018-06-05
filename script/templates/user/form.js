@@ -176,6 +176,7 @@ module.exports = (req) => {
                                     selectedRoles.push(node.id);
                                 }
                             });
+                            var password = getValue('userPassword');
                             var data = {
                                 name: getValue('name'),
                                 userId: getValue('userId'),
@@ -200,7 +201,7 @@ module.exports = (req) => {
                                   to : data.email,
                                   name : data.name,
                                   userId : data.userId,
-                                  password : getValue('userPassword') 
+                                  password : password 
                                 },'POST')    
                               }
                           });
