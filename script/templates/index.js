@@ -14,7 +14,7 @@ const missionStatement = async () => {
             }
         </style>
         <div>
-            <blockquote class="blockquote statement" style="padding: 1.5em;">
+            <blockquote class="blockquote statement" style="padding: 1em;">
               <p class="mb-0">The Joint Aviation Command ETO mission is to stay aware of and direct future technologies 
               by leveraging the capabilities and knowledge of commercial industry, academia, and other goverment agencies.</p>
               <footer class="blockquote-footer" style="margin-top: 1em">The Emerging Technologies Office Mission Statement</footer>

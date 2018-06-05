@@ -28,6 +28,21 @@ module.exports = (req,content) => `
         margin: auto;
         display: flex;
         flex-direction: column;
+        font-size: medium;
+    }
+    
+    @media screen and (max-width: 380px){
+        body {
+            font-size: smaller;
+        }
+    }
+    
+    .blockquote {
+        font-size: inherit;
+    }
+    
+    table {
+        font-size: inherit;
     }
 </style>
 <body>
@@ -123,6 +138,10 @@ module.exports = (req,content) => `
         background-position: right; 
         background-opacity: 0.5;
     }
+    
+    .menu {
+        font-size: medium;
+    }
     @media screen and (max-width:720px){
         .heading-top{
             background-image: url('/styles/spirit-of-union-small.png');
@@ -137,7 +156,7 @@ module.exports = (req,content) => `
     
 </style>
 <section class="heading-top">
-    <span style="padding-top:1em;padding-bottom:1em;">
+    <span style="padding-top:1em;">
         <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 2.3em; line-height: 1.4; text-align: center;">CETC</div>
         <p style="font-family: 'PT Serif', serif; line-height: 1.5; font-style: italic; text-align: center;">Commander's Emerging Technology Center</p>
     </span>
