@@ -90,7 +90,7 @@ const renderHighlightStories = async (req) => {
         <article style="border-bottom: 1px solid #F0F0F0; margin-bottom: 1.5em; padding-bottom: 0.5em;">
             <h1 style="font-weight: 500; font-size: 0.9em; line-height: 1.2em; text-transform: uppercase;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
             <h3 style="font-size: 0.7em; text-transform: uppercase;">BY ${article.tags} on ${article.date}</h3>
-            <p style="font-size: 0.9em;margin-bottom: 0px">${content}</p>
+            <p style="font-size: 0.9em;margin-bottom: 0px;line-height:1.3em;">${content}</p>
         </article>
     `};
     return articles.map(renderArticle).join('');

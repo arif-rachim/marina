@@ -70,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/script/templates/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="219">
-              <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+              <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
               <folding>
                 <element signature="n#style#0;n#blockquote#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#blockquote#0;n#div#0;n#!!top" expanded="true" />
@@ -152,7 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showNoti</find>
       <find>app.user</find>
       <find>position: absolute;width: 100%</find>
       <find>app.showConfirmation =</find>
@@ -182,6 +181,7 @@
       <find>font-weight: 700; font-style: italic; margin: 6px 0; font-size: 1.3125em; line-height: 1.143;</find>
       <find>font-size: 1em; color: #888; padding-top: 0em; padding-bottom: 1em;</find>
       <find>font-weight: 500; font-style: italic; margin: 6px 0; font-size: 1.3125em; line-height: 1.143;</find>
+      <find>font-weight: 500; font-size: 0.9em; line-height: 1.2em; text-transform: uppercase;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -411,12 +411,12 @@
       <workItem from="1527660102761" duration="4454000" />
       <workItem from="1527992812388" duration="21787000" />
       <workItem from="1528085093879" duration="14201000" />
-      <workItem from="1528164769745" duration="18067000" />
+      <workItem from="1528164769745" duration="18394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189630000" />
+    <option name="totallyTimeSpent" value="189957000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -765,7 +765,7 @@
     <entry file="file://$PROJECT_DIR$/script/templates/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+          <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
           <folding>
             <element signature="n#style#0;n#blockquote#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#blockquote#0;n#div#0;n#!!top" expanded="true" />
