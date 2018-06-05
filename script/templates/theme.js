@@ -20,7 +20,6 @@ module.exports = (req,content) => `
 <style>
     body{
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-        //font-family: "PT Sans","SF Pro Text","SF Pro Icons",Roboto,"Helvetica Neue","Helvetica",Arial,sans-serif; 
         padding-left: 1em; 
         padding-right: 1em; 
         line-height: 1.4em; 
@@ -128,7 +127,9 @@ module.exports = (req,content) => `
 
 
 <style>
-    
+    .font-title{
+        font-family: 'Abril Fatface', 'Arial Black', 'Segoe UI', Roboto,'Helvetica Neue',Arial,sans-serif;
+    }
     .heading-top {
         display: flex; 
         justify-content: center;
@@ -138,25 +139,35 @@ module.exports = (req,content) => `
         background-opacity: 0.5;
     }
     
+    .heading-top .title{
+        font-size: 2.3em; 
+        line-height: 1.4; 
+    }
+    
     .menu {
         font-size: medium;
     }
+    
     @media screen and (max-width:720px){
         .heading-top{
             background-image: url('/styles/spirit-of-union-small.png');
         }
     }
-    @media screen and (max-width:450px){
+    @media screen and (max-width:570px){
         .heading-top{
-            background-image: url('/styles/spirit-of-union-xsmall.png');
+            background-image: none;
             background-position-y: 15px;
+        }
+        .heading-top .title{
+            font-size: 1.5em; 
+            line-height: 1; 
         }
     }
     
 </style>
 <section class="heading-top">
     <span style="padding-top:1em;">
-        <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 2.3em; line-height: 1.4; text-align: center;">CETC</div>
+        <div class="font-title title" style="text-align: center;">CETC</div>
         <p style="font-family: 'PT Serif', serif; line-height: 1.5; font-style: italic; text-align: center;">Commander's Emerging Technology Center</p>
     </span>
 </section>

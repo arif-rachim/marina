@@ -70,7 +70,6 @@ module.exports = async(req) => {
     .login-slider{
         position: relative;
         padding:0.5em;
-        
         top:0px;
         transition: top 300ms ease-out;
         background-color: #FAFAFA;
@@ -90,24 +89,21 @@ module.exports = async(req) => {
     }
     
     .greeting-label{
-        position: absolute;
-        left:-7.5em;
-        top:0.3em;
         background: #FFFFFF;
-        display: none;
+        width: 1px;
         opacity: 1;
-        padding-left : 1em;
-        transition: opacity 1s;
+        padding-left : 0.5em;
+        margin-right: -0.5em;
+        transition: all 1s;
     }
     
     .greeting-label-exclamation{
-        position: absolute;
-        right:0em;
-        top:0.3em;
         background: #FFFFFF;
-        display: none;
         opacity: 1;
         transition : opacity 1s;
+        position: absolute;
+        right: 0px;
+        top: 0.3em;
     }
     
     .greeting-label.hide{
@@ -117,48 +113,120 @@ module.exports = async(req) => {
         opacity: 0;
     }
     
+    .menu-vertical-container {
+        display: block;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        height : 0px;
+    }
+    
+    .menu-vertical {
+        background-color: #FAFAFA;
+        border: 1px solid #CCC;
+        border-top: none;
+        width: 100%;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        display: flex;
+        flex-wrap: wrap;
+        top:0px;
+        transition: top 300ms ease-out;
+    }
+    
+    .menu-vertical a {
+        padding: 0.5em;
+        color: #333333;
+    }
+    
+    .menu-vertical .menu-item {
+        font-size: medium;
+    }
+    
+    .menu-toggle-button{
+        display: none;
+        position: absolute;
+        top: 1em; 
+        right: 1em;
+    }
+    
+    .menu-vertical.hide{
+        top : -100px;
+    }
+    
+    .menu-holder {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    @media screen and (max-width: 570px){
+        .menu-holder {
+            display: none;
+        }
+        .menu-toggle-button{
+            display: block;
+        }
+    }
+    
 </style>
 <div class="menu">
     <div style="display: flex;align-items: center;margin-left:0.5em">
         <a href="/index.html" style="color: #333;">
             <i class="fas fa-home" style="font-size: 1.1em;" ></i>
         </a>
+        <a href="/page/cetc.articles.list-public" style="color: #333;margin-left: 0.5em;margin-right: 0.5em" >
+            Articles
+        </a>
     </div>
-    <div style="width: 100%" class="menu-holder">
-        ${user ? printMenu(user.account.roles) : ''}
+    <div style="width: 100%" >
+        <div class="menu-holder">
+            ${user ? printMenu(user.account.roles) : ''}
+        </div>
     </div>
     
     <div style="white-space: nowrap;position: relative">
         <span class="greeting-label hide" ></span>
-        <span class="greeting-label-exclamation hide" >!</span>
         <a href="#" class="menu-item login-logout" >
             ${user ? user.account.name : 'Login'}
         </a>
+        <span class="greeting-label-exclamation hide" >!</span>
+    </div>
+</div>
+<div style="position: relative;width: 100%;">
+    <div style="position: absolute;width: 100%;">
+        <div class="menu-vertical-container" >
+            <div class="menu-vertical hide" style="position: relative">
+                ${user ? printMenu(user.account.roles) : ''}
+            </div>
+        </div>
     </div>
 </div>
 <div style="position: relative;width: 100%">
-<div style="position: absolute;width: 100%;z-index:1">
-<div class="login-panel">
-    <div class="login-slider hide">
-        <form class="login-form" onsubmit="return false;" style="width: 300px">
-            <div class="form-item">
-                <label for="userName" >User Id:</label>
-                <input id="userName" placeholder="User ID" class="form-control">
+    <div style="position: absolute;width: 100%;z-index:1">
+        <div class="login-panel">
+            <div class="login-slider hide">
+                <form class="login-form" onsubmit="return false;" style="width: 300px">
+                    <div class="form-item">
+                        <label for="userName" >User Id:</label>
+                        <input id="userName" placeholder="User ID" class="form-control">
+                    </div>
+                    <div class="form-item">
+                        <label for="password" >Password:</label>
+                        <input id="password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <div class="form-item" style="display: flex;justify-content: flex-end;padding:0.5em 0.3em">
+                        <div style="display: flex;justify-content: flex-end">
+                            <button style="margin-right: 0.5em;" class="btn btn-primary login-button">Login</button>
+                            <button class="btn cancel-button">Cancel</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-item">
-                <label for="password" >Password:</label>
-                <input id="password" type="password" placeholder="Password" class="form-control">
-            </div>
-            <div class="form-item" style="display: flex;justify-content: flex-end;padding:0.5em 0.3em">
-                <div style="display: flex;justify-content: flex-end">
-                    <button style="margin-right: 0.5em;" class="btn btn-primary login-button">Login</button>
-                    <button class="btn cancel-button">Cancel</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-</div>
+<div class="menu-toggle-button">
+    <i class="fas fa-bars" style="font-size: 1.5em"></i>
 </div>
 <script>
     (function(exports){
@@ -173,6 +241,24 @@ module.exports = async(req) => {
         var menuHolder = document.querySelector('.menu .menu-holder');
         var greetingLabel = document.querySelector('.greeting-label');
         var greetingLabelExclamation = document.querySelector('.greeting-label-exclamation');
+        var menuVertical = document.querySelector('.menu-vertical');
+        var menuVerticalContainer = document.querySelector('.menu-vertical-container');
+        
+        document.querySelector('.menu-toggle-button').addEventListener('click',toggleMenu);
+        
+        function toggleMenu(event){
+            
+            if(menuVertical.classList.contains('hide')){
+                menuVerticalContainer.style.height = 'auto';
+                menuVertical.classList.remove('hide');
+            }else{
+                menuVertical.classList.add('hide');
+                setTimeout(function(){
+                    menuVerticalContainer.style.height = '1px';    
+                },300);
+                
+            }
+        }
         
         function showGreetings() {
             var curHr = new Date().getHours();
@@ -184,19 +270,15 @@ module.exports = async(req) => {
             } else {
                 greetingLabel.innerText = 'Good evening,';
             }
-            greetingLabel.style.display = 'block';
-            greetingLabelExclamation.style.display = 'block';
-            setTimeout(function(){
-                greetingLabel.classList.remove('hide');
-                greetingLabelExclamation.classList.remove('hide');    
-            },300);
+            greetingLabel.style.width = 'auto';
+            greetingLabel.classList.remove('hide');
+            greetingLabelExclamation.classList.remove('hide');
             
             setTimeout(function(){
                 greetingLabel.classList.add('hide');
                 greetingLabelExclamation.classList.add('hide');
                 setTimeout(function(){
                     greetingLabel.style.display = 'none';
-                    greetingLabelExclamation.style.display = 'none';
                 },500);
             },3000);
             
@@ -276,6 +358,10 @@ module.exports = async(req) => {
             menuHolder.innerHTML = menus.map(function(menuItem){
                 return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';
             }).join('');
+            menuVertical.innerHTML = menus.map(function(menuItem){
+                return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';
+            }).join('');
+            
             menuLoginLogout.innerHTML = app.user ? app.user.account.name : 'Login';
         }
         
