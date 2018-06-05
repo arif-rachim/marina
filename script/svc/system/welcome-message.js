@@ -15,7 +15,7 @@ module.exports = (req,res) => {
         subject : subject,
         messageText : messageText,
         messageHtml : messageHtml
-    }).then(function(result){
+    },'POST').then(function(result){
         req.send(JSON.stringify(result));
     });
 };
