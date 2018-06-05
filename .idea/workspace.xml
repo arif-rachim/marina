@@ -32,17 +32,8 @@
       <file leaf-file-name="mail-sender.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/svc/system/mail-sender.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="43" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="start.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+            <state relative-caret-position="374">
+              <caret line="43" column="37" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -50,8 +41,17 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="47" />
+            <state relative-caret-position="323">
+              <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vaadin-usage-statistics.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower_components/vaadin-usage-statistics/vaadin-usage-statistics.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="601">
+              <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -104,8 +104,8 @@
       <file leaf-file-name="welcome-message.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/svc/system/welcome-message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+            <state relative-caret-position="165">
+              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -122,7 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Load arti</find>
       <find>confirmation-panel</find>
       <find>font-family: 'PT Serif', serif; line-height: 1.5; font-style: italic;;font-size: 0.8em;</find>
       <find>0.8em</find>
@@ -152,6 +151,7 @@
       <find>missionStatement</find>
       <find>app.fet</find>
       <find>app.fetch</find>
+      <find>req.send</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -408,12 +408,12 @@
       <workItem from="1527660102761" duration="4454000" />
       <workItem from="1527992812388" duration="21787000" />
       <workItem from="1528085093879" duration="14201000" />
-      <workItem from="1528164769745" duration="6845000" />
+      <workItem from="1528164769745" duration="7066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178408000" />
+    <option name="totallyTimeSpent" value="178629000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -463,7 +463,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/templates/index/menu-top.js" />
     <entry file="file://$PROJECT_DIR$/script/svc/security/get-current-user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -684,13 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -726,13 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/svc/system/mail-sender.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="43" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
@@ -740,10 +725,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/vaadin-usage-statistics/vaadin-usage-statistics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/svc/system/mail-sender.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="43" column="37" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/svc/system/welcome-message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        <state relative-caret-position="165">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
         </state>
       </provider>
     </entry>

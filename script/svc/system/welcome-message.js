@@ -10,13 +10,14 @@ module.exports = (req,res) => {
     const messageText = `You have been added to CETC Membership access and now will be among the first to hear about 
     future technologies in Commercial Industry, Academia and Other Goverment Agencies.`;
     const messageHtml = message({name,userId,password});
+    console.log('We have htmlMessage '+messageHtml);
     fetch('/svc/system.mail-sender',{
         to : to,
         subject : subject,
-        messageText : messageText,
-        messageHtml : messageHtml
+        text : messageText,
+        html : messageHtml
     },'POST').then(function(result){
-        req.send(JSON.stringify(result));
+        req.end(JSON.stringify(result));
     });
 };
 
