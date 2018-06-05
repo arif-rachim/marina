@@ -85,7 +85,6 @@ module.exports = (req,content) => `
     (function(exports){
         exports.app = exports.app || {};
         var app = exports.app;
-        
         app.fetch = function(url,json,method,showLoader){
             if(showLoader !== false){
                 showLoader = true;

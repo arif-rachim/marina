@@ -184,17 +184,9 @@ module.exports = (req) => {
                                 password: stringToBase64(getValue('userPassword')),
                                 roles : selectedRoles
                             };
-                          var id = getValue('_id'); 
-                          fetch('/v1/system_users'+(id?'/'+id:''),{
-                              method : id ? 'PUT':'POST',
-                              credentials:'same-origin',
-                              headers:{
-                                  'content-type':'application/json'
-                              },
-                              body:JSON.stringify(data)
-                          }).then(function(result){
-                              return result.json();
-                          }).then(function(data){
+                          var id = getValue('_id');
+                          var isNewRegisteredUser = id ? true : false;
+                          app.fetch('/v1/system_users'+(id?'/'+id:''),data,id ? 'PUT':'POST').then(function(data){
                               if(app.showNotification){
                                 app.showNotification('Data saved successfully');    
                               }
@@ -202,6 +194,15 @@ module.exports = (req) => {
                                   app.refreshUserListTable();
                               }
                               clearForm();
+                          }).then(function(){
+                              if(isNewRegisteredUser){
+                                app.fetch('/svc/system.welcome-message',{
+                                  to : data.email,
+                                  name : data.name,
+                                  userId : data.userId,
+                                  password : getValue('userPassword') 
+                                })    
+                              }
                           });
                        }
                    });
