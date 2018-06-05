@@ -103,7 +103,8 @@ app.get('/page/:page',async (req,res) => {
     try{
         const sessionId = req.cookies.sessionId || req.query.sessionId;
         const result = await fetch(`v1/system_active_sessions?sessionId=${sessionId}`);
-        if(result.docs && result.docs.length == 0 && securePageAccess){
+        const isPrivateAccess = !req.params.page.endsWith("-public");
+        if(result.docs && result.docs.length == 0 && securePageAccess && isPrivateAccess){
             processRequest(req,res,accessDenied);
             return;
         }
