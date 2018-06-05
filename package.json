@@ -30,6 +30,7 @@
     "moment": "^2.22.2",
     "nedb": "^1.8.0",
     "node-fetch": "^2.1.2",
+    "nodemailer": "^4.6.5",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {}
