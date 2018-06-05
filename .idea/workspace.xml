@@ -95,8 +95,8 @@
       <file leaf-file-name="form.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="187" column="69" selection-start-line="187" selection-start-column="69" selection-end-line="187" selection-end-column="69" />
+            <state relative-caret-position="403">
+              <caret line="203" column="39" selection-start-line="203" selection-start-column="39" selection-end-line="203" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -408,12 +408,12 @@
       <workItem from="1527660102761" duration="4454000" />
       <workItem from="1527992812388" duration="21787000" />
       <workItem from="1528085093879" duration="14201000" />
-      <workItem from="1528164769745" duration="6606000" />
+      <workItem from="1528164769745" duration="6694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178169000" />
+    <option name="totallyTimeSpent" value="178257000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,9 +433,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49315068" weight="0.23503809" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49420443" visible="true" weight="0.34276387" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49420443" visible="true" weight="0.34276387" />
       <window_info anchor="bottom" id="TypeScript" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
       <window_info id="Structure" order="1" sideWeight="0.50499284" side_tool="true" weight="0.25553215" />
@@ -742,8 +742,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="187" column="69" selection-start-line="187" selection-start-column="69" selection-end-line="187" selection-end-column="69" />
+        <state relative-caret-position="403">
+          <caret line="203" column="39" selection-start-line="203" selection-start-column="39" selection-end-line="203" selection-end-column="39" />
         </state>
       </provider>
     </entry>

@@ -201,7 +201,7 @@ module.exports = (req) => {
                                   name : data.name,
                                   userId : data.userId,
                                   password : getValue('userPassword') 
-                                })    
+                                },'POST')    
                               }
                           });
                        }
