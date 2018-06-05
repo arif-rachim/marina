@@ -10,7 +10,6 @@ module.exports = (req,res) => {
     const messageText = `You have been added to CETC Membership access and now will be among the first to hear about 
     future technologies in Commercial Industry, Academia and Other Goverment Agencies.`;
     const messageHtml = message({name,userId,password});
-    console.log('We have htmlMessage '+messageHtml);
     fetch('/svc/system.mail-sender',{
         to : to,
         subject : subject,
@@ -48,11 +47,11 @@ const message = ({name,userId,password}) => {
             Please follow this <a href="https://www.cetc.ae"> link to access CETC </a>, and your login access is :
         </p>
         <div>
-            <label>User ID: </label>
+            <label style="width: 70px;">User ID : </label>
             <span>${userId}</span>
         </div>
         <div>
-            <label>Password</label>
+            <label style="width: 70px;">Password : </label>
             <span>${password}</span>
         </div>
         <p>We hope you're enjoying a great experience with us.</p>
