@@ -1,20 +1,26 @@
 const theme = require('../../theme');
 const {fetch} = require('../../../../config');
 
-function printContactsTable(contacts) {
+function printContactsCard(contacts) {
     return contacts.map(contact => `
-        <tr data-id="${contact._id}">
-            <td>${contact.name || ''}</td>
-            <td>${contact.company || ''}</td>
-            <td>${contact.jobTitle || ''}</td>
-            <td>${contact.phone || ''}</td>
-            <td>${contact.email || ''}</td>
-            <td style="text-align: center">
-                <a href="/svc/exports.vcard?id=${contact._id}">
-                    <i class="far fa-id-card"></i>
-                </a>
-            </td>
-        </tr>
+        <div style="width: 320px">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="margin: 1em">
+            <div  class="card-body">
+                <h5 class="card-title">${contact.name || ''}</h5>
+                <h6 class="card-subtitle">${contact.company || ''}</h6>
+                <p class="card-text">
+                    <div>${contact.jobTitle || ''}</div>
+                    <div>${contact.email || ''}</div>
+                    <div>${contact.phone || ''}</div>
+                    <td style="text-align: center">
+                        <a href="/svc/exports.vcard?id=${contact._id}">
+                            <i class="far fa-id-card"></i>
+                        </a>
+                    </td>
+                </p>
+            </div>
+        </div>
+        </div>
     `).join('');
 }
 
@@ -47,47 +53,45 @@ module.exports = async (req) => {
                 background: #eeeeee;
             }
         </style>
-        <div>
-            <input type="text" name="search-contact" class="form-control" style="margin-top: 1em;width: 200px;float: left;" placeholder="Search">
-            <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;float:right">Contacts Card</h1>
+        <div style="display: flex">
+            <div>
+            <input type="text" name="search-contact" class="form-control" style="margin-top: 1em;width: 200px;" placeholder="Search">
+            </div>
+            <span style="width: 100%"></span>
+            <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;width: 300px">Contacts Card</h1>
         </div>
-        <table class="contact-list-table" cellspacing="0">
-            <thead>
-                <tr style="height: 2.2em;">
-                    <th>Name</th>
-                    <th>Company</th>
-                    <th>Title</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th style="text-align: center">VCard</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${printContactsTable(contacts)}
-            </tbody>
-        </table>
+        <div class="contact-list-card-container" style="display: flex;flex-wrap: wrap">
+            ${printContactsCard(contacts)}
+        </div>
         <script>
             (function(exports){
                 exports.app = exports.app || {};
                 var app = exports.app;
                  
                 document.querySelector('[name="search-contact"]').addEventListener('keyup',debounce(searchContacts,500));
-                var tableBody = document.querySelector('.contact-list-table tbody');
+                var cardsContainer = document.querySelector('.contact-list-card-container');
                 
-                function printContactsTable(contacts) {
-                    return contacts.map(function(contact) {
-                        return '<tr data-id="'+contact._id+'">'+
-                        '    <td>'+(contact.name || "")+'</td>'+
-                        '    <td>'+(contact.company || "")+'</td>'+
-                        '    <td>'+(contact.jobTitle || "")+'</td>'+
-                        '    <td>'+(contact.phone || "")+'</td>'+
-                        '    <td>'+(contact.email || "")+'</td>'+
-                        '    <td style="text-align: center">'+
-                        '        <a href="/svc/exports.vcard?id='+(contact._id)+'">'+
-                        '            <i class="far fa-id-card"></i>'+
-                        '        </a>'+
-                        '    </td>'+
-                        '</tr>'
+                
+                function printContactsCard(contacts){
+                    return contacts.map(function(contact){
+                        return '<div style="width: 320px">'+
+                                '<div class="card shadow-sm p-3 mb-5 bg-white rounded" style="margin: 1em">'+
+                                '    <div  class="card-body">'+
+                                '        <h5 class="card-title">'+(contact.name || "")+'</h5>'+
+                                '        <h6 class="card-subtitle">'+(contact.company || "")+'</h6>'+
+                                '        <p class="card-text">'+
+                                '            <div>'+(contact.jobTitle || "")+'</div>'+
+                                '            <div>'+(contact.email || "")+'</div>'+
+                                '            <div>'+(contact.phone || "")+'</div>'+
+                                '            <td style="text-align: center">'+
+                                '                <a href="/svc/exports.vcard?id='+(contact._id)+'">'+
+                                '                    <i class="far fa-id-card"></i>'+
+                                '                </a>'+
+                                '            </td>'+
+                                '        </p>'+
+                                '    </div>'+
+                                '</div>'+
+                                '</div>'
                     }).join('');
                 }
                 
@@ -111,34 +115,17 @@ module.exports = async (req) => {
                     if(query.length > 0){
                         app.fetch('/v1/cetc_contacts?name='+query+'&company='+query+'&email='+query,{},'GET',false)
                         .then(function(result){
-                            tableBody.innerHTML = printContactsTable(result.docs);
-                            populateListeners();
+                            cardsContainer.innerHTML = printContactsCard(result.docs);
                         });
                     }else{
                         app.fetch('/v1/cetc_contacts',null,'GET',false)
                         .then(function(result){
-                            tableBody.innerHTML = printContactsTable(result.docs);
-                            populateListeners();
+                            cardsContainer.innerHTML = printContactsCard(result.docs);
                         });
                     }
                     
                 }
-                 
                 
-                function onTrClicked(event) {
-                    document.querySelectorAll('.contact-list-table tr').forEach(function(tr){
-                        tr.classList.remove('selected');
-                    }); 
-                    event.currentTarget.classList.add('selected');
-                }
-                
-                function populateListeners(){
-                    document.querySelectorAll('.contact-list-table tr').forEach(function(tr){
-                        tr.addEventListener('click',onTrClicked);
-                    });    
-                }
-                
-                populateListeners();
             })(window)
             
         </script>

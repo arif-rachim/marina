@@ -3,42 +3,49 @@ const {fetch,textToBase64,base64ToText} = require('../../../config');
 const basicAccessibility = [
     {
         name : 'Users Management',
-        shortName : 'Users',
+        shortName : 'Users Management',
         description : 'Access for Managing Users',
         path : '/page/user.page'
     },
     {
         name : 'Roles Management',
-        shortName : 'Roles',
+        shortName : 'Roles Management',
         description : 'Access for Managing Roles',
         path : '/page/role.page'
     },
     {
         name : 'Access Management',
-        shortName : 'Access',
+        shortName : 'Access Management',
         description : 'Access for Managing Access',
         path : '/page/access.page'
     }
     ,
     {
         name : 'Articles Management',
-        shortName : 'Articles',
+        shortName : 'Articles Management',
         description : 'Access for Managing Articles',
         path : '/page/cetc.articles.page'
     }
     ,
     {
         name : 'Events Management',
-        shortName : 'Events',
+        shortName : 'Events Management',
         description : 'Access for Managing Events',
         path : '/page/cetc.events.page'
     }
     ,
     {
         name : 'Contacts Management',
-        shortName : 'Contacts',
+        shortName : 'Contacts  Management',
         description : 'Access for Managing Contacts',
         path : '/page/cetc.contacts.page'
+    }
+    ,
+    {
+        name : 'Contacts Card',
+        shortName : 'Contacts  Card',
+        description : 'Access for Viewing Contacts Card',
+        path : '/page/cetc.contacts.cards'
     }
 ];
 
@@ -49,9 +56,14 @@ const basicRoles = [
         accessibility : 'Users Management,Roles Management,Access Management'
     },
     {
-        name : 'Member',
+        name : 'Power User',
         description : 'CETC Member',
         accessibility : 'Articles Management,Events Management,Contacts Management'
+    },
+    {
+        name : 'Member',
+        description : 'CETC Member',
+        accessibility : 'Contacts Card'
     }
 ]
 
@@ -69,8 +81,17 @@ const basicUsers = [
         userId : 'Demo',
         email : 'demo@demo.admin',
         phone : '0501234567',
-        roles : 'Member',
+        roles : 'Power User',
         password : textToBase64('demo')
+    }
+    ,
+    {
+        name : 'Demo2',
+        userId : 'Demo2',
+        email : 'demo@demo.admin',
+        phone : '0501234567',
+        roles : 'Member',
+        password : textToBase64('demo2')
     }
 ]
 
