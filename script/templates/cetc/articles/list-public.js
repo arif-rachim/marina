@@ -69,8 +69,10 @@ module.exports  = async (req) => {
         }
         
         .article-panel .article-description{
-            font-weight: 300;
+            font-weight: 400;
             font-size:1em;
+            line-height: 1.6em;
+            letter-spacing: 0.01em;
         }
         
         @media screen and (max-width: 900px){
