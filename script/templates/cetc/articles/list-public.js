@@ -11,7 +11,7 @@ const printArticles = (articles) => {
                         <img src="${article.image}" class="border-with-radius" style="width: 100%;">
                     </div>
                     <div class="article-detail-panel">
-                        <a href="/page/cetc.articles.article-public?id=${article._id}">
+                        <a href="/page/cetc.articles.article-public?id=${article._id}" style="text-decoration: none;color: #333333">
                             <h1 class="article-title">${article.title}</h1>
                         </a>
                         <h5 class="article-published-date">Published on ${article.date}</h5>
