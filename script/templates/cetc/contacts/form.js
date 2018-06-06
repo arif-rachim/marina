@@ -72,6 +72,20 @@ module.exports = (req) => {
             
             document.querySelector('.contact-form').addEventListener('submit',submitForm);
             document.querySelector('.contact-form input[type="reset"]').addEventListener('click',clearForm);
+            document.querySelector('[name="Phone"]').addEventListener('keyup',maskPhone);
+            
+            function maskPhone(event) {
+                var phone = event.target.value;
+                event.target.value = phone.split('.').join('').split('').reduce(function(result,number,index){
+                    if(parseInt(number) >= 0){
+                        if(index === 3 || index == 6){
+                            return result +'.'+number; 
+                        }
+                        return result+number;
+                        }
+                    return result;
+                },'');                
+            }
             
             function getValue(id){
                 return document.getElementById(id).value;
