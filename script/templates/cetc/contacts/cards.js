@@ -49,7 +49,7 @@ module.exports = async (req) => {
         </style>
         <div>
             <input type="text" name="search-contact" class="form-control" style="margin-top: 1em;width: 200px;float: left;" placeholder="Search">
-            <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;float:right">Contacts Management</h1>
+            <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;float:right">Contacts Card</h1>
         </div>
         <table class="contact-list-table" cellspacing="0">
             <thead>

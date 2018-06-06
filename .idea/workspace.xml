@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/script/svc/exports/vcard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/templates/cetc/contacts/cards.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/intents/json/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/intents/json/get.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/svc/exports/vcard.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/exports/vcard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/contacts/cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/contacts/cards.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -39,8 +33,8 @@
       <file leaf-file-name="cards.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/contacts/cards.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="113" column="69" selection-start-line="113" selection-start-column="69" selection-end-line="113" selection-end-column="69" />
+            <state relative-caret-position="383">
+              <caret line="51" column="118" selection-start-line="51" selection-start-column="118" selection-end-line="51" selection-end-column="118" />
               <folding>
                 <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
@@ -60,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="article-public.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="article-public.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/article-public.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+            <state relative-caret-position="289">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -96,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vcard.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="vcard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/svc/exports/vcard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="170">
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -224,12 +218,12 @@
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/contacts/form.js" />
         <option value="$PROJECT_DIR$/script/svc/exports/vcard-export.js" />
-        <option value="$PROJECT_DIR$/script/svc/exports/vcard.js" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/script/templates/theme.js" />
-        <option value="$PROJECT_DIR$/script/templates/cetc/contacts/cards.js" />
         <option value="$PROJECT_DIR$/script/intents/json/get.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" />
+        <option value="$PROJECT_DIR$/script/templates/cetc/contacts/cards.js" />
+        <option value="$PROJECT_DIR$/script/svc/exports/vcard.js" />
       </list>
     </option>
   </component>
@@ -348,7 +342,7 @@
               <item name="cetc" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
               <item name="svc" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
@@ -361,35 +355,7 @@
               <item name="cetc" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="access" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
               <item name="cetc" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-              <item name="articles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-              <item name="contacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cetc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -466,7 +432,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221128000" />
+    <option name="totallyTimeSpent" value="222005000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -482,16 +448,16 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.51211804" side_tool="true" visible="true" weight="0.23503809" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.51211804" side_tool="true" visible="true" weight="0.34276387" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.487882" visible="true" weight="0.23503809" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4873551" weight="0.23503809" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4889357" weight="0.34276387" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49359885" visible="true" weight="0.25500527" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.487882" visible="true" weight="0.34276387" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49337748" visible="true" weight="0.25500527" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
-      <window_info id="Structure" order="1" sideWeight="0.5064011" side_tool="true" visible="true" weight="0.25500527" />
+      <window_info id="Structure" order="1" sideWeight="0.5066225" side_tool="true" visible="true" weight="0.25500527" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49894625" weight="0.40914038" />
       <window_info anchor="bottom" id="Thumbnails" order="9" weight="0.32897604" />
@@ -798,30 +764,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/svc/exports/vcard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
           <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/cetc/contacts/cards.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="113" column="69" selection-start-line="113" selection-start-column="69" selection-end-line="113" selection-end-column="69" />
-          <folding>
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -841,8 +787,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/article-public.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        <state relative-caret-position="289">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/cetc/contacts/cards.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="51" column="118" selection-start-line="51" selection-start-column="118" selection-end-line="51" selection-end-column="118" />
+          <folding>
+            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/svc/exports/vcard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
         </state>
       </provider>
     </entry>

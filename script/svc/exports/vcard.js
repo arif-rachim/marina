@@ -8,7 +8,7 @@ module.exports = async (req,res) => {
     const names = user.name.split(' ');
 
     card.lastName = names.pop();
-    card.firstName = names.join('');
+    card.firstName = names.join(' ');
     card.organization = user.company;
     card.workPhone = user.phone.split('.').join('-');
     card.title = user.jobTitle;
