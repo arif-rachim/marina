@@ -92,14 +92,18 @@ module.exports = (req,content) => `
                 app.loader(true);    
             }
             method = (undefined === method || null === method) ? ( json ? 'POST' : 'GET' ) : method;
-            return fetch(url,{
+            var requestConfig = {
                 method : method,
                 headers : {
                     'content-type' : 'application/json'
                 },
                 credentials : 'same-origin',
                 body : JSON.stringify(json)
-            }).then(function(response){
+            }; 
+            if(method.toUpperCase() === 'GET'){
+                delete requestConfig.body;
+            }
+            return fetch(url,requestConfig).then(function(response){
                 return response.json();
             }).then(function(data){
                 app.loader(false);

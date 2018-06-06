@@ -1,7 +1,6 @@
 const {fetch} = require('../../../../config');
 module.exports = async (req) => {
     const articleId = req.query.id;
-    console.log('We have article id ',articleId);
     const article = await fetch(`/v1/cetc_articles/${articleId}`);
 
     return `
@@ -9,6 +8,7 @@ module.exports = async (req) => {
             <head>
                 <title>CETC</title>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link href="/styles/font-family.css " rel="stylesheet">
             </head>

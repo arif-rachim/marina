@@ -54,9 +54,19 @@ module.exports = (req,res) => {
             }
             propertiesToDelete.forEach(prop => {
                 delete query[prop]
-            })
-            db.count(query, function (err, count) {
-                let executionPlan = db.find(query).sort(sort).skip(skip).limit(limit);
+            });
+            const queries = [];
+            for (const prop in query) {
+                if (query.hasOwnProperty(prop)) {
+                    const condition = {};
+                    let value = query[prop];
+                    condition[prop] = new RegExp(value,'i');
+                    queries.push(condition);
+                }
+            }
+            let orQueries = queries.length > 0 ?{$or : queries} : {};
+            db.count(orQueries, function (err, count) {
+                let executionPlan = db.find(orQueries).sort(sort).skip(skip).limit(limit);
                 if(projections.length > 0){
                     const projection = projections.reduce((result,projection,index) => {
                         result[projection.name] = projection.value;
