@@ -65,24 +65,18 @@ module.exports = (req) => {
         </div>
         <div class="form-item" style="display: flex;flex-wrap: wrap;margin : -0.5em">
             <div style="width: 320px;margin: 0.5em">
-                <label for="fromDate"> From :</label>
+                <label for="from"> From :</label>
                 <div style="display: flex">
-                    <input type="text" name="FromDate" id="fromDate" data-type="date" required 
-                    class="form-control radius-right-zero" 
-                    pattern="^((31(?!([-])(FEB|APR|JUNE?|SEP|NOV)))|((30|29)(?!([-])FEB))|(29(?=([-])FEB([-])(((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))|(0?[1-9])|1\\d|2[0-8])([-])(JAN|FEB|MA(R|Y)|APR|JU(L|N)|AUG|OCT|(SEP|NOV|DEC))([-])((1[6-9]|[2-9]\\d)\\d{2}?)$" 
-                    placeholder="DD-MMM-YYYY">
-                    <input type="text" name="FromTime" id="fromTime" required class="form-control radius-left-zero" pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$" placeholder="HH:MM">
+                    <input type="datetime-local" name="From" id="from" data-type="date" required 
+                    class="form-control ">
                 </div>
             </div>
             
             <div style="width: 320px;margin: 0.5em">
                 <label for="untilDate"> Until :</label>
                 <div style="display: flex">
-                    <input type="text" name="UntilDate" id="untilDate" data-type="date" required 
-                    class="form-control radius-right-zero" 
-                    pattern="^((31(?!([-])(FEB|APR|JUNE?|SEP|NOV)))|((30|29)(?!([-])FEB))|(29(?=([-])FEB([-])(((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))|(0?[1-9])|1\\d|2[0-8])([-])(JAN|FEB|MA(R|Y)|APR|JU(L|N)|AUG|OCT|(SEP|NOV|DEC))([-])((1[6-9]|[2-9]\\d)\\d{2}?)$" 
-                    placeholder="DD-MMM-YYYY">
-                    <input type="text" name="UntilTime" id="untilTime" required class="form-control radius-left-zero" pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$" placeholder="HH:MM">
+                    <input type="datetime-local" name="Until" id="until" data-type="date" required 
+                    class="form-control " >
                 </div>
             </div>
         </div>
@@ -106,15 +100,10 @@ module.exports = (req) => {
                 editor = _editor;
             });
             
-            function toUpperCase(event){
-                event.target.value = event.target.value.toUpperCase().split(' ').join('-');
-            }
             
             document.querySelector('.event-form').addEventListener('submit',submitForm);
             document.querySelector('.event-form input[type="reset"]').addEventListener('click',clearForm);
-            [].slice.call(document.querySelectorAll('[data-type="date"]')).forEach(function(dateNode){
-                dateNode.addEventListener('keyup',toUpperCase);
-            });
+            
             function getValue(id){
                 return document.getElementById(id).value;
             }
@@ -144,10 +133,8 @@ module.exports = (req) => {
                 setValue('name','');
                 setValue('address','');
                 setValue('city','');
-                setValue('fromDate','');
-                setValue('fromTime','');
-                setValue('untilDate','');
-                setValue('untilTime','');
+                setValue('from','');
+                setValue('until','');
                 setDescriptionValue('');
                 setValue('_id','');
             }
@@ -159,16 +146,13 @@ module.exports = (req) => {
                     window.scrollTo(0,0);
                     app.showConfirmation('Are you sure you want to Save ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes'){
-                            var startFromString = getValue('fromDate').trim()+' '+getValue('fromTime').trim();
-                            var endUntilString = getValue('untilDate').trim()+' '+getValue('untilTime').trim();
-                            
                             var data = {
                                 name: getValue('name'),
                                 address: getValue('address'),
                                 city: getValue('city'),
                                 description: getDescriptionValue(),
-                                startFrom : startFromString,
-                                endUntil : endUntilString
+                                from : getValue('from'),
+                                until : getValue('until')
                             };
                             
                             var id = getValue('_id');
@@ -194,17 +178,11 @@ module.exports = (req) => {
                     clearForm();
                     if(event){
                         
-                        var fromDate = moment(event.startFrom,'DD-MMM-YYYY HH:mm');
-                        var untilDate = moment(event.endUntil,'DD-MMM-YYYY HH:mm');
-                        
                         setValue('name',event.name);
                         setValue('address',event.address);
                         setValue('city',event.city);
-                        
-                        setValue('fromDate',fromDate.format('DD-MMM-YYYY').toUpperCase());
-                        setValue('fromTime',fromDate.format('HH:mm'));
-                        setValue('untilDate',untilDate.format('DD-MMM-YYYY').toUpperCase());
-                        setValue('untilTime',untilDate.format('HH:mm'));
+                        setValue('from',event.from);
+                        setValue('until',event.until);
                         setDescriptionValue(event.description);
                         setValue('_id',event._id);    
                     }
