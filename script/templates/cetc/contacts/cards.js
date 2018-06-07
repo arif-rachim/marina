@@ -60,7 +60,7 @@ module.exports = async (req) => {
             <span style="width: 100%"></span>
             <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;width: 300px">Contacts Card</h1>
         </div>
-        <div class="contact-list-card-container" style="display: flex;flex-wrap: wrap">
+        <div class="contact-list-card-container" style="display: flex;flex-wrap: wrap;margin-left:-1em; width: calc(100% + 2em);">
             ${printContactsCard(contacts)}
         </div>
         <script>
@@ -113,12 +113,12 @@ module.exports = async (req) => {
                 function searchContacts(event) {
                     var query = event.target.value;
                     if(query.length > 0){
-                        app.fetch('/v1/cetc_contacts?name='+query+'&company='+query+'&email='+query,{},'GET',false)
+                        app.fetch('/v1/cetc_contacts?name='+query+'&company='+query+'&email='+query,{},'GET',true)
                         .then(function(result){
                             cardsContainer.innerHTML = printContactsCard(result.docs);
                         });
                     }else{
-                        app.fetch('/v1/cetc_contacts',null,'GET',false)
+                        app.fetch('/v1/cetc_contacts',null,'GET',true)
                         .then(function(result){
                             cardsContainer.innerHTML = printContactsCard(result.docs);
                         });
