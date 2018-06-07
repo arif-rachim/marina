@@ -26,7 +26,7 @@ const printArticles = (articles) => {
 
 module.exports  = async (req) => {
     try{
-    let articles = await fetch('/v1/cetc_articles');
+    let articles = await fetch('/v1/cetc_articles?$s._createdOn=-1');
     articles = articles.docs;
     return theme(req,`
     <style>

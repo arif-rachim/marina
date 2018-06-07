@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index/commanders-message.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index/synopsis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -63,16 +60,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="article-public.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="article-public.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/article-public.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
+              <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list-public.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list-public.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -166,7 +172,6 @@
         <option value="$PROJECT_DIR$/start.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/dashboard-public.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/detail-public.js" />
-        <option value="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" />
         <option value="$PROJECT_DIR$/script/svc/exports/vcard-export.js" />
         <option value="$PROJECT_DIR$/script/templates/theme.js" />
         <option value="$PROJECT_DIR$/script/intents/json/get.js" />
@@ -181,6 +186,7 @@
         <option value="$PROJECT_DIR$/script/templates/index/menu.js" />
         <option value="$PROJECT_DIR$/script/templates/index.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" />
+        <option value="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" />
       </list>
     </option>
   </component>
@@ -361,7 +367,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243399000" />
+    <option name="totallyTimeSpent" value="243624000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -376,16 +382,16 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.51001054" side_tool="true" visible="true" weight="0.2342048" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5089568" side_tool="true" visible="true" weight="0.34204793" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49736565" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48998946" visible="true" weight="0.2342048" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48998946" weight="0.2342048" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.50499284" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4915701" weight="0.34204793" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4910432" visible="true" weight="0.34204793" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.40914038" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -541,13 +547,6 @@
     <entry file="file://$PROJECT_DIR$/styles/font-family.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3017" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list-public.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/contacts/page.js">
@@ -740,12 +739,19 @@
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/article-public.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
+          <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list-public.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
         </state>
       </provider>
     </entry>
