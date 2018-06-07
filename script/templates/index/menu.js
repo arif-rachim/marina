@@ -156,7 +156,7 @@ module.exports = async(req) => {
     
     .menu-holder {
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
     
     @media screen and (max-width: 570px){
