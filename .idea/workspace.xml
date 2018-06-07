@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/cetc/events/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/events/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/index/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/index/commanders-message.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/index/synopsis.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -43,10 +45,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/templates/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="57" column="70" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
+            <state relative-caret-position="3261">
               <caret line="394" column="60" selection-start-line="394" selection-start-column="60" selection-end-line="394" selection-end-column="60" />
             </state>
           </provider>
@@ -55,11 +66,12 @@
       <file leaf-file-name="article-public.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/article-public.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+            <state relative-caret-position="51">
+              <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,7 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>succ</find>
       <find>.greeting-label</find>
       <find>font-weight: 700; font-size: 0.9em; line-height: 1.8em; text-transform: uppercase;</find>
       <find>font-size: 1em; color: #888; padding-top: 0.1em; padding-bottom: 0.1em;;</find>
@@ -107,6 +118,7 @@
       <find>c</find>
       <find>roles.filter(role =&gt; role !== null);</find>
       <find>cardsContainer</find>
+      <find>synopsis</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -150,7 +162,6 @@
         <option value="$PROJECT_DIR$/script/templates/user/form.js" />
         <option value="$PROJECT_DIR$/script/templates/access/form.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/form.js" />
-        <option value="$PROJECT_DIR$/script/templates/index.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/dashboard.js" />
         <option value="$PROJECT_DIR$/start.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/dashboard-public.js" />
@@ -168,6 +179,7 @@
         <option value="$PROJECT_DIR$/script/templates/cetc/events/cards.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/events/form.js" />
         <option value="$PROJECT_DIR$/script/templates/index/menu.js" />
+        <option value="$PROJECT_DIR$/script/templates/index.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" />
       </list>
     </option>
@@ -349,7 +361,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242798000" />
+    <option name="totallyTimeSpent" value="243399000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -367,12 +379,13 @@
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5094837" side_tool="true" visible="true" weight="0.2342048" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.51001054" side_tool="true" visible="true" weight="0.2342048" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49736565" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49051633" visible="true" weight="0.2342048" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48998946" visible="true" weight="0.2342048" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.50499284" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49209693" weight="0.34204793" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4915701" weight="0.34204793" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.40914038" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -393,7 +406,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.51001054" side_tool="true" visible="true" weight="0.23503809" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49789253" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49209693" weight="0.34276387" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
     </layout>
@@ -414,13 +426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="100" selection-start-line="7" selection-start-column="100" selection-end-line="7" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -511,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles/loader.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -543,13 +541,6 @@
     <entry file="file://$PROJECT_DIR$/styles/font-family.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3017" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/index/commanders-message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list-public.js">
@@ -718,20 +709,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/index/commanders-message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="100" selection-start-line="7" selection-start-column="100" selection-end-line="7" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
+        <state relative-caret-position="3261">
           <caret line="394" column="60" selection-start-line="394" selection-start-column="60" selection-end-line="394" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/templates/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="57" column="70" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/article-public.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+        <state relative-caret-position="51">
+          <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

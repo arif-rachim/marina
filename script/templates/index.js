@@ -1,5 +1,3 @@
-const synopsis = require("./index/synopsis.js");
-const commandersMessage = require("./index/commanders-message.js");
 const theme = require("./theme.js");
 const {fetch} = require("../../config");
 
@@ -202,16 +200,7 @@ const render = (req) => theme(req,
 <div style="border-bottom: 1px solid #F0F0F0;">
     ${req.print(missionStatement(req))}
 </div>
-<!--
-<div class="heading-container">
-    <section class="heading-synopsis">
-        ${req.print(synopsis(req))}
-    </section>
-    <section class="heading-commanders-message">
-        ${req.print(commandersMessage(req))}
-    </section>
-</div>
--->
+
 <section class="stories-panel-container">
     <!-- This is the left side content for displaying latest post -->
     <aside class="stories-left-panel">

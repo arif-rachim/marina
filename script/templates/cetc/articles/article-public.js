@@ -1,7 +1,7 @@
 const {fetch} = require('../../../../config');
 module.exports = async (req) => {
     const articleId = req.query.id;
-    const article = await fetch(`/v1/cetc_articles/${articleId}`);
+    const article = await fetch(`/v1/cetc_articles/${articleId}?$s._createdOn=-1`);
 
     return `
         <html>
