@@ -66,7 +66,7 @@ module.exports = (req) => {
         </div>
         <div class="form-item">
             <label for="location"> Location :</label>
-            <div id="map" style="widows: 100%;height: 400px;"></div>
+            <div id="map" style="width: 100%;height: 400px;"></div>
             <input type="text" name="Location" id="location" required class="form-control" placeholder="Lattitude Longitude" style="margin-top:1em">
         </div>
         <div class="form-item">

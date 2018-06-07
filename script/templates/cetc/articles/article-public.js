@@ -22,7 +22,11 @@ module.exports = async (req) => {
                         line-height: 1.4; 
                         text-align: center;
                         display: inline-block;
-                        ">CETC</div>                    
+                        ">
+                        <a href="/index.html" style="text-decoration: none;color: #333333">
+                            CETC
+                        </a>
+                        </div>                    
                         <style>
                             .back-button svg {
                                 fill: #333333;
@@ -34,9 +38,20 @@ module.exports = async (req) => {
                             </a>
                         </div>
                     </div>
-
+                    <style>
+                        .title-card{
+                            font-weight: 300;
+                            font-size: 2.5em; 
+                        }
+                        
+                        @media screen and (max-width: 450px) {
+                            .title-card{
+                                font-size: 1.9em;
+                            }
+                        }
+                    </style>
                     <article style="margin-top: 1em">
-                        <h1 style="font-weight: 300;font-size: 2.5em ">${article.title}</h1>
+                        <h1 class="title-card">${article.title}</h1>
                         <div style="font-style:italic;font-weight: 500">Published on ${article.date}</div>
                         <div>
                             <img src="${article.image}" alt="" style="width: 100%">

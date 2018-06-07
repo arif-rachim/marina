@@ -392,7 +392,7 @@ module.exports = async(req) => {
                 userName: getValue('userName'),
                 password: getValue('password')
             };
-            app.fetch('/svc/security.login',data,'post',false).then(function(user){
+            app.fetch('/svc/security.login',data,'post',true).then(function(user){
                 if(user.errorMessage){
                     app.showNotification(user.errorMessage);
                     return;
