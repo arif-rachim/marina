@@ -1,7 +1,9 @@
 const {fetch} = require('../../../../config');
 
-
-const formatDate = (date) => {
+const formatDateTime = (date) => {
+    if(date === undefined || date.toString() === 'Invalid Date'){
+        return '';
+    }
     const monthNames = [
         "JAN", "FEB", "MAR",
         "APR", "MAY", "JUN", "JUL",
@@ -11,18 +13,10 @@ const formatDate = (date) => {
     const day = date.getDate();
     const monthIndex = date.getMonth();
     const year = date.getFullYear();
-    return `${day < 10 ? '0'+day : day}-${monthNames[monthIndex]}-${year}`;
-};
-const formatTime = (date) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    return `${hours < 10 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}`;
-};
-const formatDateTime = (date) => {
-    if(date === undefined || date.toString() === 'Invalid Date'){
-        return '';
-    }
-    return date ? `${formatDate(date)} ${formatTime(date)}` : '';
+    const applyLeadingZero = (num) => num < 10 ? `0${num}` : num;
+    return `${applyLeadingZero(day)}-${monthNames[monthIndex]}-${year} ${applyLeadingZero(hours)}:${applyLeadingZero(minutes)}`;
 };
 
 function printEventsTable(events) {

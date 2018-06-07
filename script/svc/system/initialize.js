@@ -47,6 +47,13 @@ const basicAccessibility = [
         description : 'Access for Viewing Contacts Card',
         path : '/page/cetc.contacts.cards'
     }
+    ,
+    {
+        name : 'Events Card',
+        shortName : 'Events  Card',
+        description : 'Access for Viewing Events Card',
+        path : '/page/cetc.events.cards'
+    }
 ];
 
 const basicRoles = [
@@ -63,7 +70,7 @@ const basicRoles = [
     {
         name : 'Member',
         description : 'CETC Member',
-        accessibility : 'Contacts Card'
+        accessibility : 'Contacts Card,Events Card'
     }
 ]
 

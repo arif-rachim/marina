@@ -294,7 +294,7 @@ module.exports = async(req) => {
                     app.showNotification(roles.errorMessage);
                     return;
                 }
-                roles = roles.filter(role => role !== null);
+                roles = roles.filter(function(role){return role !== null});
                 user.account.roles = roles;
                 return Promise.all(roles.map(function(role){
                     return fetch('/v1/system_accessibility?$ids='+role.accessibility);

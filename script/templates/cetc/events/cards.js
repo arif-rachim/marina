@@ -1,27 +1,47 @@
 const theme = require('../../theme');
 const {fetch} = require('../../../../config');
 
-function printContactsCard(contacts) {
-    return contacts.map(contact => `
-        <div style="width: 320px">
+const formatDateTime = (date) => {
+    if(date === undefined || date.toString() === 'Invalid Date'){
+        return '';
+    }
+    const monthNames = [
+        "JAN", "FEB", "MAR",
+        "APR", "MAY", "JUN", "JUL",
+        "AUG", "SEP", "OCT",
+        "NOV", "DEC"
+    ];
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const applyLeadingZero = (num) => num < 10 ? `0${num}` : num;
+    return `${applyLeadingZero(day)}-${monthNames[monthIndex]}-${year} ${applyLeadingZero(hours)}:${applyLeadingZero(minutes)}`;
+};
+
+
+function printEventsCard(events) {
+    return events.map(event => `
+        <div style="width: 350px">
         <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="margin: 1em">
             <div  class="card-body">
                 
-                <h5 class="card-title">${contact.name || ''}</h5>
-                <h6 class="card-subtitle">${contact.company || ''}</h6>
-                
+                <h5 class="card-title">${event.name || ''}</h5>
+                <h6 class="card-subtitle" style="font-size: 0.8em">${formatDateTime(new Date(event.from))} ${formatDateTime(new Date(event.until))}</h6>
                 <p class="card-text">
-                    <div>${contact.jobTitle || ''}</div>
-                    <div>${contact.email || ''}</div>
-                    <div>${contact.phone || ''}</div>
+                    <div>${event.description}</div>
+                    <div>${event.address}</div>
                 </p>
+                <!--
                 <div style="position: relative">
                     <div style="right: 0px;top: -3em;position: absolute">
-                        <a href="/svc/exports.vcard?id=${contact._id}">
+                        <a href="/svc/exports.vcard?id=${event._id}">
                             <i class="far fa-id-card" style="font-size:2em;"></i>
                         </a>
                     </div>
                 </div>
+                -->
             </div>
         </div>
         </div>
@@ -29,69 +49,62 @@ function printContactsCard(contacts) {
 }
 
 module.exports = async (req) => {
-    let contacts = await fetch('v1/cetc_contacts');
-    contacts = contacts.docs;
+    let events = await fetch('v1/cetc_events');
+    events = events.docs;
     return theme(req,`
         <style>
-            .contact-list-table th , td {
+            .events-list-table th , td {
                 padding: 0.3em;
                 
             }
-            .contact-list-table th  {
+            .events-list-table th  {
                 text-align: left;
             }
             
-            .contact-list-table thead {
+            .events-list-table thead {
                 border-bottom: 1px solid #000000;
             }
             
-            .contact-list-table tr {
+            .events-list-table tr {
                 border-bottom: 1px solid #cccccc;
             }
             
-            .contact-list-table {
+            .events-list-table {
                 width: 100%;
                 
             }
-            .contact-list-table tr.selected{
+            .events-list-table tr.selected{
                 background: #eeeeee;
             }
         </style>
         <div style="display: flex">
             <div>
-            <input type="text" name="search-contact" class="form-control" style="margin-top: 1em;width: 200px;" placeholder="Search">
+            <input type="text" name="search-events" class="form-control" style="margin-top: 1em;width: 200px;" placeholder="Search">
             </div>
             <span style="width: 100%"></span>
-            <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;width: 300px">Contacts Card</h1>
+            <h1 style="font-size: 1.2em;font-style: italic;text-align:right;padding-top:1em;width: 300px">Events Card</h1>
         </div>
-        <div class="contact-list-card-container" style="display: flex;flex-wrap: wrap;margin-left:-1em; width: calc(100% + 2em);">
-            ${printContactsCard(contacts)}
+        <div class="events-list-card-container" style="display: flex;flex-wrap: wrap;margin-left:-1em; width: calc(100% + 2em);">
+            ${printEventsCard(events)}
         </div>
         <script>
             (function(exports){
                 exports.app = exports.app || {};
                 var app = exports.app;
                  
-                document.querySelector('[name="search-contact"]').addEventListener('keyup',debounce(searchContacts,500));
-                var cardsContainer = document.querySelector('.contact-list-card-container');
+                document.querySelector('[name="search-events"]').addEventListener('keyup',debounce(searchEvents,500));
+                var cardsContainer = document.querySelector('.events-list-card-container');
                 
                 
-                function printContactsCard(contacts){
-                    return contacts.map(function(contact){
+                function printEventsCard(events){
+                    return events.map(function(event){
                         return '<div style="width: 320px">'+
                                 '<div class="card shadow-sm p-3 mb-5 bg-white rounded" style="margin: 1em">'+
                                 '    <div  class="card-body">'+
-                                '        <h5 class="card-title">'+(contact.name || "")+'</h5>'+
-                                '        <h6 class="card-subtitle">'+(contact.company || "")+'</h6>'+
+                                '        <h5 class="card-title">'+(event.name || "")+'</h5>'+
+                                '        <h6 class="card-subtitle">'+event.from +' '+event.until+'</h6>'+
                                 '        <p class="card-text">'+
-                                '            <div>'+(contact.jobTitle || "")+'</div>'+
-                                '            <div>'+(contact.email || "")+'</div>'+
-                                '            <div>'+(contact.phone || "")+'</div>'+
-                                '            <td style="text-align: center">'+
-                                '                <a href="/svc/exports.vcard?id='+(contact._id)+'">'+
-                                '                    <i class="far fa-id-card" ></i>'+
-                                '                </a>'+
-                                '            </td>'+
+                                '            '+event.address+
                                 '        </p>'+
                                 '    </div>'+
                                 '</div>'+
@@ -114,17 +127,17 @@ module.exports = async (req) => {
                     };
                 };
                 
-                function searchContacts(event) {
+                function searchEvents(event) {
                     var query = event.target.value;
                     if(query.length > 0){
-                        app.fetch('/v1/cetc_contacts?name='+query+'&company='+query+'&email='+query,{},'GET',true)
+                        app.fetch('/v1/cetc_events?name='+query+'&address='+query+'&from='+query+'&until='+query,{},'GET',true)
                         .then(function(result){
-                            cardsContainer.innerHTML = printContactsCard(result.docs);
+                            cardsContainer.innerHTML = printEventsCard(result.docs);
                         });
                     }else{
-                        app.fetch('/v1/cetc_contacts',null,'GET',true)
+                        app.fetch('/v1/cetc_events',null,'GET',true)
                         .then(function(result){
-                            cardsContainer.innerHTML = printContactsCard(result.docs);
+                            cardsContainer.innerHTML = printEventsCard(result.docs);
                         });
                     }
                     
