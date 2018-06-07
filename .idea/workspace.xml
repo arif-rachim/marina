@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/system/initialize.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/system/initialize.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/cetc/contacts/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/contacts/form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/templates/cetc/events/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/events/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/templates/cetc/events/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/events/list.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -36,8 +32,8 @@
       <file leaf-file-name="form.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/events/form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="47" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
+            <state relative-caret-position="391">
+              <caret line="212" column="41" selection-start-line="212" selection-start-column="41" selection-end-line="212" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#!!top" expanded="true" />
@@ -393,7 +389,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235800000" />
+    <option name="totallyTimeSpent" value="237152000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -752,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/events/form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="47" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
+        <state relative-caret-position="391">
+          <caret line="212" column="41" selection-start-line="212" selection-start-column="41" selection-end-line="212" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#!!top" expanded="true" />

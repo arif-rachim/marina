@@ -207,7 +207,11 @@ module.exports = (req) => {
             
             app.initMap = function(){
                 var hq = {lat: 24.471287, lng: 54.345337};
-                map = new google.maps.Map(document.getElementById('map'), {zoom: 18, center: hq});
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 18, 
+                    center: hq,
+                    mapTypeControl: false
+                });
                 geocoder = new google.maps.Geocoder();
                 marker = new google.maps.Marker({
                     position: hq,
