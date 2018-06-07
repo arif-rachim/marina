@@ -73,6 +73,8 @@ module.exports = (req) => {
             document.querySelector('.contact-form').addEventListener('submit',submitForm);
             document.querySelector('.contact-form input[type="reset"]').addEventListener('click',clearForm);
             document.querySelector('[name="Phone"]').addEventListener('keyup',maskPhone);
+            document.querySelector('[name="Name"]').addEventListener('keyup',maskName);
+            document.querySelector('[name="JobTitle"]').addEventListener('keyup',maskName);
             
             function maskPhone(event) {
                 var phone = event.target.value;
@@ -85,6 +87,18 @@ module.exports = (req) => {
                         }
                     return result;
                 },'');                
+            }
+            
+            function maskName(event){
+                var name = event.target.value;
+                event.target.value = name.split('').reduce(function(result,character,index){
+                    result.name = (result.name+ (result.nextLeterCapital ? character.toUpperCase() : character));
+                    result.nextLeterCapital = character === ' ';
+                    return result;
+                },{
+                    name : '',
+                    nextLeterCapital:true
+                }).name;
             }
             
             function getValue(id){

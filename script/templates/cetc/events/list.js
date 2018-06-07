@@ -1,9 +1,34 @@
 const {fetch} = require('../../../../config');
 
+
+const formatDate = (date) => {
+    const monthNames = [
+        "JAN", "FEB", "MAR",
+        "APR", "MAY", "JUN", "JUL",
+        "AUG", "SEP", "OCT",
+        "NOV", "DEC"
+    ];
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+    return `${day < 10 ? '0'+day : day}-${monthNames[monthIndex]}-${year}`;
+};
+const formatTime = (date) => {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${hours < 10 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}`;
+};
+const formatDateTime = (date) => {
+    if(date === undefined || date.toString() === 'Invalid Date'){
+        return '';
+    }
+    return date ? `${formatDate(date)} ${formatTime(date)}` : '';
+};
+
 function printEventsTable(events) {
     return events.map(event => `
         <tr data-id="${event._id}">
-            <td>${event.startFrom || ''}</td>
+            <td>${formatDateTime(new Date(event.from)) || ''}</td>
             <td>${event.name || ''}</td>
             <td>
                 <i class="far fa-trash-alt" data-id="${event._id}" onclick="event.stopPropagation();app.deleteEvent(event);"></i>
@@ -94,16 +119,39 @@ module.exports = async (req) => {
                             });        
                         }    
                     });
-                    
-                    
                 }
+                
+                function formatDate(date){
+                    if(date == null || date === undefined){
+                        return '';
+                    }
+                    date = new Date(date);
+                    
+                    function formatZero(num){
+                        return num < 10 ? '0'+num : ''+num;
+                    }    
+                
+                    var monthNames = [
+                        "JAN", "FEB", "MAR",
+                        "APR", "MAY", "JUN", "JUL",
+                        "AUG", "SEP", "OCT",
+                        "NOV", "DEC"
+                    ];
+                    var day = date.getDate();
+                    var month = date.getMonth();
+                    var year = date.getFullYear();
+                    
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    return formatZero(day)+'-'+monthNames[month]+'-'+year+' '+formatZero(hours)+':'+formatZero(minutes);
+                };
                 
                 function refreshEventListTable(){
                     app.fetch('/v1/cetc_events').then(function(result){
                         var events = result.docs;
                         document.querySelector('.event-list-table tbody').innerHTML = events.map(function(event){
                             return '<tr data-id="'+event._id+'">' +
-                             '<td>'+event.startFrom+'</td>' +
+                             '<td>'+formatDate(event.from) +'</td>' +
                              '<td>'+event.name+'</td>' +
                              '<td><i class="far fa-trash-alt" data-id="'+event._id+'" onclick="event.stopPropagation();app.deleteEvent(event);"></i></td>' +
                               '</tr>';

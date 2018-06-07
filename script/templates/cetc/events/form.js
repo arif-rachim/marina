@@ -1,8 +1,17 @@
 const { fetch } = require('../../../../config');
-
+const googleApiKey = process.env.GOOGLE_API_KEY;
 module.exports = (req) => {
     return `
         <script src="/node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+        
+        <script>
+            (function(exports){
+                exports.app = exports.app || {};
+                var app = exports.app;
+                
+            })(window);
+            
+        </script>
         <style>
         
             .event-form {
@@ -56,13 +65,15 @@ module.exports = (req) => {
             <input type="text" name="Name" id="name" required class="form-control" placeholder="Enter name">
         </div>
         <div class="form-item">
-            <label for="address"> Address </label>
-            <textarea name="address" id="address" rows="3" class="form-control" placeholder="Enter address"></textarea>
+            <label for="location"> Location :</label>
+            <div id="map" style="widows: 100%;height: 400px;"></div>
+            <input type="text" name="Location" id="location" required class="form-control" placeholder="Lattitude Longitude" style="margin-top:1em">
         </div>
         <div class="form-item">
-            <label for="city"> City </label>
-            <input type="text" name="City" id="city" required class="form-control" placeholder="Enter city">
+            <label for="address"> Address </label>
+            <textarea name="Address" id="address" rows="3" class="form-control" placeholder="Enter address"></textarea>
         </div>
+        
         <div class="form-item" style="display: flex;flex-wrap: wrap;margin : -0.5em">
             <div style="width: 320px;margin: 0.5em">
                 <label for="from"> From :</label>
@@ -132,10 +143,10 @@ module.exports = (req) => {
             function clearForm() {
                 setValue('name','');
                 setValue('address','');
-                setValue('city','');
                 setValue('from','');
                 setValue('until','');
                 setDescriptionValue('');
+                setValue('location','');
                 setValue('_id','');
             }
             
@@ -149,10 +160,10 @@ module.exports = (req) => {
                             var data = {
                                 name: getValue('name'),
                                 address: getValue('address'),
-                                city: getValue('city'),
                                 description: getDescriptionValue(),
                                 from : getValue('from'),
-                                until : getValue('until')
+                                until : getValue('until'),
+                                location : getValue('location')
                             };
                             
                             var id = getValue('_id');
@@ -177,15 +188,58 @@ module.exports = (req) => {
                 app.fetch('/v1/cetc_events/'+id).then(function(event){
                     clearForm();
                     if(event){
-                        
                         setValue('name',event.name);
                         setValue('address',event.address);
-                        setValue('city',event.city);
                         setValue('from',event.from);
                         setValue('until',event.until);
+                        setValue('location',event.location);
+                        setMapLocation(event.location);
                         setDescriptionValue(event.description);
                         setValue('_id',event._id);    
                     }
+                });
+            }
+            
+            // for google maps code here
+            var geocoder;
+            var map;
+            var marker;
+            
+            app.initMap = function(){
+                var hq = {lat: 24.471287, lng: 54.345337};
+                map = new google.maps.Map(document.getElementById('map'), {zoom: 18, center: hq});
+                geocoder = new google.maps.Geocoder();
+                marker = new google.maps.Marker({
+                    position: hq,
+                    map: map,
+                    draggable: true //make it draggable
+                });
+                google.maps.event.addListener(map, 'click', function(event) {                
+                    var clickedLocation = event.latLng;
+                    marker.setPosition(clickedLocation);
+                    markerLocation(marker.position);
+                });  
+            };
+            
+            function setMapLocation(locationString){
+                if(locationString && locationString.length > 0 && locationString.indexOf(',') > 0 && marker && map){
+                    var location = locationString.split(',');
+                    location = {
+                        lat : parseFloat(location[0].trim()),
+                        lng : parseFloat(location[1].trim())
+                    };
+                    marker.setPosition(location);
+                    map.setCenter(location);
+                }
+            }
+            
+            function markerLocation(position) {
+                var location = document.querySelector('[name="Location"]');
+                location.value = position.lat()+', '+position.lng();
+                geocoder.geocode({'location': position}, function(results, status) {
+                  if (status === 'OK') {
+                      document.querySelector('[name="Address"]').value = results[0].formatted_address;  
+                  }
                 });
             }
             
@@ -194,5 +248,6 @@ module.exports = (req) => {
             exports.app.clearEventForm = clearForm;
         })(window);
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&callback=app.initMap"></script>
     `
 };

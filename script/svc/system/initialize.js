@@ -77,21 +77,21 @@ const basicUsers = [
         password : textToBase64('admin')
     },
     {
-        name : 'Demo',
-        userId : 'Demo',
-        email : 'demo@demo.admin',
+        name : 'Power User',
+        userId : 'power',
+        email : 'power.user@demo.demo',
         phone : '0501234567',
         roles : 'Power User',
-        password : textToBase64('demo')
+        password : textToBase64('power')
     }
     ,
     {
-        name : 'Demo2',
-        userId : 'Demo2',
-        email : 'demo@demo.admin',
+        name : 'Member',
+        userId : 'member',
+        email : 'member@member.member',
         phone : '0501234567',
         roles : 'Member',
-        password : textToBase64('demo2')
+        password : textToBase64('member')
     }
 ]
 
