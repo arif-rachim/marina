@@ -157,7 +157,7 @@ module.exports = (req) => {
                                 description: getValue('description'),
                                 image: getValue('image'),
                                 content: getContentValue(),
-                                date : getValue('date') || moment().format('MMMM Do YYYY, h:mm:ss a')
+                                date : getValue('date') || app.formatDateTime(new Date())
                             };
                             
                             var id = getValue('_id'); 

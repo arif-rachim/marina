@@ -74,3 +74,29 @@ var PubSub = {};
         return false;
     };
 }(PubSub));
+
+(function(exports){
+    exports.app = exports.app || {};
+    var app = exports.app;
+
+    app.formatDateTime= function(date){
+        if(date === undefined || date.toString() === 'Invalid Date'){
+            return '';
+        }
+        const monthNames = [
+            "JAN", "FEB", "MAR",
+            "APR", "MAY", "JUN", "JUL",
+            "AUG", "SEP", "OCT",
+            "NOV", "DEC"
+        ];
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var applyLeadingZero = function(num){
+            return num < 10 ? '0'+num : num;
+        };
+        return applyLeadingZero(day)+'-'+monthNames[monthIndex]+'-'+year+' '+applyLeadingZero(hours)+':'+applyLeadingZero(minutes);
+    };
+})(window);

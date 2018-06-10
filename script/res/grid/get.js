@@ -15,22 +15,23 @@ module.exports = async (req,res) => {
         return true;
     });
     res.end(html({title : resource,body : `
-    <table class="table">
-        <thead>
-            <tr>
-                ${schema.map(schema => `<th >${schema.name}</th>`).join('')}
-            </tr>
-        </thead>
-        <tbody>
-            ${resources.map(res => {
-                return `
+    <div style="padding: 1em">
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    ${schema.map(schema => `<td >${res[schema.name]}</td>`).join('')}
+                    ${schema.map(schema => `<th >${schema.name}</th>`).join('')}
                 </tr>
-                `    
-            }).join('')}
-        </tbody>
-    </table>
-    
+            </thead>
+            <tbody>
+                ${resources.map(res => {
+                    return `
+                    <tr>
+                        ${schema.map(schema => `<td >${res[schema.name]}</td>`).join('')}
+                    </tr>
+                    `    
+                }).join('')}
+            </tbody>
+        </table>
+    </div>
     `}));
 };
