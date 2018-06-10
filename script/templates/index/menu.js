@@ -70,10 +70,10 @@ module.exports = async(req) => {
     .login-slider{
         position: relative;
         padding:0.5em;
+        padding-top:0;
         top:0px;
         transition: top 300ms ease-out;
-        background-color: #FAFAFA;
-        border: 1px solid #CCC;
+        
         border-top : none;
         
     }
@@ -113,13 +113,20 @@ module.exports = async(req) => {
     }
     
     .menu-vertical {
-        background-color: #eeeeee;
+        
         border-bottom: 1px solid #cccccc;
         width: 100%;
         padding-left: 0.5em;
         padding-right: 0.5em;
         top:0px;
         transition: top 300ms ease-out;
+        background: rgba(252,252,252,1);
+        background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(250,250,250,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,252,252,1)), color-stop(100%, rgba(250,250,250,1)));
+        background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(250,250,250,1) 100%);
+        background: -o-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(250,250,250,1) 100%);
+        background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(250,250,250,1) 100%);
+        background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(250,250,250,1) 100%);
     }
     
     .menu-vertical-content{
@@ -188,11 +195,11 @@ module.exports = async(req) => {
 <div style="position: fixed;width: 100%;top: 0px;left:0px;z-index: 2">
     <div style="position: absolute;width: 100%;">
         <div class="menu-vertical-container " >
-            <div class="menu-vertical shadow p-3 mb-5 bg-white hide" style="position: relative;padding-top:1em;padding-bottom: 1em">
+            <div class="menu-vertical shadow p-3 mb-5 bg-white hide" style="position: relative;padding-top:1em;padding-bottom: 1em;">
                 <div style="float:right;" class="close">
                     <i class="far fa-times-circle" style="font-size: 1.2em"></i>
                 </div>
-                <div class="menu-vertical-content">
+                <div class="menu-vertical-content" style="min-height: 100px">
                     ${user ? printMenu(user.account.roles) : ''}
                 </div>
             </div>
@@ -203,22 +210,29 @@ module.exports = async(req) => {
     <div style="position: absolute;width: 100%;z-index:1">
         <div class="login-panel">
             <div class="login-slider hide">
-                <form class="login-form" onsubmit="return false;" style="width: 300px">
-                    <div class="form-item">
-                        <label for="userName" >User Id:</label>
-                        <input id="userName" placeholder="User ID" class="form-control">
-                    </div>
-                    <div class="form-item">
-                        <label for="password" >Password:</label>
-                        <input id="password" type="password" placeholder="Password" class="form-control">
-                    </div>
-                    <div class="form-item" style="display: flex;justify-content: flex-end;padding:0.5em 0.3em">
-                        <div style="display: flex;justify-content: flex-end">
-                            <button style="margin-right: 0.5em;" class="btn btn-primary login-button">Login</button>
-                            <button class="btn cancel-button">Cancel</button>
+                <div class="border-left border-right border-bottom shadow p-3 mb-5" style="padding: 1em;
+                background: rgb(242,242,242); /* Old browsers */
+                background: -moz-linear-gradient(top, rgba(242,242,242,1) 0%, rgba(234,234,234,1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(242,242,242,1) 0%,rgba(234,234,234,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(242,242,242,1) 0%,rgba(234,234,234,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                ">
+                    <form class="login-form" onsubmit="return false;" style="width: 300px">
+                        <div class="form-item">
+                            <label for="userName" >User Id:</label>
+                            <input id="userName" placeholder="User ID" class="form-control">
                         </div>
-                    </div>
-                </form>
+                        <div class="form-item">
+                            <label for="password" >Password:</label>
+                            <input id="password" type="password" placeholder="Password" class="form-control">
+                        </div>
+                        <div class="form-item" style="display: flex;justify-content: flex-end;padding:0.5em 0.3em">
+                            <div style="display: flex;justify-content: flex-end">
+                                <button style="margin-right: 0.5em;" class="btn btn-primary login-button">Login</button>
+                                <button class="btn cancel-button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

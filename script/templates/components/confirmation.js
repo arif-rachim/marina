@@ -15,9 +15,16 @@ module.exports = (req) => {
                 top : 0px;
                 transition: top 300ms;
                 
-                background-color: #FAFAFA;
-                border: 1px solid #CCC;
+                border: 1px solid #eeeeee;
                 border-top: none;
+                
+                background: rgba(252,252,252,1);
+                background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,252,252,1)), color-stop(100%, rgba(240,240,240,1)));
+                background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
+                background: -o-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
+                background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
+                background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
             }
             .confirmation-panel .slider.hide{
                 top: -200px;
@@ -28,7 +35,7 @@ module.exports = (req) => {
         </style>
         
         <div class="confirmation-panel" style="z-index:1">
-            <div class="slider hide" >
+            <div class="slider shadow p-3 mb-5 hide" >
                 <div style="display: flex;align-items: center;">
                     <div><i class="far fa-question-circle" style="font-size: 2em;color: #333"></i></div>
                     <div class="text-message" style="margin-left: 1em ">Are you sure you want to ?</div>
