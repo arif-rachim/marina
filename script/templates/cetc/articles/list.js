@@ -22,6 +22,7 @@ const formatDateTime = (date) => {
 function printArticlesTable(articles) {
     return articles.map(article => `
         <tr data-id="${article._id}">
+            <td><img src="${article.image}" alt="" style="width: 100%"></td>
             <td>${formatDateTime(new Date(article._createdOn)) || ''}</td>
             <td>${article.title || ''}</td>
             <td>
@@ -64,12 +65,15 @@ module.exports = async (req) => {
                 width: 100px;
             }
         </style>
+        
         <table class="article-list-table" cellspacing="0">
             <col width="150">
+            <col width="160">
             <col width="auto">
             <col width="40">
             <thead>
                 <tr style="height: 2.2em;">
+                    <th>Image</th>
                     <th class="col-published-date">Published Date</th>
                     <th>Title</th>
                     <th></th>
@@ -148,6 +152,7 @@ module.exports = async (req) => {
                         var articles = result.docs;
                         document.querySelector('.article-list-table tbody').innerHTML = articles.map(function(article){
                             return '<tr data-id="'+article._id+'">' +
+                             '<td><img src="'+article.image+'" alt="" style="width: 100%"></td>'+
                              '<td>'+formatDateTime(new Date(article._createdOn))+'</td>' +
                              '<td>'+article.title+'</td>' +
                              '<td><i class="far fa-trash-alt" data-id="'+article._id+'" onclick="event.stopPropagation();app.deleteArticle(event);"></i></td>' +

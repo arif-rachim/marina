@@ -7,6 +7,7 @@ function printContactsTable(contacts) {
             <td>${contact.phone || ''}</td>
             <td><a href="mailto:${contact.email}">${contact.email || ''}</a></td>
             <td>${contact.company || ''}</td>
+            <td style="text-align: center" ><a href="/svc/exports.vcard?id=${contact._id}" onclick="event.stopPropagation();"><i class="far fa-id-card"></i></a></td>
             <td>
                 <i class="far fa-trash-alt" data-id="${contact._id}" onclick="event.stopPropagation();app.deleteContact(event);"></i>
             </td>
@@ -50,6 +51,7 @@ module.exports = async (req) => {
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Company</th>
+                    <th style="text-align: center">VCF</th>
                     <th></th>
                 </tr>
             </thead>
