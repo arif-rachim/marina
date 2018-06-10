@@ -167,7 +167,7 @@ module.exports = async(req) => {
         <a href="/index.html" style="color: #333;">
             <i class="fas fa-home" style="font-size: 1.1em;" ></i>
         </a>
-        <a href="/page/cetc.articles.list-public" style="color: #333;margin-left: 0.5em;margin-right: 0.5em" >
+        <a href="/page/cetc.articles.list-public" style="color: #333;margin-left: 0.5em;margin-right: 0.5em;text-decoration: none" >
             Articles
         </a>
     </div>
