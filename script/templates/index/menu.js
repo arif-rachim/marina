@@ -97,21 +97,12 @@ module.exports = async(req) => {
         transition: all 1s;
     }
     
-    .greeting-label-exclamation{
-        background: #FFFFFF;
-        opacity: 1;
-        transition : opacity 1s;
-        position: absolute;
-        right: 0px;
-        top: 0.3em;
-    }
+    
     
     .greeting-label.hide{
         opacity: 0;
     }
-    .greeting-label-exclamation.hide{
-        opacity: 0;
-    }
+    
     
     .menu-vertical-container {
         display: block;
@@ -189,7 +180,6 @@ module.exports = async(req) => {
         <a href="#" class="menu-item login-logout" >
             ${user ? user.account.name : 'Login'}
         </a>
-        <span class="greeting-label-exclamation hide" >!</span>
     </div>
 </div>
 <div style="position: relative;width: 100%;">
@@ -240,7 +230,6 @@ module.exports = async(req) => {
         var cancelButton = document.querySelector('.login-panel .cancel-button');
         var menuHolder = document.querySelector('.menu .menu-holder');
         var greetingLabel = document.querySelector('.greeting-label');
-        var greetingLabelExclamation = document.querySelector('.greeting-label-exclamation');
         var menuVertical = document.querySelector('.menu-vertical');
         var menuVerticalContainer = document.querySelector('.menu-vertical-container');
         
@@ -272,15 +261,15 @@ module.exports = async(req) => {
             }
             greetingLabel.style.width = 'auto';
             greetingLabel.classList.remove('hide');
-            greetingLabelExclamation.classList.remove('hide');
+            // greetingLabelExclamation.classList.remove('hide');
             
-            setTimeout(function(){
-                greetingLabel.classList.add('hide');
-                greetingLabelExclamation.classList.add('hide');
-                setTimeout(function(){
-                    greetingLabel.style.display = 'none';
-                },500);
-            },3000);
+            // setTimeout(function(){
+            //     greetingLabel.classList.add('hide');
+            //     greetingLabelExclamation.classList.add('hide');
+            //     setTimeout(function(){
+            //         greetingLabel.style.display = 'none';
+            //     },500);
+            // },3000);
             
         }
         

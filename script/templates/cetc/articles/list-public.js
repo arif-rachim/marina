@@ -4,7 +4,7 @@ const {fetch} = require('../../../../config');
 const printArticles = (articles) => {
     return articles.map(article => {
         return `
-        <div style="padding: 1em;border-bottom: 1px solid #EEEEEE" >
+        <div >
             <article >
                 <div class="article-panel">
                     <div class="background-panel" >
@@ -33,9 +33,6 @@ module.exports  = async (req) => {
     
         .border-with-radius{
             border:1px solid #eeeeee;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
         }
         
         .article-panel {
@@ -65,25 +62,32 @@ module.exports  = async (req) => {
         
         
         .article-panel .article-published-date{
-            font-size:0.8em;
+            font-size: 0.8em; 
+            color: #888; 
+            padding-top: 0em; 
+            padding-bottom: 0em;
         }
         
         .article-panel .article-description{
-            font-weight: 400;
-            font-size:1em;
-            line-height: 1.6em;
-            letter-spacing: 0.01em;
+            width: 100%;
+            letter-spacing: 0.03em
         }
         
         @media screen and (max-width: 900px){
             
-            .article-panel .article-title {
-                font-weight: 500;
-                font-size:1.2em;
+            .article-panel .article-title {                
+                font-weight: 400;
+                margin-top:0.5em; 
+                font-size: 1.5em; 
+                line-height: 1.4;
             }
             
             .article-panel .article-published-date{
-                font-size:0.8em;
+                
+                font-size: 0.8em; 
+                color: #888; 
+                padding-top: 0em; 
+                padding-bottom: 0em;
             }
             
             .article-panel .article-description{
@@ -111,7 +115,7 @@ module.exports  = async (req) => {
         }
     </style>
 
-    <div style="display: flex;flex-direction: column">
+    <div style="display: flex;flex-direction: column;margin-top:1em">
     ${printArticles(articles)}
     </div>`);
     }catch (e) {

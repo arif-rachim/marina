@@ -8,13 +8,21 @@ const missionStatement = async () => {
     return `
         <style>
             .statement {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                padding: 1em;
+            }
+            
+            @media screen and (max-width: 600px){
+                .statement {
+                    padding : 0em;
+                    padding-top:1em;
+                }
             }
         </style>
         <div>
-            <blockquote class="blockquote statement" style="padding: 1em;">
-              <span style="color: #333333;font-size:0.9em;font-weight: bold">Mission Statement</span>
-              <p class="mb-0">The Joint Aviation Command Emerging Technology Office (ETO) mission is to stay aware of and direct future technologies 
+            <blockquote class="blockquote statement" style="">
+              <span style="color: #333333;font-size:1em;font-weight: bold">Mission Statement</span>
+              <p style="letter-spacing: 0.05em">The Joint Aviation Command Emerging Technology Office (ETO) mission is to stay aware of and direct future technologies 
               by leveraging the capabilities and knowledge of commercial industry, academia, and other goverment agencies.</p>
             </blockquote>
         </div>
@@ -39,13 +47,13 @@ const renderArticles = async (req) => {
             content = `${content.substring(0,CONTENT_MAX_CHARACTERS) }...`
         }
         return `
-    <article style="border-bottom: 1px solid #F0F0F0; margin-bottom: 1.5em; padding-bottom: 0.5em;">
+    <article style="border-bottom: 1px solid #F0F0F0; margin-bottom: 1em; padding-bottom: 0.5em;">
         <a href="${article.source}" target="_blank">
-            <img src="${article.featureImage}" style="width: 100%;border-radius: 20px;background-color: #ddd">
+            <img src="${article.featureImage}" style="width: 100%;background-color: #ddd">
         </a>
-        <h1 style="font-weight: 400; font-size: 1.8em; line-height: 1.4;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-        <h3 style="font-size: 1em; color: #888; padding-top: 0em; padding-bottom: 0em;">By ${article.tags} on ${article.date}</h3>
-        <div style="width: 100%">
+        <h1 style="font-weight: 400;margin-top:0.5em; font-size: 1.5em; line-height: 1.4;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+        <h3 style="font-size: 0.8em; color: #888; padding-top: 0em; padding-bottom: 0em;">By ${article.tags} on ${article.date}</h3>
+        <div style="width: 100%;letter-spacing: 0.03em">
             ${content}
         </div>
     </article>
@@ -66,7 +74,7 @@ const renderLatestPost = async (req) => {
         return `
         <article style="padding-top: 0.5em; padding-bottom: 0.5em;">
             <h1 style="font-weight: 500; font-style: italic; margin: 6px 0; font-size: 1.3125em; line-height: 1.143;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-            <h3 style="font-size: 0.9em; font-weight: 300; color: #888; padding-top: 0.1em; padding-bottom: 0.1em;;">BY ${article.tags} on ${article.date}</h3>
+            <h3 style="font-size: 0.8em; font-weight: 500; color: #888; padding-top: 0.1em; padding-bottom: 0.1em;;">BY ${article.tags} on ${article.date}</h3>
             <p style="margin-bottom: 0px">
                 ${content}
             </p>
@@ -85,9 +93,9 @@ const renderHighlightStories = async (req) => {
             content = `${content.substring(0,maxChars) }...`
         }
         return `
-        <article style="border-bottom: 1px solid #F0F0F0; margin-bottom: 1.5em; padding-bottom: 0.5em;">
-            <h1 style="font-weight: 500; font-size: 0.9em; line-height: 1.2em; text-transform: uppercase;"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
-            <h3 style="font-size: 0.7em; text-transform: uppercase;">BY ${article.tags} on ${article.date}</h3>
+        <article style="border-bottom: 1px solid #F0F0F0; margin-bottom: 1em; padding-bottom: 0.5em;">
+            <h1 style="font-weight: 500; font-size: 1em; line-height: 1.2em; text-transform: uppercase;font-style: italic"><a href="${article.source}" target="_blank" style="text-decoration: none; color: black;">${article.title}</a></h1>
+            <h3 style="font-size: 0.7em; text-transform: uppercase;color: #888888">BY ${article.tags} on ${article.date}</h3>
             <p style="font-size: 0.9em;margin-bottom: 0px;line-height:1.3em;">${content}</p>
         </article>
     `};
@@ -114,9 +122,7 @@ const render = (req) => theme(req,
         width: 60%;
         box-sizing: border-box; 
         padding-right: 1em; 
-        padding-left: 1em; 
-        border-right:1px solid #F0F0F0; 
-        border-left:1px solid #F0F0F0; 
+        padding-left: 1em;  
         margin-right : 1em;
         margin-left: 1em;
         order: 2;
