@@ -42,21 +42,24 @@ module.exports = (req) => {
             <label for="url"> URL :</label>
             <div style="position: relative">
                 <input type="text" name="URL" id="url" required class="form-control" placeholder="Enter news address (eg : https://gulfnews.com/news/uae-space-industry-will-spark-scientific-development)">
-                <button class="btn load-button" style="position: absolute;right: 1px;top: 1px;padding: 0.25em;height: 33px;border-bottom-left-radius: 0px;border-top-left-radius: 0px">Load</button>
+                <button class="btn load-button" style="position: absolute;right: 1px;top: 1px;padding: 0.25em;height: 34px;border-bottom-left-radius: 0px;border-top-left-radius: 0px">Load</button>
             </div>
         </div>
         <div class="form-item">
             <label for="title"> Title :</label>
             <input type="text" name="Title" id="title" required class="form-control" placeholder="Enter title">
         </div>
-        <div class="form-item">
+        <div class="form-item" style="display: none">
             <label for="description"> Description :</label>
             <input type="text" name="Description" id="description" required class="form-control" placeholder="Enter description">
         </div>
         <div class="form-item">
             <label for="image"> Image :</label>
-            <input type="text" name="Image" id="image" required class="form-control" placeholder="Enter image address (eg : http://gulfnews.com/static/image/uae-flag.png)">
+            <input type="hidden" name="Image" id="image" required class="form-control" placeholder="Enter image address (eg : http://gulfnews.com/static/image/uae-flag.png)" >
+            <img src="" alt="" class="article-image" style="width:100%;margin-top:0.5em;">
         </div>
+        
+        
         <div class="form-item">
             <label for="content"> Content :</label>
             <textarea name="content" id="content" cols="30" rows="10" ></textarea>
@@ -64,6 +67,7 @@ module.exports = (req) => {
         <div style="width: 100%" class="form-item">
             <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">
             <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
+            <input type="button" style="width: auto;float: right" class="btn" value="Cancel" onclick="PubSub.publish('cetc.articles.page:list')">
         </div>
     </form>
     <script>
@@ -84,8 +88,10 @@ module.exports = (req) => {
                     setValue('description',article.description);
                     setContentValue(article.content);
                     if(article.images && article.images[0]){
-                        setValue('image',article.images[0].url);    
+                        setValue('image',article.images[0].url);
+                        setImageValue(article.images[0].url);
                     }
+                    
                 });
                 event.preventDefault();
                 return false;
@@ -110,6 +116,9 @@ module.exports = (req) => {
             function setContentValue(value){
                 editor.setData(value);
             }
+            function setImageValue(value){
+                document.querySelector('.article-image').src = value; 
+            }
             
             function getSelected(id){
                 return document.getElementById(id).checked;
@@ -126,10 +135,13 @@ module.exports = (req) => {
                 setValue('title','');
                 setValue('description','');
                 setValue('image','');
+                setImageValue('');
                 setContentValue('');
                 setValue('date','');
                 setValue('_id','');
             }
+            
+            PubSub.subscribe('cetc.articles.page:list',clearForm);
             
             function submitForm() {
                 
@@ -159,7 +171,8 @@ module.exports = (req) => {
                               return result.json();
                             }).then(function(data){
                                 if(app.showNotification){
-                                    app.showNotification('Data saved successfully');    
+                                    app.showNotification('Data saved successfully');
+                                    PubSub.publish('cetc.articles.page:list');
                                 }
                                 if(app.refreshArticleListTable){
                                     app.refreshArticleListTable();
@@ -182,9 +195,11 @@ module.exports = (req) => {
                         setValue('title',article.title);
                         setValue('description',article.description);
                         setValue('image',article.image);
+                        setImageValue(article.image);
                         setContentValue(article.content);
                         setValue('date',article.date);
-                        setValue('_id',article._id);    
+                        setValue('_id',article._id);
+                        PubSub.publish('cetc.articles.page:form');
                     }
                 });
             }

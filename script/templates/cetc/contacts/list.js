@@ -5,7 +5,8 @@ function printContactsTable(contacts) {
         <tr data-id="${contact._id}">
             <td>${contact.name || ''}</td>
             <td>${contact.phone || ''}</td>
-            <td>${contact.email || ''}</td>
+            <td><a href="mailto:${contact.email}">${contact.email || ''}</a></td>
+            <td>${contact.company || ''}</td>
             <td>
                 <i class="far fa-trash-alt" data-id="${contact._id}" onclick="event.stopPropagation();app.deleteContact(event);"></i>
             </td>
@@ -48,6 +49,7 @@ module.exports = async (req) => {
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>Company</th>
                     <th></th>
                 </tr>
             </thead>
@@ -94,7 +96,8 @@ module.exports = async (req) => {
                             return '<tr data-id="'+contact._id+'">' +
                              '<td>'+contact.name+'</td>' +
                              '<td>'+contact.phone+'</td>' +
-                             '<td>'+contact.email+'</td>' +
+                             '<td><a href="mailto:'+contact.email+'">'+contact.email+'</a></td>' +
+                             '<td>'+contact.company+'</td>' +
                              '<td><i class="far fa-trash-alt" data-id="'+contact._id+'" onclick="event.stopPropagation();app.deleteContact(event);"></i></td>' +
                               '</tr>';
                         }).join('');

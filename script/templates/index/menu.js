@@ -11,7 +11,7 @@ const printMenu = (roles) => {
         }
         return token;
     },{key:[],items:[]}).items.map(access => {
-        return `<a class="menu-item" href="${access.path}">${access.shortName}</a>`;
+        return `<a class="menu-item" href="${access.path}" style="text-decoration: none;color:#FFFFFF !important;">${access.shortName}</a>`;
     }).join('');
 };
 
@@ -113,14 +113,15 @@ module.exports = async(req) => {
     }
     
     .menu-vertical {
-        background-color: #FAFAFA;
-        border: 1px solid #CCC;
+        background-color: rgba(100,100,100,0.9);
+        color: #FFFFFF;
+        border: none;
         border-top: none;
         width: 100%;
         padding-left: 0.5em;
         padding-right: 0.5em;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         top:0px;
         transition: top 300ms ease-out;
     }
@@ -142,7 +143,7 @@ module.exports = async(req) => {
     }
     
     .menu-vertical.hide{
-        top : -100px;
+        top : -200px;
     }
     
     .menu-holder {
@@ -253,23 +254,14 @@ module.exports = async(req) => {
             var curHr = new Date().getHours();
             
             if (curHr < 12) {
-                greetingLabel.innerText = 'Good morning,';
+                greetingLabel.innerText = 'Good morning';
             } else if (curHr < 18) {
-                greetingLabel.innerText = 'Good afternoon,';
+                greetingLabel.innerText = 'Good afternoon';
             } else {
-                greetingLabel.innerText = 'Good evening,';
+                greetingLabel.innerText = 'Good evening';
             }
             greetingLabel.style.width = 'auto';
             greetingLabel.classList.remove('hide');
-            // greetingLabelExclamation.classList.remove('hide');
-            
-            // setTimeout(function(){
-            //     greetingLabel.classList.add('hide');
-            //     greetingLabelExclamation.classList.add('hide');
-            //     setTimeout(function(){
-            //         greetingLabel.style.display = 'none';
-            //     },500);
-            // },3000);
             
         }
         
@@ -348,7 +340,7 @@ module.exports = async(req) => {
                 return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';
             }).join('');
             menuVertical.innerHTML = menus.map(function(menuItem){
-                return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';
+                return '<a class="menu-item" href="'+menuItem.path+'" style="text-decoration: none;color:#FFFFFF !important;">'+menuItem.shortName+'</a>';
             }).join('');
             
             menuLoginLogout.innerHTML = app.user ? app.user.account.name : 'Login';

@@ -67,7 +67,7 @@ module.exports = (req) => {
         <div class="form-item">
             <label for="location"> Location :</label>
             <div id="map" style="width: 100%;height: 400px;"></div>
-            <input type="text" name="Location" id="location" required class="form-control" placeholder="Lattitude Longitude" style="margin-top:1em">
+            <input type="hidden" name="Location" id="location" required class="form-control" placeholder="Lattitude Longitude" style="margin-top:1em">
         </div>
         <div class="form-item">
             <label for="address"> Address </label>
@@ -99,6 +99,7 @@ module.exports = (req) => {
         <div style="width: 100%" class="form-item">
             <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">
             <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
+            <input type="button" style="width: auto;float: right" class="btn" value="Cancel" onclick="PubSub.publish('cetc.events.page:list')">
         </div>
     </form>
     <script>
@@ -140,6 +141,7 @@ module.exports = (req) => {
                 editor.setData(value);
             }
             
+            PubSub.subscribe('cetc.events.page:list',clearForm);
             function clearForm() {
                 setValue('name','');
                 setValue('address','');
@@ -169,7 +171,8 @@ module.exports = (req) => {
                             var id = getValue('_id');
                             app.fetch('/v1/cetc_events'+(id?'/'+id:''),data,(id?'PUT':'POST')).then(function(data){
                                 if(app.showNotification){
-                                    app.showNotification('Data saved successfully');    
+                                    app.showNotification('Data saved successfully');
+                                    PubSub.publish('cetc.events.page:list');
                                 }
                                 if(app.refreshEventListTable){
                                     app.refreshEventListTable();
@@ -195,7 +198,8 @@ module.exports = (req) => {
                         setValue('location',event.location);
                         setMapLocation(event.location);
                         setDescriptionValue(event.description);
-                        setValue('_id',event._id);    
+                        setValue('_id',event._id);
+                        PubSub.publish('cetc.events.page:form');
                     }
                 });
             }

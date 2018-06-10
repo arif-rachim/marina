@@ -12,7 +12,7 @@ module.exports = async (req) => {
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
                 <link href="/styles/font-family.css " rel="stylesheet">
             </head>
-            <body style="color: #333333;background: #FCFCFC">
+            <body style="color: #333333;">
                 
                 <div style="padding:1.5em;max-width: 750px;margin: auto;margin-top:0em;margin-bottom:0em;">
                     <div>
@@ -52,7 +52,7 @@ module.exports = async (req) => {
                     </style>
                     <article style="margin-top: 1em">
                         <h1 class="title-card">${article.title}</h1>
-                        <div style="font-style:italic;font-weight: 500">Published on ${article.date}</div>
+                        <div style="font-weight: 500;color: #888888;font-size: 0.8em;margin-bottom: 1em">Published on ${article.date}</div>
                         <div>
                             <img src="${article.image}" alt="" style="width: 100%">
                         </div>

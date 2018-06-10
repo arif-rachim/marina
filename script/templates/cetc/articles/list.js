@@ -1,9 +1,28 @@
 const {fetch} = require('../../../../config');
 
+const formatDateTime = (date) => {
+    if(date === undefined || date.toString() === 'Invalid Date'){
+        return '';
+    }
+    const monthNames = [
+        "JAN", "FEB", "MAR",
+        "APR", "MAY", "JUN", "JUL",
+        "AUG", "SEP", "OCT",
+        "NOV", "DEC"
+    ];
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const applyLeadingZero = (num) => num < 10 ? `0${num}` : num;
+    return `${applyLeadingZero(day)}-${monthNames[monthIndex]}-${year} ${applyLeadingZero(hours)}:${applyLeadingZero(minutes)}`;
+};
+
 function printArticlesTable(articles) {
     return articles.map(article => `
         <tr data-id="${article._id}">
-            <td>${article.date || ''}</td>
+            <td>${formatDateTime(new Date(article._createdOn)) || ''}</td>
             <td>${article.title || ''}</td>
             <td>
                 <i class="far fa-trash-alt" data-id="${article._id}" onclick="event.stopPropagation();app.deleteArticle(event);"></i>
@@ -46,7 +65,7 @@ module.exports = async (req) => {
             }
         </style>
         <table class="article-list-table" cellspacing="0">
-            <col width="200">
+            <col width="150">
             <col width="auto">
             <col width="40">
             <thead>
@@ -98,9 +117,29 @@ module.exports = async (req) => {
                             });        
                         }    
                     });
-                    
-                    
                 }
+                
+                function formatDateTime(date) {
+                    if(date === undefined || date.toString() === 'Invalid Date'){
+                        return '';
+                    }
+                    const monthNames = [
+                        "JAN", "FEB", "MAR",
+                        "APR", "MAY", "JUN", "JUL",
+                        "AUG", "SEP", "OCT",
+                        "NOV", "DEC"
+                    ];
+                    var day = date.getDate();
+                    var monthIndex = date.getMonth();
+                    var year = date.getFullYear();
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var applyLeadingZero = function(num){
+                        return num < 10 ? '0'+num : num;
+                    };
+                    return applyLeadingZero(day)+'-'+monthNames[monthIndex]+'-'+year+' '+applyLeadingZero(hours)+':'+applyLeadingZero(minutes);
+                };
+                
                 
                 function refreshArticleListTable(){
                     fetch('/v1/cetc_articles').then(function(results){
@@ -109,7 +148,7 @@ module.exports = async (req) => {
                         var articles = result.docs;
                         document.querySelector('.article-list-table tbody').innerHTML = articles.map(function(article){
                             return '<tr data-id="'+article._id+'">' +
-                             '<td>'+article.date+'</td>' +
+                             '<td>'+formatDateTime(new Date(article._createdOn))+'</td>' +
                              '<td>'+article.title+'</td>' +
                              '<td><i class="far fa-trash-alt" data-id="'+article._id+'" onclick="event.stopPropagation();app.deleteArticle(event);"></i></td>' +
                               '</tr>';
