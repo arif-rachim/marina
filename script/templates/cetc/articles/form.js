@@ -143,6 +143,7 @@ module.exports = (req) => {
             
             PubSub.subscribe('cetc.articles.page:list',clearForm);
             
+            
             function submitForm() {
                 
                 try{
