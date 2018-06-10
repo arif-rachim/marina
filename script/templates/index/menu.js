@@ -11,7 +11,7 @@ const printMenu = (roles) => {
         }
         return token;
     },{key:[],items:[]}).items.map(access => {
-        return `<a class="menu-item" href="${access.path}" style="text-decoration: none;color:#FFFFFF !important;">${access.shortName}</a>`;
+        return `<a class="menu-item" href="${access.path}" style="text-decoration: none;">${access.shortName}</a>`;
     }).join('');
 };
 
@@ -113,17 +113,18 @@ module.exports = async(req) => {
     }
     
     .menu-vertical {
-        background-color: rgba(100,100,100,0.9);
-        color: #FFFFFF;
-        border: none;
-        border-top: none;
+        background-color: #eeeeee;
+        border-bottom: 1px solid #cccccc;
         width: 100%;
         padding-left: 0.5em;
         padding-right: 0.5em;
-        display: flex;
-        flex-direction: column;
         top:0px;
         transition: top 300ms ease-out;
+    }
+    
+    .menu-vertical-content{
+        display: flex;
+        flex-direction: column;
     }
     
     .menu-vertical a {
@@ -183,11 +184,17 @@ module.exports = async(req) => {
         </a>
     </div>
 </div>
-<div style="position: relative;width: 100%;">
+
+<div style="position: fixed;width: 100%;top: 0px;left:0px;z-index: 2">
     <div style="position: absolute;width: 100%;">
-        <div class="menu-vertical-container" >
-            <div class="menu-vertical hide" style="position: relative">
-                ${user ? printMenu(user.account.roles) : ''}
+        <div class="menu-vertical-container " >
+            <div class="menu-vertical shadow p-3 mb-5 bg-white hide" style="position: relative;padding-top:1em;padding-bottom: 1em">
+                <div style="float:right;" class="close">
+                    <i class="far fa-times-circle" style="font-size: 1.2em"></i>
+                </div>
+                <div class="menu-vertical-content">
+                    ${user ? printMenu(user.account.roles) : ''}
+                </div>
             </div>
         </div>
     </div>
@@ -233,7 +240,7 @@ module.exports = async(req) => {
         var greetingLabel = document.querySelector('.greeting-label');
         var menuVertical = document.querySelector('.menu-vertical');
         var menuVerticalContainer = document.querySelector('.menu-vertical-container');
-        
+        document.querySelector('.menu-vertical-container .close').addEventListener('click',toggleMenu);
         document.querySelector('.menu-toggle-button').addEventListener('click',toggleMenu);
         
         function toggleMenu(event){
@@ -339,8 +346,8 @@ module.exports = async(req) => {
             menuHolder.innerHTML = menus.map(function(menuItem){
                 return '<a class="menu-item" href="'+menuItem.path+'">'+menuItem.shortName+'</a>';
             }).join('');
-            menuVertical.innerHTML = menus.map(function(menuItem){
-                return '<a class="menu-item" href="'+menuItem.path+'" style="text-decoration: none;color:#FFFFFF !important;">'+menuItem.shortName+'</a>';
+            document.querySelector('.menu-vertical-content').innerHTML = menus.map(function(menuItem){
+                return '<a class="menu-item" href="'+menuItem.path+'" style="text-decoration: none;">'+menuItem.shortName+'</a>';
             }).join('');
             
             menuLoginLogout.innerHTML = app.user ? app.user.account.name : 'Login';
