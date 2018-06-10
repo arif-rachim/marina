@@ -3,7 +3,7 @@ const {fetch} = require('../../../config');
 
 module.exports = async (req,res) => {
     const id = req.query.id;
-    const user = await fetch(`/v1/cetc_contacts/${id}`);
+    const user = await fetch(`/res/cetc_contacts/${id}`);
     const card = new vCard();
     const names = user.name.split(' ');
 

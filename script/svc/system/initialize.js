@@ -103,19 +103,19 @@ const basicUsers = [
 ]
 
 const ensureAccessExist = async (access) => {
-    const data = await fetch(`/v1/system_accessibility?name=${access.name}`);
+    const data = await fetch(`/res/system_accessibility?name=${access.name}`);
     if(data.docs && data.docs.length == 1){
         console.log(`[INFO] Accessibility ${access.name} already exist`);
         return data.docs[0];
     }
     access = basicAccessibility.filter(template => template.name == access.name)[0];
-    const persistentData = await fetch('/v1/system_accessibility',access,'post')
+    const persistentData = await fetch('/res/system_accessibility',access,'post')
     console.log(`[INFO] Accessibility ${persistentData.name} created`);
     return persistentData;
 }
 
 const ensureRolesExist = async (role) => {
-    const data = await fetch(`/v1/system_roles?name=${role.name}`);
+    const data = await fetch(`/res/system_roles?name=${role.name}`);
     if(data.docs && data.docs.length == 1){
         console.log(`[INFO] Role ${role.name} already exist`);
         return data.docs[0];
@@ -128,13 +128,13 @@ const ensureRolesExist = async (role) => {
         accessibilityEntitiesForRole.push(entity._id);
     }
     role.accessibility = accessibilityEntitiesForRole;
-    const persistentData = await fetch('/v1/system_roles',role,'post');
+    const persistentData = await fetch('/res/system_roles',role,'post');
     console.log(`[INFO] Role ${role.name} created`);
     return persistentData;
 }
 
 const ensureUsersExist = async (user) => {
-    const data = await fetch(`/v1/system_users?userId=${user.userId}`);
+    const data = await fetch(`/res/system_users?userId=${user.userId}`);
     if(data.docs && data.docs.length == 1){
         console.log(`[INFO] User ${user.userId} already exist`);
         return data.docs[0];
@@ -147,7 +147,7 @@ const ensureUsersExist = async (user) => {
         rolesEntitiesForUser.push(entity._id);
     }
     user.roles = rolesEntitiesForUser;
-    const persistentData = await fetch('/v1/system_users',user,'post');
+    const persistentData = await fetch('/res/system_users',user,'post');
     console.log(`[INFO] User ${user.userId} created`);
     return persistentData;
 };

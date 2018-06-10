@@ -4,12 +4,12 @@ module.exports = async (req,res) => {
     try{
         const userId = req.body.userName;
         const password = textToBase64(req.body.password);
-        let user = await fetch(`/v1/system_users?userId=${userId}`);
+        let user = await fetch(`/res/system_users?userId=${userId}`);
         user = user && user.docs && user.docs.length ? user.docs[0] : false;
         if(user && user.password == password){
             try {
                 const sessionId = req.cookies.sessionId;
-                const session = await fetch(`/v1/system_active_sessions`,{
+                const session = await fetch(`/res/system_active_sessions`,{
                     sessionId : sessionId,
                     account : user
                 },'POST');

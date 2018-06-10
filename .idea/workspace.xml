@@ -2,7 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/create/get-template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/create/get.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/create/post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/design/get-template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/design/get.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/design/mdl-plain.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/design/post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/design/service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/read/get-template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/read/get.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/update/get-template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/intents/update/get.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/svc/exports/vcard.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/exports/vcard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/svc/security/get-current-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/security/get-current-user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/svc/security/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/security/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/svc/security/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/security/logout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/svc/system/initialize.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/system/initialize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/access/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/access/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/access/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/access/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/article-public.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/articles/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/articles/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/contacts/cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/contacts/cards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/contacts/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/contacts/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/contacts/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/contacts/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/events/cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/events/cards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/events/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/events/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/cetc/events/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/cetc/events/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/index/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/index/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/role/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/role/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/role/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/role/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/user/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/user/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/templates/user/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/templates/user/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/start.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,47 +58,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/cetc/events/form.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="53" selection-start-line="67" selection-start-column="53" selection-end-line="67" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="65" column="70" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/index/menu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6698">
-              <caret line="396" column="60" selection-start-line="396" selection-start-column="60" selection-end-line="396" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="article-public.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/article-public.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="list-public.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list-public.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="281">
-              <caret line="134" column="20" lean-forward="true" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
+              <caret line="134" column="20" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -69,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/form.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
@@ -81,14 +83,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list.js">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/client/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1069">
-              <caret line="116" column="47" lean-forward="true" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="131">
+              <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/start.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="27" column="99" selection-start-line="27" selection-start-column="99" selection-end-line="27" selection-end-column="99" />
             </state>
           </provider>
         </entry>
@@ -106,31 +123,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/page.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="32" column="86" lean-forward="true" selection-start-line="32" selection-start-column="86" selection-end-line="32" selection-end-column="86" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cards.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/templates/cetc/contacts/cards.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="114" column="18" lean-forward="true" selection-start-line="101" selection-start-column="16" selection-end-line="114" selection-end-column="18" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -143,10 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>article-list-table</find>
-      <find>formatDate</find>
-      <find>published</find>
-      <find>position: absolute;right: 1px;top: 1px;padding: 0.25em;height: 33px;border-bottom-left-radius: 0px;border-top-left-radius: 0px</find>
       <find>cetc.articles.page:list</find>
       <find>debugger</find>
       <find>placeholder=&quot;Lattitude Longitude&quot;</find>
@@ -173,6 +161,10 @@
       <find>sendEma</find>
       <find>mail-sender</find>
       <find>welcome-m</find>
+      <find>whatwg-fetch</find>
+      <find>res</find>
+      <find>v1/</find>
+      <find>/v1/</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -184,7 +176,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/script/svc/security/get-current-user.js" />
         <option value="$PROJECT_DIR$/script/templates/access-denied.js" />
         <option value="$PROJECT_DIR$/script/templates/roles/list.js" />
         <option value="$PROJECT_DIR$/script/templates/under-construction.js" />
@@ -208,7 +199,6 @@
         <option value="$PROJECT_DIR$/script/templates/user/form.js" />
         <option value="$PROJECT_DIR$/script/templates/access/form.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/dashboard.js" />
-        <option value="$PROJECT_DIR$/start.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/dashboard-public.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/detail-public.js" />
         <option value="$PROJECT_DIR$/script/svc/exports/vcard-export.js" />
@@ -235,6 +225,8 @@
         <option value="$PROJECT_DIR$/script/templates/cetc/contacts/list.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/list-public.js" />
         <option value="$PROJECT_DIR$/script/templates/cetc/articles/form.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/start.js" />
       </list>
     </option>
   </component>
@@ -257,29 +249,6 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/bower_components/iron-a11y-announcer/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-a11y-keys-behavior/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-fit-behavior/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-flex-layout/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-icon/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-iconset-svg/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-media-query/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-meta/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-overlay-behavior/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-resizable-behavior/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/iron-scroll-target-behavior/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/polymer/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/shadycss/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-button/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-checkbox/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-date-picker/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-form-layout/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-grid/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-notification/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-overlay/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-text-field/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/vaadin-usage-statistics/package.json" />
-      <path value="$PROJECT_DIR$/bower_components/webcomponentsjs/package.json" />
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
@@ -304,43 +273,6 @@
             <path>
               <item name="marina" type="b2602c69:ProjectViewProjectNode" />
               <item name="marina" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name=".resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name=".resources" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="cetc" type="462c0819:PsiDirectoryNode" />
-              <item name="articles" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -420,7 +352,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260831000" />
+    <option name="totallyTimeSpent" value="262361000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -438,13 +370,13 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49500713" visible="true" weight="0.25500527" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5089568" side_tool="true" visible="true" weight="0.34204793" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5110643" side_tool="true" visible="true" weight="0.2342048" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49736565" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48946258" weight="0.2342048" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4889357" visible="true" weight="0.2342048" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.50499284" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4910432" visible="true" weight="0.34204793" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4910432" weight="0.34204793" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.40914038" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -481,30 +413,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/templates/role/page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="81" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/access/page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="81" selection-start-line="29" selection-start-column="81" selection-end-line="29" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/create/page.js" />
-    <entry file="file://$PROJECT_DIR$/script/templates/events/form.js" />
-    <entry file="file://$PROJECT_DIR$/.resources/db/stories.json" />
-    <entry file="file://$PROJECT_DIR$/script/templates/user/list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/vaadin-usage-statistics/vaadin-usage-statistics.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="601">
@@ -613,20 +521,6 @@
     <entry file="file://$PROJECT_DIR$/.resources/db/cetc_articles.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.resources/db/system_users.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -646,13 +540,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/index/commanders-message.js" />
     <entry file="file://$PROJECT_DIR$/script/templates/index/synopsis.js" />
-    <entry file="file://$PROJECT_DIR$/script/client/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="56" column="6" lean-forward="true" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/templates/user/form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="542">
@@ -674,6 +561,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="37" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -681,6 +575,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -702,6 +603,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="105" selection-start-line="20" selection-start-column="16" selection-end-line="26" selection-end-column="105" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -778,7 +682,7 @@
     <entry file="file://$PROJECT_DIR$/script/templates/cetc/articles/list-public.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
-          <caret line="134" column="20" lean-forward="true" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
+          <caret line="134" column="20" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -793,6 +697,56 @@
           <folding>
             <element signature="n#style#0;n#input#2;n#div#5;n#form#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/intents/create/get.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/intents/create/get-template.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/intents/create/post.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/intents/read/get-template.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-906">
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/intents/read/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/intents/design/post.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/client/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="27" column="99" selection-start-line="27" selection-start-column="99" selection-end-line="27" selection-end-column="99" />
         </state>
       </provider>
     </entry>

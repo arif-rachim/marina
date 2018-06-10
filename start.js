@@ -4,9 +4,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
-const index = require("./script/templates/index");
-const accessDenied = require("./script/templates/access-denied");
-const underConstruction = require("./script/templates/under-construction");
+const index = require("./script/page/index");
+const accessDenied = require("./script/page/access-denied");
+const underConstruction = require("./script/page/under-construction");
 const {intentsPath,svcPath,pagePath,applicationPort,fetch,securePageAccess} = require("./config");
 const PORT = applicationPort;
 
@@ -24,6 +24,9 @@ app.use('/', express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/**
+ * This method is to support the integration with feedly, we should remove this when its not needed
+ */
 app.post('/v1/:resource', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
@@ -34,7 +37,18 @@ app.post('/v1/:resource', (req,res) => {
     }
 });
 
-app.get('/v1/:resource', (req,res) => {
+app.post('/res/:resource', (req,res) => {
+    let mode = req.query.intent || 'json';
+    try{
+        require(`${intentsPath}/${mode}/post`).call(null,req,res);
+    }catch(err){
+        res.end(JSON.stringify({errorMessage:err.message}));
+        console.error(err);
+    }
+});
+
+
+app.get('/res/:resource', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
         require(`${intentsPath}/${mode}/get`).call(null,req,res);
@@ -44,7 +58,7 @@ app.get('/v1/:resource', (req,res) => {
     }
 });
 
-app.get('/v1/:resource/:id', (req,res) => {
+app.get('/res/:resource/:id', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
         require(`${intentsPath}/${mode}/get`).call(null,req,res);
@@ -55,7 +69,7 @@ app.get('/v1/:resource/:id', (req,res) => {
 });
 
 
-app.delete('/v1/:resource/:id', (req,res) => {
+app.delete('/res/:resource/:id', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
         require(`${intentsPath}/${mode}/delete`).call(null,req,res);
@@ -65,7 +79,7 @@ app.delete('/v1/:resource/:id', (req,res) => {
     }
 });
 
-app.put('/v1/:resource/:id', (req,res) => {
+app.put('/res/:resource/:id', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
         require(`${intentsPath}/${mode}/put`).call(null,req,res);
@@ -102,7 +116,7 @@ const isFunction = (functionToCheck) => {
 app.get('/page/:page',async (req,res) => {
     try{
         const sessionId = req.cookies.sessionId || req.query.sessionId;
-        const result = await fetch(`v1/system_active_sessions?sessionId=${sessionId}`);
+        const result = await fetch(`/res/system_active_sessions?sessionId=${sessionId}`);
         const isPrivateAccess = !req.params.page.endsWith("-public");
         if(result.docs && result.docs.length == 0 && securePageAccess && isPrivateAccess){
             processRequest(req,res,accessDenied);
@@ -132,7 +146,7 @@ function processRequest(req, res,template) {
         if(req.template.indexOf(id)>=0){
             req.template = req.template.replace(id, template);
         }else{
-            setTimeout(req.updateTemplate,100,id,template);
+            setTimeout(req.updateTemplate,10,id,template);
             return;
         }
         if (req.template.indexOf('<!-- ASYNCID:') < 0) {
@@ -152,7 +166,7 @@ function processRequest(req, res,template) {
             });
         } else if (typeof callback === 'string') {
             new Promise((resolve) => {
-                setTimeout(() => resolve(callback), 100);
+                setTimeout(() => resolve(callback), 10);
             }).then(template => {
                 req.updateTemplate(uuid, template);
             });
