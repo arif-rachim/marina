@@ -30,7 +30,6 @@ module.exports = (req,content) => `
         
         background: rgba(255,255,255,1);
         background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 13%, rgba(252,252,252,1) 100%);
-        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(13%, rgba(255,255,255,1)), color-stop(100%, rgba(252,252,252,1)));
         background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 13%, rgba(252,252,252,1) 100%);
         background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 13%, rgba(252,252,252,1) 100%);
         background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 13%, rgba(252,252,252,1) 100%);
