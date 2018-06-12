@@ -92,7 +92,7 @@ module.exports = async (req) => {
                 exports.app = exports.app || {};
                 var app = exports.app;
                  
-                document.querySelector('[name="search-events"]').addEventListener('keyup',debounce(searchEvents,500));
+                document.querySelector('[name="search-events"]').addEventListener('keyup',App.utils.debounce(searchEvents,500));
                 var cardsContainer = document.querySelector('.events-list-card-container');
                 
                 
@@ -111,21 +111,6 @@ module.exports = async (req) => {
                                 '</div>'
                     }).join('');
                 }
-                
-                function debounce(func, wait, immediate) {
-                    var timeout;
-                    return function() {
-                        var context = this, args = arguments;
-                        var later = function() {
-                            timeout = null;
-                            if (!immediate) func.apply(context, args);
-                        };
-                        var callNow = immediate && !timeout;
-                        clearTimeout(timeout);
-                        timeout = setTimeout(later, wait);
-                        if (callNow) func.apply(context, args);
-                    };
-                };
                 
                 function searchEvents(event) {
                     var query = event.target.value;

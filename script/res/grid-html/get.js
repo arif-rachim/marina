@@ -5,7 +5,7 @@ module.exports = async (req) => {
     let cols = req.query.cols || '';
     cols = cols.split(',').filter(col => col !== null && col.length>0).map(col => col.trim());
 
-    let resources = await fetch(`/res/${resource}?$l=1000000`);
+    let resources = await fetch(`/res/${resource}`);
     resources = resources.docs;
     let schema = await fetch(`/res/${resource}?intent=schema`);
     schema = schema.filter(schema => {
@@ -15,10 +15,13 @@ module.exports = async (req) => {
         return true;
     });
 
-    return `
+    return html(req,`
     <div style="padding: 1em">
+        <div style="margin-bottom: 1em">
+            <input type="text" class="form-control form-control search" placeholder="Search">
+        </div>
         <table class="table table-hover">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     ${schema.map(schema => `<th >${schema.name}</th>`).join('')}
                     <th></th>
@@ -42,11 +45,12 @@ module.exports = async (req) => {
     </div>
     <script >
         (function(){
+            document.querySelector('.search').addEventListener('keyup',App.utils.debounce(onKeyup,500));
             
             function populateListeners(){
                 document.querySelectorAll('.delete').forEach(function(node){
                     node.addEventListener('click',onDelete);
-                });
+                });    
             }
             
             populateListeners();
@@ -66,23 +70,40 @@ module.exports = async (req) => {
                             refreshTable();
                         });
                     }
-                });
-                
+                });    
             }
-            function refreshTable(){
+            
+            function onKeyup(event){
+                refreshTable(event.target.value);
+            }
+            
+            function refreshTable(search){
                 var cols = '${cols.join(',')}'.split(',').filter(function(col){col = col.trim();return col.length > 0});
-                var resourcesPromise = net.fetch('/res/${resource}?$l=1000000');
-                var schemaPromise = net.fetch('/res/${resource}?intent=schema');
-                Promise.all([resourcesPromise,schemaPromise]).then(function(results){
-                    var resources = results[0].docs;
-                    var schema = results[1];
+                
+                net.fetch('/res/${resource}?intent=schema').then(function(schema){
                     schema = schema.filter(function(schema){
                         if(cols.length > 0){
                             return cols.indexOf(schema.name) >= 0;
                         }
                         return true;
                     });
-                    return Promise.resolve({resources:resources,schema:schema});
+                    return Promise.resolve(schema);
+                }).then(function(schema){
+                    return new Promise(function(resolve){
+                        
+                        var queryString = '';
+                        if(search){
+                            queryString = schema.map(function(s){
+                                return s.name+'='+search
+                            }).join('&');
+                        }
+                        net.fetch('/res/${resource}?'+queryString).then(function(resources){
+                           resolve({
+                                resources:resources.docs,
+                                schema : schema
+                           }); 
+                        });
+                    });
                 }).then(function(results){
                     var resources = results.resources;
                     var schema = results.schema;
@@ -108,5 +129,5 @@ module.exports = async (req) => {
             }
         })();
     </script>
-    `;
+    `);
 };

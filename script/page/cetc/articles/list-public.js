@@ -124,7 +124,7 @@ module.exports = async (req) => {
                 (function(exports){
                     exports.app = exports.app || {};
                     var app = exports.app;
-                    document.querySelector('.search-article').addEventListener('keyup',debounce(onSearch,500));
+                    document.querySelector('.search-article').addEventListener('keyup',App.utils.debounce(onSearch,500));
                     
                     function onSearch(event){
                         var text = event.target.value;
@@ -152,21 +152,6 @@ module.exports = async (req) => {
                             '    </article>'+
                             '</div>'
                         }).join('');
-                    };
-                    
-                    function debounce(func, wait, immediate) {
-                        var timeout;
-                        return function() {
-                            var context = this, args = arguments;
-                            var later = function() {
-                                timeout = null;
-                                if (!immediate) func.apply(context, args);
-                            };
-                            var callNow = immediate && !timeout;
-                            clearTimeout(timeout);
-                            timeout = setTimeout(later, wait);
-                            if (callNow) func.apply(context, args);
-                        };
                     };
                     
                 })(window);

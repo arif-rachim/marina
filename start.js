@@ -54,9 +54,7 @@ app.get('/res/:resource', (req,res) => {
     try{
         const template = require(`${intentsPath}/${mode}/get`);
         if(mode.endsWith('-html')){
-            const html = require(`${intentsPath}/html`);
-            req.contentTemplate = template;
-            processRequest(req,res,html);
+            processRequest(req,res,template);
         }else{
             template.call(null,req,res);
         }

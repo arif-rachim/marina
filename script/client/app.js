@@ -37,7 +37,7 @@ if (!('forEach' in NodeList.prototype)) {
 var App = {};
 (function(app){
     app.utils = app.utils || {};
-    app.utils.formatDateTime= function(date){
+    app.utils.formatDateTime = function(date){
         if(date === undefined || date.toString() === 'Invalid Date'){
             return '';
         }
@@ -56,6 +56,21 @@ var App = {};
             return num < 10 ? '0'+num : num;
         };
         return applyLeadingZero(day)+'-'+monthNames[monthIndex]+'-'+year+' '+applyLeadingZero(hours)+':'+applyLeadingZero(minutes);
+    };
+
+    app.utils.debounce = function (func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
     };
 
 })(App);

@@ -2,7 +2,7 @@ const notification = require('../page/components/notification');
 const confirmation = require('../page/components/confirmation');
 const loader = require('../page/components/loader');
 
-module.exports = (req) => {
+module.exports = (req,template) => {
   return `
     <html>
         <head>
@@ -22,7 +22,7 @@ module.exports = (req) => {
                 }
             </style>
             ${req.print(confirmation(req))}
-            ${req.print(req.contentTemplate(req))}
+            ${template}
             ${req.print(notification(req))}
             ${req.print(loader(req))}
         </body>
