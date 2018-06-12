@@ -34,13 +34,19 @@ module.exports = (req) => {
         (function(exports){
             exports.app = exports.app || {};
             function showNotification(message){
-                var notificationPanel = document.getElementById('notificationPanel');
-                document.querySelector('.notification-panel-content').innerHTML = message; 
-                notificationPanel.classList.add('show');
-                setTimeout(function(){
-                    notificationPanel.classList.remove('show');    
-                },3000);
+                return new Promise(function(resolve){
+                    var notificationPanel = document.getElementById('notificationPanel');
+                    document.querySelector('.notification-panel-content').innerHTML = message; 
+                    notificationPanel.classList.add('show');
+                    setTimeout(function(){
+                        notificationPanel.classList.remove('show');
+                        resolve(true);
+                    },3000);    
+                });
             }
+            App.pubsub.subscribe('app.notification',function(text){
+                return showNotification(text);
+            });
             exports.app.showNotification = showNotification;
         })(window);
         

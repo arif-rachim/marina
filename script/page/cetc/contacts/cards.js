@@ -117,12 +117,12 @@ module.exports = async (req) => {
                 function searchContacts(event) {
                     var query = event.target.value;
                     if(query.length > 0){
-                        app.fetch('/res/cetc_contacts?name='+query+'&company='+query+'&email='+query,{},'GET',true)
+                        App.net.fetch('/res/cetc_contacts?name='+query+'&company='+query+'&email='+query,{},'GET',true)
                         .then(function(result){
                             cardsContainer.innerHTML = printContactsCard(result.docs);
                         });
                     }else{
-                        app.fetch('/res/cetc_contacts',null,'GET',true)
+                        App.net.fetch('/res/cetc_contacts',null,'GET',true)
                         .then(function(result){
                             cardsContainer.innerHTML = printContactsCard(result.docs);
                         });

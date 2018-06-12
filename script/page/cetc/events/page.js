@@ -30,7 +30,7 @@ module.exports = async (req) => {
     </style>
     
     <div style="display: flex;align-items: center;margin-top:1em;margin-bottom: 1em;">
-        <div style="color: #333333;white-space: nowrap" class="add-event-button" onclick="PubSub.publish('cetc.events.page:form')">
+        <div style="color: #333333;white-space: nowrap" class="add-event-button" onclick="App.pubsub.publish('cetc.events.page:form')">
             <i class="fas fa-plus-circle" style="font-size: 1.5em"></i><span style="margin-left: 0.3em">Add Event</span>
         </div>
         <h1 style="font-size: 1.2em;font-style: italic;text-align:right;width: 100%;margin:0px">Events Management</h1>
@@ -53,13 +53,13 @@ module.exports = async (req) => {
             var eventForm = document.querySelector('.event-list-right');
             var addEventButton = document.querySelector('.add-event-button');
             
-            PubSub.subscribe('cetc.events.page:list',function(){
+            App.pubsub.subscribe('cetc.events.page:list',function(){
                 eventList.classList.remove('hidden');
                 addEventButton.classList.remove('hidden');
                 eventForm.classList.add('hidden');
             });
             
-            PubSub.subscribe('cetc.events.page:form',function(){
+            App.pubsub.subscribe('cetc.events.page:form',function(){
                 eventList.classList.add('hidden');
                 addEventButton.classList.add('hidden');
                 eventForm.classList.remove('hidden');

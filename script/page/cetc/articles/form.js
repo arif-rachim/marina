@@ -67,7 +67,7 @@ module.exports = (req) => {
         <div style="width: 100%" class="form-item">
             <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">
             <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
-            <input type="button" style="width: auto;float: right" class="btn" value="Cancel" onclick="PubSub.publish('cetc.articles.page:list')">
+            <input type="button" style="width: auto;float: right" class="btn" value="Cancel" onclick="App.pubsub.publish('cetc.articles.page:list')">
         </div>
     </form>
     <script>
@@ -81,7 +81,7 @@ module.exports = (req) => {
             function loadUrl(event) {
                 
                 var textUrl = getValue('url');
-                app.fetch('/svc/crawler.crawl',{
+                App.net.fetch('/svc/crawler.crawl',{
                         url : textUrl
                     }).then(function(article){
                     setValue('title',article.title);
@@ -141,7 +141,7 @@ module.exports = (req) => {
                 setValue('_id','');
             }
             
-            PubSub.subscribe('cetc.articles.page:list',clearForm);
+            App.pubsub.subscribe('cetc.articles.page:list',clearForm);
             
             
             function submitForm() {
@@ -157,7 +157,7 @@ module.exports = (req) => {
                                 description: getValue('description'),
                                 image: getValue('image'),
                                 content: getContentValue(),
-                                date : getValue('date') || app.formatDateTime(new Date())
+                                date : getValue('date') || app.utils.formatDateTime(new Date())
                             };
                             
                             var id = getValue('_id'); 
@@ -173,7 +173,7 @@ module.exports = (req) => {
                             }).then(function(data){
                                 if(app.showNotification){
                                     app.showNotification('Data saved successfully');
-                                    PubSub.publish('cetc.articles.page:list');
+                                    App.pubsub.publish('cetc.articles.page:list');
                                 }
                                 if(app.refreshArticleListTable){
                                     app.refreshArticleListTable();
@@ -189,7 +189,7 @@ module.exports = (req) => {
             }
             
             function loadForm(id){
-                app.fetch('/res/cetc_articles/'+id).then(function(article){
+                App.net.fetch('/res/cetc_articles/'+id).then(function(article){
                     clearForm();
                     if(article){
                         setValue('url',article.url);
@@ -200,7 +200,7 @@ module.exports = (req) => {
                         setContentValue(article.content);
                         setValue('date',article.date);
                         setValue('_id',article._id);
-                        PubSub.publish('cetc.articles.page:form');
+                        App.pubsub.publish('cetc.articles.page:form');
                     }
                 });
             }

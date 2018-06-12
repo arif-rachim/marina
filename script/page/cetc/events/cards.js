@@ -130,12 +130,12 @@ module.exports = async (req) => {
                 function searchEvents(event) {
                     var query = event.target.value;
                     if(query.length > 0){
-                        app.fetch('/res/cetc_events?name='+query+'&address='+query+'&from='+query+'&until='+query,{},'GET',true)
+                        App.net.fetch('/res/cetc_events?name='+query+'&address='+query+'&from='+query+'&until='+query,{},'GET',true)
                         .then(function(result){
                             cardsContainer.innerHTML = printEventsCard(result.docs);
                         });
                     }else{
-                        app.fetch('/res/cetc_events',null,'GET',true)
+                        App.net.fetch('/res/cetc_events',null,'GET',true)
                         .then(function(result){
                             cardsContainer.innerHTML = printEventsCard(result.docs);
                         });

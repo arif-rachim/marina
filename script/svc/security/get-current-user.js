@@ -9,10 +9,12 @@ module.exports = async (req,res) => {
             res.end(JSON.stringify(data.docs[0]));
         }
         res.end(JSON.stringify({
-            errorMessage : 'No active session exist'
+            success : false,
+            message : 'No active session exist'
         }));
     }catch(err){
+        err.success = false;
         console.error(err);
-        res.end(JSON.stringify({errorMessage:err.message}));
+        res.end(JSON.stringify(err));
     }
 };

@@ -1,5 +1,6 @@
 const notification = require('./components/notification');
 const confirmation = require('./components/confirmation');
+const loader = require('./components/loader');
 const menu = require('./index/menu');
 module.exports = (req,content) => `
 <!DOCTYPE html>
@@ -14,7 +15,6 @@ module.exports = (req,content) => `
     <script src="/node_modules/whatwg-fetch/fetch.js"></script>
     <script src="/script/client/app.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/loader.css">
 </head>
 <style>
     body{
@@ -52,90 +52,6 @@ module.exports = (req,content) => `
     }
 </style>
 <body>
-<script>
-    if (!('forEach' in Array.prototype)) {
-        Array.prototype.forEach= function(action, that /*opt*/) {
-            for (var i= 0, n= this.length; i<n; i++)
-                if (i in this)
-                    action.call(that, this[i], i, this);
-        };
-    }
-    if (!('map' in Array.prototype)) {
-        Array.prototype.map= function(mapper, that /*opt*/) {
-            var other= new Array(this.length);
-            for (var i= 0, n= this.length; i<n; i++)
-                if (i in this)
-                    other[i]= mapper.call(that, this[i], i, this);
-            return other;
-        };
-    }
-    if (!('filter' in Array.prototype)) {
-        Array.prototype.filter= function(filter, that /*opt*/) {
-            var other= [], v;
-            for (var i=0, n= this.length; i<n; i++)
-                if (i in this && filter.call(that, v= this[i], i, this))
-                    other.push(v);
-            return other;
-        };
-    }
-    
-    if (!('forEach' in NodeList.prototype)) {
-        NodeList.prototype.forEach = function (callback, thisArg) {
-            thisArg = thisArg || window;
-            for (var i = 0; i < this.length; i++) {
-                callback.call(thisArg, this[i], i, this);
-            }
-        };
-    }
-
-    (function(exports){
-        exports.app = exports.app || {};
-        var app = exports.app;
-        app.fetch = function(url,json,method,showLoader){
-            if(showLoader !== false){
-                showLoader = true;
-            }
-            if(showLoader){
-                app.loader(true);    
-            }
-            method = (undefined === method || null === method) ? ( json ? 'POST' : 'GET' ) : method;
-            var requestConfig = {
-                method : method,
-                headers : {
-                    'content-type' : 'application/json'
-                },
-                credentials : 'same-origin',
-                body : JSON.stringify(json)
-            }; 
-            if(method.toUpperCase() === 'GET'){
-                delete requestConfig.body;
-            }
-            return fetch(url,requestConfig).then(function(response){
-                return response.json();
-            }).then(function(data){
-                app.loader(false);
-                return data;
-            }).catch(function(error){
-                console.log(error);
-                app.loader(false);
-            });
-        };
-        app.loader = function(loader){
-            var loaderPanel = document.querySelector('.app-loader');
-            if(loader){
-                loaderPanel.style.display = 'flex';
-                loaderPanel.classList.remove('hide');
-            }else{
-                loaderPanel.classList.add('hide');
-                setTimeout(function(){
-                loaderPanel.style.display = 'none';    
-                },300);
-            }
-        };
-    })(window);
-
-</script>
-
 
 <style>
     .font-title{
@@ -183,24 +99,10 @@ module.exports = (req,content) => `
     </span>
 </section>
 ${req.print(menu(req))}
-<div style="position: relative">
-    <div style="position: relative;bottom: 0px">
-    <div style="position: absolute;width:100%;">
-    ${req.print(confirmation(req))}
-    </div>
-</div>
-</div>
+${req.print(confirmation(req))}
 <div style="flex: 1 1 auto;">
 ${content}
 </div>
-<div class="app-loader hide">
-    <div class="loader-container">
-        <div class="block block-1"></div>
-        <div class="block block-2"></div>
-        <div class="block block-3"></div>
-    </div>
-</div>
-
 <section style="margin-bottom: 1em;border-top:1px solid #ddd">
     <span>
         <div style="font-family: 'Abril Fatface', 'Arial Black', cursive; font-size: 1.5em; line-height: 1.4; text-align: center;">CETC</div>
@@ -208,6 +110,7 @@ ${content}
     </span>
 </section>
 ${req.print(notification(req))}
+${req.print(loader(req))}
 </body>
 </html>
 `;

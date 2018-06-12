@@ -50,8 +50,16 @@ app.post('/res/:resource', (req,res) => {
 
 app.get('/res/:resource', (req,res) => {
     let mode = req.query.intent || 'json';
+    const resource = req.params.resource;
     try{
-        require(`${intentsPath}/${mode}/get`).call(null,req,res);
+        const template = require(`${intentsPath}/${mode}/get`);
+        if(mode.endsWith('-html')){
+            const html = require(`${intentsPath}/html`);
+            req.contentTemplate = template;
+            processRequest(req,res,html);
+        }else{
+            template.call(null,req,res);
+        }
     }catch(err){
         res.end(JSON.stringify({errorMessage:err.message}));
         console.error(err);

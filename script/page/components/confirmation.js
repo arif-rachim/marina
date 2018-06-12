@@ -33,16 +33,19 @@ module.exports = (req) => {
                 margin: 0.3em;
             }
         </style>
-        
-        <div class="confirmation-panel" style="z-index:1">
-            <div class="slider shadow p-3 mb-5 hide" >
-                <div style="display: flex;align-items: center;">
-                    <div><i class="far fa-question-circle" style="font-size: 2em;color: #333"></i></div>
-                    <div class="text-message" style="margin-left: 1em ">Are you sure you want to ?</div>
-                </div>
-                <div class="button-holders" style="display: flex;justify-content: flex-end">
-                    <button class="btn">Yes</button>
-                    <button class="btn">No</button>
+        <div style="position: relative;width: 100%;">
+            <div style="position: absolute;width: 100%;">
+                <div class="confirmation-panel" style="z-index:1">
+                    <div class="slider shadow p-3 mb-5 hide" >
+                        <div style="display: flex;align-items: center;">
+                            <div><i class="far fa-question-circle" style="font-size: 2em;color: #333"></i></div>
+                            <div class="text-message" style="margin-left: 1em ">Are you sure you want to ?</div>
+                        </div>
+                        <div class="button-holders" style="display: flex;justify-content: flex-end">
+                            <button class="btn">Yes</button>
+                            <button class="btn">No</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,7 +69,6 @@ module.exports = (req) => {
                         },200)
                     }
                     buttonHolders.addEventListener('click',onButtonHoldersClick,{once:true});
-                    
                     buttonHolders.innerHTML = buttonsConfiguration.map(function(btn,index){
                         if(index === 0){
                             return '<button data-name="'+btn+'" class="btn btn-primary" >'+btn+'</button>'    
@@ -79,6 +81,15 @@ module.exports = (req) => {
                     }
                 } 
                 
+                App.pubsub.subscribe('app.confirmation',function(param){
+                    var text = param.text;
+                    var buttons = param.buttons;
+                    return new Promise(function(resolve){
+                        showSlider(text,buttons,function(event){
+                            resolve(event);
+                        })
+                    });
+                });
                 exports.app.showConfirmation = showSlider;
             })(window);
         </script>

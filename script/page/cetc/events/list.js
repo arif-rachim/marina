@@ -141,7 +141,7 @@ module.exports = async (req) => {
                 };
                 
                 function refreshEventListTable(){
-                    app.fetch('/res/cetc_events').then(function(result){
+                    App.net.fetch('/res/cetc_events').then(function(result){
                         var events = result.docs;
                         document.querySelector('.event-list-table tbody').innerHTML = events.map(function(event){
                             return '<tr data-id="'+event._id+'">' +

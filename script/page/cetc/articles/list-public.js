@@ -128,7 +128,7 @@ module.exports = async (req) => {
                     
                     function onSearch(event){
                         var text = event.target.value;
-                        app.fetch('/res/cetc_articles?$s._createdOn=-1&title='+text+'&description='+text).then(function(result){
+                        App.net.fetch('/res/cetc_articles?$s._createdOn=-1&title='+text+'&description='+text).then(function(result){
                             document.querySelector('.article-container').innerHTML = printArticles(result.docs); 
                         });
                     }

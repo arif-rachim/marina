@@ -13,6 +13,16 @@ module.exports = (req,res) => {
         const resource = req.params.resource;
         const id = req.params.id;
         const ids = req.query.$ids;
+        if(!database.isExist(resource)){
+            res.end(JSON.stringify({
+                docs:[],
+                success : false,
+                message : `${resource} does not exist`
+            }));
+            return;
+        }
+
+
         let db = database[resource];
         
         if(id){
@@ -76,6 +86,7 @@ module.exports = (req,res) => {
                 }
                 executionPlan.exec((err, docs) => {
                     let result = {
+                        success : true,
                         pageInfo : {
                             totalRecords: count,
                             startingIndex: skip,
@@ -91,8 +102,9 @@ module.exports = (req,res) => {
             
         }
     }catch(err){
+        err.success = false;
         console.error(err);
-        res.end(JSON.stringify({errorMessage:err.message}));
+        res.end(JSON.stringify(err));
     }
 
     

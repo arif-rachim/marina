@@ -228,7 +228,7 @@ module.exports = (req) => {
                             };
                           var id = getValue('_id');
                           var isNewRegisteredUser = id ? false : true;
-                          app.fetch('/res/system_users'+(id?'/'+id:''),data,id ? 'PUT':'POST').then(function(data){
+                          App.net.fetch('/res/system_users'+(id?'/'+id:''),data,id ? 'PUT':'POST').then(function(data){
                               if(app.showNotification){
                                 app.showNotification('Data saved successfully');    
                               }
@@ -238,7 +238,7 @@ module.exports = (req) => {
                               clearForm();
                           }).then(function(){
                               if(isNewRegisteredUser){
-                                app.fetch('/svc/system.welcome-message',{
+                                App.net.fetch('/svc/system.welcome-message',{
                                   to : data.email,
                                   name : data.name,
                                   userId : data.userId,

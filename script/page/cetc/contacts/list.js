@@ -82,7 +82,7 @@ module.exports = async (req) => {
                     var id = event.target.getAttribute('data-id');
                     app.showConfirmation('Are you sure you want to delete ?',['Yes','No'],function(button){
                         if(button.innerText === 'Yes' ){
-                            app.fetch('/res/cetc_contacts/'+id,{},'DELETE').then(function(){
+                            App.net.fetch('/res/cetc_contacts/'+id,{},'DELETE').then(function(){
                                 app.showNotification('Contact deleted.');
                                 refreshContactListTable();
                                 app.clearContactForm();
@@ -92,7 +92,7 @@ module.exports = async (req) => {
                 }
                 
                 function refreshContactListTable(){
-                    app.fetch('/res/cetc_contacts').then(function(result){
+                    App.net.fetch('/res/cetc_contacts').then(function(result){
                         var contacts = result.docs;
                         document.querySelector('.contact-list-table tbody').innerHTML = contacts.map(function(contact){
                             return '<tr data-id="'+contact._id+'">' +

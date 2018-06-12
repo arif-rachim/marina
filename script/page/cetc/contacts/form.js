@@ -64,7 +64,7 @@ module.exports = (req) => {
         <div style="width: 100%" class="form-item">
             <input type="submit" style="width: auto;" value="Save" class="btn btn-primary">
             <input type="reset" style="width: auto;margin-left:0.5em" class="btn">
-            <input type="button" style="width: auto;float: right" class="btn" value="Cancel" onclick="PubSub.publish('cetc.contacts.page:list')">
+            <input type="button" style="width: auto;float: right" class="btn" value="Cancel" onclick="App.pubsub.publish('cetc.contacts.page:list')">
         </div>
     </form>
     <script>
@@ -119,7 +119,7 @@ module.exports = (req) => {
                     document.getElementById(id).checked = value;
                 }
             }
-            PubSub.subscribe('cetc.contacts.page:list',clearForm);
+            App.pubsub.subscribe('cetc.contacts.page:list',clearForm);
             function clearForm() {
                 setValue('name','');
                 setValue('company','');
@@ -146,10 +146,10 @@ module.exports = (req) => {
                                 notes: getValue('notes')
                             };
                             var id = getValue('_id'); 
-                            app.fetch('/res/cetc_contacts'+(id?'/'+id:''),data,id?'PUT':'POST').then(function(data){
+                            App.net.fetch('/res/cetc_contacts'+(id?'/'+id:''),data,id?'PUT':'POST').then(function(data){
                                 if(app.showNotification){
                                     app.showNotification('Data saved successfully');
-                                    PubSub.publish('cetc.contacts.page:list');
+                                    App.pubsub.publish('cetc.contacts.page:list');
                                 }
                                 if(app.refreshContactListTable){
                                     app.refreshContactListTable();
@@ -165,7 +165,7 @@ module.exports = (req) => {
             }
             
             function loadForm(id){
-                app.fetch('/res/cetc_contacts/'+id).then(function(contact){
+                App.net.fetch('/res/cetc_contacts/'+id).then(function(contact){
                     clearForm();
                     if(contact){
                         setValue('name',contact.name);
@@ -175,7 +175,7 @@ module.exports = (req) => {
                         setValue('phone',contact.phone);
                         setValue('notes',contact.notes);
                         setValue('_id',contact._id);
-                        PubSub.publish('cetc.contacts.page:form')
+                        App.pubsub.publish('cetc.contacts.page:form')
                     }
                 });
             }

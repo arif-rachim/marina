@@ -31,7 +31,7 @@ module.exports = async (req) => {
     </style>
     
     <div style="display: flex;align-items: center;margin-top:1em;margin-bottom: 1em;">
-        <div style="color: #333333;white-space: nowrap" class="add-contact-button" onclick="PubSub.publish('cetc.contacts.page:form')">
+        <div style="color: #333333;white-space: nowrap" class="add-contact-button" onclick="App.pubsub.publish('cetc.contacts.page:form')">
             <i class="fas fa-plus-circle" style="font-size: 1.5em"></i><span style="margin-left: 0.3em">Add Contact</span>
         </div>
         <h1 style="font-size: 1.2em;font-style: italic;text-align:right;width: 100%;margin:0px">Contacts Management</h1>
@@ -54,13 +54,13 @@ module.exports = async (req) => {
             var contactForm = document.querySelector('.contact-list-right');
             var addContactButton = document.querySelector('.add-contact-button');
             
-            PubSub.subscribe('cetc.contacts.page:list',function(){
+            App.pubsub.subscribe('cetc.contacts.page:list',function(){
                 contactList.classList.remove('hidden');
                 addContactButton.classList.remove('hidden');
                 contactForm.classList.add('hidden');
             });
             
-            PubSub.subscribe('cetc.contacts.page:form',function(){
+            App.pubsub.subscribe('cetc.contacts.page:form',function(){
                 contactList.classList.add('hidden');
                 addContactButton.classList.add('hidden');
                 contactForm.classList.remove('hidden');

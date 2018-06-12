@@ -16,13 +16,15 @@ module.exports = async (req,res) => {
                 res.end(JSON.stringify(session));
             }catch(err){
                 console.error(err);
-                res.end({errorMessage:err.message});
+                err.success = false;
+                res.end(err);
             }
         }else{
-            res.end(JSON.stringify({errorMessage:'Unable to find user or wrong password'}));
+            res.end(JSON.stringify({success:false,message:'Unable to find user or wrong password'}));
         }
     }catch(err){
+        err.success = false;
         console.error(err);
-        res.end(JSON.stringify({errorMessage:err.message}));
+        res.end(JSON.stringify(err));
     }
 };

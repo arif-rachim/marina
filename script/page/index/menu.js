@@ -319,7 +319,7 @@ module.exports = async(req) => {
         };
         
         function loadCurrentUser(){
-            app.fetch('/svc/security.get-current-user',{},'post',false).then(function(data){
+            App.net.fetch('/svc/security.get-current-user',{},'post',false).then(function(data){
                 if(data && data.account){
                     app.user = data;
                     populateRolesOnUser(app.user);
@@ -372,7 +372,7 @@ module.exports = async(req) => {
             if(app.user){
                 app.showConfirmation('Are you sure you wish to logout ? ',['Yes','No'],function(button){
                     if(button.innerText === 'Yes'){
-                        app.fetch('/svc/security.logout',{}).then(function(user){
+                        App.net.fetch('/svc/security.logout',{}).then(function(user){
                             app.showNotification('Successfully logged out');
                             delete app.user;
                             updateMenus();
@@ -394,7 +394,7 @@ module.exports = async(req) => {
                 userName: getValue('userName'),
                 password: getValue('password')
             };
-            app.fetch('/svc/security.login',data,'post',true).then(function(user){
+            App.net.fetch('/svc/security.login',data,'post',true).then(function(user){
                 if(user.errorMessage){
                     app.showNotification(user.errorMessage);
                     return;
