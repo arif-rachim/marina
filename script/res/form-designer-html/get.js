@@ -28,12 +28,12 @@ module.exports = req => {
         height: 3em;
     }
     
-    .control-holder{
+    .form-item{
         box-sizing: border-box;
     }
     
-    .control-holder.select{
-        border : 1px dotted blue;
+    .form-item.select{
+        background-color: #eeeeee;
     }
     
     .hide{
@@ -47,12 +47,19 @@ module.exports = req => {
     }
     
     .mg-sm{
-        margin: 0.5em;
+        padding: 0.5em;
+        margin: 0em;
     }
     
     .properties-panel{
         width: 100%;
         border: 1px dotted darkred;
+    }
+    
+    .temp-element{
+        border : 1px dotted #1c7430;
+        width: 100%;
+        height: 5em;
     }
 </style>
 <div style="display:none;">
@@ -270,32 +277,107 @@ module.exports = req => {
         });
         
         function ondrag(event){
-            event.dataTransfer.setData('text',event.target.getAttribute('data-type'));
+            if(event.currentTarget.classList.contains('control-item')){
+                event.dataTransfer.setData('text','new:'+event.target.getAttribute('data-type'));    
+            }else if(event.currentTarget.classList.contains('form-item')){
+                event.dataTransfer.setData('text','move:'+event.target.getAttribute('data-id'));
+            }
+            
         }
         
         designPanel.addEventListener('drop',ondrop);
         designPanel.addEventListener('dragover',ondragover);
         
-       
-        function ondrop(event){
-            event.preventDefault();
-            var element = document.createElement('div');
-            var template = document.querySelector('.'+event.dataTransfer.getData('text')+'-template');
-            element.innerHTML = template.innerHTML;
-            element.classList.add('control-holder');
-            element.addEventListener('click',onelementclicked);
-            designPanel.appendChild(element);
+        function createFormItem(elementName){
+            var formItem = document.createElement('div');
+            var template = document.querySelector('.'+elementName+'-template');
+            formItem.innerHTML = template.innerHTML;
+            formItem.classList.add('form-item');
+            formItem.setAttribute('data-id',App.utils.guid());
+            formItem.setAttribute('draggable',true);
+            formItem.addEventListener('click',onFormItemClicked);
+            formItem.addEventListener('dragover',ondragover);
+            formItem.addEventListener('dragstart',ondrag);
+            formItem.addEventListener('drop',ondrop);
+            return formItem;
         }
         
-        function onelementclicked(event) {
-            document.querySelectorAll('.control-holder').forEach(function(node){
+        function ondrop(event){
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            event.stopPropagation();
+            var action = event.dataTransfer.getData('text').split(':');
+            if(action[0]==='new'){
+                var formItem = createFormItem(action[1]);
+                var target = event.currentTarget;
+                if(target.classList.contains('design-panel')){
+                    target.appendChild(formItem);    
+                } else {
+                    target.parentNode.insertBefore(formItem,target);
+                }
+            }
+            if(action[0]==='move'){
+                var element = document.querySelector('[data-id="'+action[1]+'"]');
+                var target = event.currentTarget;
+                if(target.classList.contains('design-panel')){
+                    target.appendChild(element);
+                } else {
+                    target.parentNode.insertBefore(element,target);
+                }
+            }
+            removeTempElement();
+        }
+        
+        function onFormItemClicked(event) {
+            var formItem = event.currentTarget;
+            document.querySelectorAll('.form-item').forEach(function(node){
                 node.classList.remove('select');
             });
-            event.currentTarget.classList.add('select');
+            formItem.classList.add('select');
+            showFormItemProperties(formItem);
+        }
+        
+        var tempElement = (function(){
+            var element = document.createElement('div');
+            element.classList.add('temp-element');
+            element.addEventListener('dragover',function(event){
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            });
+            element.addEventListener('dragstart',ondrag);
+            element.addEventListener('drop',ondrop);
+            return element;
+        })();
+        
+        function removeTempElement(){
+            tempElement.parentNode.removeChild(tempElement);
         }
         
         function ondragover(event){
             event.preventDefault();
+            event.stopImmediatePropagation();
+            event.stopPropagation();
+            var target = event.currentTarget;
+            
+            if(target.classList.contains('design-panel')){
+                target.appendChild(tempElement);
+            }else{
+                var position = (event.clientY - target.getBoundingClientRect().top);
+                var heightBeforeMoveBottom = target.clientHeight / 3;
+                var mouseAtHalfTop =  position < heightBeforeMoveBottom;
+                if(mouseAtHalfTop){
+                    target.parentNode.insertBefore(tempElement,target);    
+                }else if(target.nextSibling){
+                    target.parentNode.insertBefore(tempElement,target.nextSibling);
+                } 
+            }
+        }
+        
+        function showFormItemProperties(formItem){
+            var label = document.querySelector('[data-id="'+formItem.getAttribute("data-id")+'"] label');
+            var input = document.querySelector('[data-id="'+formItem.getAttribute("data-id")+'"] input');
+            var description = document.querySelector('[data-id="'+formItem.getAttribute("data-id")+'"] small');
+            
         }
         
     })();

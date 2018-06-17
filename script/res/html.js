@@ -12,7 +12,6 @@ module.exports = (req,template) => {
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
             <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
             <script src="/node_modules/whatwg-fetch/fetch.js"></script>
-            <script src="/node_modules/dragula/dist/dragula.min.js"></script>
             <script src="/script/client/app.js"></script>
             <link rel="stylesheet" href="/styles/bootstrap.min.css" >
         </head>
