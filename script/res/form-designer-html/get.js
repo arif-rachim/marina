@@ -28,6 +28,7 @@ module.exports = req => {
         height: 3em;
     }
     
+    
     .hide{
         opacity: 0;
     }
@@ -42,6 +43,7 @@ module.exports = req => {
     }
 </style>
 <div style="display:none;">
+
     <div style="display: none" class="single-line-text-template">
         <div class="form-group mg-sm">
             <label >Text</label>
@@ -49,6 +51,7 @@ module.exports = req => {
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
+    
     <div style="display: none" class="number-template">
         <div class="form-group mg-sm">
             <label >Number</label>
@@ -257,12 +260,21 @@ module.exports = req => {
         designPanel.addEventListener('drop',ondrop);
         designPanel.addEventListener('dragover',ondragover);
         
+       
         function ondrop(event){
             event.preventDefault();
             var element = document.createElement('div');
             var template = document.querySelector('.'+event.dataTransfer.getData('text')+'-template');
             element.innerHTML = template.innerHTML;
+            element.addEventListener('click',onelementclicked);
             designPanel.appendChild(element);
+        }
+        
+        function onelementclicked(event) {
+            document.querySelectorAll('.control-item').forEach(function(node){
+                node.classList.remove('select');
+            });
+            event.currentTarget.classList.add('select');
         }
         
         function ondragover(event){
