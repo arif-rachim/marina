@@ -44,7 +44,7 @@ module.exports = req => {
 <div style="display:none;">
     <div style="display: none" class="single-line-text-template">
         <div class="form-group mg-sm">
-            <label >Email address</label>
+            <label >Text</label>
             <input type="text" class="form-control" placeholder="Enter Text">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
@@ -75,8 +75,8 @@ module.exports = req => {
     
     <div style="display: none" class="multiple-choice-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >Radio</label>
+            <input type="radio" class="form-control" placeholder="Radio">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
@@ -84,72 +84,72 @@ module.exports = req => {
     
     <div style="display: none" class="dropdown-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >Select</label>
+            <select name="" id="" class="form-control">
+                <option value="one">one</option>
+                <option value="two">two</option>
+                <option value="three">three</option>
+            </select>
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
     
     <div style="display: none" class="section-break-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
-            <small class="form-text text-muted">The information shall stay closed.</small>
+            <h3>Section break</h3>
         </div>
     </div>
     
     <div style="display: none" class="page-break-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
-            <small class="form-text text-muted">The information shall stay closed.</small>
+            <h3>Page break</h3>
         </div>
     </div>
     
     <div style="display: none" class="file-upload-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >File</label>
+            <input type="file" class="form-control" placeholder="File">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
     
     <div style="display: none" class="date-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >Date</label>
+            <input type="date" class="form-control" placeholder="Enter Date">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
     
     <div style="display: none" class="email-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >Email</label>
+            <input type="email" class="form-control" placeholder="Enter Email">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
     
     <div style="display: none" class="time-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >Time</label>
+            <input type="time" class="form-control" placeholder="Enter Time">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
     
     <div style="display: none" class="phone-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >Phone</label>
+            <input type="tel" class="form-control" placeholder="Enter Telephone">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
     
     <div style="display: none" class="price-template">
         <div class="form-group mg-sm">
-            <label >Number</label>
-            <input type="number" class="form-control" placeholder="Enter Number">
+            <label >Price</label>
+            <input type="number" class="form-control" placeholder="Enter Price">
             <small class="form-text text-muted">The information shall stay closed.</small>
         </div>
     </div>
