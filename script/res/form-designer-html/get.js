@@ -28,6 +28,13 @@ module.exports = req => {
         height: 3em;
     }
     
+    .control-holder{
+        box-sizing: border-box;
+    }
+    
+    .control-holder.select{
+        border : 1px dotted blue;
+    }
     
     .hide{
         opacity: 0;
@@ -38,8 +45,14 @@ module.exports = req => {
         min-height: 3em;
         min-width: 1em;
     }
+    
     .mg-sm{
         margin: 0.5em;
+    }
+    
+    .properties-panel{
+        width: 100%;
+        border: 1px dotted darkred;
     }
 </style>
 <div style="display:none;">
@@ -245,6 +258,9 @@ module.exports = req => {
     <div class="design-panel">
     
     </div>    
+    <div class="properties-panel">
+    
+    </div>
 </div>
 <script>
     (function(){
@@ -266,12 +282,13 @@ module.exports = req => {
             var element = document.createElement('div');
             var template = document.querySelector('.'+event.dataTransfer.getData('text')+'-template');
             element.innerHTML = template.innerHTML;
+            element.classList.add('control-holder');
             element.addEventListener('click',onelementclicked);
             designPanel.appendChild(element);
         }
         
         function onelementclicked(event) {
-            document.querySelectorAll('.control-item').forEach(function(node){
+            document.querySelectorAll('.control-holder').forEach(function(node){
                 node.classList.remove('select');
             });
             event.currentTarget.classList.add('select');
