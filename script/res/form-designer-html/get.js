@@ -272,6 +272,7 @@ module.exports = req => {
 <script>
     (function(){
         var designPanel = document.querySelector('.design-panel');
+        var propertiesPanel = document.querySelector('.properties-panel');
         document.querySelectorAll('.control-item').forEach(function(node){
             node.addEventListener('dragstart',ondrag);
         });
@@ -378,6 +379,17 @@ module.exports = req => {
             var input = document.querySelector('[data-id="'+formItem.getAttribute("data-id")+'"] input');
             var description = document.querySelector('[data-id="'+formItem.getAttribute("data-id")+'"] small');
             
+            var text = '<form>' +
+            '<div class="form-group mg-sm"><label>Label</label><input type="text" value="'+label.innerHTML+'" class="form-control"></div>'+
+            '<div class="form-group mg-sm"><label>Name</label><input type="text" value="'+label.innerHTML+'" class="form-control"></div>'+
+            '<div class="form-group mg-sm"><label>Instruction for User</label><textarea class="form-control">'+description.innerHTML+'</textarea></div>'+
+            
+            '<div class="form-check mg-sm" style="display:flex;align-items:center;"><input id="inputRequired" type="checkbox" value="required" style="font-size:2em"><label for="inputRequired" class="form-check-label" style="margin-left:0.5em;margin-bottom:0.1em;" >Required</label></div>'+
+            '<div class="form-check mg-sm" style="display:flex;align-items:center;"><input id="inputNoDuplicate" type="checkbox" value="no-duplicate" ><label for="inputNoDuplicate" class="form-check-label" style="margin-left:0.5em;margin-bottom:0.1em;">No Duplicates</label></div>'+
+            '<div class="form-check mg-sm" style="display:flex;align-items:center;"><input id="inputEncrypted" type="checkbox" value="encrypted" ><label for="inputEncrypted" class="form-check-label" style="margin-left:0.5em;margin-bottom:0.1em;">Encrypted</label></div>'+
+            
+             '</form>';
+            propertiesPanel.innerHTML = text;
         }
         
     })();
