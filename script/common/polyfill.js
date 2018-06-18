@@ -1,9 +1,9 @@
 
-if(!('Promise' in this)){
-    this.Promise = require('promise-polyfill');
+if(!('Promise' in window)){
+    window.Promise = require('promise-polyfill');
 }
 
-if(!('fetch' in this)){
+if(!('fetch' in window)){
     require('whatwg-fetch');
 }
 
@@ -43,7 +43,6 @@ if (!('forEach' in NodeList.prototype)) {
     };
 }
 
-const {fetch} = require('../../config');
 module.exports = {
-    fetch
+
 };

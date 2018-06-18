@@ -1,5 +1,5 @@
 require('polyfill');
-const fetch = (url,json,method,showLoader) => {
+const appFetch = (url,json,method,showLoader) => {
     if(showLoader !== false){
         showLoader = true;
     }
@@ -42,4 +42,4 @@ function loader(loader){
     }
 };
 
-module.exports = fetch;
+module.exports = {fetch:appFetch};
