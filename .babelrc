@@ -1,4 +1,7 @@
-// .babelrc
 {
-  "presets": ["env"]
+  "presets": [
+    ["env", {
+      "modules": false
+    }]
+  ]
 }
