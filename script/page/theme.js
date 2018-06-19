@@ -8,12 +8,14 @@ module.exports = (req,content) => `
 <head>
     <meta charset="UTF-8">
     <title>Commander's Emerging Technology</title>
-    <link href="/styles/font-family.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/font-family.css" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    -->
     <script src="/svc/system.module?path=common.polyfill&name=polyfill"></script>
     <script src="/script/common/app.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
 </head>
 <style>
     body{

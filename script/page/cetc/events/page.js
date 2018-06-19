@@ -3,7 +3,7 @@ const form = require('./form');
 const list = require('./list');
 
 module.exports = async (req) => {
-    return theme(req,`
+    return theme(req, `
     <style>
         .event-list-right{
             width: 100%;

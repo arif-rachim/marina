@@ -1,5 +1,3 @@
-require('polyfill');
-
 const formatDateTime = (date) => {
     if(date === undefined || date.toString() === 'Invalid Date'){
         return '';

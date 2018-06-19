@@ -43,7 +43,8 @@ module.exports = async (req) => {
             </tbody>
         </table>
     </div>
-    <script >
+    
+    <script>
         (function(){
             document.querySelector('.search').addEventListener('keyup',App.utils.debounce(onKeyup,500));
             

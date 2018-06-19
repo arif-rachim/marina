@@ -27,8 +27,7 @@
     "node-fetch": "^2.1.2",
     "nodemailer": "^4.6.5",
     "promise-polyfill": "8.0.0",
-    "vcards-js": "^2.8.0",
-    "whatwg-fetch": "^2.0.4"
+    "vcards-js": "^2.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

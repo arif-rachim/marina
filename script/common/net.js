@@ -1,4 +1,4 @@
-require('polyfill');
+
 const appFetch = (url,json,method,showLoader) => {
     if(showLoader !== false){
         showLoader = true;

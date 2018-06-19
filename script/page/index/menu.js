@@ -292,8 +292,8 @@ module.exports = async(req) => {
                 return result.json();
             })
             .then(function(roles){
-                if(roles.errorMessage){
-                    app.showNotification(roles.errorMessage);
+                if(roles.success == false){
+                    app.showNotification(roles.message);
                     return;
                 }
                 roles = roles.filter(function(role){return role !== null});
@@ -395,8 +395,8 @@ module.exports = async(req) => {
                 password: getValue('password')
             };
             App.net.fetch('/svc/security.login',data,'post',true).then(function(user){
-                if(user.errorMessage){
-                    app.showNotification(user.errorMessage);
+                if(user.success == false){
+                    app.showNotification(user.message);
                     return;
                 }
                 app.user = user;

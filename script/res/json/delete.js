@@ -7,7 +7,7 @@ module.exports = (req,res) => {
     db.remove({ _id: id }, {}, (err, numRemoved) => {
         if(err){
             console.error(err);
-            res.end(JSON.stringify({errorMessage:err.message}));
+            res.end(JSON.stringify({success:false,message:err.message}));
         }else{
             res.end(JSON.stringify({success:true,message:'Record deleted'},null,2));
         }

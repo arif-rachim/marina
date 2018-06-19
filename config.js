@@ -30,12 +30,13 @@ const apiFetch = async (api,json,method) => {
         console.error(err);
     }
     return result;
-}
+};
 
 module.exports = {
     intentsPath : "./script/res",
     svcPath : "./script/svc",
     pagePath : "./script/page",
+    invalidateModuleCache : true,
     applicationPort,
     apiServer,
     administrator : {
