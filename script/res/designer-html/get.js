@@ -4,7 +4,7 @@ module.exports = (req,res) => {
     const resource = req.params.resource;
     return html(req,`
 <div class="hello-world">Hello Worlds</div>
-<script type="es6">
+<script path="${__filename}">
 
     const {fetch} = require('../../common/net');
     

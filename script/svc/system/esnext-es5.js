@@ -25,8 +25,10 @@ async function build(filename,name) {
 module.exports = (req,res) => {
     const script = req.body.script;
     const path = req.body.path.split("/");
+
     const fileName = path.pop();
     const directory = path.join("/");
+
     mkdir(directory);
     const tempFileName = `${directory}/${fileName}-${guid()}-tmp.js`;
     fs.writeFile(tempFileName,script.trim(),err => {

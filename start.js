@@ -4,12 +4,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
-const index = require("./script/page/index");
+const cheerio = require("cheerio");
 const accessDenied = require("./script/page/access-denied");
 const underConstruction = require("./script/page/under-construction");
 const {guid} = require("./script/common/utils");
 const {intentsPath,svcPath,pagePath,applicationPort,fetch,securePageAccess,invalidateModuleCache} = require("./config");
 const PORT = applicationPort;
+
+const path = require('path');
+
+const appRoot = path.resolve(__dirname);
+
 
 app.use(cookieParser());
 app.use((req, res, next) => {
@@ -56,7 +61,6 @@ app.get('/res/:resource', async (req,res) => {
         const modulePath = `${intentsPath}/${mode}/get`;
         const template = require(modulePath);
         if(mode.endsWith('-html')){
-            req.modulePath = modulePath;
             const templateResult = await processRequest(req,template);
             res.end(templateResult);
             if(invalidateModuleCache){
@@ -140,7 +144,6 @@ app.get('/page/:page',async (req,res) => {
         const pp = req.params.page.split(".").join("/");
         const modulePath = `${pagePath}/${pp}`;
         const template = require(modulePath);
-        req.modulePath = modulePath;
         const templateResult = await processRequest(req,(req) => `<div>${req.print(template(req))}</div>`);
         res.end(templateResult);
         if(invalidateModuleCache){
@@ -155,40 +158,43 @@ app.get('/page/:page',async (req,res) => {
 
 });
 
-function processRequest(req,template,path){
-    const modulePath = req.modulePath;
+function processRequest(req,template){
     return parseTemplate(req,template).then(result => {
-        if(modulePath){
-            let index = 0;
-            let scriptTexts = [];
-            // we need to use cherio instead of this style
-            let es6script = '<script type="es6">';
-            while(result.indexOf(es6script,index) >= index){
-                const startIndex = result.indexOf(es6script,index)+es6script.length;
-                const endIndex = result.indexOf('</script>',startIndex);
-                const script = result.substring(startIndex,endIndex);
-                scriptTexts.push(script);
-                index = endIndex+'</script>'.length;
-            }
-            scriptTexts.forEach((script,index) => {
-                result = result.replace(script,`/*async-${index}*/`)
+
+
+
+        const $ = cheerio.load(result);
+        const promises = [];
+        $('script[path]').each((index,element) => {
+            const script = $(element).html();
+            const path = $(element).attr('path');
+            $(element).removeAttr('path');
+            const elementId = guid();
+            $(element).attr('data-id',elementId);
+            const modulePath = path.replace(appRoot,'.').replace('.js','').replace(/\\/g,'/');
+            promises.push(fetch(`/svc/system.esnext-es5`,{
+                script,
+                path : modulePath
+            },'POST').then(result => {
+                return {
+                    data: result.code,
+                    elementId
+                }
+            }));
+        });
+        if(promises.length > 0){
+            return Promise.all(promises).then(dataPaths => {
+                try{
+                    dataPaths.forEach(({data,elementId}) => {
+                        $('script[data-id="'+elementId+'"]').text(data);
+                    })
+                }catch(err){
+                    console.error(err);
+                }
+                return Promise.resolve($.html());
             });
-            let promises = scriptTexts.map((script) => {
-                return fetch(`/svc/system.esnext-es5`,{
-                    script,
-                    path : `${modulePath}`
-                },'POST')
-            });
-            return Promise.all(promises).then(es5scripts => {
-                es5scripts.forEach((es5script,index) => {
-                    result = result.replace(`/*async-${index}*/`,es5script.code);
-                });
-                result = result.replace(/<script type="es6">/g,'<script>');
-                return Promise.resolve(result);
-            });
-        }else{
-            return Promise.resolve(result);
         }
+        return Promise.resolve(result);
     })
 
 }
@@ -232,6 +238,8 @@ function parseTemplate(req,template) {
 
 app.get('/index.html',async (req,res) => {
     try{
+
+        const index = require("./script/page/index");
         const templateResult = await processRequest(req, index);
         res.end(templateResult);
     }catch(err){

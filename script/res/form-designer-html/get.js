@@ -268,7 +268,7 @@ module.exports = req => {
     
     </div>
 </div>
-<script type="es6">
+<script path="${__filename}">
 
         const designPanel = document.querySelector('.design-panel');
         const propertiesPanel = document.querySelector('.properties-panel');
