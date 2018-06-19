@@ -30,25 +30,26 @@ module.exports = (req) => {
         <span class="notification-panel-content">
         </span>
     </div>
-    <script>
-        (function(exports){
-            exports.app = exports.app || {};
-            function showNotification(message){
-                return new Promise(function(resolve){
-                    var notificationPanel = document.getElementById('notificationPanel');
-                    document.querySelector('.notification-panel-content').innerHTML = message; 
-                    notificationPanel.classList.add('show');
-                    setTimeout(function(){
-                        notificationPanel.classList.remove('show');
-                        resolve(true);
-                    },3000);    
-                });
-            }
-            App.pubsub.subscribe('app.notification',function(text){
-                return showNotification(text);
+    <script path="${__filename}">
+        const {subscribe} = require('../../common/pubsub');
+        
+        function showNotification(message){
+            return new Promise(function(resolve){
+                var notificationPanel = document.getElementById('notificationPanel');
+                document.querySelector('.notification-panel-content').innerHTML = message; 
+                notificationPanel.classList.add('show');
+                setTimeout(function(){
+                    notificationPanel.classList.remove('show');
+                    resolve(true);
+                },3000);    
             });
-            exports.app.showNotification = showNotification;
-        })(window);
+        }
+        subscribe('app.notification',function(text){
+            return showNotification(text);
+        });
+        
+        window.app.showNotification = showNotification;
+        
         
     </script>
     `

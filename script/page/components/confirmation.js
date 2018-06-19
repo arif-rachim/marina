@@ -52,6 +52,7 @@ module.exports = (req) => {
         </div>
         
         <script path="${__filename}">
+            const {subscribe} = require('../../common/pubsub');
             
             window.app = window.app || {};
             var buttonHolders = document.querySelector('.confirmation-panel .button-holders');
@@ -81,7 +82,7 @@ module.exports = (req) => {
                 }
             } 
             
-            App.pubsub.subscribe('app.confirmation',function(param){
+            subscribe('app.confirmation',function(param){
                 var text = param.text;
                 var buttons = param.buttons;
                 return new Promise(function(resolve){

@@ -1,4 +1,6 @@
-var topics = {};
+window.app = window.app || {};
+window.app.topics = window.app.topics || {};
+const topics = window.app.topics;
 
 const subscribe = function(topic,func){
     if(!topics.hasOwnProperty(topic)){
