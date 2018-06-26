@@ -86,7 +86,14 @@ module.exports = (req) => {
                     <h3 style="font-weight: 100">Tools</h3>
                     <div style="width: 100%">
                         <div class="input-item" draggable="true" data-type="page.form.single-line-text">Single Line Text</div>
-                        
+                        <div class="input-item" draggable="true" data-type="page.form.number">Number</div>
+                        <div class="input-item" draggable="true" data-type="page.form.paragraph-text">Paragraph Text</div>
+                        <div class="input-item" draggable="true" data-type="page.form.checkboxes">Checkboxes</div>
+                        <div class="input-item" draggable="true" data-type="page.form.multiple-choice">Multiple Choice</div>
+                        <div class="input-item" draggable="true" data-type="page.form.drop-down">Dropdown</div>
+                        <div class="input-item" draggable="true" data-type="page.form.multiple-items">Multiple Items</div>
+                        <div class="input-item" draggable="true" data-type="page.form.section-break">Section Break</div>
+                        <div class="input-item" draggable="true" data-type="page.form.page-break">Page Break</div>
                     </div>
                 </div>
                 <div style="height: 100%">
@@ -147,6 +154,7 @@ module.exports = (req) => {
                 marker.classList.add('dropdown-target-marker');
                 marker.classList.add('hide');
                 const div = document.createElement('div');
+                
                 div.innerHTML = SingleLineText.render({label:'label',placeholder:'placeholder',description:'description',name:'name'});
                 target.parentNode.insertBefore(marker,target);
                 target.parentNode.insertBefore(div.firstChild,target);
