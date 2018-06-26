@@ -43,15 +43,11 @@ module.exports = (req) => {
             .container-panel {
                 width: 100%;
                 display: flex;
-                //padding: 0.5em;
-                //border:1px solid red;
             }
             
             .container-panel .container-panel-item{
                 width: 100%;
-                //border: 1px dotted wheat;
                 min-height: 1em;
-                //padding: 0.5em;
             }
             
             .container-panel-item.vertical{
@@ -89,28 +85,8 @@ module.exports = (req) => {
                 <div style="height: 100%">
                     <h3 style="font-weight: 100">Tools</h3>
                     <div style="width: 100%">
-                        <div class="input-item" draggable="true" data-type="text">Text</div>
-                        <div class="input-item" draggable="true" data-type="checkbox">Checkbox</div>
-                        <div class="input-item" draggable="true" data-type="color">Color</div>
-                        <div class="input-item" draggable="true" data-type="date">Date</div>
-                        <div class="input-item" draggable="true" data-type="month">Month</div>
-                        <div class="input-item" draggable="true" data-type="number">Number</div>
-                        <div class="input-item" draggable="true" data-type="password">Password</div>
-                        <div class="input-item" draggable="true" data-type="radio">Radio</div>
-                        <div class="input-item" draggable="true" data-type="range">Range</div>
-                        <div class="input-item" draggable="true" data-type="datetime-local">Datetime</div>
-                        <div class="input-item" draggable="true" data-type="email">Email</div>
-                        <div class="input-item" draggable="true" data-type="file">File</div>
-                        <div class="input-item" draggable="true" data-type="hidden">Hidden</div>
+                        <div class="input-item" draggable="true" data-type="page.form.single-line-text">Single Line Text</div>
                         
-                        <div class="input-item" draggable="true" data-type="search">Search</div>
-                        <div class="input-item" draggable="true" data-type="tel">Tel</div>
-                        <div class="input-item" draggable="true" data-type="time">Time</div>
-                        <div class="input-item" draggable="true" data-type="url">URL</div>
-                        <div class="input-item" draggable="true" data-type="week">Week</div>
-                        <div class="input-item" draggable="true" data-type="select">Drop Down</div>
-                        <div class="input-item" draggable="true" data-type="textarea">Paragraph</div>
-                        <div class="input-item" draggable="true" data-type="button">Button</div>
                     </div>
                 </div>
                 <div style="height: 100%">
@@ -118,29 +94,34 @@ module.exports = (req) => {
                     <div style="width: 100%">
                         <div class="input-item" draggable="true" data-type="vertical">Vertical</div>
                         <div class="input-item" draggable="true" data-type="horizontal">Horizontal</div>
-                        <div class="input-item" draggable="true" data-type="collapsed">Collapsed</div>
                     </div>
                 </div>
             </div>
             <div style="width: 100%;background-color: #F5F5F5;padding: 3em;display: flex;justify-content: center">
-                <div style="width: 100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;max-width: 900px;padding: 1em;overflow:auto" id="form-panel">
-                    <div class="dropdown-target-marker hide"></div>        
+                <div style="width: 100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;max-width: 900px;padding: 1em;overflow:auto;display: flex;flex-direction: column" id="form-panel">
+                    <div class="dropdown-target-marker hide"></div>
+                            
                 </div>
             </div>
-            <div style="width: 300px;border-left: 1px solid #d3d9df;padding:1em">
+            <div style="width: 300px;border-left: 1px solid #d3d9df;padding:1em" is="page.form.properties-panel">
                 <h3 style="font-weight: 100">Properties</h3>
+                <div class="property-details" style="width: 100%">
+                    
+                </div>
             </div>
         </div>
         <script path="${__filename}">
-            const formPanel = document.querySelector('#form-panel');
             const {guid} = require('../../common/utils');
+            const SingleLineText = require('./single-line-text');
+            
+            const formPanel = document.querySelector('#form-panel');
             
             document.querySelectorAll('.input-item').forEach(node => {
                 node.addEventListener('dragstart',event => {
                     const data = {
                         action : 'new',
                         type : event.target.getAttribute('data-type')
-                    }
+                    };
                     event.dataTransfer.setData('text',JSON.stringify(data));
                 })
             });
@@ -157,80 +138,19 @@ module.exports = (req) => {
                 div.classList.add('container-panel');
                 div.classList.add(type);
                 div.setAttribute('draggable',true);
-                
-                div.addEventListener('click', event => {
-                    // we can do something here to enable deletion
-                });
-                
                 target.parentNode.insertBefore(marker,target);
                 target.parentNode.insertBefore(div,target);
-                
             };
-            
-            const onElementClicked = (event) => {
-                const element = event.currentTarget;
-            }
             
             const createElement = (target,type) => {
                 const marker = document.createElement('div');
                 marker.classList.add('dropdown-target-marker');
                 marker.classList.add('hide');
-                
-                const uid = guid();
-                const elementId = guid();
                 const div = document.createElement('div');
-                
-                
-                div.setAttribute('id',elementId);
-                
-                // if input is text
-                
-                div.innerHTML = '<label for="'+uid+'" style="margin-bottom:0">'+type+'</label>'+ 
-                '<input id="'+uid+'" type="'+type+'" class="form-control" placeholder="'+type+'">'+
-                '<small >'+type+' Description </small>';
-                
-                if(['checkbox','radio'].indexOf(type) >= 0){
-                    div.classList.add('form-check');
-                    div.innerHTML = '<label class="form-check-label">'+ 
-                    '<input type="'+type+'" class="form-check-input" placeholder="'+type+'">'+
-                    type+'</label>';
-                    div.classList.add('margin-bt-small');
-                }
-                
-                if(type == 'button'){
-                    div.innerHTML = '<input id="'+uid+'" type="'+type+'" class="btn btn-default" value="Button">';
-                }
-                
-                if(type == 'textarea'){
-                    div.innerHTML = '<label for="'+uid+'" style="margin-bottom:0px">Paragraph</label>'+ 
-                    '<textarea id="'+uid+'" class="form-control" placeholder="Please enter data"></textarea>'+
-                    '<small >Example of helper for input</small>';
-                }
-                
-                if(type == 'select'){
-                    div.innerHTML = '<label for="'+uid+'" style="margin-bottom:0px">Select</label>'+ 
-                    '<select id="'+uid+'" class="form-control" placeholder="Please Select"></select>'+
-                    '<small >Example of helper for input</small>';
-                }
-                
-                div.classList.add('form-group');
-                div.classList.add('full-width');
-                
-                div.setAttribute('draggable',true);
-                
-                div.addEventListener('dragstart',event => {
-                    const data = {
-                        action : 'move',
-                        id : event.target.getAttribute('id')
-                    }
-                    event.dataTransfer.setData('text',JSON.stringify(data));
-                })
-                div.addEventListener('click',onElementClicked);
-                
+                div.innerHTML = SingleLineText.render({label:'label',placeholder:'placeholder',description:'description',name:'name'});
                 target.parentNode.insertBefore(marker,target);
-                target.parentNode.insertBefore(div,target);
-                
-            }
+                target.parentNode.insertBefore(div.firstChild,target);
+            };
             
             formPanel.addEventListener('drop',event => {
                 event.preventDefault();

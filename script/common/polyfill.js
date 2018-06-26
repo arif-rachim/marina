@@ -45,25 +45,7 @@ if (!('forEach' in NodeList.prototype)) {
     };
 }
 
-// here we are introducing mutation observer for firing load when an event is added to panel
-var mutationObserver = new MutationObserver(function(mutationList){
-    mutationList.forEach(function(mutation){
-        if(mutation.type == 'childList'){
-            mutation.addedNodes.forEach(node => {
-                if(node.tagName == 'DIV' && node.onload){
-                    node.dispatchEvent(new Event('load'));
-                }
-            });
-        }
-    });
-});
-
-window.addEventListener('load',function(){
-    mutationObserver.observe(document.body,{childList:true,subtree:true});
-    document.querySelectorAll('div[onload]').forEach(function (node) {
-        node.dispatchEvent(new Event('load'));
-    })
-});
+const componentRegistry = require('./component-registry');
 
 module.exports = {
 

@@ -24,7 +24,17 @@ async function build(filename,name) {
 module.exports = async (req,res) => {
     const path = req.query.path.split('.').join('/');
     const name = req.query.name;
+    const callback = req.query.callback;
     const fileName = `script/${path}.js`;
     const {code,map} = await build(fileName,name);
-    res.end(code);
+    if(callback){
+        const resolve = `(function() {
+            ${code}
+            ${callback}({module:${name},path:'${req.query.path}'})
+        })()`;
+        res.end( resolve );
+    }else{
+        res.end(code);
+    }
+
 };
