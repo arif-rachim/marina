@@ -4,6 +4,7 @@ const loader = require('../page/components/loader');
 
 module.exports = (req,template) => {
   return `
+    <!DOCTYPE html>
     <html>
         <head>
             <title>${req.params.resource}</title>
