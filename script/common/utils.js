@@ -52,7 +52,13 @@ const merge = (one,two) => {
     }
     for(let key in two){
         if(two.hasOwnProperty(key)){
-            result[key] = two[key];
+            const valTwo = two[key];
+            const valOne = result[key];
+            if((typeof valOne === 'object' && typeof valTwo === 'object') && !(Array.isArray(valOne) || Array.isArray(valTwo))){
+                result[key] = merge(result[key],two[key]);
+            }else{
+                result[key] = two[key];
+            }
         }
     }
     return result;

@@ -107,6 +107,7 @@ class SingleLineText {
 
         subscribe('property-details-update',data => {
             if(data.id.value === this.model.id.value){
+                debugger;
                 this.model = merge(this.model,data);
                 this.refreshModel();
             }
