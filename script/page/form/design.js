@@ -1,5 +1,5 @@
 const html = require('../../res/html');
-const Vertical = require('./vertical');
+const Vertical = require('./comp/vertical');
 module.exports = (req) => {
     return html(req,`
         <style>
@@ -85,23 +85,23 @@ module.exports = (req) => {
                 <div style="height: 100%">
                     <h3 style="font-weight: 100">Tools</h3>
                     <div style="width: 100%">
-                        <div class="input-item" draggable="true" data-type="page.form.single-line-text">Single Line Text</div>
-                        <div class="input-item" draggable="true" data-type="page.form.number">Number</div>
-                        <div class="input-item" draggable="true" data-type="page.form.paragraph-text">Paragraph Text</div>
-                        <div class="input-item" draggable="true" data-type="page.form.checkboxes">Checkboxes</div>
-                        <div class="input-item" draggable="true" data-type="page.form.multiple-choice">Multiple Choice</div>
-                        <div class="input-item" draggable="true" data-type="page.form.drop-down">Dropdown</div>
-                        <div class="input-item" draggable="true" data-type="page.form.multiple-items">Multiple Items</div>
-                        <div class="input-item" draggable="true" data-type="page.form.section-break">Section Break</div>
-                        <div class="input-item" draggable="true" data-type="page.form.page-break">Page Break</div>
-                        <div class="input-item" draggable="true" data-type="page.form.button">Submit Button</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.single-line-text">Single Line Text</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.number">Number</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.paragraph-text">Paragraph Text</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.checkboxes">Checkboxes</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.multiple-choice">Multiple Choice</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.drop-down">Dropdown</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.multiple-items">Multiple Items</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.section-break">Section Break</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.page-break">Page Break</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.button">Submit Button</div>
                     </div>
                 </div>
                 <div style="height: 100%">
                     <h3 style="font-weight: 100">Container</h3>
                     <div style="width: 100%">
-                        <div class="input-item" draggable="true" data-type="page.form.vertical">Vertical</div>
-                        <div class="input-item" draggable="true" data-type="page.form.horizontal">Horizontal</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.vertical">Vertical</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.horizontal">Horizontal</div>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@ module.exports = (req) => {
                     <button class="btn btn-primary" id="saveFormButton">Save</button>
                 </div>
             </div>
-            <div style="width: 700px;border-left: 1px solid #d3d9df;padding:1em;overflow: auto" is="page.form.properties-panel">
+            <div style="width: 700px;border-left: 1px solid #d3d9df;padding:1em;overflow: auto" is="page.form.comp.properties-panel">
                 <h3 style="font-weight: 100">Properties</h3>
                 <div class="property-details" style="width: 100%">
                     
@@ -131,15 +131,15 @@ module.exports = (req) => {
             const formPanel = document.querySelector('#form-panel');
             const {fetch} = require('../../common/net');
             
-            const Vertical = require('./vertical');
-            const Horizontal = require('./horizontal');
-            const SingleLineText = require('./single-line-text');
-            const Button = require('./button');
+            const Vertical = require('./comp/vertical');
+            const Horizontal = require('./comp/horizontal');
+            const SingleLineText = require('./comp/single-line-text');
+            const Button = require('./comp/button');
             const componentMap = {
-                'page.form.button' : Button,
-                'page.form.vertical' : Vertical,
-                'page.form.horizontal' : Horizontal,
-                'page.form.single-line-text' : SingleLineText
+                'page.form.comp.button' : Button,
+                'page.form.comp.vertical' : Vertical,
+                'page.form.comp.horizontal' : Horizontal,
+                'page.form.comp.single-line-text' : SingleLineText
             };
             document.querySelector('#saveFormButton').addEventListener('click',event => {
                 publish('app.confirmation',{

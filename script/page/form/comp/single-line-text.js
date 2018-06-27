@@ -1,5 +1,5 @@
-const {guid,merge} = require('../../common/utils');
-const {publish,subscribe} = require('../../common/pubsub');
+const {guid,merge} = require('../../../common/utils');
+const {publish,subscribe} = require('../../../common/pubsub');
 
 class SingleLineText {
 
@@ -124,7 +124,7 @@ class SingleLineText {
 
     static render ({label="Label",name="name",placeholder="Please set Placeholder",description="Please set the description",required=true,unique=false,encrypted=false,adminOnly=false}) {
         const inputId = guid();
-        return `<div id="${guid()}" is="page.form.single-line-text" class="form-group" draggable="true" style="width: 100%">
+        return `<div id="${guid()}" is="page.form.comp.single-line-text" class="form-group" draggable="true" style="width: 100%">
             <label for="${inputId}" style="margin-bottom:0">${label}</label>
             <input type="text" id="${inputId}" class="form-control" placeholder="${placeholder}" name="${name}" ${required ? 'required' : ''} ${unique ? 'unique' : ''} ${encrypted ? 'encrypted' : ''} ${adminOnly ? 'admin-only':''} >
             <code style="display: none" data-validator="${inputId}"></code>

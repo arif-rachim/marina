@@ -1,5 +1,5 @@
-const {guid} = require('../../common/utils');
-const {publish,subscribe} = require('../../common/pubsub');
+const {guid} = require('../../../common/utils');
+const {publish,subscribe} = require('../../../common/pubsub');
 
 class Button {
 
@@ -62,7 +62,7 @@ class Button {
     }
 
     static render ({label="Submit"}) {
-        return `<div id="${guid()}" is="page.form.button" >
+        return `<div id="${guid()}" is="page.form.comp.button" >
             <input type="button" value="${label}" class="btn btn-primary">
         </div>`
     }

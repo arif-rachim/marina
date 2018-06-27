@@ -1,5 +1,5 @@
-const {subscribe,publish} = require('../../common/pubsub');
-const {guid} = require('../../common/utils');
+const {subscribe,publish} = require('../../../common/pubsub');
+const {guid} = require('../../../common/utils');
 class PropertiesPanel{
     constructor(node){
         this.node = node;
