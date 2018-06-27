@@ -1,6 +1,6 @@
-const {guid,merge} = require('../../../common/utils');
+const {merge} = require('../../../common/utils');
 const {publish,subscribe} = require('../../../common/pubsub');
-
+const {render} = require('./single-line-text-render');
 class SingleLineText {
 
     constructor(node){
@@ -39,25 +39,25 @@ class SingleLineText {
                 description : 'Description of the input to give details about the input'
             },
             required : {
-                value :this.node.hasAttribute('required'),
+                value :input.hasAttribute('required'),
                 name : 'Required',
                 type : 'boolean',
                 description : 'If selected, user must entered the input value'
             },
             unique : {
-                value : this.node.hasAttribute('unique'),
+                value : input.hasAttribute('unique'),
                 name : 'No Duplicate',
                 type : 'boolean',
                 description : 'If selected, this input will be checked before the form submitted'
             },
             encrypted : {
-                value : this.node.hasAttribute('encrypted'),
+                value : input.hasAttribute('encrypted'),
                 name : 'Encrypted',
                 type : 'boolean',
                 description : 'If selected, this input will encrypted in database.Please be advice encrypted value cannot be queried'
             },
             adminOnly : {
-                value : this.node.hasAttribute('adminOnly'),
+                value : input.hasAttribute('admin-only'),
                 name : 'Admin Only',
                 type : 'boolean',
                 description : 'If selected, this input will only visible for admin only.'
@@ -91,6 +91,7 @@ class SingleLineText {
                 name : 'Id',
                 type : 'hidden'
             }
+
         };
 
         this.node.addEventListener('dragstart',event => {
@@ -107,7 +108,6 @@ class SingleLineText {
 
         subscribe('property-details-update',data => {
             if(data.id.value === this.model.id.value){
-                debugger;
                 this.model = merge(this.model,data);
                 this.refreshModel();
             }
@@ -122,14 +122,8 @@ class SingleLineText {
         };
     }
 
-    static render ({label="Label",name="name",placeholder="Please set Placeholder",description="Please set the description",required=true,unique=false,encrypted=false,adminOnly=false}) {
-        const inputId = guid();
-        return `<div id="${guid()}" is="page.form.comp.single-line-text" class="form-group" draggable="true" style="width: 100%">
-            <label for="${inputId}" style="margin-bottom:0">${label}</label>
-            <input type="text" id="${inputId}" class="form-control" placeholder="${placeholder}" name="${name}" ${required ? 'required' : ''} ${unique ? 'unique' : ''} ${encrypted ? 'encrypted' : ''} ${adminOnly ? 'admin-only':''} >
-            <code style="display: none" data-validator="${inputId}"></code>
-            <small>${description}</small>
-        </div>`
+    static render(data) {
+        return render(data);
     }
 
     refreshModel() {

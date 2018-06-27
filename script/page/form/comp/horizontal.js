@@ -1,5 +1,4 @@
-const {guid} = require('../../../common/utils');
-
+const {render} = require('./horizontal-render');
 class Horizontal{
     constructor(node){
         this.node = node;
@@ -21,12 +20,7 @@ class Horizontal{
     }
 
     static render () {
-        const uid = guid();
-        return `<div id="${uid}" class="container-panel horizontal" draggable="true" is="page.form.comp.horizontal" > 
-            <div class="container-panel-item horizontal">
-                <div class="dropdown-target-marker hide"></div>
-            </div>
-        </div>`
+        return render();
     }
 }
 

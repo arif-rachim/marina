@@ -1,7 +1,44 @@
 const html = require('../../res/html');
-const Vertical = require('./comp/vertical');
-module.exports = (req) => {
-    return html(req,`
+const Vertical = require('./comp/vertical-render');
+const Horizontal = require('./comp/horizontal-render');
+const Button = require('./comp/button-render');
+const SingleLineText = require('./comp/single-line-text-render');
+const {fetch} = require('../../../config');
+
+const componentMap = {
+    'page.form.comp.button' : Button,
+    'page.form.comp.vertical' : Vertical,
+    'page.form.comp.horizontal' : Horizontal,
+    'page.form.comp.single-line-text' : SingleLineText,
+    'form' : {render: attribute => {
+        return printComponent(attribute);
+    }}
+};
+
+const dropdownTargetMarker = '<div class="dropdown-target-marker hide"></div>';
+
+const printComponents = (models) => {
+    return models.map(model => {
+        return printComponent(model);
+    }).join(dropdownTargetMarker)+dropdownTargetMarker;
+
+};
+const printComponent = (model) => {
+    const component = componentMap[model.type];
+    if(model.children){
+        return component.render({slot:printComponents(model.children)});
+    }
+    if(model.attribute){
+        return component.render(model.attribute);
+    }
+};
+module.exports = async (req) => {
+    let model = false;
+    if(req.query.id){
+        model = await fetch(`/res/system_forms/${req.query.id}`);
+    }
+    try {
+        return html(req, `
         <style>
             .input-item{
                 border-radius: 0.5em;
@@ -107,11 +144,12 @@ module.exports = (req) => {
             </div>
             <div style="width: 100%;background-color: #F5F5F5;padding: 3em;display: flex;justify-content: center;flex-direction: column">
                 <div style="margin-bottom: 0.5em;">
-                    <input id="formDatabaseLabel" type="text" placeholder="Form Name" class="form-control" onkeyup="document.getElementById('formDatabaseName').innerText =  event.target.value.toLowerCase().split(' ').join('_')" required>
-                    <small>"<span id="formDatabaseName" style="font-style: italic"></span>" will be the name that is saved in database</small>
+                    <input type="hidden" value="${model._id || ''}" id="formDatabaseId">
+                    <input id="formDatabaseLabel" type="text" placeholder="Form Name" class="form-control" onkeyup="document.getElementById('formDatabaseName').innerText =  event.target.value.toLowerCase().split(' ').join('_')" required value="${model.label || ''}">
+                    <small>"<span id="formDatabaseName" style="font-style: italic">${model.name || ''}</span>" will be the table name in database</small>
                 </div>
                 <div style="width: 100%;height:100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;max-width: 900px;padding: 1em;overflow:auto;display: flex;flex-direction: column" id="form-panel">
-                    ${Vertical.render()}                            
+                    ${model ? printComponent(model) : Vertical.render()}                            
                 </div>
                 <div style="margin-top: 0.5em;text-align: right">
                     <button class="btn btn-primary" id="saveFormButton">Save</button>
@@ -163,10 +201,18 @@ module.exports = (req) => {
                                 name : document.getElementById('formDatabaseName').innerText,
                                 attribute : model
                             };
-                            fetch('/res/system_forms',form,'POST').then((result) => {
-                                debugger;
-                                publish('app.notification','Form successfully saved');
-                            });
+                            const id = document.getElementById('formDatabaseId').value;
+                            if(id){
+                                form._id = id;
+                                fetch('/res/system_forms/'+id,form,'PUT').then((result) => {
+                                    publish('app.notification','Form successfully updated');
+                                });
+                            }else{
+                                fetch('/res/system_forms',form,'POST').then((result) => {
+                                    debugger;
+                                    publish('app.notification','Form successfully saved');
+                                });
+                            }
                         }
                     }
                 });  
@@ -192,7 +238,7 @@ module.exports = (req) => {
                 marker.classList.add('dropdown-target-marker');
                 marker.classList.add('hide');
                 const div = document.createElement('div');
-                div.innerHTML = componentMap[type].render({});    
+                div.innerHTML = componentMap[type].render();    
                 target.parentNode.insertBefore(marker,target);
                 target.parentNode.insertBefore(div.firstChild,target);
             };
@@ -231,4 +277,7 @@ module.exports = (req) => {
             });
         </script>
     `)
+    }catch(err){
+        console.error(err);
+    }
 };

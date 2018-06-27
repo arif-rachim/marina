@@ -1,6 +1,5 @@
-const {guid} = require('../../../common/utils');
 const {publish,subscribe} = require('../../../common/pubsub');
-
+const {render} = require('./button-render');
 class Button {
 
     constructor(node){
@@ -61,10 +60,8 @@ class Button {
         });
     }
 
-    static render ({label="Submit"}) {
-        return `<div id="${guid()}" is="page.form.comp.button" >
-            <input type="button" value="${label}" class="btn btn-primary">
-        </div>`
+    static render (data) {
+        return render(data);
     }
 
     refreshModel() {

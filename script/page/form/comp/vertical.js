@@ -1,5 +1,4 @@
-const {guid} = require('../../../common/utils');
-
+const {render} = require('./vertical-render');
 class Vertical{
     constructor(node){
         this.node = node;
@@ -21,12 +20,7 @@ class Vertical{
     }
 
     static render () {
-        const uid = guid();
-        return `<div id="${uid}" class="container-panel vertical" draggable="true" is="page.form.comp.vertical" > 
-            <div class="container-panel-item vertical">
-                <div class="dropdown-target-marker hide"></div>
-            </div>
-        </div>`
+        return render();
     }
 }
 
