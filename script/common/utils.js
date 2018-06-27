@@ -43,6 +43,21 @@ const guid = () => {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 };
 
+const merge = (one,two) => {
+    const result = {};
+    for(let key in one){
+        if(one.hasOwnProperty(key)){
+            result[key] = one[key];
+        }
+    }
+    for(let key in two){
+        if(two.hasOwnProperty(key)){
+            result[key] = two[key];
+        }
+    }
+    return result;
+};
+
 module.exports = {
-    debounce,guid,formatDateTime
+    debounce,guid,formatDateTime,merge
 };

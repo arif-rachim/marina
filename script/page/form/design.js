@@ -1,4 +1,5 @@
 const html = require('../../res/html');
+const Vertical = require('./vertical');
 module.exports = (req) => {
     return html(req,`
         <style>
@@ -77,7 +78,6 @@ module.exports = (req) => {
                 margin-right : 0.5em;
             }
             
-            
         </style>
         
         <div style="display: flex;height: 100vh">
@@ -94,23 +94,30 @@ module.exports = (req) => {
                         <div class="input-item" draggable="true" data-type="page.form.multiple-items">Multiple Items</div>
                         <div class="input-item" draggable="true" data-type="page.form.section-break">Section Break</div>
                         <div class="input-item" draggable="true" data-type="page.form.page-break">Page Break</div>
+                        <div class="input-item" draggable="true" data-type="page.form.button">Submit Button</div>
                     </div>
                 </div>
                 <div style="height: 100%">
                     <h3 style="font-weight: 100">Container</h3>
                     <div style="width: 100%">
-                        <div class="input-item" draggable="true" data-type="vertical">Vertical</div>
-                        <div class="input-item" draggable="true" data-type="horizontal">Horizontal</div>
+                        <div class="input-item" draggable="true" data-type="page.form.vertical">Vertical</div>
+                        <div class="input-item" draggable="true" data-type="page.form.horizontal">Horizontal</div>
                     </div>
                 </div>
             </div>
-            <div style="width: 100%;background-color: #F5F5F5;padding: 3em;display: flex;justify-content: center">
-                <div style="width: 100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;max-width: 900px;padding: 1em;overflow:auto;display: flex;flex-direction: column" id="form-panel">
-                    <div class="dropdown-target-marker hide"></div>
-                            
+            <div style="width: 100%;background-color: #F5F5F5;padding: 3em;display: flex;justify-content: center;flex-direction: column">
+                <div style="margin-bottom: 0.5em;">
+                    <input id="formDatabaseLabel" type="text" placeholder="Form Name" class="form-control" onkeyup="document.getElementById('formDatabaseName').innerText =  event.target.value.toLowerCase().split(' ').join('_')" required>
+                    <small>"<span id="formDatabaseName" style="font-style: italic"></span>" will be the name that is saved in database</small>
+                </div>
+                <div style="width: 100%;height:100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;max-width: 900px;padding: 1em;overflow:auto;display: flex;flex-direction: column" id="form-panel">
+                    ${Vertical.render()}                            
+                </div>
+                <div style="margin-top: 0.5em;text-align: right">
+                    <button class="btn btn-primary" id="saveFormButton">Save</button>
                 </div>
             </div>
-            <div style="width: 300px;border-left: 1px solid #d3d9df;padding:1em" is="page.form.properties-panel">
+            <div style="width: 700px;border-left: 1px solid #d3d9df;padding:1em;overflow: auto" is="page.form.properties-panel">
                 <h3 style="font-weight: 100">Properties</h3>
                 <div class="property-details" style="width: 100%">
                     
@@ -118,10 +125,52 @@ module.exports = (req) => {
             </div>
         </div>
         <script path="${__filename}">
-            const {guid} = require('../../common/utils');
-            const SingleLineText = require('./single-line-text');
+            const {merge} = require('../../common/utils');
+            const {publish} = require('../../common/pubsub');
             
             const formPanel = document.querySelector('#form-panel');
+            const {fetch} = require('../../common/net');
+            
+            const Vertical = require('./vertical');
+            const Horizontal = require('./horizontal');
+            const SingleLineText = require('./single-line-text');
+            const Button = require('./button');
+            const componentMap = {
+                'page.form.button' : Button,
+                'page.form.vertical' : Vertical,
+                'page.form.horizontal' : Horizontal,
+                'page.form.single-line-text' : SingleLineText
+            };
+            document.querySelector('#saveFormButton').addEventListener('click',event => {
+                publish('app.confirmation',{
+                    text : 'Are you sure you want to Save the form ?',
+                    buttons : ['Yes','No']
+                }).then(function(button){
+                    if(button.innerText === 'Yes' ){
+                        let model = {};
+                        formPanel.childNodes.forEach(node => {
+                            if('hasAttribute' in node && node.hasAttribute('is')){
+                                const json = node.toJSON();
+                                model = merge(model,json);
+                            }
+                        });
+                        const formDatabaseLabel = document.getElementById('formDatabaseLabel');
+                        
+                        if(formDatabaseLabel.checkValidity()){
+                            let form = {
+                                type : 'form',
+                                label : formDatabaseLabel.value,
+                                name : document.getElementById('formDatabaseName').innerText,
+                                attribute : model
+                            };
+                            fetch('/res/system_forms',form,'POST').then((result) => {
+                                debugger;
+                                publish('app.notification','Form successfully saved');
+                            });
+                        }
+                    }
+                });  
+            });
             
             document.querySelectorAll('.input-item').forEach(node => {
                 node.addEventListener('dragstart',event => {
@@ -133,29 +182,17 @@ module.exports = (req) => {
                 })
             });
             
-            const createContainer = (target,type) => {
-                const marker = document.createElement('div');
-                marker.classList.add('dropdown-target-marker');
-                marker.classList.add('hide');
-                
-                const div = document.createElement('div');
-                div.innerHTML = '<div class="container-panel-item '+type+'">' +
-                    '<div class="dropdown-target-marker hide"></div>'+
-                    '</div>';
-                div.classList.add('container-panel');
-                div.classList.add(type);
-                div.setAttribute('draggable',true);
-                target.parentNode.insertBefore(marker,target);
-                target.parentNode.insertBefore(div,target);
-            };
             
             const createElement = (target,type) => {
+                if(!(type in componentMap)){
+                    publish('app.notification','Unable to find type of '+type);
+                    return;
+                }
                 const marker = document.createElement('div');
                 marker.classList.add('dropdown-target-marker');
                 marker.classList.add('hide');
                 const div = document.createElement('div');
-                
-                div.innerHTML = SingleLineText.render({label:'label',placeholder:'placeholder',description:'description',name:'name'});
+                div.innerHTML = componentMap[type].render({});    
                 target.parentNode.insertBefore(marker,target);
                 target.parentNode.insertBefore(div.firstChild,target);
             };
@@ -165,17 +202,13 @@ module.exports = (req) => {
                 const target = event.target;
                 if(target.classList.contains('dropdown-target-marker')){
                     const data = JSON.parse(event.dataTransfer.getData('text'));
-                    if(data.action == 'new'){
-                        if(['vertical','horizontal'].indexOf(data.type) >= 0){
-                            createContainer(target,data.type);
-                        }else{
-                            createElement(target,data.type);
-                        }
+                    if(data.action === 'new'){
+                        createElement(target,data.type);
                     }
                     if(data.action == 'move'){
                         const element = document.getElementById(data.id);
                         const marker = element.previousSibling;
-                        if(marker != target){
+                        if(marker !== target){
                             target.parentNode.insertBefore(marker,target);
                             target.parentNode.insertBefore(element,target);
                         }
@@ -188,11 +221,11 @@ module.exports = (req) => {
             formPanel.parentNode.addEventListener('dragover',event => {
                 event.preventDefault();
                 document.querySelectorAll('.dropdown-target-marker').forEach(node => node.classList.remove('selected'));
-                if(event.target == formPanel){
+                if(event.target === formPanel){
                    document.querySelectorAll('.dropdown-target-marker').forEach(node => node.classList.remove('hide'));
                 } else if (event.target.classList.contains('dropdown-target-marker')){
                    event.target.classList.add('selected');
-                } else if (event.target == formPanel){
+                } else if (event.target === formPanel){
                    document.querySelectorAll('.dropdown-target-marker').forEach(node => node.classList.add('hide')); 
                 }
             });
