@@ -60,7 +60,3 @@ window.addEventListener('load',function(){
         }
     })
 });
-
-module.exports = (req) => {
-
-};

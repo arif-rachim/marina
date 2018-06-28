@@ -19,8 +19,8 @@ class Horizontal{
         return result;
     }
 
-    static render () {
-        return render();
+    static render (model,data) {
+        return render(model,data);
     }
 }
 

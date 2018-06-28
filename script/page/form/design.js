@@ -97,22 +97,15 @@ module.exports = async (req) => {
                 display: flex;
             }
             
-            .full-width {
-                width : 100%;
+            .container-panel-item.horizontal > div[is]{
+                margin-right: 0.5em;
+                margin-left: 0.5em;
             }
             
-            .margin-bt {
-                margin-bottom : 1em;
-            }
-            
-            .form-group.full-width.margin-bt-small {
-                margin-bottom : 0.1em;
-            }
-            
-            .form-group.full-width {
-                margin-bottom: 0.5em;
-                margin-left : 0.5em;
-                margin-right : 0.5em;
+            .container-panel-item.horizontal {
+                margin-left : -0.5em;
+                margin-right : -0.5em;
+                width: calc(100% + 1em);
             }
             
         </style>
@@ -209,7 +202,6 @@ module.exports = async (req) => {
                                 });
                             }else{
                                 fetch('/res/system_forms',form,'POST').then((result) => {
-                                    debugger;
                                     publish('app.notification','Form successfully saved');
                                 });
                             }

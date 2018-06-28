@@ -45,8 +45,4 @@ if (!('forEach' in NodeList.prototype)) {
     };
 }
 
-const componentRegistry = require('./component-registry');
-
-module.exports = {
-
-};
+require('./component-registry');

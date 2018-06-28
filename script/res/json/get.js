@@ -70,7 +70,12 @@ module.exports = (req,res) => {
                 if (query.hasOwnProperty(prop)) {
                     const condition = {};
                     let value = query[prop];
-                    condition[prop] = new RegExp(value,'i');
+                    if(value.length > 2 && value.charAt(0) === '|' && value.charAt(value.length - 1) === '|'){
+                        condition[prop] = value.substring(1,value.length-1);
+                    }else{
+                        condition[prop] = new RegExp(value,'i');
+                    }
+
                     queries.push(condition);
                 }
             }

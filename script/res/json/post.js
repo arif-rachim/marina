@@ -8,7 +8,7 @@ module.exports = (req,res) => {
         if(err){
             res.end(JSON.stringify({success:false,message:err.message}));
         }else{
-            res.end(JSON.stringify(newDoc,null,2));
+            res.end(JSON.stringify({success:true,data:newDoc},null,2));
         }
     });
 };

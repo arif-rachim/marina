@@ -76,14 +76,27 @@ app.get('/res/:resource', async (req,res) => {
     }
 });
 
-app.get('/res/:resource/:id', (req,res) => {
+app.get('/res/:resource/:id',async (req,res) => {
     let mode = req.query.intent || 'json';
     try{
-        require(`${intentsPath}/${mode}/get`).call(null,req,res);
+        const modulePath = `${intentsPath}/${mode}/get`;
+        const template = require(modulePath);
+
+        if(mode.endsWith('-html')){
+            const templateResult = await processRequest(req,template);
+            res.end(templateResult);
+            if(invalidateModuleCache){
+                delete require.cache[require.resolve(modulePath)];
+                console.log(`Invalidate cache ${modulePath} because its an HTML`);
+            }
+        }else{
+            template.call(null,req,res);
+        }
     }catch(err){
         res.end(JSON.stringify({success:false,message:err.message}));
         console.error(err);
     }
+
 });
 
 

@@ -10,11 +10,11 @@ module.exports = (req,res) => {
         delete doc._id;
         delete doc._createdOn;
         console.log('Updating '+JSON.stringify(doc));
-        db.update({_id:id},{$set : doc},{},(err,numReplaced) => {
+        db.update({_id:id},{$set : doc},{},(err,newDoc) => {
             if(err){
                 res.end(JSON.stringify({success:false,message:err.message}));
             }else{
-                res.end(JSON.stringify({success:true},null,2));
+                res.end(JSON.stringify({success:true,data:newDoc},null,2));
             }
         });
     }catch(err){

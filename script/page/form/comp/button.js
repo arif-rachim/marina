@@ -11,9 +11,7 @@ class Button {
     toJSON(){
         const result = {
             type : this.node.getAttribute('is'),
-            attribute : {
-                label : this.node.querySelector('input').getAttribute('value')
-            }
+            attribute : this.model
         };
         return result;
     }
@@ -60,8 +58,8 @@ class Button {
         });
     }
 
-    static render (data) {
-        return render(data);
+    static render (model,data) {
+        return render(model,data);
     }
 
     refreshModel() {
