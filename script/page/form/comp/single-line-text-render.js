@@ -51,7 +51,12 @@ const render = (model,data) => {
     }
 
     const inputId = guid();
-    return `<div id="${model.id.value}" is="page.form.comp.single-line-text" class="form-group" draggable="true" style="width: 100%" data-resource-name="${resourceName}" data-resource-id="${resourceId}">
+    return `<div id="${model.id.value}" is="page.form.comp.single-line-text" 
+                class="form-group"
+                ${resourceName ? '' : 'draggable="true"'} 
+                style="width: 100%" 
+                data-resource-name="${resourceName}" 
+                data-resource-id="${resourceId}">
             <label for="${inputId}" style="margin-bottom:0">${model.label.value}</label>
             <input type="text" id="${inputId}" class="form-control" 
                 placeholder="${model.placeholder.value}" 
