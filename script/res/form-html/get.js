@@ -24,29 +24,46 @@ const printComponents = (models,data=null) => {
 
 };
 const printComponent = (model,data=null) => {
-    const component = componentMap[model.type];
-    if(model.children){
-        return component.render({slot:printComponents(model.children,data),hasDropDown:false},data);
+
+    try {
+        let resultString = '';
+        const component = componentMap[model.type];
+        if (model.children) {
+            resultString = component.render({slot: printComponents(model.children, data), hasDropDown: false}, data);
+            return resultString;
+        }
+        if (model.attribute) {
+            resultString = component.render(model.attribute, data);
+            return resultString;
+        }
+    }catch(err){
+        console.log(err);
     }
-    if(model.attribute){
-        return component.render(model.attribute,data);
-    }
+    return '';
 };
 
 module.exports = async (req) => {
+
     const resource = req.params.resource;
     const id = req.params.id;
     let data = {
         _resource: {name: resource, id: ''}
     };
-
+    let formVersion = NaN;
     if (id) {
         data = await fetch(`/res/${resource}/${id}`);
+        formVersion = data._form_version;
         data._resource = {name: resource, id};
     }
-
-    const result = await fetch(`/res/system_forms?name=|${resource}|`);
-    const model = result.docs[0];
+    let model = null;
+    if(!isNaN(formVersion)){
+        const result = await fetch(`/res/system_forms?name=|${resource}|&version=|${formVersion}|&$and=1`);
+        model = result.docs[0];
+    }else{
+        const result = await fetch(`/res/system_forms?name=|${resource}|&$s.version=-1`);
+        model = result.docs[0];
+        formVersion = model.version;
+    }
     return html(req, `
     <style>
         .container-panel {
@@ -87,6 +104,7 @@ module.exports = async (req) => {
         is="res.form-html.component.form" 
         data-resource-name="${data._resource.name}"
         data-resource-id="${data._resource.id ? data._resource.id : ''}"
+        data-form-version="${formVersion}"
         >
             ${printComponent(model, data)}
         </form>

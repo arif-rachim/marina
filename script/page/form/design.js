@@ -6,13 +6,15 @@ const SingleLineText = require('./comp/single-line-text-render');
 const {fetch} = require('../../../config');
 
 const componentMap = {
-    'page.form.comp.button' : Button,
-    'page.form.comp.vertical' : Vertical,
-    'page.form.comp.horizontal' : Horizontal,
-    'page.form.comp.single-line-text' : SingleLineText,
-    'form' : {render: attribute => {
-        return printComponent(attribute);
-    }}
+    'page.form.comp.button': Button,
+    'page.form.comp.vertical': Vertical,
+    'page.form.comp.horizontal': Horizontal,
+    'page.form.comp.single-line-text': SingleLineText,
+    'form': {
+        render: attribute => {
+            return printComponent(attribute);
+        }
+    }
 };
 
 const dropdownTargetMarker = '<div class="dropdown-target-marker hide"></div>';
@@ -20,21 +22,22 @@ const dropdownTargetMarker = '<div class="dropdown-target-marker hide"></div>';
 const printComponents = (models) => {
     return models.map(model => {
         return printComponent(model);
-    }).join(dropdownTargetMarker)+dropdownTargetMarker;
+    }).join(dropdownTargetMarker) + dropdownTargetMarker;
 
 };
 const printComponent = (model) => {
     const component = componentMap[model.type];
-    if(model.children){
-        return component.render({slot:printComponents(model.children)});
+    if (model.children) {
+        debugger;
+        return component.render({slot: printComponents(model.children)});
     }
-    if(model.attribute){
+    if (model.attribute) {
         return component.render(model.attribute);
     }
 };
 module.exports = async (req) => {
     let model = false;
-    if(req.query.id){
+    if (req.query.id) {
         model = await fetch(`/res/system_forms/${req.query.id}`);
     }
     try {
@@ -137,7 +140,7 @@ module.exports = async (req) => {
             </div>
             <div style="width: 100%;background-color: #F5F5F5;padding: 3em;display: flex;justify-content: center;flex-direction: column">
                 <div style="margin-bottom: 0.5em;">
-                    <input type="hidden" value="${model._id || ''}" id="formDatabaseId">
+                    <input id="formVersion" type="hidden" value="${model.version || ''}" >
                     <input id="formDatabaseLabel" type="text" placeholder="Form Name" class="form-control" onkeyup="document.getElementById('formDatabaseName').innerText =  event.target.value.toLowerCase().split(' ').join('_')" required value="${model.label || ''}">
                     <small>"<span id="formDatabaseName" style="font-style: italic">${model.name || ''}</span>" will be the table name in database</small>
                 </div>
@@ -188,23 +191,32 @@ module.exports = async (req) => {
                         const formDatabaseLabel = document.getElementById('formDatabaseLabel');
                         
                         if(formDatabaseLabel.checkValidity()){
-                            let form = {
-                                type : 'form',
-                                label : formDatabaseLabel.value,
-                                name : document.getElementById('formDatabaseName').innerText,
-                                attribute : model
-                            };
-                            const id = document.getElementById('formDatabaseId').value;
-                            if(id){
-                                form._id = id;
-                                fetch('/res/system_forms/'+id,form,'PUT').then((result) => {
-                                    publish('app.notification','Form successfully updated');
-                                });
-                            }else{
-                                fetch('/res/system_forms',form,'POST').then((result) => {
+                            const resourceName = document.getElementById('formDatabaseName').innerText;
+                            const version = (parseInt(document.getElementById('formVersion').value || '0')+1).toString();
+                            fetch('/res/system_forms?$s.version=-1&name=|'+resourceName+'|&$p.version=1&$p.name=1',{},'GET',false)
+                            .then(result => {
+                                let version = 0;
+                                if(result.docs.length > 0){
+                                    version = parseInt(result.docs[0].version)+1;
+                                }
+                                return version;
+                            }).then(version => {
+                                let form = {
+                                    type : 'form',
+                                    label : formDatabaseLabel.value,
+                                    name : resourceName,
+                                    version : version.toString(),
+                                    attribute : model
+                                };
+                                return fetch('/res/system_forms',form,'POST')
+                            }).then((result) => {
+                                if(result.success){
                                     publish('app.notification','Form successfully saved');
-                                });
-                            }
+                                }else{
+                                    publish('app.notification',result.message);
+                                }
+                            });
+                            
                         }
                     }
                 });  
@@ -269,7 +281,7 @@ module.exports = async (req) => {
             });
         </script>
     `)
-    }catch(err){
+    } catch (err) {
         console.error(err);
     }
 };

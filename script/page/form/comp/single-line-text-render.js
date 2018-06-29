@@ -7,7 +7,7 @@ const render = (model,data) => {
             value : 'Label'
         },
         name : {
-            value : 'Name'
+            value : 'name'
         },
         placeholder : {
             value : 'Placeholder'

@@ -37,9 +37,10 @@ module.exports = (req,res) => {
             // we need to introduce pagination here
             const skip = parseInt(req.query.$i) || 0;
             const limit = parseInt(req.query.$l) || 50;
-            const propertiesToDelete = ["$i","$l"];
+            const isAnd = parseInt(req.query.$and) || 0;
+            const propertiesToDelete = ["$i","$l","$and"];
             const query = req.query;
-            let sort = { _createdOn : 1 };
+            let sort = {};
             let projections = [];
             for (var property in query) {
                 if (query.hasOwnProperty(property)) {
@@ -62,9 +63,11 @@ module.exports = (req,res) => {
                     }
                 }
             }
+
             propertiesToDelete.forEach(prop => {
                 delete query[prop]
             });
+
             const queries = [];
             for (const prop in query) {
                 if (query.hasOwnProperty(prop)) {
@@ -75,13 +78,13 @@ module.exports = (req,res) => {
                     }else{
                         condition[prop] = new RegExp(value,'i');
                     }
-
                     queries.push(condition);
                 }
             }
-            let orQueries = queries.length > 0 ?{$or : queries} : {};
-            db.count(orQueries, function (err, count) {
-                let executionPlan = db.find(orQueries).sort(sort).skip(skip).limit(limit);
+
+            let queryObject = queries.length > 0 ? ( isAnd > 0 ?  {$and : queries} : {$or : queries} )   : {};
+            db.count(queryObject, function (err, count) {
+                let executionPlan = db.find(queryObject).sort(sort).skip(skip).limit(limit);
                 if(projections.length > 0){
                     const projection = projections.reduce((result,projection,index) => {
                         result[projection.name] = projection.value;

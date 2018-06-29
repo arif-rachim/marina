@@ -2,7 +2,7 @@ const {guid} = require('../../../common/utils');
 const render = (model,data) => {
     model = model || {
         label:{
-            value : 'label'
+            value : 'Submit'
         },
         id : {
             value : guid()

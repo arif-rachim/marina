@@ -6,6 +6,7 @@ class Form {
         this.node = node;
         this.resourceName = this.node.getAttribute('data-resource-name');
         this.resourceId = this.node.getAttribute('data-resource-id');
+        this.formVersion = this.node.getAttribute('data-form-version');
         node.addEventListener('submit',this.onSubmit.bind(this));
     }
 
@@ -44,6 +45,7 @@ class Form {
     saveToServer() {
         const isUpdate = this.resourceId && this.resourceId.length > 0;
         const path = `/res/${this.resourceName}`+(isUpdate ? `/${this.resourceId}` : '');
+        this.data._form_version = this.formVersion;
         fetch(path,this.data,isUpdate ? 'PUT':'POST').then(result => {
             if(result.success){
                 publish('app.notification','Data saved successfully');
