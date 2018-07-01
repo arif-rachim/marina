@@ -242,7 +242,8 @@ module.exports = async(req) => {
 </div>
 <script path="${__filename}">
     const {publish} = require('../../common/pubsub');
-        
+    const {fetch} = require('../../common/net');
+    
     var app = window.app;
     var menuLoginLogout = document.querySelector('.menu-item.login-logout');
     var loginPanel = document.querySelector('.login-panel');
@@ -287,10 +288,8 @@ module.exports = async(req) => {
     
     function populateRolesOnUser(user){
         fetch('/res/system_roles?$ids='+user.account.roles)
-        .then(function(result){
-            return result.json();
-        })
         .then(function(roles){
+            
             if(roles.success == false){
                 publish('app.notification',roles.message);
                 return;
@@ -302,9 +301,7 @@ module.exports = async(req) => {
             }));
         })
         .then(function(results){
-            return Promise.all(results.map(function(result){
-                return result.json();
-            }));
+            return Promise.all(results);
         })
         .then(function(accessibilities){
             accessibilities.forEach(function(accessibility,index){
@@ -393,12 +390,13 @@ module.exports = async(req) => {
             userName: getValue('userName'),
             password: getValue('password')
         };
-        App.net.fetch('/svc/security.login',data,'post',true).then(function(user){
+        
+        fetch('/svc/security.login',data,'post',true).then(function(user){
             if(user.success == false){
                 publish('app.notification',user.message);
                 return;
             }
-            app.user = user;
+            app.user = user.data;
             populateRolesOnUser(app.user);
             
         });

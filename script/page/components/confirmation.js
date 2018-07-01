@@ -1,4 +1,4 @@
-const theme = require('../theme');
+
 module.exports = (req) => {
     return `
         <style>
@@ -62,6 +62,7 @@ module.exports = (req) => {
                 var slider = document.querySelector('.confirmation-panel .slider');
                 slider.style.position = 'relative';
                 textMessage.innerHTML = text;
+                
                 function onButtonHoldersClick(event) {
                     slider.classList.add('hide');
                     onSelected.call(null,event.target);
@@ -69,13 +70,17 @@ module.exports = (req) => {
                         slider.style.position = 'absolute';
                     },200)
                 }
-                buttonHolders.addEventListener('click',onButtonHoldersClick,{once:true});
+                
                 buttonHolders.innerHTML = buttonsConfiguration.map(function(btn,index){
                     if(index === 0){
                         return '<button data-name="'+btn+'" class="btn btn-primary" >'+btn+'</button>'    
                     }
                     return '<button data-name="'+btn+'" class="btn " >'+btn+'</button>'
                 }).join('');
+                
+                buttonHolders.querySelectorAll('button').forEach(button => {
+                    button.addEventListener('click',onButtonHoldersClick,{once:true});
+                });
                 
                 if(slider.classList.contains('hide')){
                     slider.classList.remove('hide');

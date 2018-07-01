@@ -110,8 +110,8 @@ const ensureAccessExist = async (access) => {
     }
     access = basicAccessibility.filter(template => template.name == access.name)[0];
     const persistentData = await fetch('/res/system_accessibility',access,'post')
-    console.log(`[INFO] Accessibility ${persistentData.name} created`);
-    return persistentData;
+    console.log(`[INFO] Accessibility ${persistentData.data.name} created`);
+    return persistentData.data;
 }
 
 const ensureRolesExist = async (role) => {
@@ -130,7 +130,7 @@ const ensureRolesExist = async (role) => {
     role.accessibility = accessibilityEntitiesForRole;
     const persistentData = await fetch('/res/system_roles',role,'post');
     console.log(`[INFO] Role ${role.name} created`);
-    return persistentData;
+    return persistentData.data;
 }
 
 const ensureUsersExist = async (user) => {

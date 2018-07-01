@@ -1,5 +1,6 @@
 const notification = require('../page/components/notification');
 const confirmation = require('../page/components/confirmation');
+const slider = require('../page/components/slider');
 const loader = require('../page/components/loader');
 
 module.exports = (req,template) => {
@@ -20,6 +21,7 @@ module.exports = (req,template) => {
                     font-size: small;
                 }
             </style>
+            ${req.print(slider(req))}
             ${req.print(confirmation(req))}
             ${template}
             ${req.print(notification(req))}

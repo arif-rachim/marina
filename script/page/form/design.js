@@ -3,6 +3,7 @@ const Vertical = require('./comp/vertical-render');
 const Horizontal = require('./comp/horizontal-render');
 const Button = require('./comp/button-render');
 const SingleLineText = require('./comp/single-line-text-render');
+const Association = require('./comp/association-render');
 const {fetch} = require('../../../config');
 
 const componentMap = {
@@ -10,6 +11,7 @@ const componentMap = {
     'page.form.comp.vertical': Vertical,
     'page.form.comp.horizontal': Horizontal,
     'page.form.comp.single-line-text': SingleLineText,
+    'page.form.comp.association': Association,
     'form': {
         render: attribute => {
             return printComponent(attribute);
@@ -28,7 +30,6 @@ const printComponents = (models) => {
 const printComponent = (model) => {
     const component = componentMap[model.type];
     if (model.children) {
-        debugger;
         return component.render({slot: printComponents(model.children)});
     }
     if (model.attribute) {
@@ -119,6 +120,7 @@ module.exports = async (req) => {
                     <h3 style="font-weight: 100">Tools</h3>
                     <div style="width: 100%">
                         <div class="input-item" draggable="true" data-type="page.form.comp.single-line-text">Single Line Text</div>
+                        <div class="input-item" draggable="true" data-type="page.form.comp.association">Association</div>
                         <div class="input-item" draggable="true" data-type="page.form.comp.number">Number</div>
                         <div class="input-item" draggable="true" data-type="page.form.comp.paragraph-text">Paragraph Text</div>
                         <div class="input-item" draggable="true" data-type="page.form.comp.checkboxes">Checkboxes</div>
@@ -168,12 +170,15 @@ module.exports = async (req) => {
             const Vertical = require('./comp/vertical');
             const Horizontal = require('./comp/horizontal');
             const SingleLineText = require('./comp/single-line-text');
+            const Association = require('./comp/association');
             const Button = require('./comp/button');
+            
             const componentMap = {
                 'page.form.comp.button' : Button,
                 'page.form.comp.vertical' : Vertical,
                 'page.form.comp.horizontal' : Horizontal,
-                'page.form.comp.single-line-text' : SingleLineText
+                'page.form.comp.single-line-text' : SingleLineText,
+                'page.form.comp.association' : Association
             };
             document.querySelector('#saveFormButton').addEventListener('click',event => {
                 publish('app.confirmation',{

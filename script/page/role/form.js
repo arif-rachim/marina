@@ -19,6 +19,7 @@ module.exports = (req) => {
                 margin: auto;
                 align-items: flex-end;
             }
+            
             .role-form input[type="text"]{
                 padding: 0.3em;
                 width: 100%;

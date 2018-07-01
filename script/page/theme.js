@@ -1,6 +1,7 @@
 const notification = require('./components/notification');
 const confirmation = require('./components/confirmation');
 const loader = require('./components/loader');
+const slider = require('./components/slider');
 const menu = require('./index/menu');
 module.exports = (req,content) => `
 <!DOCTYPE html>
@@ -8,7 +9,9 @@ module.exports = (req,content) => `
 <head>
     <meta charset="UTF-8">
     <title>Commander's Emerging Technology</title>
+    <!--
     <link rel="stylesheet" href="/styles/font-family.css" >
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!--
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -100,6 +103,7 @@ module.exports = (req,content) => `
     </span>
 </section>
 ${req.print(menu(req))}
+${req.print(slider(req))}
 ${req.print(confirmation(req))}
 <div style="flex: 1 1 auto;">
 ${content}
