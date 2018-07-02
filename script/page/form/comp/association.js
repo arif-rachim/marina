@@ -13,11 +13,22 @@ class Association {
         this.node.getName = this.getName.bind(this);
         this.node.getValue = this.getValue.bind(this);
         this.input = this.node.querySelector('input');
+        this.itemContainer = this.node.querySelector('.item-container');
         this.initialize();
     }
 
     initialize(){
         this.model = this.buildModel();
+
+        if(this.input.value){
+            fetch(`/res/${this.model.resourcePath.value}?$ids=${this.input.value}`).then(results => {
+                if(results && results.length > 0){
+                    this.items = results;
+                    this.renderItems();
+                }
+            });
+        }
+
         this.node.addEventListener('dragstart',event => {
             const data = {
                 action : 'move',
@@ -30,20 +41,23 @@ class Association {
             publish('property-details',this.model);
         });
 
-        this.input.addEventListener('keyup',() => {
-            this.isValid();
-        });
-
-        this.input.addEventListener('click',() => {
+        this.itemContainer.addEventListener('click',() => {
             const resourcePath = this.model.resourcePath.value;
             const dataRenderer = this.model.dataRenderer.value;
-            const selectedResource = (this.input.value || '').split(',');
+            const selectedResource = (this.input.value || '');
             if(resourcePath){
                 publish('app.slider',AssociationSelector.render({
                     resourcePath : resourcePath,
                     selectedResource : selectedResource,
-                    dataRenderer : dataRenderer
-                }));
+                    dataRenderer : dataRenderer,
+                    title : this.model.label.value
+                })).then(results => {
+                    if(results){
+                        this.items = this.items || [];
+                        this.items =  this.items.concat(results);
+                        this.renderItems();
+                    }
+                });
             }
         });
 
@@ -54,6 +68,27 @@ class Association {
             }
         });
 
+    }
+
+    renderItems(){
+        const items = this.items;
+        const renderer = eval(this.model.dataRenderer.value);
+        this.itemContainer.innerHTML = items.map(data => `
+        <button class="btn btn-primary btn-sm btn-item" data-id="${data._id}">${renderer(data)}</button>
+        `).join('');
+        this.input.value = items.map(data => data._id).join(',');
+        this.itemContainer.querySelectorAll('.btn-item').forEach(btn => {
+            btn.addEventListener('click',this.onDeleteItem.bind(this));
+        })
+    }
+
+    onDeleteItem(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        const itemId = event.target.getAttribute('data-id');
+        this.items = this.items.filter(item => item._id !== itemId);
+        this.renderItems();
     }
 
     buildModel(){
@@ -216,7 +251,6 @@ class Association {
         }else{
             input.removeAttribute('unique');
         }
-
 
         if(this.model.encrypted.value){
             input.setAttribute('encrypted',"true");

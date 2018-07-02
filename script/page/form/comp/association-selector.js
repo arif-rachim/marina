@@ -1,5 +1,5 @@
 const {fetch} = require('../../../common/net');
-
+const {guid} = require('../../../common/utils');
 class AssociationSelector {
 
     constructor(node){
@@ -10,7 +10,7 @@ class AssociationSelector {
 
     initialize(){
         this.resourcePath = this.node.getAttribute('resource-path');
-        this.selectedResource = this.node.getAttribute('selected-resource');
+        this.selectedResource = this.node.getAttribute('selected-resource').split(',');
         this.dataRenderer = eval(this.node.querySelector('code').innerText);
         this.selectButton = this.node.querySelector('.btn.select');
         this.cancelButton = this.node.querySelector('.btn.cancel');
@@ -25,31 +25,28 @@ class AssociationSelector {
     }
 
     onCancel(){
-        this.slider.hideSlider();
+        this.slider.closeSlider(false);
     }
+
     onSelect(){
-        this.slider.hideSlider();
+        const selectedItems = [];
+        this.node.querySelectorAll('input[type="checkbox"]').forEach(node => {
+            if(node.checked){
+                selectedItems.push(this.docs.filter(data => data._id === node.value)[0])
+            }
+        });
+        this.slider.closeSlider(selectedItems);
     }
     renderData(data){
-        return `<tr>
-            <td><input type="checkbox" value="${data._id}"></td>
-            <td>${this.dataRenderer(data)}</td>
-        </tr>`
+        const uid = guid();
+        return `<div class="form-check">
+            <label for="${uid}" class="form-check-label"><input type="checkbox" value="${data._id}" class="form-check-input" id="${uid}">${this.dataRenderer(data)}</label>
+        </div>`
     }
     renderContent(){
         return `
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${this.docs.map(this.renderData.bind(this)).join('')}
-                </tbody>
-            </table>
+            ${this.docs.filter(doc => this.selectedResource.indexOf(doc._id) < 0 ).map(this.renderData.bind(this)).join('')}
         </div>
         `
     }

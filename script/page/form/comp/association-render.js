@@ -1,5 +1,4 @@
 const {guid} = require('../../../common/utils');
-
 const render = (model,data) => {
 
     model = model || {
@@ -34,8 +33,8 @@ const render = (model,data) => {
             value : '',
         },
         dataRenderer : {
-            value : `(data) => {
-                return data.name
+            value : `function(data){
+                return data.name;
             }`,
         },
         id : {
@@ -57,15 +56,20 @@ const render = (model,data) => {
                 data-resource-name="${resourceName}" 
                 data-resource-id="${resourceId}">
             <label for="${inputId}" style="margin-bottom:0">${model.label.value}</label>
-            <input type="text" id="${inputId}" class="form-control" 
-                placeholder="${model.placeholder.value}" 
-                name="${model.name.value}" 
-                ${model.required.value ? 'required="true"' : ''} 
-                ${model.unique.value ? 'unique="true"' : ''} 
-                ${model.encrypted.value ? 'encrypted="true"' : ''} 
-                ${model.adminOnly.value ? 'admin-only="true"':''}
-                resource-path="${model.resourcePath.value}"
-                value="${value}" style="background-color: #FFE8A8">
+            <div style="position: relative;min-height: 2.2em;background-color: #FFE8A8;" class="form-control">
+                <input type="text" id="${inputId}" class="form-control" 
+                    placeholder="${model.placeholder.value}" 
+                    name="${model.name.value}" 
+                    ${model.required.value ? 'required="true"' : ''} 
+                    ${model.unique.value ? 'unique="true"' : ''} 
+                    ${model.encrypted.value ? 'encrypted="true"' : ''} 
+                    ${model.adminOnly.value ? 'admin-only="true"':''}
+                    resource-path="${model.resourcePath.value}"
+                    value="${value}" style="background-color: #FFE8A8;opacity: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;">
+                <div class="item-container " style="position: relative;top: 0;bottom: 0;left: 0;right: 0;min-height: 1.5em">
+                
+                </div>
+            </div>
             <code style="display: none" data-validator="${inputId}">${model.validator.value}</code>
             <code style="display: none" data-renderer="${inputId}">${model.dataRenderer.value}</code>
             <small>${model.description.value}</small>
