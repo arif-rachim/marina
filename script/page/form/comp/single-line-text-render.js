@@ -51,7 +51,7 @@ const render = (model,data) => {
     }
 
     const inputId = guid();
-    return `<div id="${model.id.value}" is="page.form.comp.single-line-text" 
+    return Promise.resolve(`<div id="${model.id.value}" is="page.form.comp.single-line-text" 
                 class="form-group"
                 ${resourceName ? '' : 'draggable="true"'} 
                 style="width: 100%" 
@@ -71,7 +71,7 @@ const render = (model,data) => {
                 value="${value}" >
             <code style="display: none" data-validator="${inputId}">${model.validator.value}</code>
             <small>${model.description.value}</small>
-        </div>`
+        </div>`)
 };
 
 module.exports = {render};

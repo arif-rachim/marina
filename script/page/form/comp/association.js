@@ -2,6 +2,7 @@ const {merge} = require('../../../common/utils');
 const {publish,subscribe} = require('../../../common/pubsub');
 const {render} = require('./association-render');
 const {fetch} = require('../../../common/net');
+const itemRenderer = require('./association-item-render');
 const AssociationSelector = require('./association-selector-render');
 
 class Association {
@@ -19,7 +20,6 @@ class Association {
 
     initialize(){
         this.model = this.buildModel();
-
         if(this.input.value){
             fetch(`/res/${this.model.resourcePath.value}?$ids=${this.input.value}`).then(results => {
                 if(results && results.length > 0){
@@ -73,9 +73,7 @@ class Association {
     renderItems(){
         const items = this.items;
         const renderer = eval(this.model.dataRenderer.value);
-        this.itemContainer.innerHTML = items.map(data => `
-        <button class="btn btn-primary btn-sm btn-item" data-id="${data._id}">${renderer(data)}</button>
-        `).join('');
+        this.itemContainer.innerHTML = itemRenderer(items,renderer);
         this.input.value = items.map(data => data._id).join(',');
         this.itemContainer.querySelectorAll('.btn-item').forEach(btn => {
             btn.addEventListener('click',this.onDeleteItem.bind(this));

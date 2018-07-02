@@ -8,9 +8,8 @@ const render = (model,data) => {
             value : guid()
         }
     };
-    // nothing we need to do with data here
-    return `<div id="${model.id.value}" is="page.form.comp.button" >
+    return Promise.resolve(`<div id="${model.id.value}" is="page.form.comp.button" >
             <input type="submit" value="${model.label.value}" class="btn btn-primary">
-        </div>`
+        </div>`);
 };
 module.exports = {render};

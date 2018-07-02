@@ -1,6 +1,8 @@
 const {guid} = require('../../../common/utils');
-const render = (model,data) => {
+//const {fetch} = require('../../../../config');
+const itemRenderer = require('./association-item-render');
 
+const render = (model,data) => {
     model = model || {
         label:{
             value : 'Label'
@@ -33,23 +35,30 @@ const render = (model,data) => {
             value : '',
         },
         dataRenderer : {
-            value : `function(data){
-                return data.name;
-            }`,
+            value : `data => data.name`,
         },
         id : {
             value : guid()
         }
     };
-    let value = '', resourceName = '', resourceId = '';
-    if(data){
-        resourceName = data._resource.name;
-        resourceId = data._resource.id;
-        value = data[model.name.value] || '';
-    }
+    let value = '', resourceName = '', resourceId = '', items = [];
 
-    const inputId = guid();
-    return `<div id="${model.id.value}" is="page.form.comp.association" 
+    return new Promise(resolve => {
+        if(data){
+            resourceName = data._resource.name;
+            resourceId = data._resource.id;
+            value = data[model.name.value] || '';
+            // if(value){
+            //     fetch(`/res/${model.resourcePath.value}?$ids=${value}`).then(items => {
+            //         resolve({value, resourceName, resourceId, items});
+            //     });
+            //     return;
+            // }
+        }
+        resolve({value,resourceName,resourceId,items});
+    }).then(({value,resourceName,resourceId,items}) => {
+        const inputId = guid();
+        return `<div id="${model.id.value}" is="page.form.comp.association" 
                 class="form-group"
                 ${resourceName ? '' : 'draggable="true"'} 
                 style="width: 100%" 
@@ -67,13 +76,14 @@ const render = (model,data) => {
                     resource-path="${model.resourcePath.value}"
                     value="${value}" style="background-color: #FFE8A8;opacity: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;">
                 <div class="item-container " style="position: relative;top: 0;bottom: 0;left: 0;right: 0;min-height: 1.5em">
-                
+                    ${itemRenderer(items,eval(model.dataRenderer.value))}
                 </div>
             </div>
             <code style="display: none" data-validator="${inputId}">${model.validator.value}</code>
             <code style="display: none" data-renderer="${inputId}">${model.dataRenderer.value}</code>
             <small>${model.description.value}</small>
         </div>`
+    });
 };
 
 module.exports = {render};

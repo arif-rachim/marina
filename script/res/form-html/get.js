@@ -20,28 +20,27 @@ const componentMap = {
 
 
 const printComponents = (models,data=null) => {
-    return models.map(model => {
+    return Promise.all(models.map(model => {
         return printComponent(model,data);
-    }).join('');
+    })).then(results => results.join(''));
 
 };
 const printComponent = (model,data=null) => {
-
     try {
-        let resultString = '';
         const component = componentMap[model.type];
         if (model.children) {
-            resultString = component.render({slot: printComponents(model.children, data), hasDropDown: false}, data);
-            return resultString;
+            return printComponents(model.children, data).then(componentsString => {
+                return component.render({slot: componentsString, hasDropDown: false}, data);
+            });
         }
         if (model.attribute) {
-            resultString = component.render(model.attribute, data);
-            return resultString;
+            return component.render(model.attribute, data);
         }
     }catch(err){
         console.log(err);
     }
-    return '';
+    return Promise.resolve('');
+
 };
 
 module.exports = async (req) => {
@@ -108,7 +107,7 @@ module.exports = async (req) => {
         data-resource-id="${data._resource.id ? data._resource.id : ''}"
         data-form-version="${formVersion}"
         >
-            ${printComponent(model, data)}
+            ${req.print(printComponent(model, data))}
         </form>
     </div>
     

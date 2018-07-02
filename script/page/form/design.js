@@ -22,15 +22,17 @@ const componentMap = {
 const dropdownTargetMarker = '<div class="dropdown-target-marker hide"></div>';
 
 const printComponents = (models) => {
-    return models.map(model => {
-        return printComponent(model);
-    }).join(dropdownTargetMarker) + dropdownTargetMarker;
-
+    return Promise.all(models.map(model => printComponent(model)))
+        .then(components => components.join(dropdownTargetMarker))
+        .then(result => result+dropdownTargetMarker);
 };
+
 const printComponent = (model) => {
     const component = componentMap[model.type];
     if (model.children) {
-        return component.render({slot: printComponents(model.children)});
+        return printComponents(model.children).then(componentStrings => {
+            return component.render({slot: componentStrings});
+        });
     }
     if (model.attribute) {
         return component.render(model.attribute);
@@ -147,7 +149,7 @@ module.exports = async (req) => {
                     <small>"<span id="formDatabaseName" style="font-style: italic">${model.name || ''}</span>" will be the table name in database</small>
                 </div>
                 <div style="width: 100%;height:100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;max-width: 900px;padding: 1em;overflow:auto;display: flex;flex-direction: column" id="form-panel">
-                    ${model ? printComponent(model) : Vertical.render()}                            
+                    ${req.print(model ? printComponent(model) : Vertical.render())}                            
                 </div>
                 <div style="margin-top: 0.5em;text-align: right">
                     <button class="btn btn-primary" id="saveFormButton">Save</button>
@@ -247,9 +249,12 @@ module.exports = async (req) => {
                 marker.classList.add('dropdown-target-marker');
                 marker.classList.add('hide');
                 const div = document.createElement('div');
-                div.innerHTML = componentMap[type].render();    
-                target.parentNode.insertBefore(marker,target);
-                target.parentNode.insertBefore(div.firstChild,target);
+                componentMap[type].render().then(html => {
+                    div.innerHTML = html;
+                    target.parentNode.insertBefore(marker,target);
+                    target.parentNode.insertBefore(div.firstChild,target);
+                });    
+                
             };
             
             formPanel.addEventListener('drop',event => {

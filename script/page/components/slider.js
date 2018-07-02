@@ -64,19 +64,20 @@ module.exports = (req) => {
                 }
             };
             
-            subscribe('app.slider',function(html){
+            subscribe('app.slider',function(htmlPromise){
                 if(slider.isOpen){
                     publish('app.notification','Its not allowed to open more than one slider, please redesign your app !');
                     return false;
                 }
-                return new Promise(resolve => {
-                    slider.innerHTML = html;
-                    slider.closeSlider = (data) => resolve(data);
+                return htmlPromise.then(html => {
+                    return new Promise(resolve => {
+                        slider.innerHTML = html;
+                        slider.closeSlider = (data) => resolve(data);
+                    }); 
                 }).then(result => {
                     hideSlider();
                     return result;
-                });
-                
+                });                
             });
             
         </script>

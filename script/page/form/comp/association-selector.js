@@ -11,7 +11,8 @@ class AssociationSelector {
     initialize(){
         this.resourcePath = this.node.getAttribute('resource-path');
         this.selectedResource = this.node.getAttribute('selected-resource').split(',');
-        this.dataRenderer = eval(this.node.querySelector('code').innerText);
+        const rendererCode = this.node.querySelector('code').innerText;
+        this.dataRenderer = eval(rendererCode);
         this.selectButton = this.node.querySelector('.btn.select');
         this.cancelButton = this.node.querySelector('.btn.cancel');
         const contentNode = this.node.querySelector('.content');
