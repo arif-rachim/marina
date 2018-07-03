@@ -72,7 +72,7 @@ module.exports = async (req) => {
                 exports.app = exports.app || {};
                 var app = exports.app;
                  
-                document.querySelector('[name="search-contact"]').addEventListener('keyup',App.utils.debounce(searchContacts,500));
+                document.querySelector('[name="search-contact"]').addEventListener('input',App.utils.debounce(searchContacts,500));
                 var cardsContainer = document.querySelector('.contact-list-card-container');
                 
                 

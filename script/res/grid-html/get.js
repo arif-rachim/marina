@@ -49,7 +49,7 @@ module.exports = async (req) => {
     
         const {publish} = require('../../common/pubsub');
         const {fetch} = require('../../common/net');
-        document.querySelector('.search').addEventListener('keyup',App.utils.debounce(onKeyup,500));
+        document.querySelector('.search').addEventListener('input',App.utils.debounce(onKeyup,500));
         
         function populateListeners(){
             document.querySelectorAll('.delete').forEach(function(node){

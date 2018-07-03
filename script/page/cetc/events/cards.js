@@ -92,7 +92,7 @@ module.exports = async (req) => {
                 exports.app = exports.app || {};
                 var app = exports.app;
                  
-                document.querySelector('[name="search-events"]').addEventListener('keyup',App.utils.debounce(searchEvents,500));
+                document.querySelector('[name="search-events"]').addEventListener('input',App.utils.debounce(searchEvents,500));
                 var cardsContainer = document.querySelector('.events-list-card-container');
                 
                 

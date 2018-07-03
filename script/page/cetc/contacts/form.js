@@ -73,9 +73,9 @@ module.exports = (req) => {
             
             document.querySelector('.contact-form').addEventListener('submit',submitForm);
             document.querySelector('.contact-form input[type="reset"]').addEventListener('click',clearForm);
-            document.querySelector('[name="Phone"]').addEventListener('keyup',maskPhone);
-            document.querySelector('[name="Name"]').addEventListener('keyup',maskName);
-            document.querySelector('[name="JobTitle"]').addEventListener('keyup',maskName);
+            document.querySelector('[name="Phone"]').addEventListener('input',maskPhone);
+            document.querySelector('[name="Name"]').addEventListener('input',maskName);
+            document.querySelector('[name="JobTitle"]').addEventListener('input',maskName);
             
             function maskPhone(event) {
                 var phone = event.target.value;

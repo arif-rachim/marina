@@ -40,15 +40,13 @@ class AssociationSelector {
     }
     renderData(data){
         const uid = guid();
-        return `<div class="form-check">
-            <label for="${uid}" class="form-check-label"><input type="checkbox" value="${data._id}" class="form-check-input" id="${uid}">${this.dataRenderer(data)}</label>
+        return `<div class="form-check" style="margin-right: 0.5em">
+            <label for="${uid}" class="form-check-label"><input type="checkbox" value="${data._id}" class="form-check-input" id="${uid}" style="margin-left: -1.25em">${this.dataRenderer(data)}</label>
         </div>`
     }
     renderContent(){
         return `
-        <div>
-            ${this.docs.filter(doc => this.selectedResource.indexOf(doc._id) < 0 ).map(this.renderData.bind(this)).join('')}
-        </div>
+        ${this.docs.filter(doc => this.selectedResource.indexOf(doc._id) < 0 ).map(this.renderData.bind(this)).join('')}
         `
     }
 

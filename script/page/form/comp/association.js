@@ -38,7 +38,7 @@ class Association {
         });
 
         this.node.addEventListener('click',() => {
-            publish('property-details',this.model);
+            this.selectThisNode();
         });
 
         this.itemContainer.addEventListener('click',() => {
@@ -88,6 +88,14 @@ class Association {
         this.items = this.items.filter(item => item._id !== itemId);
         this.renderItems();
     }
+
+
+    selectThisNode(){
+        document.getElementById('form-panel').querySelectorAll('[is]').forEach(node => node.classList.remove('selected'));
+        this.node.classList.add('selected');
+        publish('property-details',this.model);
+    }
+
 
     buildModel(){
         const validator = this.node.querySelector('code[data-validator]');

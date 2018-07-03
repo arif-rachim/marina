@@ -11,7 +11,7 @@ class PropertiesPanel{
             }
             this.propertyDetailsHolder.innerHTML = template.join('');
             this.propertyDetailsHolder.querySelectorAll('input[type="text"] , input[type="number"] , textarea').forEach(input => {
-                input.addEventListener('keyup',this.updateModel.bind(this));
+                input.addEventListener('input',this.updateModel.bind(this));
             });
             this.propertyDetailsHolder.querySelectorAll('input[type="checkbox"]').forEach(input => {
                 input.addEventListener('change',this.updateModel.bind(this));
@@ -24,7 +24,7 @@ class PropertiesPanel{
         if(model.type === 'text'){
             return `<div class="form-group" style="margin: 0;margin-bottom: 0.5em;">
                     <label style="margin: 0;" for="${uid}">${model.name}</label>
-                    <input id="${uid}" type="text" value="${model.value}" class="form-control" name="${key}" model-type="${model.type}" onkeyup="${model.mask ? model.mask : ''}">
+                    <input id="${uid}" type="text" value="${model.value}" class="form-control" name="${key}" model-type="${model.type}" oninput="${model.mask ? model.mask : ''}">
                     <small>${model.description}</small> 
                 </div>`;
         }

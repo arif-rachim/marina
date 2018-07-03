@@ -81,9 +81,9 @@ module.exports = (req) => {
             
             document.querySelector('.user-form input[type="reset"]').addEventListener('click',clearForm);
             document.querySelector('.user-form').addEventListener('submit',submitForm);
-            document.querySelector('[name="Phone"]').addEventListener('keyup',maskPhone);
-            document.querySelector('[name="UserID"]').addEventListener('keyup',maskUserId);
-            document.querySelector('[name="Name"]').addEventListener('keyup',maskName);
+            document.querySelector('[name="Phone"]').addEventListener('input',maskPhone);
+            document.querySelector('[name="UserID"]').addEventListener('input',maskUserId);
+            document.querySelector('[name="Name"]').addEventListener('input',maskName);
             var catalog = {};
 
             function loadAllRoles(){

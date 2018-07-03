@@ -43,6 +43,7 @@ module.exports = async (req) => {
     if (req.query.id) {
         model = await fetch(`/res/system_forms/${req.query.id}`);
     }
+
     try {
         return html(req, `
         <style>
@@ -61,6 +62,8 @@ module.exports = async (req) => {
                 background-color: #f7f7f7;
                 min-height: 1em;
                 transition: all 100ms ease-out;
+                margin-top:1em;
+                margin-bottom:1em;
             }
             
             .horizontal > .dropdown-target-marker {
@@ -74,7 +77,10 @@ module.exports = async (req) => {
             }
             
             .selected {
-                background-color: blue;
+                background-color: #F9DD8D;
+                padding-left : 0.5em;
+                padding-right : 0.5em;
+                border-radius: 0.5em;
             }
             
             .hide {
@@ -82,6 +88,8 @@ module.exports = async (req) => {
                 width: 0 !important;
                 height: 0 !important;
                 min-height: 0;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
             }
             
             .container-panel {
@@ -114,9 +122,34 @@ module.exports = async (req) => {
                 width: calc(100% + 1em);
             }
             
+            .form-group {
+                margin-bottom: 0.2em !important;
+            }
+            
         </style>
         
-        <div style="display: flex;height: 100vh">
+        <div style="display: flex;flex-direction: column;height: 100vh">
+            <div style="border-bottom: 1px solid #D3D9DF;padding: 1em ">
+                <div>
+                    <input id="formVersion" type="hidden" value="${model.version || ''}" >
+                    <input id="formId" type="hidden" value="${model._id || ''}" >
+                    <div style="display: flex">
+                        <div class="form-group" style="width:100%;margin-right: 0.25em;max-width: 250px">
+                            <label for="formDatabaseLabel" style="margin-bottom: 0.1em">Form Name </label>
+                            <input id="formDatabaseLabel" type="text" placeholder="Form Name" class="form-control" oninput="document.getElementById('formDatabaseName').value =  event.target.value.toLowerCase().split(' ').join('_')" required value="${model.label || ''}">
+                            <small>Is the form label name</small>
+                        </div>
+                        <div class="form-group" style="width:100%;margin-left: 0.25em;max-width: 250px">
+                            <label for="formDatabaseName" style="margin-bottom: 0.1em">Form database code </label>
+                            <input id="formDatabaseName" type="text" placeholder="Form Database Code" class="form-control" oninput="document.getElementById('formDatabaseName').value =  event.target.value.toLowerCase().split(' ').join('_')" required value="${model.name || ''}">
+                            <small>Is the form resource name</small>
+                        </div>
+                        <span style="width: 100%"></span>
+                        <!-- We need to do something here -->
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex;height: 100%">
             <div style="width: 300px;border-right: 1px solid #d3d9df;display: flex;flex-direction: column;padding: 1em">
                 <div style="height: 100%">
                     <h3 style="font-weight: 100">Tools</h3>
@@ -143,16 +176,16 @@ module.exports = async (req) => {
                 </div>
             </div>
             <div style="width: 100%;background-color: #F5F5F5;padding: 3em;display: flex;justify-content: center;flex-direction: column">
-                <div style="margin-bottom: 0.5em;">
-                    <input id="formVersion" type="hidden" value="${model.version || ''}" >
-                    <input id="formDatabaseLabel" type="text" placeholder="Form Name" class="form-control" onkeyup="document.getElementById('formDatabaseName').innerText =  event.target.value.toLowerCase().split(' ').join('_')" required value="${model.label || ''}">
-                    <small>"<span id="formDatabaseName" style="font-style: italic">${model.name || ''}</span>" will be the table name in database</small>
-                </div>
-                <div style="width: 100%;height:100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;max-width: 900px;padding: 1em;overflow:auto;display: flex;flex-direction: column" id="form-panel">
+                
+                <div style="width: 100%;height:100%;background-color: white;border: 1px solid #d3d9df;min-height: 5em;padding: 1em;overflow:auto;display: flex;flex-direction: column" id="form-panel">
                     ${req.print(model ? printComponent(model) : Vertical.render())}                            
                 </div>
-                <div style="margin-top: 0.5em;text-align: right">
-                    <button class="btn btn-primary" id="saveFormButton">Save</button>
+                <div style="margin-top: 1em;">
+                    <span style="display: flex;">
+                        <span style="width: 100%"></span>
+                        <button class="btn btn-primary" id="saveFormButton" style="margin-right: 1em">Create New Version</button>
+                        <button class="btn" id="updateFormButton" style="display: ${model && model._id ? 'block' : 'none'}" >Update</button>
+                    </span>
                 </div>
             </div>
             <div style="width: 700px;border-left: 1px solid #d3d9df;padding:1em;overflow: auto" is="page.form.comp.properties-panel">
@@ -161,6 +194,7 @@ module.exports = async (req) => {
                     
                 </div>
             </div>
+        </div>
         </div>
         <script path="${__filename}">
             const {merge} = require('../../common/utils');
@@ -198,7 +232,7 @@ module.exports = async (req) => {
                         const formDatabaseLabel = document.getElementById('formDatabaseLabel');
                         
                         if(formDatabaseLabel.checkValidity()){
-                            const resourceName = document.getElementById('formDatabaseName').innerText;
+                            const resourceName = document.getElementById('formDatabaseName').value;
                             const version = (parseInt(document.getElementById('formVersion').value || '0')+1).toString();
                             fetch('/res/system_forms?$s.version=-1&name=|'+resourceName+'|&$p.version=1&$p.name=1',{},'GET',false)
                             .then(result => {
@@ -223,6 +257,48 @@ module.exports = async (req) => {
                                     publish('app.notification',result.message);
                                 }
                             });
+                            
+                        }
+                    }
+                });  
+            });
+            
+            document.querySelector('#updateFormButton').addEventListener('click',event => {
+                publish('app.confirmation',{
+                    text : 'Are you sure you want to Update the form ?',
+                    buttons : ['Yes','No']
+                }).then(function(button){
+                    if(button.innerText === 'Yes' ){
+                        let model = {};
+                        formPanel.childNodes.forEach(node => {
+                            if('hasAttribute' in node && node.hasAttribute('is')){
+                                const json = node.toJSON();
+                                model = merge(model,json);
+                            }
+                        });
+                        const formDatabaseLabel = document.getElementById('formDatabaseLabel');
+                        
+                        if(formDatabaseLabel.checkValidity()){
+                            const resourceName = document.getElementById('formDatabaseName').value;
+                            const version = (parseInt(document.getElementById('formVersion').value || '0')).toString();
+                            const id = document.getElementById('formId').value;
+                            let form = {
+                                type : 'form',
+                                label : formDatabaseLabel.value,
+                                name : resourceName,
+                                version : version.toString(),
+                                attribute : model
+                            };
+                            fetch('/res/system_forms/'+id,form,'PUT')
+                            .then((result) => {
+                                if(result.success){
+                                    publish('app.notification','Form successfully Updated');
+                                }else{
+                                    publish('app.notification',result.message);
+                                }
+                            });
+                            
+                            
                             
                         }
                     }

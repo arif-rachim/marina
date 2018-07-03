@@ -26,10 +26,10 @@ class SingleLineText {
         });
 
         this.node.addEventListener('click',() => {
-            publish('property-details',this.model);
+            this.selectThisNode();
         });
 
-        this.input.addEventListener('keyup',() => {
+        this.input.addEventListener('input',() => {
            this.isValid();
         });
 
@@ -39,7 +39,12 @@ class SingleLineText {
                 this.refreshModel();
             }
         });
+    }
 
+    selectThisNode(){
+        document.getElementById('form-panel').querySelectorAll('[is]').forEach(node => node.classList.remove('selected'));
+        this.node.classList.add('selected');
+        publish('property-details',this.model);
     }
 
     buildModel(){

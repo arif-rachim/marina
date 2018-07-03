@@ -124,7 +124,7 @@ module.exports = async (req) => {
                 (function(exports){
                     exports.app = exports.app || {};
                     var app = exports.app;
-                    document.querySelector('.search-article').addEventListener('keyup',App.utils.debounce(onSearch,500));
+                    document.querySelector('.search-article').addEventListener('input',App.utils.debounce(onSearch,500));
                     
                     function onSearch(event){
                         var text = event.target.value;
