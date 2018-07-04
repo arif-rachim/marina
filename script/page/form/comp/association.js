@@ -91,9 +91,12 @@ class Association {
 
 
     selectThisNode(){
-        document.getElementById('form-panel').querySelectorAll('[is]').forEach(node => node.classList.remove('selected'));
-        this.node.classList.add('selected');
-        publish('property-details',this.model);
+        const formPanel = document.getElementById('form-panel');
+        if(formPanel){
+            formPanel.querySelectorAll('[is]').forEach(node => node.classList.remove('selected'));
+            this.node.classList.add('selected');
+            publish('property-details',this.model);
+        }
     }
 
 

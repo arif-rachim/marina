@@ -12,5 +12,4 @@ module.exports = (req,res) => {
             res.end(JSON.stringify({success:true,message:'Record deleted'},null,2));
         }
     });
-
 };

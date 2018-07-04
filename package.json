@@ -19,6 +19,7 @@
   "homepage": "https://github.com/yallajs/marina#readme",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^10.0.1",
+    "ace-builds": "^1.3.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "dragula": "^3.7.2",

@@ -3,11 +3,9 @@ const RESOURCE_DIR = `${__dirname}/../../../.resources/`;
 const fs = require('fs');
 
 class Database {
-
     constructor(){
         this.db = {};
     }
-
     loadDb(dbname){
         if(dbname in this.db){
             return this.db[dbname];
@@ -16,7 +14,6 @@ class Database {
         this.db[dbname] = datastore;
         return datastore;
     }
-
 }
 
 const database = new Proxy(new Database(),{
