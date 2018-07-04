@@ -18,7 +18,7 @@ class Database {
 
 const database = new Proxy(new Database(),{
     get: function(target,key){
-        if(key == 'isExist'){
+        if(key === 'isExist'){
             return function (dbName){
                 return fs.existsSync(`${RESOURCE_DIR}/db/${dbName}.json`);
             }

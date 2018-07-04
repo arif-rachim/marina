@@ -229,6 +229,9 @@ module.exports = async (req) => {
                     <h3 style="font-weight: 100">Properties</h3>
                     <div class="property-details" style="width: 100%">
                     </div>
+                    <div>
+                        <button class="btn btn-primary btn-delete">Delete</button>
+                    </div>
                 </div>
             </div>
             <!-- This is the panel for Before Request -->

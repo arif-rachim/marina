@@ -22,8 +22,8 @@ module.exports = (req,res) => {
         let beforeRequest = middleware.isExist(resource,'beforeRequest',doc._form_version) ? middleware.load(resource,'beforeRequest',doc._form_version) : defaultBeforeRequest;
         let afterRequest = middleware.isExist(resource,'afterRequest',doc._form_version) ? middleware.load(resource,'afterRequest',doc._form_version) : defaultAfterRequest;
         if(resource === 'system_forms'){
-            middleware.save(doc.name,'beforeRequest',doc._form_version,doc.beforeRequest);
-            middleware.save(doc.name,'afterRequest',doc._form_version,doc.afterRequest);
+            middleware.save(doc.name,'beforeRequest',doc.version,doc.beforeRequest);
+            middleware.save(doc.name,'afterRequest',doc.version,doc.afterRequest);
         }
         return new Promise((resolve,reject) => {
             beforeRequest(req,doc,resolve,reject);
@@ -45,10 +45,6 @@ module.exports = (req,res) => {
             console.error(err);
             res.end(JSON.stringify({success:false,message:err.message}));
         });
-
-
-
-
     }catch(err){
         console.error(err);
     }

@@ -4,6 +4,8 @@ class PropertiesPanel{
     constructor(node){
         this.node = node;
         this.propertyDetailsHolder = node.querySelector('.property-details');
+        this.deleteButton = node.querySelector('.btn-delete');
+        this.deleteButton.addEventListener('click',this.onDelete.bind(this));
         subscribe('property-details',model => {
             const template = [];
             for(let key in model){
@@ -18,7 +20,9 @@ class PropertiesPanel{
             });
         });
     }
-
+    onDelete(event){
+        publish('property-details-delete',this.getModel());
+    }
     static prepareTemplate(model,key){
         const uid = guid();
         if(model.type === 'text'){
@@ -63,8 +67,7 @@ class PropertiesPanel{
         }
     }
 
-
-    updateModel(event) {
+    getModel(){
         const labelNodes = this.propertyDetailsHolder.querySelectorAll('label');
 
         const model = {};
@@ -95,8 +98,10 @@ class PropertiesPanel{
                 type
             }
         });
-        publish('property-details-update',model);
-
+        return model;
+    }
+    updateModel(event) {
+        publish('property-details-update',this.getModel());
     }
 }
 

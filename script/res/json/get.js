@@ -1,10 +1,6 @@
 const database = require('./database');
 const middleware = require('./middleware');
 
-const defaultBeforeRequest = (req,data,next,cancel) => {
-    next(data);
-};
-
 const defaultAfterRequest = (req,data,res,cancel) => {
     res.end(JSON.stringify(data));
 };
@@ -38,41 +34,18 @@ module.exports = (req,res) => {
         
         if(id){
             findById(id,db).then(data => {
-                res.end(JSON.stringify(data));
-
-                // let beforeRequest = middleware.isExist(resource,'beforeRequest',data._form_version) ? middleware.load(resource,'beforeRequest',data._form_version) : defaultBeforeRequest;
-                // let afterRequest = middleware.isExist(resource,'afterRequest',data._form_version) ? middleware.load(resource,'afterRequest',data._form_version) : defaultAfterRequest;
-                //
-                // return new Promise((resolve,reject) => {
-                //     beforeRequest(req,data,resolve,reject);
-                // }).then(doc => {
-                //     return new Promise((resolve,reject) => {
-                //         db.update({_id:id},{$set : doc},{},(err,newDoc) => {
-                //             if(err){
-                //                 reject({success:false,message:err.message});
-                //             }else{
-                //                 resolve({success:true,data:newDoc});
-                //             }
-                //         });
-                //     });
-                // }).then(result => {
-                //     return new Promise((resolve,reject) => {
-                //         afterRequest(req,result,res,reject)
-                //     });
-                // }).catch(err => {
-                //     console.error(err);
-                //     res.end(JSON.stringify({success:false,message:err.message}));
-                // });
-
-
+                if(data && data._form_version){
+                    let afterRequest = middleware.isExist(resource,'afterRequest',data._form_version) ? middleware.load(resource,'afterRequest',data._form_version) : defaultAfterRequest;
+                    return new Promise((resolve,reject) => {
+                        afterRequest(req,data,res,reject)
+                    }).catch(err => {
+                        console.error(err);
+                        res.end(JSON.stringify({success:false,message:err.message}));
+                    });
+                }else{
+                    res.end(JSON.stringify(data));
+                }
             });
-
-
-
-
-
-
-
         } else if(ids) {
             Promise.all(ids.split(',').map(id => findById(id,db))).then(results => {
                 res.end(JSON.stringify(results));

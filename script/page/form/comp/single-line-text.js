@@ -39,6 +39,13 @@ class SingleLineText {
                 this.refreshModel();
             }
         });
+
+
+        subscribe('property-details-delete',data => {
+            if(data.id.value === this.model.id.value){
+                this.node.parentNode.removeChild(this.node);
+            }
+        });
     }
 
     selectThisNode(){
