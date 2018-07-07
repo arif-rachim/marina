@@ -1,14 +1,119 @@
+const fixedTop = require('./panels/fixed-top');
+const mainMenu = require('./panels/main-menu');
+const card = require('./panels/card');
+
+
+const kickStart = async(req) => {
+    return card(req,{title : 'Kick start your project development !',content : `
+<p>Getting start with your project custom requirements using a ready template which is quite difficult and time taking process, Modern Admin provides useful features to kick start your project development with no efforts !</p>
+<ul>
+    <li>Modern Admin provides you getting start pages with different layouts, use the layout as per your custom requirements and just change the branding, menu & content.</li>
+    <li>It use PUG as template engine to generate pages and whole template quickly using node js. You can generate entire template with your selected custom layout, branding & menu. Save your time for doing the common changes for
+        each page (i.e menu, branding and footer) by generating template with pug.</li>
+    <li>Every components in Modern Admin are decoupled, it means use use only components you actually need! Remove unnecessary and extra code easily just by excluding the path to specific SCSS, JS file.</li>
+</ul>
+`})
+};
+
+const whatIs = async(req) => {
+    return card(req,{title:'What is Starter Kit',content: `
+<p>Starter kit is a set of pages with different layouts, useful for your next project to start development process from scratch with no time. </p>
+<ul>
+    <li>Each layout includes basic components only.</li>
+    <li>Select your choice of layout from starter kit, customize it with optional changes like colors and branding, add required dependency only.</li>
+    <li>Using PUG as template engine to generate whole template quickly with your selected layout and other custom changes.</li>
+</ul>
+`})
+};
+
+const howTo = async(req) => {
+    return card(req,{title:'How To use Starter Kit',content: `
+<p><span class="text-bold-600 mt-2">HTML</span></p>
+<p>If you know just HTML, select your choice of layout from starter kit folder, customize it with optional changes like colors and branding, add required dependency only.</p>
+<p><span class="text-bold-600 mt-2">PUG</span></p>
+<p>To use PUG it required node.js and basic knowledge of using it. Using PUG as template engine to generate whole template quickly with your selected layout and other custom changes. To getting start with PUG usage & template generating process please refer template documentation.</p>
+<div class="alert alert-icon-left alert-arrow-left alert-info mb-2" role="alert">
+    <span class="alert-icon"><i class="la la-info"></i></span>
+    <h4>Tip!</h4>
+    <p>Hideable navbar option is available for fixed navbar with static navigation only. Works in top and bottom positions, single and multiple navbars.</p>
+</div>
+`});
+};
+
+const withHeader = async (req) => {
+    return card(req,{title:'With Header',headerBorder : true, content : `
+<h4 class="card-title">Content title</h4>
+<p class="card-text">Add a heading to card with <code>.card-header </code> class &amp; content title uses <code>.card-title</code> class. For border add <code>.border-top-COLOR</code> class</p>
+<p class="card-text">You may also include any &lt;h1&gt;-&lt;h6&gt; with a <code>.card-header </code> &amp; <code>.card-title</code> class to add heading.</p>
+<p class="card-text">Jelly beans sugar plum cheesecake cookie oat cake soufflé. Tart lollipop carrot cake sugar plum. Marshmallow wafer tiramisu jelly beans.</p>
+`});
+};
+
+const withHeaderNoBorder = async (req) => {
+    return card(req,{title:'With Header &amp; No Border',content:  `
+<div class="card-body">
+    <h4 class="card-title">Content title</h4>
+    <p class="card-text">Add a heading to card with <code>.card-header </code> class &amp; content title uses <code>.card-title</code> class.</p>
+    <p class="card-text">You may also include any &lt;h1&gt;-&lt;h6&gt; with a <code>.card-header </code> &amp; <code>.card-title</code> class to add heading.</p>
+    <p class="card-text">Gingerbread brownie sweet roll cheesecake chocolate cake jelly beans marzipan gummies dessert. Jelly beans sugar plum cheesecake cookie oat cake soufflé.</p>
+</div>
+`})
+};
+
+
+const simpleCard = async(req) => {
+    return card(req,{title : 'Simple Card',content : `
+<h5>HTML Ipsum Presents</h5>
+<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+    semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean
+    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+<h6>Header Level 2</h6>
+
+<ol>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+</ol>
+
+<blockquote>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada
+        tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+</blockquote>
+
+<h3>Header Level 3</h3>
+
+<ul>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+</ul>
+
+<pre><code class="language-css">
+    #header h1 a { 
+        display: block; 
+        width: 300px; 
+        height: 80px; 
+    }
+</code></pre>
+<dl>
+    <dt>Definition list</dt>
+    <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
+    <dt>Lorem ipsum dolor sit amet</dt>
+    <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
+</dl>
+`});
+};
+
 module.exports = async(req,res) => {
-    return `<!DOCTYPE html>
+    return `
+<!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
-    <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
-    <meta name="author" content="PIXINVENT">
-    <title>Light Layout - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin Dashboard</title>
+    <meta name="description" content="Marina : Progressive Business App">
+    <meta name="keywords" content="Marina : Progressive Business App">
+    <meta name="author" content="a.arif.r@gmail.com">
+    <title>Marina : Progressive Business App</title>
     <link rel="apple-touch-icon" href="/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
@@ -30,91 +135,10 @@ module.exports = async(req,res) => {
   <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
     <!-- fixed-top-->
-    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-shadow">
-      <div class="navbar-wrapper">
-        <div class="navbar-header">
-          <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="modern admin logo" src="/app-assets/images/logo/logo.png">
-                <h3 class="brand-text">Modern Admin</h3></a></li>
-            <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 blue-grey darken-3" data-ticon="ft-toggle-right"></i></a></li>
-            <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a></li>
-          </ul>
-        </div>
-        <div class="navbar-container content">
-          <div class="collapse navbar-collapse" id="navbar-mobile">
-            <ul class="nav navbar-nav float-right">
-              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="/app-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
-                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+    ${req.print(fixedTop(req))}
     <!-- ////////////////////////////////////////////////////////////////////////////-->
     <!-- main menu-->
-    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
-      <div class="main-menu-content">
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li class=" nav-item"><a href="/html/ltr/vertical-modern-menu-template/index.html"><i class="la la-home"></i><span class="menu-title" data-i18n="">Dashboard</span><span class="badge badge badge-info badge-pill float-right mr-2">5</span></a>
-          </li>
-          <li class=" nav-item"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="">Starter kit</span></a>
-            <ul class="menu-content">
-              <li><a class="menu-item" href="layout-1-column.html" data-i18n="nav.starter_kit.1_column">1 column</a>
-              </li>
-              <li><a class="menu-item" href="layout-2-columns.html" data-i18n="nav.starter_kit.2_columns">2 columns</a>
-              </li>
-              <li><a class="menu-item" href="#" data-i18n="nav.starter_kit.3_columns_detached.main">Content Det. Sidebar</a>
-                <ul class="menu-content">
-                  <li><a class="menu-item" href="layout-content-detached-left-sidebar.html" data-i18n="nav.starter_kit.3_columns_detached.3_columns_detached_left_sidebar">Detached left sidebar</a>
-                  </li>
-                  <li><a class="menu-item" href="layout-content-detached-left-sticky-sidebar.html" data-i18n="nav.starter_kit.3_columns_detached.3_columns_detached_sticky_left_sidebar">Detached sticky left sidebar</a>
-                  </li>
-                  <li><a class="menu-item" href="layout-content-detached-right-sidebar.html" data-i18n="nav.starter_kit.3_columns_detached.3_columns_detached_right_sidebar">Detached right sidebar</a>
-                  </li>
-                  <li><a class="menu-item" href="layout-content-detached-right-sticky-sidebar.html" data-i18n="nav.starter_kit.3_columns_detached.3_columns_detached_sticky_right_sidebar">Detached sticky right sidebar</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="navigation-divider"></li>
-              <li><a class="menu-item" href="layout-fixed-navbar.html" data-i18n="nav.starter_kit.fixed_navbar">Fixed navbar</a>
-              </li>
-              <li><a class="menu-item" href="layout-fixed-navigation.html" data-i18n="nav.starter_kit.fixed_navigation">Fixed navigation</a>
-              </li>
-              <li><a class="menu-item" href="layout-fixed-navbar-navigation.html" data-i18n="nav.starter_kit.fixed_navbar_navigation">Fixed navbar &amp; navigation</a>
-              </li>
-              <li><a class="menu-item" href="layout-fixed-navbar-footer.html" data-i18n="nav.starter_kit.fixed_navbar_footer">Fixed navbar &amp; footer</a>
-              </li>
-              <li class="navigation-divider"></li>
-              <li><a class="menu-item" href="layout-fixed.html" data-i18n="nav.starter_kit.fixed_layout">Fixed layout</a>
-              </li>
-              <li><a class="menu-item" href="layout-boxed.html" data-i18n="nav.starter_kit.boxed_layout">Boxed layout</a>
-              </li>
-              <li><a class="menu-item" href="layout-static.html" data-i18n="nav.starter_kit.static_layout">Static layout</a>
-              </li>
-              <li class="navigation-divider"></li>
-              <li class="active"><a class="menu-item" href="layout-light.html" data-i18n="nav.starter_kit.light_layout">Light layout</a>
-              </li>
-              <li><a class="menu-item" href="layout-dark.html" data-i18n="nav.starter_kit.dark_layout">Dark layout</a>
-              </li>
-              <li><a class="menu-item" href="layout-semi-dark.html" data-i18n="nav.starter_kit.semi_dark_layout">Semi dark layout</a>
-              </li>
-            </ul>
-          </li>
-          <li class=" nav-item"><a href="changelog.html"><i class="la la-file"></i><span class="menu-title" data-i18n="">Changelog</span><span class="badge badge badge-pill badge-danger float-right">1.0</span></a>
-          </li>
-          <li class=" navigation-header"><span>Support</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Support"></i>
-          </li>
-          <li class=" nav-item"><a href="https://pixinvent.ticksy.com/"><i class="la la-support"></i><span class="menu-title" data-i18n="">Raise Support</span></a>
-          </li>
-          <li class=" nav-item"><a href="https://pixinvent.com/modern-admin-clean-bootstrap-4-dashboard-html-template/documentation"><i class="la la-folder"></i><span class="menu-title" data-i18n="">Documentation</span></a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    ${req.print(mainMenu(req))}
 
     <div class="app-content content">
       <div class="content-wrapper">
@@ -143,204 +167,35 @@ module.exports = async(req,res) => {
             </div>
           </div>
         </div>
-        <div class="content-body"><section class="row">
-    <div class="col-sm-12">
-        <!-- Kick start -->
-        <div id="kick-start" class="card">
-            <div class="card-header">
-                <h4 class="card-title">Kick start your project development !</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
+        <div class="content-body">
+        <section class="row">
+            <div class="col-sm-12">
+                <!-- Kick start -->
+                ${req.print(kickStart(req))}
+                <!--/ Kick start -->
+        
+                <!-- What is-->
+                ${req.print(whatIs(req))}
+                <!--/ What is-->
+        
+                <!-- How to-->
+                ${req.print(howTo(req))}
+                <!--/ How to-->
+        
+                <!-- Simple Card-->
+                ${req.print(simpleCard(req))}
+                <!--/ How to-->
             </div>
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <div class="card-text">
-                        <p>Getting start with your project custom requirements using a ready template which is quite difficult and time taking process, Modern Admin provides useful features to kick start your project development with no efforts !</p>
-                        <ul>
-                            <li>Modern Admin provides you getting start pages with different layouts, use the layout as per your custom requirements and just change the branding, menu & content.</li>
-                            <li>It use PUG as template engine to generate pages and whole template quickly using node js. You can generate entire template with your selected custom layout, branding & menu. Save your time for doing the common changes for
-                                each page (i.e menu, branding and footer) by generating template with pug.</li>
-                            <li>Every components in Modern Admin are decoupled, it means use use only components you actually need! Remove unnecessary and extra code easily just by excluding the path to specific SCSS, JS file.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ Kick start -->
+        </section>
 
-        <!-- What is-->
-        <div id="what-is" class="card">
-            <div class="card-header">
-                <h4 class="card-title">What is starter kit ?</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
+        <section class="row">
+            <div class="col-md-6 col-sm-12">
+                ${req.print(withHeader())}
             </div>
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <div class="card-text">
-                        <p>Starter kit is a set of pages with different layouts, useful for your next project to start development process from scratch with no time. </p>
-                        <ul>
-                            <li>Each layout includes basic components only.</li>
-                            <li>Select your choice of layout from starter kit, customize it with optional changes like colors and branding, add required dependency only.</li>
-                            <li>Using PUG as template engine to generate whole template quickly with your selected layout and other custom changes.</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="col-md-6 col-sm-12">
+                ${req.print(withHeaderNoBorder())}
             </div>
-        </div>
-        <!--/ What is-->
-
-        <!-- How to-->
-        <div id="how-to" class="card">
-            <div class="card-header">
-                <h4 class="card-title">How to use starter kit ?</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <div class="card-text">
-                        <p><span class="text-bold-600 mt-2">HTML</span></p>
-                        <p>If you know just HTML, select your choice of layout from starter kit folder, customize it with optional changes like colors and branding, add required dependency only.</p>
-                        <p><span class="text-bold-600 mt-2">PUG</span></p>
-                        <p>To use PUG it required node.js and basic knowledge of using it. Using PUG as template engine to generate whole template quickly with your selected layout and other custom changes. To getting start with PUG usage & template generating process please refer template documentation.</p>
-                        <div class="alert alert-icon-left alert-arrow-left alert-info mb-2" role="alert">
-                            <span class="alert-icon"><i class="la la-info"></i></span>
-                            <h4>Tip!</h4>
-                            <p>Hideable navbar option is available for fixed navbar with static navigation only. Works in top and bottom positions, single and multiple navbars.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ How to-->
-
-        <!-- Simple Card-->
-        <div id="simple-card" class="card">
-            <div class="card-header">
-                <h4 class="card-title">Simple Card</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <div class="card-text">
-                        <h5>HTML Ipsum Presents</h5>
-                        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                            semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean
-                            fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-                        <h6>Header Level 2</h6>
-
-                        <ol>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ol>
-
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada
-                                tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
-                        </blockquote>
-
-                        <h3>Header Level 3</h3>
-
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ul>
-
-                        <pre><code class="language-css">
-                            #header h1 a { 
-                            	display: block; 
-                            	width: 300px; 
-                            	height: 80px; 
-                            }
-                        </code></pre>
-                        <dl>
-                            <dt>Definition list</dt>
-                            <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
-                            <dt>Lorem ipsum dolor sit amet</dt>
-                            <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ How to-->
-    </div>
-</section>
-
-<section class="row">
-    <div class="col-md-6 col-sm-12">
-        <div id="with-header" class="card">
-            <div class="card-header">
-                <h4 class="card-title">With Header</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card-content collapse show">
-                <div class="card-body border-top-blue-grey border-top-lighten-5 ">
-                    <h4 class="card-title">Content title</h4>
-                    <p class="card-text">Add a heading to card with <code>.card-header </code> class &amp; content title uses <code>.card-title</code> class. For border add <code>.border-top-COLOR</code> class</p>
-                    <p class="card-text">You may also include any &lt;h1&gt;-&lt;h6&gt; with a <code>.card-header </code> &amp; <code>.card-title</code> class to add heading.</p>
-                    <p class="card-text">Jelly beans sugar plum cheesecake cookie oat cake soufflé. Tart lollipop carrot cake sugar plum. Marshmallow wafer tiramisu jelly beans.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-sm-12">
-        <div id="with-header-border-0" class="card">
-            <div class="card-header">
-                <h4 class="card-title">With Header &amp; No Border</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <h4 class="card-title">Content title</h4>
-                    <p class="card-text">Add a heading to card with <code>.card-header </code> class &amp; content title uses <code>.card-title</code> class.</p>
-                    <p class="card-text">You may also include any &lt;h1&gt;-&lt;h6&gt; with a <code>.card-header </code> &amp; <code>.card-title</code> class to add heading.</p>
-                    <p class="card-text">Gingerbread brownie sweet roll cheesecake chocolate cake jelly beans marzipan gummies dessert. Jelly beans sugar plum cheesecake cookie oat cake soufflé.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
         </div>
       </div>
     </div>
