@@ -248,11 +248,21 @@ function parseTemplate(req,template) {
         req.template = req.print(template(req));
     });
 }
-
+/*
 app.get('/index.html',async (req,res) => {
     try{
-
         const index = require("./script/page/index");
+        const templateResult = await processRequest(req, index);
+        res.end(templateResult);
+    }catch(err){
+        res.end(JSON.stringify({success:false,message:err.message}));
+        console.error(err);
+    }
+});
+*/
+app.get('/app.html',async (req,res) => {
+    try{
+        const index = require("./script/page/app");
         const templateResult = await processRequest(req, index);
         res.end(templateResult);
     }catch(err){
