@@ -1,7 +1,7 @@
 const fixedTop = require('./panels/fixed-top');
 const mainMenu = require('./panels/main-menu');
 const card = require('./panels/card');
-
+const appContent = require('./panels/app-content');
 
 const kickStart = async(req) => {
     return card(req,{title : 'Kick start your project development !',content : `
@@ -102,6 +102,39 @@ const simpleCard = async(req) => {
 `});
 };
 
+const printContent = (req) => {
+    return `
+<section class="row">
+    <div class="col-sm-12">
+        <!-- Kick start -->
+        ${req.print(kickStart(req))}
+        <!--/ Kick start -->
+
+        <!-- What is-->
+        ${req.print(whatIs(req))}
+        <!--/ What is-->
+
+        <!-- How to-->
+        ${req.print(howTo(req))}
+        <!--/ How to-->
+
+        <!-- Simple Card-->
+        ${req.print(simpleCard(req))}
+        <!--/ How to-->
+    </div>
+</section>
+
+<section class="row">
+    <div class="col-md-6 col-sm-12">
+        ${req.print(withHeader())}
+    </div>
+    <div class="col-md-6 col-sm-12">
+        ${req.print(withHeaderNoBorder())}
+    </div>
+</section>
+    `
+};
+
 module.exports = async(req,res) => {
     return `
 <!DOCTYPE html>
@@ -116,8 +149,12 @@ module.exports = async(req,res) => {
     <title>Marina : Progressive Business App</title>
     <link rel="apple-touch-icon" href="/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
+    <!--
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+    -->
+    <link href="/app-assets/fonts/line-awesome/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/vendors.css">
     <!-- END VENDOR CSS-->
@@ -139,71 +176,18 @@ module.exports = async(req,res) => {
     <!-- ////////////////////////////////////////////////////////////////////////////-->
     <!-- main menu-->
     ${req.print(mainMenu(req))}
-
-    <div class="app-content content">
-      <div class="content-wrapper">
-        <div class="content-header row">
-          <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-            <h3 class="content-header-title mb-0 d-inline-block">Light Layout</h3>
-            <div class="row breadcrumbs-top d-inline-block">
-              <div class="breadcrumb-wrapper col-12">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Home</a>
-                  </li>
-                  <li class="breadcrumb-item"><a href="#">Starters Kit</a>
-                  </li>
-                  <li class="breadcrumb-item active">Light Layout
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </div>
-          <div class="content-header-right col-md-6 col-12">
-            <div class="dropdown float-md-right">
-              <button class="btn btn-danger dropdown-toggle round btn-glow px-2" id="dropdownBreadcrumbButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-              <div class="dropdown-menu" aria-labelledby="dropdownBreadcrumbButton"><a class="dropdown-item" href="#"><i class="la la-calendar-check-o"></i> Calender</a><a class="dropdown-item" href="#"><i class="la la-cart-plus"></i> Cart</a><a class="dropdown-item" href="#"><i class="la la-life-ring"></i> Support</a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="la la-cog"></i> Settings</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-body">
-        <section class="row">
-            <div class="col-sm-12">
-                <!-- Kick start -->
-                ${req.print(kickStart(req))}
-                <!--/ Kick start -->
-        
-                <!-- What is-->
-                ${req.print(whatIs(req))}
-                <!--/ What is-->
-        
-                <!-- How to-->
-                ${req.print(howTo(req))}
-                <!--/ How to-->
-        
-                <!-- Simple Card-->
-                ${req.print(simpleCard(req))}
-                <!--/ How to-->
-            </div>
-        </section>
-
-        <section class="row">
-            <div class="col-md-6 col-sm-12">
-                ${req.print(withHeader())}
-            </div>
-            <div class="col-md-6 col-sm-12">
-                ${req.print(withHeaderNoBorder())}
-            </div>
-        </section>
-        </div>
-      </div>
-    </div>
+    ${req.print(appContent(req,{title : 'Light Layout',breadcrumb : [
+        {label: 'Home',path:'index.html'},
+        {label: 'Starters Kit',path:'#'},
+        {label: 'Light Layout',path:''}
+        ],
+        content : printContent(req)
+    }))}
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 
     <footer class="footer footer-static footer-light navbar-border navbar-shadow">
-      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright  &copy; 2018 <a class="text-bold-800 grey darken-2" href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank">PIXINVENT </a>, All rights reserved. </span><span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Hand-crafted & Made with <i class="ft-heart pink"></i></span></p>
+      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright  &copy; 2018 <a class="text-bold-800 grey darken-2" href="mail: a.arif.r@gmail.com" target="_blank">Arif Rachim</a>, All rights reserved. </span><span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Hand-crafted & Made with <i class="ft-heart pink"></i></span></p>
     </footer>
 
     <!-- BEGIN VENDOR JS-->

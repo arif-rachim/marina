@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/script/page/panels/card.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/page/panels/fixed-top.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/page/panels/main-menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/page/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/panels/fixed-top.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/panels/fixed-top.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/panels/main-menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/panels/main-menu.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -24,27 +23,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/page/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
-              <folding>
-                <element signature="e#144#149#0" expanded="true" />
-                <element signature="e#323#327#0" expanded="true" />
-                <element signature="e#329#333#0" expanded="true" />
-                <element signature="e#334#338#0" expanded="true" />
-                <element signature="e#340#344#0" expanded="true" />
-                <element signature="e#379#384#0" expanded="true" />
-                <element signature="e#188#193#0" expanded="true" />
-                <element signature="e#315#319#0" expanded="true" />
-                <element signature="e#321#325#0" expanded="true" />
-                <element signature="e#326#330#0" expanded="true" />
-                <element signature="e#332#336#0" expanded="true" />
-                <element signature="e#371#376#0" expanded="true" />
-                <element signature="n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="e#23691#23697#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-content.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/panels/app-content.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -52,7 +44,7 @@
       <file leaf-file-name="app-menu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app-assets/js/core/app-menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16136">
+            <state>
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -69,11 +61,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main-menu.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main-menu.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/page/panels/main-menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+            <state relative-caret-position="470">
+              <caret line="168" column="47" selection-start-line="168" selection-start-column="47" selection-end-line="168" selection-end-column="47" />
+              <folding>
+                <element signature="e#862#1031#0" />
+                <element signature="e#1017#3098#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,6 +90,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -147,8 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/script/page/index/menu.js" />
-        <option value="$PROJECT_DIR$/script/page/cetc/events/form.js" />
         <option value="$PROJECT_DIR$/script/page/cetc/articles/form.js" />
         <option value="$PROJECT_DIR$/script/common/polyfill.js" />
         <option value="$PROJECT_DIR$/script/svc/system/module.js" />
@@ -194,10 +189,12 @@
         <option value="$PROJECT_DIR$/start.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/script/page/panels/fixed-top-header.js" />
-        <option value="$PROJECT_DIR$/script/page/panels/main-menu.js" />
         <option value="$PROJECT_DIR$/script/page/panels/card.js" />
-        <option value="$PROJECT_DIR$/script/page/app.js" />
         <option value="$PROJECT_DIR$/script/page/panels/fixed-top.js" />
+        <option value="$PROJECT_DIR$/app-assets/fonts/google/styles.css" />
+        <option value="$PROJECT_DIR$/script/page/app.js" />
+        <option value="$PROJECT_DIR$/script/page/panels/app-content.js" />
+        <option value="$PROJECT_DIR$/script/page/panels/main-menu.js" />
       </list>
     </option>
   </component>
@@ -248,6 +245,28 @@
             <path>
               <item name="marina" type="b2602c69:ProjectViewProjectNode" />
               <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="app-assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="app-assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="app-assets" type="462c0819:PsiDirectoryNode" />
+              <item name="fonts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marina" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marina" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -274,6 +293,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
@@ -281,19 +301,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\arif\Documents\workspace\marina\app-assets\fonts" />
+      <recent name="C:\Users\arif\Documents\workspace\marina" />
+      <recent name="C:\Users\arif\Documents\workspace\marina\assets" />
+      <recent name="C:\Users\arif\Documents\workspace\marina\app-assets" />
+      <recent name="C:\Users\arif\Documents\workspace\marina\app-assets\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\arif\Documents\workspace\marina\script\page\form\comp" />
       <recent name="C:\Users\Administrator\Documents\workspace\cetc\script\templates\cetc\articles\create" />
       <recent name="C:\Users\arif\Documents\workspace\marina\script\templates" />
       <recent name="C:\Users\arif\Documents\workspace\marina\script" />
       <recent name="C:\Users\arif\Documents\workspace\marina\lib\design" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\arif\Documents\workspace\marina" />
-      <recent name="C:\Users\arif\Documents\workspace\marina\assets" />
-      <recent name="C:\Users\arif\Documents\workspace\marina\app-assets" />
-      <recent name="C:\Users\arif\Documents\workspace\marina\app-assets\images" />
-      <recent name="C:\Users\arif\Documents\workspace\marina\styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -359,12 +379,13 @@
       <workItem from="1530623465235" duration="9804000" />
       <workItem from="1530721099497" duration="6885000" />
       <workItem from="1530909242427" duration="169000" />
-      <workItem from="1530944794166" duration="8261000" />
+      <workItem from="1530944794166" duration="8327000" />
+      <workItem from="1531055100226" duration="5283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440151000" />
+    <option name="totallyTimeSpent" value="445500000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -379,20 +400,18 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5900709" visible="true" weight="0.1670179" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.32897604" />
-      <window_info anchor="bottom" id="Messages" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5316122" side_tool="true" visible="true" weight="0.23202614" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49947312" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.46838778" visible="true" weight="0.23202614" />
-      <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4731296" weight="0.52832246" />
-      <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5914894" visible="true" weight="0.13804004" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4947313" weight="0.32881" />
-      <window_info id="Structure" order="1" sideWeight="0.40851063" side_tool="true" visible="true" weight="0.13804004" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5321391" side_tool="true" visible="true" weight="0.23202614" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49947312" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4678609" visible="true" weight="0.23202614" />
+      <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
+      <window_info id="Structure" order="1" sideWeight="0.40992907" side_tool="true" weight="0.1670179" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.47207588" weight="0.52832246" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.54615927" weight="0.24787535" />
+      <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Thumbnails" order="9" weight="0.32897604" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -400,6 +419,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4947313" weight="0.32881" />
+      <window_info anchor="bottom" id="Messages" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,27 +435,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/common/net.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-item-render.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-render.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -581,13 +581,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/index.old.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="206" column="39" lean-forward="true" selection-start-line="206" selection-start-column="39" selection-end-line="206" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/index.old.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/@types/node/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -636,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/panels/main-menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/page/panels/card.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -652,7 +639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app-assets/js/core/app-menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16136">
+        <state>
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -666,25 +653,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app-assets/fonts/google/Open_Sans/LICENSE.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-assets/fonts/google/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="5" column="85" selection-start-line="5" selection-start-column="85" selection-end-line="5" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/page/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
+        <state relative-caret-position="255">
+          <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/panels/app-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/panels/main-menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="168" column="47" selection-start-line="168" selection-start-column="47" selection-end-line="168" selection-end-column="47" />
           <folding>
-            <element signature="e#144#149#0" expanded="true" />
-            <element signature="e#323#327#0" expanded="true" />
-            <element signature="e#329#333#0" expanded="true" />
-            <element signature="e#334#338#0" expanded="true" />
-            <element signature="e#340#344#0" expanded="true" />
-            <element signature="e#379#384#0" expanded="true" />
-            <element signature="e#188#193#0" expanded="true" />
-            <element signature="e#315#319#0" expanded="true" />
-            <element signature="e#321#325#0" expanded="true" />
-            <element signature="e#326#330#0" expanded="true" />
-            <element signature="e#332#336#0" expanded="true" />
-            <element signature="e#371#376#0" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#23691#23697#0" expanded="true" />
+            <element signature="e#862#1031#0" />
+            <element signature="e#1017#3098#0" />
           </folding>
         </state>
       </provider>
