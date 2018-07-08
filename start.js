@@ -30,19 +30,6 @@ app.use('/', express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-/**
- * This method is to support the integration with feedly, we should remove this when its not needed
- */
-app.post('/v1/:resource', (req,res) => {
-    let mode = req.query.intent || 'json';
-    try{
-        require(`${intentsPath}/${mode}/post`).call(null,req,res);
-    }catch(err){
-        res.end(JSON.stringify({success:false,message:err.message}));
-        console.error(err);
-    }
-});
-
 app.post('/res/:resource', (req,res) => {
     let mode = req.query.intent || 'json';
     try{
@@ -81,7 +68,6 @@ app.get('/res/:resource/:id',async (req,res) => {
     try{
         const modulePath = `${intentsPath}/${mode}/get`;
         const template = require(modulePath);
-
         if(mode.endsWith('-html')){
             const templateResult = await processRequest(req,template);
             res.end(templateResult);
@@ -148,12 +134,17 @@ app.get('/page/:page',async (req,res) => {
     try{
         const sessionId = req.cookies.sessionId || req.query.sessionId;
         const result = await fetch(`/res/system_active_sessions?sessionId=${sessionId}`);
-        const isPrivateAccess = !req.params.page.endsWith("-public");
-        if(result.docs && result.docs.length == 0 && securePageAccess && isPrivateAccess){
-            const templateResult = await processRequest(req,accessDenied);
-            res.end(templateResult);
-            return;
-        }
+        /**
+         * For time being lets comment this code
+
+            const isPrivateAccess = !req.params.page.endsWith("-public");
+            if(result.docs && result.docs.length == 0 && securePageAccess && isPrivateAccess){
+                const templateResult = await processRequest(req,accessDenied);
+                res.end(templateResult);
+                return;
+            }
+
+         */
         const pp = req.params.page.split(".").join("/");
         const modulePath = `${pagePath}/${pp}`;
         const template = require(modulePath);
@@ -173,9 +164,6 @@ app.get('/page/:page',async (req,res) => {
 
 function processRequest(req,template){
     return parseTemplate(req,template).then(result => {
-
-
-
         const $ = cheerio.load(result);
         const promises = [];
         $('script[path]').each((index,element) => {

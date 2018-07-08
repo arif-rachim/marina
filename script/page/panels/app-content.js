@@ -1,6 +1,6 @@
 
 const printBreadCrumb = (crumb, index, arrays) =>{
-    return `<li class="breadcrumb-item ${index === arrays.length - 1 ? 'active' : ''}">${crumb.path ? '<a href="'+crumb.path+'">' : ''} ${crumb.label}${crumb.path? '</a>' : ''}</li>`
+    return `<li class="breadcrumb-item ${index === arrays.length - 1 ? 'active' : ''}">${crumb.path ? '<a href="'+crumb.path+'">' : ''} ${crumb.title}${crumb.path? '</a>' : ''}</li>`
 };
 
 module.exports = async (req,{title,breadcrumb = [],content}) => {

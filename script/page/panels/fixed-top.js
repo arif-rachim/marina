@@ -1,6 +1,10 @@
+const confirmation = require('../components/confirmation');
+const slider = require('../components/slider');
+
 module.exports = async (req) => {
     return `
-<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-shadow">
+<div class="fixed-top">
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow  navbar-light navbar-shadow">
   <div class="navbar-wrapper">
     <div class="navbar-header">
       <ul class="nav navbar-nav flex-row">
@@ -30,6 +34,10 @@ module.exports = async (req) => {
       </div>
     </div>
   </div>
+  
 </nav>
+${req.print(slider(req))}
+${req.print(confirmation(req))}
+</div>
     `
 };
