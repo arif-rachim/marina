@@ -1,10 +1,19 @@
 const {fetch} = require('../../../config');
+const card = require('../../page/panels/card');
 const html = require('../html');
-module.exports = async (req) => {
+const columnNameMap = {
+    _form_version : 'Version',
+    _createdOn : 'Created',
+    _id : 'Id',
+    _lastUpdatedOn : 'Updated',
+};
+const itemToLabel = (schema,value) => {
+    return value || '';
+};
+const content = async (req) => {
     const resource = req.params.resource;
     let cols = req.query.cols || '';
     cols = cols.split(',').filter(col => col !== null && col.length>0).map(col => col.trim());
-
     let resources = await fetch(`/res/${resource}`);
     resources = resources.docs;
     let schema = await fetch(`/res/${resource}?intent=schema`);
@@ -14,16 +23,16 @@ module.exports = async (req) => {
         }
         return true;
     });
-
-    return html(req,`
+    return `
     <div style="padding: 1em">
         <div style="margin-bottom: 1em">
             <input type="text" class="form-control form-control search" placeholder="Search">
         </div>
-        <table class="table table-hover">
-            <thead class="thead-light">
+        <div class="table-responsive">
+        <table class="table">
+            <thead >
                 <tr>
-                    ${schema.map(schema => `<th >${schema.name}</th>`).join('')}
+                    ${schema.map(schema => `<th >${schema.name in columnNameMap ? columnNameMap[schema.name] : schema.name}</th>`).join('')}
                     <th></th>
                 </tr>
             </thead>
@@ -31,7 +40,7 @@ module.exports = async (req) => {
                 ${resources.map(res => {
                     return `
                     <tr>
-                        ${schema.map(schema => `<td >${res[schema.name]}</td>`).join('')}
+                        ${schema.map(schema => `<td >${itemToLabel(schema.name,res[schema.name])}</td>`).join('')}
                         <td>
                             <div style="width: 1em" class="delete" data-id="${res._id}" >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M192 188v216c0 6.627-5.373 12-12 12h-24c-6.627 0-12-5.373-12-12V188c0-6.627 5.373-12 12-12h24c6.627 0 12 5.373 12 12zm100-12h-24c-6.627 0-12 5.373-12 12v216c0 6.627 5.373 12 12 12h24c6.627 0 12-5.373 12-12V188c0-6.627-5.373-12-12-12zm132-96c13.255 0 24 10.745 24 24v12c0 6.627-5.373 12-12 12h-20v336c0 26.51-21.49 48-48 48H80c-26.51 0-48-21.49-48-48V128H12c-6.627 0-12-5.373-12-12v-12c0-13.255 10.745-24 24-24h74.411l34.018-56.696A48 48 0 0 1 173.589 0h100.823a48 48 0 0 1 41.16 23.304L349.589 80H424zm-269.611 0h139.223L276.16 50.913A6 6 0 0 0 271.015 48h-94.028a6 6 0 0 0-5.145 2.913L154.389 80zM368 128H80v330a6 6 0 0 0 6 6h276a6 6 0 0 0 6-6V128z"/></svg>
@@ -42,9 +51,8 @@ module.exports = async (req) => {
                 }).join('')}
             </tbody>
         </table>
+        </div>
     </div>
-    
-    
     <script path="${__filename}">
     
         const {publish} = require('../../common/pubsub');
@@ -129,6 +137,12 @@ module.exports = async (req) => {
             });
         }
     </script>
-    
+    `
+};
+
+module.exports = async (req) => {
+    const contentHtml = await content(req);
+    return html(req,`
+        ${req.print(card(req,{title:'Grid Form',content : contentHtml}))}
     `);
 };

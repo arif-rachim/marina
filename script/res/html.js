@@ -1,5 +1,20 @@
 const theme = require('../page/theme');
-
+const {fetch} = require('../../config');
 module.exports = async (req,template) => {
-  return theme(req,{title : 'Dynamic Page',breadcrumb:[],content : template});
+
+    const lastIndex = req.originalUrl.indexOf('?');
+    const resource = req.originalUrl.substring('/res/'.length,lastIndex);
+
+    const result = await fetch(`/res/system_forms?name=|${resource}|&$s.version=-1`);
+    const model = result.docs[0];
+
+  return theme(req,{title : model.label,breadcrumb:[
+          {
+              title : 'Forms'
+          },
+          {
+              title : model.label,
+              path : '#'
+          },
+      ],content : template});
 };

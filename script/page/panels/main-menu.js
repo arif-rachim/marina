@@ -1,4 +1,6 @@
 
+const {fetch} = require('../../../config');
+
 const printMenuItem = item => {
     return `
 <li class="${item.active ? 'active' : ''}">
@@ -44,129 +46,61 @@ const navigationItem = ({path,icon,title,badge,children,type}) => {
 };
 
 
-const menuItems = [
-    {
-        path : '/html/ltr/vertical-modern-menu-template/index.html',
-        icon : 'la-home',
-        title : 'Dashboard',
-        badge : 5
-    },
-    {
-        path : '#',
-        icon : 'la-rocket',
-        title : 'Starter kit',
-        active : false,
-        children : [
-            {
-                path : '#',
-                title : '1 column',
-                active : false
-            },
-            {
-                path : '#',
-                title : '2 column',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Content Det. Sidebar',
-                active : false,
-                children : [
-                    {
-                        path : '#',
-                        title : 'Detached left sidebar',
-                        active : false
-                    },
-                    {
-                        path : '#',
-                        title : 'Detached sticky left sidebar',
-                        active : false
-                    },
-                    {
-                        path : '#',
-                        title : 'Detached right sidebar',
-                        active : false
-                    },
-                    {
-                        path : '#',
-                        title : 'Detached sticky right sidebar',
-                        active : false
-                    },
-                ]
-            },
-            {
-                path : '#',
-                title : 'Fixed navbar',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Fixed navigation',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Fixed navbar & navigation',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Fixed navbar & footer',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Fixed layout',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Boxed layout',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Static layout',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Light layout',
-                active : true
-            },
-            {
-                path : '#',
-                title : 'Dark layout',
-                active : false
-            },
-            {
-                path : '#',
-                title : 'Semi dark layout',
-                active : false
-            },
+const menuItems = (menus) => {
+    return [
+        {
+            path: '/page/dashboard',
+            icon: 'la-home',
+            title: 'Dashboard',
+            badge: 5
+        },
+        {
+            path: '#',
+            icon: 'la-file-text-o',
+            title: 'Forms',
+            active: false,
+            children: menus
+        },
+        {type: 'nav-header', title: 'Support'},
+        {
+            icon: 'la-support',
+            path: 'https://pixinvent.ticksy.com/',
+            title: 'Raise Support'
+        },
+        {
+            icon: 'la-folder',
+            path: 'https://pixinvent.com/modern-admin-clean-bootstrap-4-dashboard-html-template/documentation',
+            title: 'Documentation'
+        }
 
-        ]
-    },
-    {type:'nav-header',title:'Support'},
-    {
-        icon:'la-support',
-        path : 'https://pixinvent.ticksy.com/',
-        title : 'Raise Support'
-    },
-    {
-        icon:'la-folder',
-        path : 'https://pixinvent.com/modern-admin-clean-bootstrap-4-dashboard-html-template/documentation',
-        title : 'Documentation'
-    }
-
-];
+    ];
+}
 
 module.exports = async (req) => {
+
+
+    const forms = await fetch('/res/system_forms');
+    const items = forms.docs.reduce((result,next,index) => {
+        if(result.keys.indexOf(next.name) < 0){
+            result.keys.push(next.name);
+            result.items.push(next);
+        }
+        return result;
+    },{keys:[],items : []}).items.map(form => {
+        const path = `/res/${form.name}?intent=grid-html`;
+        return {
+            title : form.label,
+            path : path,
+            active : req.originalUrl === path
+        }
+    });
+
+
     return `
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
   <div class="main-menu-content">
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-      ${menuItems.map(navigationItem).join('')}
+      ${menuItems(items).map(navigationItem).join('')}
     </ul>
   </div>
 </div>
