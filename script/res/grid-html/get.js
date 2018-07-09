@@ -142,7 +142,23 @@ const content = async (req) => {
 
 module.exports = async (req) => {
     const contentHtml = await content(req);
+    const resource = req.params.resource;
+
+    const model = await fetch(`/svc/system.resource_model?res=${resource}`);
+    const actions = [
+        {
+            path : `/page/form.design?id=${model._id}`,
+            icon : 'la-calendar-check-o',
+            title : 'Design'
+        },
+        {
+            path : '#',
+            icon : 'la-calendar-check-o',
+            title : 'New Item'
+        }
+    ];
+
     return html(req,`
         ${req.print(card(req,{title:'Grid Form',content : contentHtml}))}
-    `);
+    `,actions);
 };

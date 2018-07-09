@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/page/panels/app-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/panels/app-content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/page/panels/main-menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/panels/main-menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/res/grid-html/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/res/grid-html/get.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/res/html.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/res/html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/res/json/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/res/json/delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/start.js" afterDir="false" />
-    </list>
+    <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -83,7 +75,7 @@
       <file leaf-file-name="get.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/res/grid-html/get.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="119">
               <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -279,50 +271,6 @@
               <item name="marina" type="b2602c69:ProjectViewProjectNode" />
               <item name="marina" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-              <item name="panels" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="grid-html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="marina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="marina" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="svc" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -421,12 +369,12 @@
       <workItem from="1530721099497" duration="6885000" />
       <workItem from="1530909242427" duration="169000" />
       <workItem from="1530944794166" duration="8327000" />
-      <workItem from="1531055100226" duration="18399000" />
+      <workItem from="1531055100226" duration="19058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="458616000" />
+    <option name="totallyTimeSpent" value="459275000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -439,18 +387,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5900709" visible="true" weight="0.1670179" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5900709" visible="true" weight="0.1670179" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.32897604" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5353003" side_tool="true" visible="true" weight="0.23202614" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5300316" side_tool="true" visible="true" weight="0.52832246" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49315068" weight="0.3278867" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49947312" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4646997" visible="true" weight="0.23202614" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4646997" weight="0.23202614" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.40992907" side_tool="true" weight="0.1670179" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.47049525" weight="0.52832246" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.46996838" visible="true" weight="0.52832246" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.544784" weight="0.2472767" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -761,7 +708,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/res/grid-html/get.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="119">
           <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />

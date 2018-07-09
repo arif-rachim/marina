@@ -6,7 +6,7 @@ const loader = require('./components/loader');
 const fixedTop = require('./panels/fixed-top');
 const mainMenu = require('./panels/main-menu');
 const appContent = require('./panels/app-content');
-module.exports = async(req,{title,breadcrumb,content}) => {
+module.exports = async(req,{title,breadcrumb,content,actions}) => {
     return `
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -20,7 +20,9 @@ module.exports = async(req,{title,breadcrumb,content}) => {
     <title>Marina : Progressive Business App</title>
     <link rel="apple-touch-icon" href="/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
+    <!--
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
+    -->
     <link href="/app-assets/fonts/line-awesome/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/vendors.css">
@@ -46,7 +48,7 @@ module.exports = async(req,{title,breadcrumb,content}) => {
     <!-- ////////////////////////////////////////////////////////////////////////////-->
     <!-- main menu-->
     ${req.print(mainMenu(req))}
-    ${req.print(appContent(req,{title,breadcrumb,content}))}
+    ${req.print(appContent(req,{title,breadcrumb,content,actions}))}
     <!-- ////////////////////////////////////////////////////////////////////////////-->
     <footer class="footer footer-static footer-light navbar-border navbar-shadow">
       <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright  &copy; 2018 <a class="text-bold-800 grey darken-2" href="mail: a.arif.r@gmail.com" target="_blank">Arif Rachim</a>, All rights reserved. </span><span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Hand-crafted & Made with <i class="ft-heart pink"></i></span></p>

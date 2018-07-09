@@ -8,7 +8,14 @@ class Middleware {
 
     save(name,method,version,content){
         if(!this.isDirectoryExist(name)){
-            fs.mkdirSync(this.directoryPath(name));
+            let path = __dirname;
+            ['/','../','../','../','.resources/','db/',`${name}/`].forEach(subPath => {
+               path = path+ subPath;
+               if(!fs.existsSync(path)){
+                   fs.mkdirSync(path);
+                   console.log('Create path ',path);
+               }
+            });
         }
         fs.writeFileSync(this.path(name,method,version),content,{encoding:'utf-8'});
     }

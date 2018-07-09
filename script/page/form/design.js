@@ -5,7 +5,7 @@ const Button = require('./comp/button-render');
 const SingleLineText = require('./comp/single-line-text-render');
 const Association = require('./comp/association-render');
 const {fetch} = require('../../../config');
-
+const card = require('../panels/card');
 const componentMap = {
     'page.form.comp.button': Button,
     'page.form.comp.vertical': Vertical,
@@ -58,14 +58,12 @@ const printComponent = (model) => {
         return component.render(model.attribute);
     }
 };
-module.exports = async (req) => {
+const render = async (req) => {
     let model = false;
     if (req.query.id) {
         model = await fetch(`/res/system_forms/${req.query.id}`);
     }
-
-    try {
-        return html(req, `
+    return `
         <script src="/node_modules/ace-builds/src-min/ace.js"></script>
         <script src="/node_modules/ace-builds/src-min/theme-chrome.js"></script>
         <script src="/node_modules/ace-builds/src-min/mode-javascript.js"></script>
@@ -444,8 +442,11 @@ module.exports = async (req) => {
             });
             
         </script>
-    `)
-    } catch (err) {
-        console.error(err);
-    }
+    `
 };
+
+module.exports = async (req) => {
+    const template = await render(req);
+    const content = await card(req,{title:'New Form',content : template});
+    return html(req, content);
+}
