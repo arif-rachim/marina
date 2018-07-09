@@ -87,11 +87,11 @@ module.exports = async (req) => {
         }
         return result;
     },{keys:[],items : []}).items.map(form => {
-        const path = `/res/${form.name}?intent=grid-html`;
+        const path = `/res/${form.name}`;
         return {
             title : form.label,
-            path : path,
-            active : req.originalUrl === path
+            path : path+'?intent=grid-html',
+            active : req.originalUrl.indexOf(path) === 0
         }
     });
 

@@ -152,7 +152,7 @@ module.exports = async (req) => {
             title : 'Design'
         },
         {
-            path : '#',
+            path : `/res/${resource}?intent=form-html`,
             icon : 'la-calendar-check-o',
             title : 'New Item'
         }
