@@ -1,5 +1,6 @@
 const {publish} = require('../../../common/pubsub');
 const {fetch} = require('../../../common/net');
+const AES = require('crypto-js/aes');
 
 class Form {
     constructor(node){
@@ -16,7 +17,9 @@ class Form {
         this.node.querySelectorAll('[is^="page.form.comp"]').forEach(node => {
             if('isValid' in node){
                 validityPromises.push(node.isValid());
-                data[node.getName()] = node.getValue();
+                const encrypted = node.getModel().encrypted.value;
+                const value = encrypted ? AES.encrypt(node.getValue(),'AES').toString() : node.getValue();
+                data[node.getName()] = value;
             }
         });
         this.data = data;

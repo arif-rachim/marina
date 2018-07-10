@@ -32,10 +32,9 @@ const content = async (req) => {
 
     const skip = parseInt(req.query.$i) || 0;
     const limit = parseInt(req.query.$l) || 25;
-
     const response = await fetch(`/res/${resource}?$i=${skip}&$l=${limit}`);
-    const resources = response.docs;
-    const pagingInfo = response.pageInfo;
+    const resources = response.docs || {};
+    const pagingInfo = response.pageInfo || {currentPage:1,totalPage:1,limit:25};
 
 
     // lets check if we have model for this
@@ -109,7 +108,8 @@ const content = async (req) => {
     
         const {publish} = require('../../common/pubsub');
         const {fetch} = require('../../common/net');
-        document.querySelector('.search').addEventListener('input',App.utils.debounce(onKeyup,500));
+        const {debounce} = require('../../common/utils');
+        document.querySelector('.search').addEventListener('input',debounce(onKeyup,500));
         
         function populateListeners(){
             document.querySelectorAll('.delete').forEach(function(node){

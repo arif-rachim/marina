@@ -1,11 +1,9 @@
 const {merge} = require('../../../common/utils');
 const {publish,subscribe} = require('../../../common/pubsub');
-const {render} = require('./association-render');
+const {render} = require('./single-line-password-render');
 const {fetch} = require('../../../common/net');
-const itemRenderer = require('./association-item-render');
-const AssociationSelector = require('./association-selector-render');
 
-class Association {
+class SingleLinePassword {
 
     constructor(node){
         this.node = node;
@@ -15,21 +13,11 @@ class Association {
         this.node.getValue = this.getValue.bind(this);
         this.node.getModel = this.getModel.bind(this);
         this.input = this.node.querySelector('input');
-        this.itemContainer = this.node.querySelector('.item-container');
         this.initialize();
     }
 
     initialize(){
         this.model = this.buildModel();
-        if(this.input.value){
-            fetch(`/res/${this.model.resourcePath.value}?$ids=${this.input.value}`).then(results => {
-                if(results && results.length > 0){
-                    this.items = results;
-                    this.renderItems();
-                }
-            });
-        }
-
         this.node.addEventListener('dragstart',event => {
             const data = {
                 action : 'move',
@@ -42,24 +30,8 @@ class Association {
             this.selectThisNode();
         });
 
-        this.itemContainer.addEventListener('click',() => {
-            const resourcePath = this.model.resourcePath.value;
-            const dataRenderer = this.model.dataRenderer.value;
-            const selectedResource = (this.input.value || '');
-            if(resourcePath){
-                publish('app.slider',AssociationSelector.render({
-                    resourcePath : resourcePath,
-                    selectedResource : selectedResource,
-                    dataRenderer : dataRenderer,
-                    title : this.model.label.value
-                })).then(results => {
-                    if(results){
-                        this.items = this.items || [];
-                        this.items =  this.items.concat(results);
-                        this.renderItems();
-                    }
-                });
-            }
+        this.input.addEventListener('input',() => {
+            this.isValid();
         });
 
         subscribe('property-details-update',data => {
@@ -69,27 +41,13 @@ class Association {
             }
         });
 
+
+        subscribe('property-details-delete',data => {
+            if(data.id.value === this.model.id.value){
+                this.node.parentNode.removeChild(this.node);
+            }
+        });
     }
-
-    renderItems(){
-        const items = this.items;
-        const renderer = eval(this.model.dataRenderer.value);
-        this.itemContainer.innerHTML = itemRenderer(items,renderer);
-        this.input.value = items.map(data => data._id).join(',');
-        this.itemContainer.querySelectorAll('.btn-item').forEach(btn => {
-            btn.addEventListener('click',this.onDeleteItem.bind(this));
-        })
-    }
-
-    onDeleteItem(event){
-        event.preventDefault();
-        event.stopPropagation();
-
-        const itemId = event.target.getAttribute('data-id');
-        this.items = this.items.filter(item => item._id !== itemId);
-        this.renderItems();
-    }
-
 
     selectThisNode(){
         const formPanel = document.getElementById('form-panel');
@@ -100,10 +58,8 @@ class Association {
         }
     }
 
-
     buildModel(){
-        const validator = this.node.querySelector('code[data-validator]');
-        const dataRenderer = this.node.querySelector('code[data-renderer]');
+        const validator = this.node.querySelector('code');
         return {
             label:{
                 value : this.node.querySelector('label').innerHTML,
@@ -142,12 +98,6 @@ class Association {
                 type : 'boolean',
                 description : 'If selected, this input will be checked before the form submitted'
             },
-            resourcePath : {
-                value : this.input.getAttribute('resource-path'),
-                name : 'Resource Path',
-                type : 'text',
-                description : 'This will be the associated resource path'
-            },
             encrypted : {
                 value : this.input.hasAttribute('encrypted'),
                 name : 'Encrypted',
@@ -160,17 +110,29 @@ class Association {
                 type : 'boolean',
                 description : 'If selected, this input will only visible for admin only.'
             },
+            minChars : {
+                value : this.input.hasAttribute('min-chars') ? this.input.getAttribute('min-chars') : 0,
+                name : 'Minimum Characters',
+                type : 'number',
+                description : 'If selected, minimum characters validation will be triggered before the form submitted'
+            },
+            maxChars : {
+                value : this.input.hasAttribute('max-chars') ?  this.input.getAttribute('max-chars') : 255,
+                name : 'Maximum Characters',
+                type : 'number',
+                description : 'If selected, maximum characters validation will be triggered before the form submitted'
+            },
+            pattern : {
+                value : this.input.hasAttribute('pattern') ? this.input.getAttribute('pattern') : '',
+                name : 'Pattern',
+                type : 'text',
+                description : 'If set, Regex pattern validation will be triggered before the form submitted'
+            },
             validator : {
                 value : validator.innerText,
                 name : 'Validator : (data,form) => return ',
                 type : 'paragraph',
                 description : 'A Javascript function to perform advance validation, promise return is accepted, please return following format {success:false,errorMessage:"validation message to display"}'
-            },
-            dataRenderer : {
-                value : dataRenderer.innerText,
-                name : 'Renderer : (data) => return ',
-                type : 'paragraph',
-                description : 'A Javascript function to render the data'
             },
             id : {
                 value : this.node.id,
@@ -211,6 +173,20 @@ class Association {
 
             if(this.model.required.value ){
                 if(!input.checkValidity()){
+                    resolve({success : false,message:input.validationMessage});
+                    return;
+                }
+            }
+            if(this.model.minChars.value > 0){
+                if(value.length < this.model.minChars.value){
+                    input.setCustomValidity(`Minimum character ${this.model.label.value} is ${this.model.minChars.value}`);
+                    resolve({success : false,message:input.validationMessage});
+                    return;
+                }
+            }
+            if(this.model.maxChars.value > 0){
+                if(value.length > this.model.maxChars.value){
+                    input.setCustomValidity(`Maximum character ${this.model.label.value} is ${this.model.maxChars.value}`);
                     resolve({success : false,message:input.validationMessage});
                     return;
                 }
@@ -267,6 +243,7 @@ class Association {
             input.removeAttribute('unique');
         }
 
+
         if(this.model.encrypted.value){
             input.setAttribute('encrypted',"true");
         }else{
@@ -279,9 +256,28 @@ class Association {
             input.removeAttribute('admin-only');
         }
 
+        if(this.model.minChars.value){
+            input.setAttribute('min-chars',this.model.minChars.value);
+        }else{
+            input.removeAttribute('min-chars');
+        }
+
+        if(this.model.maxChars.value){
+            input.setAttribute('max-chars',this.model.maxChars.value);
+        }else{
+            input.removeAttribute('max-chars');
+        }
+
+        if(this.model.pattern.value){
+            input.setAttribute('pattern',this.model.pattern.value);
+        }else{
+            input.removeAttribute('pattern');
+        }
+
+
         this.node.querySelector('code').innerText = this.model.validator.value;
         this.node.querySelector('small').innerHTML = this.model.description.value;
     }
 }
 
-module.exports = Association;
+module.exports = SingleLinePassword;

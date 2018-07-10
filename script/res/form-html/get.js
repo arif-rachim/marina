@@ -2,6 +2,7 @@ const Vertical = require('../../page/form/comp/vertical-render');
 const Horizontal = require('../../page/form/comp/horizontal-render');
 const Button = require('../../page/form/comp/button-render');
 const SingleLineText = require('../../page/form/comp/single-line-text-render');
+const SingleLinePassword = require('../../page/form/comp/single-line-password-render');
 const Association = require('../../page/form/comp/association-render');
 const {fetch} = require('../../../config');
 const html = require('../html');
@@ -12,6 +13,7 @@ const componentMap = {
     'page.form.comp.vertical' : Vertical,
     'page.form.comp.horizontal' : Horizontal,
     'page.form.comp.single-line-text' : SingleLineText,
+    'page.form.comp.single-line-password' : SingleLinePassword,
     'page.form.comp.association' : Association,
     'form' : {render: (attribute,data) => {
             return printComponent(attribute,data);

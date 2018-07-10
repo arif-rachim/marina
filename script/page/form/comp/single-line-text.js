@@ -11,6 +11,7 @@ class SingleLineText {
         this.node.isValid = this.isValid.bind(this);
         this.node.getName = this.getName.bind(this);
         this.node.getValue = this.getValue.bind(this);
+        this.node.getModel = this.getModel.bind(this);
         this.input = this.node.querySelector('input');
         this.initialize();
     }
@@ -154,6 +155,11 @@ class SingleLineText {
 
     getValue(){
         return this.input.value;
+    }
+
+    getModel(){
+        this.buildModel();
+        return this.model;
     }
 
     isValid(){

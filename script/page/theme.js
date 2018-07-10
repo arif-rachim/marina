@@ -38,7 +38,6 @@ module.exports = async(req,{title,breadcrumb,content,actions}) => {
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END Custom CSS-->
     <script src="/svc/system.module?path=common.polyfill&name=polyfill"></script>
-    <script src="/script/common/app.js"></script>
   </head>
   <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
     
