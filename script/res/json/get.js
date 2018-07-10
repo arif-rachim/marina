@@ -53,7 +53,7 @@ module.exports = (req,res) => {
         }else{
             // we need to introduce pagination here
             const skip = parseInt(req.query.$i) || 0;
-            const limit = parseInt(req.query.$l) || 50;
+            const limit = parseInt(req.query.$l) || 25;
             const isAnd = parseInt(req.query.$and) || 0;
             const propertiesToDelete = ["$i","$l","$and"];
             const query = req.query;

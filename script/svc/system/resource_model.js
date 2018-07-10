@@ -10,5 +10,6 @@ module.exports = async (req,res) => {
         const result = await fetch(`/res/system_forms?name=|${resource}|&$s.version=-1`);
         model = result.docs[0];
     }
+    model = model || {};
     res.end(JSON.stringify(model));
 }
