@@ -11,19 +11,13 @@ module.exports = (req) => {
             .slider-panel .slider{
                 position: absolute;
                 display: inline-block;
-                padding:1em;
                 top : 0px;
                 transition: top 300ms;
                 
                 border: 1px solid #eeeeee;
                 border-top: none;
-                
-                background: rgba(252,252,252,1);
-                background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);                
-                background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
-                background: -o-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
-                background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
-                background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(240,240,240,1) 100%);
+                border-top-right-radius: 0px;
+                border-top-left-radius: 0px;
             }
             .slider-panel .slider.hide{
                 top: -200px;
@@ -31,11 +25,12 @@ module.exports = (req) => {
             .slider-panel .button-holders button{
                 margin: 0.3em;
             }
+            
         </style>
         <div style="position: relative;width: 100%;">
             <div style="position: absolute;width: 100%;">
                 <div class="slider-panel" style="z-index:1">
-                    <div class="slider shadow p-3 mb-5 hide">
+                    <div class="card slider shadow p-2 mb-5 hide">
                         
                     </div>
                 </div>

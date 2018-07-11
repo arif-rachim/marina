@@ -1,6 +1,10 @@
 const {guid} = require('../../../common/utils');
 const AES = require('crypto-js/aes');
 const UTF8 = require('crypto-js/enc-utf8');
+const validatorScript = `(data,form) => {
+    return Promise.resolve({success:true});
+};`;
+
 const render = (model,data) => {
 
     model = model || {
@@ -38,7 +42,7 @@ const render = (model,data) => {
             value : ''
         },
         validator : {
-            value : '',
+            value : validatorScript,
         },
         id : {
             value : guid()

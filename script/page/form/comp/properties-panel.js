@@ -12,7 +12,7 @@ class PropertiesPanel{
                 template.push(PropertiesPanel.prepareTemplate(model[key],key));
             }
             this.propertyDetailsHolder.innerHTML = template.join('');
-            this.propertyDetailsHolder.querySelectorAll('input[type="text"] , input[type="number"] , textarea').forEach(input => {
+            this.propertyDetailsHolder.querySelectorAll('input[type="text"] , input[type="number"] , input[type="hidden"] , textarea').forEach(input => {
                 input.addEventListener('input',this.updateModel.bind(this));
             });
             this.propertyDetailsHolder.querySelectorAll('input[type="checkbox"]').forEach(input => {
@@ -37,6 +37,15 @@ class PropertiesPanel{
             return `<div class="form-group" style="margin: 0;margin-bottom: 0.5em;">
                     <label style="margin: 0;" for="${uid}">${model.name}</label>
                     <textarea id="${uid}"  rows="5" class="form-control" name="${key}" model-type="${model.type}">${model.value}</textarea>
+                    <small>${model.description}</small>
+                </div>`;
+        }
+
+        if(model.type === 'javascript'){
+            return `<div class="form-group" style="margin: 0;margin-bottom: 0.5em;" is="page.form.comp.javascript-editor">
+                    <label style="margin: 0;" for="${uid}">${model.name}</label>
+                    <input type="hidden" id="${uid}" name="${key}" model-type="${model.type}" value="${model.value}">
+                    <textarea   rows="5" class="form-control"  >${model.value}</textarea>
                     <small>${model.description}</small>
                 </div>`;
         }
@@ -69,14 +78,13 @@ class PropertiesPanel{
 
     getModel(){
         const labelNodes = this.propertyDetailsHolder.querySelectorAll('label');
-
         const model = {};
+
         labelNodes.forEach((labelNode) => {
             const node = document.getElementById(labelNode.getAttribute('for'));
             const key = node.getAttribute('name');
             const type = node.getAttribute('model-type');
             let value = '';
-
             switch (type) {
                 case 'boolean' :
                     value = node.checked;
@@ -85,6 +93,9 @@ class PropertiesPanel{
                     value = node.value;
                     break;
                 case 'number' :
+                    value = node.value;
+                    break;
+                case 'javascript' :
                     value = node.value;
                     break;
                 default :

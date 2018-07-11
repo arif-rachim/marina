@@ -6,16 +6,16 @@ const render = (model,data) => {
 
     model = model || {
         label:{
-            value : 'Label'
+            value : 'Number Label'
         },
         name : {
             value : 'name'
         },
         placeholder : {
-            value : 'Placeholder'
+            value : 'Enter number selection'
         },
         description : {
-            value : 'Description'
+            value : 'Number description'
         },
         required : {
             value : false
@@ -29,11 +29,14 @@ const render = (model,data) => {
         adminOnly : {
             value : false
         },
-        minChars : {
+        minValue : {
             value : 0
         },
-        maxChars : {
-            value : 255
+        maxValue : {
+            value : 1000000000000
+        },
+        step : {
+            value : 0.01
         },
         pattern : {
             value : ''
@@ -53,23 +56,24 @@ const render = (model,data) => {
     }
 
     const inputId = guid();
-    return Promise.resolve(`<div id="${model.id.value}" is="page.form.comp.single-line-text" 
+    return Promise.resolve(`<div id="${model.id.value}" is="page.form.comp.number" 
                 class="form-group"
                 ${resourceName ? '' : 'draggable="true"'} 
                 style="width: 100%" 
                 data-resource-name="${resourceName}" 
                 data-resource-id="${resourceId}">
             <label for="${inputId}" style="margin-bottom:0">${model.label.value}</label>
-            <input type="text" id="${inputId}" class="form-control" 
+            <input type="number" id="${inputId}" class="form-control" 
                 placeholder="${model.placeholder.value}" 
                 name="${model.name.value}" 
                 ${model.required.value ? 'required="true"' : ''} 
                 ${model.unique.value ? 'unique="true"' : ''} 
                 ${model.encrypted.value ? 'encrypted="true"' : ''} 
                 ${model.adminOnly.value ? 'admin-only="true"':''} 
-                ${model.minChars.value ? 'min-chars="'+model.minChars.value+'"' : ''}
-                ${model.maxChars.value ? 'max-chars="'+model.maxChars.value+'"' : ''}
+                ${model.minValue.value ? 'min="'+model.minValue.value+'"' : ''}
+                ${model.maxValue.value ? 'max="'+model.maxValue.value+'"' : ''}
                 ${model.pattern.value ? 'pattern="'+model.pattern.value+'"' : ''}
+                step="${model.step.value}"
                 value="${value}" >
             <code style="display: none" data-validator="${inputId}">${model.validator.value}</code>
             <small>${model.description.value}</small>

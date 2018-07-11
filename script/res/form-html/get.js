@@ -4,6 +4,8 @@ const Button = require('../../page/form/comp/button-render');
 const SingleLineText = require('../../page/form/comp/single-line-text-render');
 const SingleLinePassword = require('../../page/form/comp/single-line-password-render');
 const Association = require('../../page/form/comp/association-render');
+const Number = require('../../page/form/comp/number-render');
+const ParagraphText = require('../../page/form/comp/paragraph-text-render');
 const {fetch} = require('../../../config');
 const html = require('../html');
 
@@ -15,6 +17,8 @@ const componentMap = {
     'page.form.comp.single-line-text' : SingleLineText,
     'page.form.comp.single-line-password' : SingleLinePassword,
     'page.form.comp.association' : Association,
+    'page.form.comp.number' : Number,
+    'page.form.comp.paragraph-text' : ParagraphText,
     'form' : {render: (attribute,data) => {
             return printComponent(attribute,data);
         }}

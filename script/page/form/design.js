@@ -5,6 +5,9 @@ const Button = require('./comp/button-render');
 const SingleLineText = require('./comp/single-line-text-render');
 const SingleLinePassword = require('./comp/single-line-password-render');
 const Association = require('./comp/association-render');
+const ParagraphText = require('./comp/paragraph-text-render');
+
+const Number = require('./comp/number-render');
 const {fetch} = require('../../../config');
 const card = require('../panels/card');
 const componentMap = {
@@ -14,7 +17,8 @@ const componentMap = {
     'page.form.comp.single-line-text': SingleLineText,
     'page.form.comp.single-line-password': SingleLinePassword,
     'page.form.comp.association': Association,
-
+    'page.form.comp.paragraph-text': ParagraphText,
+    'page.form.comp.number': Number,
     'form': {
         render: attribute => {
             return printComponent(attribute);
@@ -232,7 +236,7 @@ const render = async (req) => {
                     <div class="property-details" style="width: 100%">
                     </div>
                     <div>
-                        <button class="btn btn-primary btn-delete">Delete</button>
+                        <button class="btn btn-primary btn-sm btn-delete">Delete</button>
                     </div>
                 </div>
             </div>
@@ -257,6 +261,8 @@ const render = async (req) => {
             const SingleLineText = require('./comp/single-line-text');
             const SingleLinePassword = require('./comp/single-line-password');
             const Association = require('./comp/association');
+            const ParagraphText = require('./comp/paragraph-text');
+            const Number = require('./comp/number');
             const Button = require('./comp/button');
             
             // here we are setting the editor
@@ -276,7 +282,9 @@ const render = async (req) => {
                 'page.form.comp.horizontal' : Horizontal,
                 'page.form.comp.single-line-text' : SingleLineText,
                 'page.form.comp.single-line-password' : SingleLinePassword,
-                'page.form.comp.association' : Association
+                'page.form.comp.association' : Association,
+                'page.form.comp.paragraph-text' : ParagraphText,
+                'page.form.comp.number' : Number
             };
             document.querySelector('#saveFormButton').addEventListener('click',event => {
                 publish('app.confirmation',{

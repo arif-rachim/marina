@@ -1,7 +1,12 @@
 const {guid} = require('../../../common/utils');
 //const {fetch} = require('../../../../config');
 const itemRenderer = require('./association-item-render');
-
+const validatorScript = `(data,form) => {
+    return Promise.resolve({success:true});
+};`;
+const rendererScript = `(data) => {
+    return data.name;
+};`;
 const render = (model,data) => {
     model = model || {
         label:{
@@ -32,10 +37,10 @@ const render = (model,data) => {
             value : false
         },
         validator : {
-            value : '',
+            value : validatorScript,
         },
         dataRenderer : {
-            value : `data => data.name`,
+            value : rendererScript,
         },
         id : {
             value : guid()
@@ -58,6 +63,7 @@ const render = (model,data) => {
         resolve({value,resourceName,resourceId,items});
     }).then(({value,resourceName,resourceId,items}) => {
         const inputId = guid();
+        const renderer = Function(`return ${model.dataRenderer.value}`)();
         return `<div id="${model.id.value}" is="page.form.comp.association" 
                 class="form-group"
                 ${resourceName ? '' : 'draggable="true"'} 
@@ -76,7 +82,7 @@ const render = (model,data) => {
                     resource-path="${model.resourcePath.value}"
                     value="${value}" style="background-color: #FFE8A8;opacity: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;">
                 <div class="item-container " style="position: relative;top: 0;bottom: 0;left: 0;right: 0;min-height: 1.5em">
-                    ${itemRenderer(items,eval(model.dataRenderer.value))}
+                    ${itemRenderer(items,renderer)}
                 </div>
             </div>
             <code style="display: none" data-validator="${inputId}">${model.validator.value}</code>

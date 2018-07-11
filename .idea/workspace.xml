@@ -3,14 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/crawler/crawl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/exports/vcard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/security/get-current-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/security/get-current-user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/security/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/security/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/security/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/svc/security/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/system/initialize.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/system/mail-sender.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/svc/system/welcome-message.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/components/confirmation.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/components/confirmation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/components/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/components/slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/association-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/association-render.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/association-selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/association-selector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/association.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/association.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/properties-panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/properties-panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-password.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-password.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-text.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-text.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/design.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/design.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/res/form-html/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/res/form-html/get.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/start.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -28,73 +33,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="system_forms.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.resources/db/system_forms.json">
+      <file leaf-file-name="javascript-editor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/javascript-editor.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="module.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/script/svc/system/module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resource_model.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/svc/system/resource_model.js">
+      <file leaf-file-name="horizontal-render.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal-render.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="notification.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/page/components/notification.js">
+      <file leaf-file-name="horizontal.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="button-render.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/button-render.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="button.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/button.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="association-selector-render.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-selector-render.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="association-selector.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-selector.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state relative-caret-position="-332">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="start.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start.js">
+      <file leaf-file-name="association-render.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-render.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-238">
-              <caret line="145" selection-start-line="145" selection-end-line="145" />
+            <state relative-caret-position="561">
+              <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/svc/security/login.js">
+      <file leaf-file-name="association-item-render.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-item-render.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state>
+              <folding>
+                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logout.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/svc/security/logout.js">
+      <file leaf-file-name="association.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/association.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="72" selection-start-line="4" selection-start-column="72" selection-end-line="4" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="esnext-es5.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/svc/system/esnext-es5.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get-current-user.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/svc/security/get-current-user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="85" lean-forward="true" selection-start-line="5" selection-start-column="85" selection-end-line="5" selection-end-column="85" />
+            <state relative-caret-position="306">
+              <caret line="54" column="37" lean-forward="true" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -112,9 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>app.slider</find>
-      <find>slider.innerHTML</find>
-      <find>this.dataRenderer</find>
       <find>function(data){</find>
       <find>async</find>
       <find>document</find>
@@ -142,6 +143,9 @@
       <find>aes.encrypt(node.getValue, 'AES').toString() : node.getValue</find>
       <find>printPagination</find>
       <find>pagingInfo</find>
+      <find>Function(</find>
+      <find>Function</find>
+      <find>model.dataRe</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -160,20 +164,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/script/page/form/single-line-text.js" />
-        <option value="$PROJECT_DIR$/script/common/utils.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/horizontal.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/button.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/vertical.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/association-selector-render.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/horizontal-render.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/vertical-render.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/button-render.js" />
         <option value="$PROJECT_DIR$/script/page/components/slider.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/association-selector.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/association-item-render.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/association-render.js" />
         <option value="$PROJECT_DIR$/script/res/json/middleware.js" />
         <option value="$PROJECT_DIR$/script/res/json/post.js" />
         <option value="$PROJECT_DIR$/script/res/json/put.js" />
@@ -202,15 +200,21 @@
         <option value="$PROJECT_DIR$/script/res/grid-html/table.js" />
         <option value="$PROJECT_DIR$/script/res/form-html/get.js" />
         <option value="$PROJECT_DIR$/script/page/form/design.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-password.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/single-line-text.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/association.js" />
         <option value="$PROJECT_DIR$/script/res/form-html/component/form.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" />
         <option value="$PROJECT_DIR$/script/res/grid-html/get.js" />
         <option value="$PROJECT_DIR$/script/svc/security/login.js" />
         <option value="$PROJECT_DIR$/script/svc/security/logout.js" />
         <option value="$PROJECT_DIR$/script/svc/security/get-current-user.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/association-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/number-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/paragraph-text-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-password.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/paragraph-text.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/number.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/association.js" />
       </list>
     </option>
   </component>
@@ -288,21 +292,22 @@
               <item name="marina" type="b2602c69:ProjectViewProjectNode" />
               <item name="marina" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="svc" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="marina" type="b2602c69:ProjectViewProjectNode" />
               <item name="marina" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="svc" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="form-html" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="marina" type="b2602c69:ProjectViewProjectNode" />
               <item name="marina" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
-              <item name="svc" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="form-html" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -404,12 +409,13 @@
       <workItem from="1530944794166" duration="8327000" />
       <workItem from="1531055100226" duration="19058000" />
       <workItem from="1531138530535" duration="5123000" />
-      <workItem from="1531228660301" duration="10370000" />
+      <workItem from="1531228660301" duration="11020000" />
+      <workItem from="1531317616710" duration="1215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="474768000" />
+    <option name="totallyTimeSpent" value="476633000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -422,17 +428,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5869565" visible="true" weight="0.1670179" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5842391" visible="true" weight="0.1670179" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.32897604" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5389884" side_tool="true" visible="true" weight="0.23173277" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.53951526" side_tool="true" visible="true" weight="0.23173277" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4926238" weight="0.32776618" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49947312" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4610116" visible="true" weight="0.23173277" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4604847" visible="true" weight="0.23173277" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
-      <window_info id="Structure" order="1" sideWeight="0.41304347" side_tool="true" visible="true" weight="0.1670179" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.46575344" weight="0.5062631" />
+      <window_info id="Structure" order="1" sideWeight="0.41576087" side_tool="true" visible="true" weight="0.1670179" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4646997" weight="0.5062631" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.54373026" weight="0.24634655" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -458,109 +465,11 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/res/html.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/res/grid-html/table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app-assets/js/core/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/theme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="133" column="5" lean-forward="true" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/common/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="121" column="16" lean-forward="true" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/common/component-registry.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-390">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/common/mkdir.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/common/net.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="10" lean-forward="true" selection-end-line="76" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/common/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-570" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/sedap/afterRequest@1.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/sedap/beforeRequest@1.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/sedap/beforeRequest@0.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/sedap/afterRequest@0.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/test/afterRequest@0.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.resources/db/test/afterRequest@1.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.resources/db/sedap/beforeRequest@1.js" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/sedap/beforeRequest@0.js" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/sedap/afterRequest@0.js" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/test/afterRequest@0.js" />
+    <entry file="file://$PROJECT_DIR$/.resources/db/test/afterRequest@1.js" />
     <entry file="file://$PROJECT_DIR$/script/page/form/design.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -580,49 +489,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/crypto-js/enc-utf8.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-password.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="159" column="4" selection-start-line="159" selection-start-column="4" selection-end-line="162" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="200" column="5" selection-start-line="200" selection-start-column="5" selection-end-line="200" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-item-render.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-render.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-selector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-text.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="162" column="5" selection-start-line="162" selection-start-column="5" selection-end-line="162" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/res/form-html/get.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -666,17 +532,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/start.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="145" selection-start-line="145" selection-end-line="145" />
+        <state relative-caret-position="2448">
+          <caret line="144" selection-start-line="144" selection-end-line="144" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/svc/crawler/crawl.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/svc/exports/vcard.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/script/svc/crawler/crawl.js" />
+    <entry file="file://$PROJECT_DIR$/script/svc/exports/vcard.js" />
     <entry file="file://$PROJECT_DIR$/script/svc/security/get-current-user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -699,33 +561,152 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/svc/system/esnext-es5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/svc/system/initialize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1292">
-          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/svc/system/mail-sender.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/script/svc/system/initialize.js" />
+    <entry file="file://$PROJECT_DIR$/script/svc/system/mail-sender.js" />
     <entry file="file://$PROJECT_DIR$/.resources/db/system_forms.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/svc/system/welcome-message.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/script/svc/system/welcome-message.js" />
     <entry file="file://$PROJECT_DIR$/script/svc/system/resource_model.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/script/svc/system/module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="51">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/vertical.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/vertical-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-text.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="133" column="38" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-password.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="133" column="34" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/properties-panel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/paragraph-text-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/paragraph-text.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="133" column="38" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/number-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/number.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="140" column="38" selection-start-line="140" selection-start-column="38" selection-end-line="140" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/javascript-editor.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal-render.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/button-render.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/button.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-selector-render.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-selector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-332">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-item-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="54" column="37" lean-forward="true" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
         </state>
       </provider>
     </entry>

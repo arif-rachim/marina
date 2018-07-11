@@ -6,13 +6,13 @@ const render = (model,data) => {
 
     model = model || {
         label:{
-            value : 'Label'
+            value : 'Paragraph Label'
         },
         name : {
-            value : 'name'
+            value : 'paragraph'
         },
         placeholder : {
-            value : 'Placeholder'
+            value : 'Enter paragraph here'
         },
         description : {
             value : 'Description'
@@ -53,14 +53,14 @@ const render = (model,data) => {
     }
 
     const inputId = guid();
-    return Promise.resolve(`<div id="${model.id.value}" is="page.form.comp.single-line-text" 
+    return Promise.resolve(`<div id="${model.id.value}" is="page.form.comp.paragraph-text" 
                 class="form-group"
                 ${resourceName ? '' : 'draggable="true"'} 
                 style="width: 100%" 
                 data-resource-name="${resourceName}" 
                 data-resource-id="${resourceId}">
             <label for="${inputId}" style="margin-bottom:0">${model.label.value}</label>
-            <input type="text" id="${inputId}" class="form-control" 
+            <textarea id="${inputId}" class="form-control" 
                 placeholder="${model.placeholder.value}" 
                 name="${model.name.value}" 
                 ${model.required.value ? 'required="true"' : ''} 
@@ -69,8 +69,7 @@ const render = (model,data) => {
                 ${model.adminOnly.value ? 'admin-only="true"':''} 
                 ${model.minChars.value ? 'min-chars="'+model.minChars.value+'"' : ''}
                 ${model.maxChars.value ? 'max-chars="'+model.maxChars.value+'"' : ''}
-                ${model.pattern.value ? 'pattern="'+model.pattern.value+'"' : ''}
-                value="${value}" >
+                ${model.pattern.value ? 'pattern="'+model.pattern.value+'"' : ''} >${value}</textarea>
             <code style="display: none" data-validator="${inputId}">${model.validator.value}</code>
             <small>${model.description.value}</small>
         </div>`)
