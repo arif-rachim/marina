@@ -38,16 +38,13 @@ class Middleware {
 
     isExist(name,method,version){
         const isModuleExist = fs.existsSync(this.path(name,method,version));
-        console.log(`Module ${name}/${method}@${version} exist ? ${isModuleExist}`);
         return isModuleExist;
     }
 
     load(name,method,version){
         if(!this.isExist(name,method,version)){
-            console.log(`Module ${name}/${method}@${version} does not exist`);
             return false;
         }
-        console.log(`Module ${name}/${method}@${version} does exist !`);
         return require(this.relativePath(name,method,version));
     }
 

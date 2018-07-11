@@ -51,7 +51,6 @@ app.get('/res/:resource', async (req,res) => {
             res.end(templateResult);
             if(invalidateModuleCache){
                 delete require.cache[require.resolve(modulePath)];
-                console.log(`Invalidate cache ${modulePath} because its an HTML`);
             }
         }else{
             template.call(null,req,res);
@@ -72,7 +71,6 @@ app.get('/res/:resource/:id',async (req,res) => {
             res.end(templateResult);
             if(invalidateModuleCache){
                 delete require.cache[require.resolve(modulePath)];
-                console.log(`Invalidate cache ${modulePath} because its an HTML`);
             }
         }else{
             template.call(null,req,res);

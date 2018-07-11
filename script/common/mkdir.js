@@ -15,7 +15,6 @@ module.exports = (targetDir, {isRelativeToScript = false} = {}) => {
             if (err.code !== 'EEXIST') {
                 throw err;
             }
-            console.log(`Directory ${curDir} already exists!`);
         }
 
         return curDir;
