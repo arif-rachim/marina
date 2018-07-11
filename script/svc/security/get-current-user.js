@@ -3,7 +3,7 @@ const {apiServer} = require("../../../config");
 module.exports = async (req,res) => {
     try {
         const sessionId = req.cookies.sessionId || req.query.sessionId;
-        let result = await fetch(`${apiServer}/res/system_active_sessions?sessionId=${sessionId}`);
+        let result = await fetch(`${apiServer}/res/system_active_sessions?session_id=${sessionId}`);
         let data = await result.json();
         if(data.docs && data.docs.length > 0){
             res.end(JSON.stringify(data.docs[0]));

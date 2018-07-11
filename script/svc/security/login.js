@@ -2,15 +2,15 @@ const {textToBase64,administrator,apiServer,fetch} = require("../../../config");
 module.exports = async (req,res) => {
     // first we check if the  is
     try{
-        const userId = req.body.userName;
-        const password = textToBase64(req.body.password);
-        let user = await fetch(`/res/system_users?userId=${userId}`);
+        const user_name = req.body.userName;
+        const password = req.body.password;
+        let user = await fetch(`/res/system_user_account?user_name=${user_name}`);
         user = user && user.docs && user.docs.length ? user.docs[0] : false;
         if(user && user.password == password){
             try {
                 const sessionId = req.cookies.sessionId;
                 const session = await fetch(`/res/system_active_sessions`,{
-                    sessionId : sessionId,
+                    session_id : sessionId,
                     account : user
                 },'POST');
                 res.end(JSON.stringify(session));
