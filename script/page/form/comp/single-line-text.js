@@ -130,7 +130,7 @@ class SingleLineText {
             },
             validator : {
                 value : validator.innerText,
-                    name : 'Validator : (data,form) => return ',
+                    name : 'Validator : (data,node) => return ',
                     type : 'javascript',
                     description : 'A Javascript function to perform advance validation, promise return is accepted, please return following format {success:false,errorMessage:"validation message to display"}'
             },
@@ -204,6 +204,18 @@ class SingleLineText {
                 });
                 asyncResult.push(asyncPromise);
             }
+
+            if(this.model.validator.value){
+                const validatorFunction = Function(`return ${this.model.validator.value}`)();
+                asyncResult.push(validatorFunction.apply(null,[value,this.node]).then(result => {
+                    if(!result.success){
+                        input.setCustomValidity(`Validation failed : ${result.message}`);
+                    }
+                    return result;
+                }));
+            }
+
+
             if(asyncResult.length > 0){
                 Promise.all(asyncResult).then(results => {
                     for(let i =0;i<results.length;i++){

@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58aa0ba1-6b0b-415f-8d3b-ee62b8e0a686" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/page/components/confirmation.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/components/confirmation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/page/components/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/components/slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/page/form/comp/association-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/association-render.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/page/form/comp/association-selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/association-selector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/page/form/comp/association.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/association.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/page/form/comp/properties-panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/properties-panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/number-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/number-render.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/number.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/number.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/paragraph-text-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/paragraph-text-render.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/page/form/comp/paragraph-text.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/paragraph-text.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-password.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-password.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/page/form/comp/single-line-text.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/comp/single-line-text.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/page/form/design.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/page/form/design.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/res/form-html/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/res/form-html/get.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/start.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -33,13 +29,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="javascript-editor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/page/form/comp/javascript-editor.js">
+      <file leaf-file-name="horizontal-render.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal-render.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="horizontal-render.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal-render.js">
+      <file leaf-file-name="javascript-editor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/page/form/comp/javascript-editor.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -66,7 +62,8 @@
       <file leaf-file-name="association-selector.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-selector.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-332">
+            <state relative-caret-position="-60">
+              <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -77,8 +74,8 @@
       <file leaf-file-name="association-render.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-render.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+            <state relative-caret-position="51">
+              <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -97,8 +94,8 @@
       <file leaf-file-name="association.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/page/form/comp/association.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="54" column="37" lean-forward="true" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+            <state relative-caret-position="544">
+              <caret line="164" column="46" selection-start-line="164" selection-start-column="46" selection-end-line="164" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -116,8 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>function(data){</find>
-      <find>async</find>
       <find>document</find>
       <find>debugger</find>
       <find>_id</find>
@@ -146,6 +141,8 @@
       <find>Function(</find>
       <find>Function</find>
       <find>model.dataRe</find>
+      <find>model.rendere</find>
+      <find>dataRenderer</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -200,17 +197,17 @@
         <option value="$PROJECT_DIR$/script/res/grid-html/table.js" />
         <option value="$PROJECT_DIR$/script/res/form-html/get.js" />
         <option value="$PROJECT_DIR$/script/page/form/design.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-text.js" />
         <option value="$PROJECT_DIR$/script/res/form-html/component/form.js" />
         <option value="$PROJECT_DIR$/script/res/grid-html/get.js" />
         <option value="$PROJECT_DIR$/script/svc/security/login.js" />
         <option value="$PROJECT_DIR$/script/svc/security/logout.js" />
         <option value="$PROJECT_DIR$/script/svc/security/get-current-user.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/association-render.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/number-render.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/paragraph-text-render.js" />
-        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/paragraph-text-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/number-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/association-render.js" />
+        <option value="$PROJECT_DIR$/script/page/form/comp/single-line-text.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/single-line-password.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/paragraph-text.js" />
         <option value="$PROJECT_DIR$/script/page/form/comp/number.js" />
@@ -410,12 +407,12 @@
       <workItem from="1531055100226" duration="19058000" />
       <workItem from="1531138530535" duration="5123000" />
       <workItem from="1531228660301" duration="11020000" />
-      <workItem from="1531317616710" duration="1215000" />
+      <workItem from="1531317616710" duration="2725000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="476633000" />
+    <option name="totallyTimeSpent" value="478143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,13 +430,13 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5842391" visible="true" weight="0.1670179" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.32897604" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.53951526" side_tool="true" visible="true" weight="0.23173277" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.54004216" side_tool="true" visible="true" weight="0.23173277" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4926238" weight="0.32776618" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49947312" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4604847" visible="true" weight="0.23173277" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.45995784" visible="true" weight="0.23173277" />
       <window_info id="npm" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info id="Structure" order="1" sideWeight="0.41576087" side_tool="true" visible="true" weight="0.1670179" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4646997" weight="0.5062631" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4641728" weight="0.5062631" />
       <window_info id="Favorites" order="3" sideWeight="0.5007133" side_tool="true" weight="0.25553215" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.54373026" weight="0.24634655" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -489,20 +486,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/crypto-js/enc-utf8.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/res/form-html/get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/res/form-html/component/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/res/grid-html/get.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -589,38 +572,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/script/res/form-html/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-740">
+          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/res/form-html/component/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/number-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-text-render.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        <state relative-caret-position="17">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-text.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="133" column="38" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="38" />
+        <state relative-caret-position="433">
+          <caret line="132" column="50" selection-start-line="132" selection-start-column="50" selection-end-line="132" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-password-render.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        <state relative-caret-position="357">
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/single-line-password.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="133" column="34" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+        <state relative-caret-position="561">
+          <caret line="132" column="46" selection-start-line="132" selection-start-column="46" selection-end-line="132" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/properties-panel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="1666">
+          <caret line="98" column="39" lean-forward="true" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -634,36 +638,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/paragraph-text-render.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        <state relative-caret-position="-357">
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/paragraph-text.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="133" column="38" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/number-render.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        <state relative-caret-position="561">
+          <caret line="132" column="50" selection-start-line="132" selection-start-column="50" selection-end-line="132" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/number.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="140" column="38" selection-start-line="140" selection-start-column="38" selection-end-line="140" selection-end-column="38" />
+        <state relative-caret-position="609">
+          <caret line="139" column="50" selection-start-line="139" selection-start-column="50" selection-end-line="139" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/javascript-editor.js">
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal-render.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal-render.js">
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/javascript-editor.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/horizontal.js">
@@ -680,10 +677,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-selector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-332">
+        <state relative-caret-position="-60">
+          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -696,17 +701,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/page/form/comp/association-render.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/page/form/comp/association.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="54" column="37" lean-forward="true" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+        <state relative-caret-position="544">
+          <caret line="164" column="46" selection-start-line="164" selection-start-column="46" selection-end-line="164" selection-end-column="46" />
         </state>
       </provider>
     </entry>

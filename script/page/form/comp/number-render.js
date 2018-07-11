@@ -1,5 +1,5 @@
 const {guid} = require('../../../common/utils');
-const validatorScript = `(data,form) => {
+const validatorScript = `(data,node) => {
     return Promise.resolve({success:true});
 };`;
 const render = (model,data) => {

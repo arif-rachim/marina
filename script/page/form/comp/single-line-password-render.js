@@ -1,7 +1,7 @@
 const {guid} = require('../../../common/utils');
 const AES = require('crypto-js/aes');
 const UTF8 = require('crypto-js/enc-utf8');
-const validatorScript = `(data,form) => {
+const validatorScript = `(data,node) => {
     return Promise.resolve({success:true});
 };`;
 

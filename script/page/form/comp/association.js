@@ -162,7 +162,7 @@ class Association {
             },
             validator : {
                 value : validator.innerText,
-                name : 'Validator : (data,form) => return ',
+                name : 'Validator : (data,node) => return ',
                 type : 'javascript',
                 description : 'A Javascript function to perform advance validation, promise return is accepted, please return following format {success:false,errorMessage:"validation message to display"}'
             },

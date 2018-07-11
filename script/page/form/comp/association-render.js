@@ -1,7 +1,7 @@
 const {guid} = require('../../../common/utils');
 //const {fetch} = require('../../../../config');
 const itemRenderer = require('./association-item-render');
-const validatorScript = `(data,form) => {
+const validatorScript = `(data,node) => {
     return Promise.resolve({success:true});
 };`;
 const rendererScript = `(data) => {
