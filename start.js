@@ -5,13 +5,12 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const cheerio = require("cheerio");
 const accessDenied = require("./script/page/access-denied");
+const loginPublic = require("./script/page/login-public");
 const underConstruction = require("./script/page/under-construction");
 const {guid} = require("./script/common/utils");
 const {intentsPath,svcPath,pagePath,applicationPort,fetch,securePageAccess,invalidateModuleCache} = require("./config");
 const PORT = applicationPort;
-
 const path = require('path');
-
 const appRoot = path.resolve(__dirname);
 
 
@@ -47,6 +46,10 @@ app.get('/res/:resource', async (req,res) => {
         const modulePath = `${intentsPath}/${mode}/get`;
         const template = require(modulePath);
         if(mode.endsWith('-html')){
+            const isLoggedIn = await sessionExist(req,res);
+            if(!isLoggedIn){
+                return;
+            }
             const templateResult = await processRequest(req,template);
             res.end(templateResult);
             if(invalidateModuleCache){
@@ -127,21 +130,28 @@ const isFunction = (functionToCheck) => {
     return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 };
 
+const sessionExist = async (req,res) => {
+    const sessionId = req.cookies.sessionId || req.query.sessionId;
+    const result = await fetch(`/res/system_active_sessions?sessionId=${sessionId}`);
+    if(result.docs && result.docs.length == 0 && securePageAccess){
+        //const templateResult = await processRequest(req,accessDenied);
+        const templateResult = await processRequest(req,loginPublic);
+        res.end(templateResult);
+        return false;
+    }
+    return true;
+
+};
+
 app.get('/page/:page',async (req,res) => {
+    const isPrivateAccess = !req.params.page.endsWith("-public");
+    if(isPrivateAccess){
+        const isLoggedIn = await sessionExist(req,res);
+        if(!isLoggedIn){
+            return;
+        }
+    }
     try{
-        const sessionId = req.cookies.sessionId || req.query.sessionId;
-        const result = await fetch(`/res/system_active_sessions?sessionId=${sessionId}`);
-        /**
-         * For time being lets comment this code
-
-            const isPrivateAccess = !req.params.page.endsWith("-public");
-            if(result.docs && result.docs.length == 0 && securePageAccess && isPrivateAccess){
-                const templateResult = await processRequest(req,accessDenied);
-                res.end(templateResult);
-                return;
-            }
-
-         */
         const pp = req.params.page.split(".").join("/");
         const modulePath = `${pagePath}/${pp}`;
         const template = require(modulePath);

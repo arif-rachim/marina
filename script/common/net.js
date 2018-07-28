@@ -31,6 +31,9 @@ const appFetch = (url,json,method,showLoader) => {
 
 function loader(loader){
     var loaderPanel = document.querySelector('.app-loader');
+    if(!loaderPanel){
+        return;
+    }
     if(loader){
         loaderPanel.style.display = 'flex';
         loaderPanel.classList.remove('hide');

@@ -17,7 +17,7 @@ window.app.onScriptReady = ({module,path}) => {
 
 };
 
-function registerComponent(component,node) {
+const registerComponent = (component,node) => {
 
     if(component in modules){
         const module = modules[component];

@@ -1,6 +1,6 @@
 const theme = require("./theme");
 module.exports = (req) => {
-    theme(req,{title:'Access Denied',breadcrumb:[],content : `
+    return theme(req,{title:'Access Denied',breadcrumb:[],content : `
         <div style="text-align: center">
             <div style="display: inline-block">
             <div style="display: flex;margin:3em;align-items: center;">
