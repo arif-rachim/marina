@@ -1,10 +1,16 @@
 const confirmation = require('../components/confirmation');
 const slider = require('../components/slider');
-
+const {fetch} = require('../../../config');
 module.exports = async (req) => {
+    const sessionId = req.cookies.sessionId || req.query.sessionId;
+    const response = await fetch(`/svc/security.get-current-user?sessionId=${sessionId}`);
+    let account = {};
+    if(response.success){
+        account = response.data.account;
+    }
     return `
 <div class="fixed-top">
-<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow  navbar-light navbar-shadow">
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow  navbar-light navbar-shadow" is="page.panels.fixed-top-script">
   <div class="navbar-wrapper">
     <div class="navbar-header">
       <ul class="nav navbar-nav flex-row">
@@ -18,7 +24,14 @@ module.exports = async (req) => {
     <div class="navbar-container content">
       <div class="collapse navbar-collapse" id="navbar-mobile">
         <ul class="nav navbar-nav float-right">
-          <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="/app-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
+          <li class="dropdown dropdown-user nav-item">
+            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                <span class="avatar avatar-online">
+                    <img src="/app-assets/images/portrait/small/avatar-s-19.png" alt="avatar">
+                    <i></i>
+                </span>
+                <span class="user-name">${account.user_name || ''}</span>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
                 <!--
@@ -27,7 +40,7 @@ module.exports = async (req) => {
                 <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
                 -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
+                <a class="dropdown-item" href="#"><i class="ft-power"></i>Logout</a>
             </div>
           </li>
         </ul>

@@ -132,9 +132,8 @@ const isFunction = (functionToCheck) => {
 
 const sessionExist = async (req,res) => {
     const sessionId = req.cookies.sessionId || req.query.sessionId;
-    const result = await fetch(`/res/system_active_sessions?sessionId=${sessionId}`);
+    const result = await fetch(`/res/system_active_sessions?session_id=|${sessionId}|`);
     if(result.docs && result.docs.length == 0 && securePageAccess){
-        //const templateResult = await processRequest(req,accessDenied);
         const templateResult = await processRequest(req,loginPublic);
         res.end(templateResult);
         return false;

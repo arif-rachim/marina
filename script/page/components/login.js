@@ -12,10 +12,15 @@ class Login {
     onSubmit(event){
         event.preventDefault();
         event.stopImmediatePropagation();
-        fetch('/svc/security.login',{userName:this.userName.value,password:this.password.value},'POST',true)
-            .then(something => {
-                debugger;
-            });
+        fetch('/svc/security.login',{
+            userName:this.userName.value,
+            password:this.password.value
+        },'POST',true)
+        .then(result => {
+            if(result.success){
+                window.location.reload();
+            }
+        });
     }
 }
 module.exports = Login;
