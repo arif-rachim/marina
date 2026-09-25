@@ -81,7 +81,7 @@ app-assets/       dashboard theme assets
 - No tests (`npm test` exits with an error).
 - The whole project folder is served as static files (`express.static(__dirname)`), and form hooks run arbitrary server-side JavaScript, so it is not safe to expose publicly as-is.
 - Passwords are encrypted with a fixed key rather than hashed.
-- Uses old toolchain versions (Babel 6, Rollup 0.60) and a `repository` URL in `package.json` that points to `yallajs/marina`.
+- Uses old toolchain versions (Babel 6, Rollup 0.60). The `repository` URL in `package.json` still points to the old `yallajs/marina` location, which GitHub redirects here.
 
 ## License
 
